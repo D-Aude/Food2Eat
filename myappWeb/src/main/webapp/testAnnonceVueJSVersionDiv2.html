@@ -11,7 +11,7 @@
 <h1>Foodfriend l'utilisateur n°<input id="iduser" type="text" value="1" /></h1>
 	
 		
-		<div id="listeFoodfriend">
+		<div id="listeAnnonce">
 		<div id="navbar">
 
 		</div>
@@ -23,9 +23,9 @@
 				<button v-on:click="sentrequest">Mes demandes envoyées</button>
 			 -->
 			
-   			<div id="Annonce-element" v-for="foodfriend in foodfriend">   
+   			<div id="Annonces-elements" v-for="annonce in annonces">   
    							
-	   				 {{annonce.idAnnonce}}
+	   				 {{annonce.titre}}
    				
    			</div>
 		</div> 
