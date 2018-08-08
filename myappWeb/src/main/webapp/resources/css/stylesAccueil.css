@@ -32,20 +32,28 @@ a {
     position:fixed;
 }
 
-.lblInfos{
+.lblInfosOeufs{
     position: absolute;
     font-family: 'Abel', sans-serif;
     font-size: 20;
     left: 113;
-    margin-top: 310;
+    margin-top: 410;
+}
+
+.lblInfosYaourt{
+    position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 20;
+    left: 865;
+    margin-top: 410;
 }
 
 .lbltitre {
 	position: absolute;
 	font-family: 'Abel', sans-serif;
-	font-size: 40;
-	left: 268px;
-    top: 161px;
+	font-size: 50;
+/* 	left: 555px; */
+ 	top: 181px;
     text-transform: uppercase;
 }
 
@@ -145,7 +153,7 @@ width: 180;
 }
 
 input[type=text]:focus {
-    width: 600;
+    width: 548;
 }
 /*<!--==============================ANIMATION HOVER=====================-->*/
 .mr-auto, .mx-auto {
@@ -190,9 +198,13 @@ input[type=text]:focus {
   margin-top: 100;
 }
 
+.container {
+display : flex;
+justify-content: center;
+}
+
 .flex-container > .imgContainer {
-  /*width: 100px;*/
- /* margin: 100 0 0 150px;*/
+
   text-align: center;
       -webkit-transition: .4s ease-in-out opacity!important;
     -moz-transition: .4s ease-in-out opacity!important;
@@ -200,8 +212,7 @@ input[type=text]:focus {
     transition: .4s ease-in-out opacity!important;
 }
 .flex-container > div .imgYaourt {
-  /*width: 100px;*/
-  /*margin: 100 0 0 150px;*/
+
   text-align: center;
   -webkit-transition: .4s ease-in-out opacity;
   -moz-transition: .4s ease-in-out opacity;
@@ -226,7 +237,7 @@ input[type=text]:focus {
 
 div > .imgContainerYaourt {
     position:relative;
-    top: 100;
+    top: 200;
     left: 110;
     margin-bottom: 50; 
     width: auto;
@@ -236,7 +247,7 @@ div > .imgContainerYaourt {
 
 div > .imgContainer {
     position:relative;
-    top: 100;
+    top: 200;
     left: 110;
     margin-bottom: 50; 
     width: auto;
@@ -271,3 +282,21 @@ div > .imgContainer {
     display:block;
     color: black;
 }
+/*==============================PAGE ANNONCES=====================*/
+
+#page-annonces {
+	background-color : blue;
+	width : 1000px;
+	height : 200px;
+	top : 260px;
+	position:absolute;
+/* 	left : 200px; */
+	display : flex;
+	justify-content: center;
+
+}
+
+input[type=text] {
+	dispay : none;
+}
+
