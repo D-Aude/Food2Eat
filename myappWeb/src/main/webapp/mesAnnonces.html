@@ -1,7 +1,52 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/stylesMesAnnonces.css" media="all" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+</head>
+<body>
+	<h1 id="pseudoTitre">Les annonces de :
+		{{annonce.utilisateur.pseudo}}</h1>
+
+	<span class="enEvidence" id="spanTableau"></span>
+	<br>
+	<table id="idTable" border="1">
+		<thead>
+			<tr>
+				<th>idAnnonce</th>
+				<th>dateRdv1</th>
+				<th>dateRdv2</th>
+				<th>dateRdv3</th>
+				<th>nomProduit</th>
+			</tr>
+		</thead>
+		<tbody id="app">
+			<tr v-for="annonce in annonces">
+				<td>{{annonce.idAnnonce}}</td>
+				<td>{{moment(annonce.dateRdv1).format('L')}}</td>
+				<td>{{moment(annonce.dateRdv2).format('L')}}</td>
+				<td>{{moment(annonce.dateRdv3).format('L')}}</td>
+				<td>{{annonce.stock.produit.nomProduit}}</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<script src="./js/AnnonceVueJs.js"></script>
+</body>
+</html>
+
 <div class="container">
 	<div class="lblTitre">
 		<b>Mes annonces en cours</b>
 	</div>
 	<div id="page-annonces"></div>
 </div>
+
