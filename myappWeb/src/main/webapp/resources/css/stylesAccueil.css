@@ -4,11 +4,12 @@ body {
 }
 
 #fondNav {
-    width: 100%;
-    background-color: #245B55!important;
-    background-attachment: fixed;
-    height: 78;
-    position:fixed;
+     width: 1811;
+    background-color: white!important;
+    height: 160;
+    position: absolute;
+    top: -182px;
+    left: -800;
 }
 
 .navbar{
@@ -20,6 +21,30 @@ body {
 
 a .navbar-brand {
 	font-size: 10px;
+}
+
+.navbar-toggler:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    background-color: #245B55;
+}
+
+.navbar-toggler {
+      padding: 2.25rem -0.25rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.test {
+	position:absolute;
+	width: 50px;
+    height: 77px;
+    background-color: #245B55;
+/*     position: fixed; */
+    top: 0;
+    right: 0;
 }
 
 a {
@@ -37,7 +62,70 @@ a {
     font-family: 'Abel', sans-serif;
     font-size: 20;
     left: 113;
-    margin-top: 410;
+    margin-top: 510;
+}
+
+.container-dashboard {
+display : flex;
+justify-content: center;
+}
+
+.lblUser {
+    position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 20;
+    /* left: 555px; */
+    top: -170;
+    text-transform: uppercase;
+}
+
+.lblStatsUser {
+display : flex;
+justify-content: center;
+top: 120;
+}
+
+.donTotal {
+    top: -129px;
+    position: absolute;
+    font-family: 'Abel', sans-serif;
+    text-transform: initial;
+    font-size: 15;
+}
+
+.dernierDon {
+top: -98px;
+    position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 15;
+    text-transform: initial;
+}
+
+.produitPeremption {
+	top: -60;
+    position: absolute;
+    font-family: 'Abel', sans-serif;
+    color: red;
+    font-size: 15;
+    text-transform : initial;
+}
+
+.lblStatsDon {
+	top: 120;
+	left:150;
+	font-size: 20;
+	color: black;
+	position : absolute;
+	font-family : 'Abel', sans-serif;
+}
+
+.lblStatsDernierDon {
+	top: 163;
+	left:150;
+	font-size: 20;
+	color: black;
+	position : absolute;
+	font-family : 'Abel', sans-serif;
 }
 
 .lblInfosYaourt{
@@ -45,15 +133,24 @@ a {
     font-family: 'Abel', sans-serif;
     font-size: 20;
     left: 865;
-    margin-top: 410;
+     margin-top: 510;
 }
+
+.lblInfosPainDeMie{
+    position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 20;
+    left: 115;
+    margin-top: 830;
+}
+
 
 .lbltitre {
 	position: absolute;
 	font-family: 'Abel', sans-serif;
 	font-size: 50;
 /* 	left: 555px; */
- 	top: 181px;
+ 	top: 260	;
     text-transform: uppercase;
 }
 
@@ -69,24 +166,29 @@ a {
 }
 
 .navbar-light .navbar-fontColor {
-   	color: white!important;
+	color: white!important;
     font-size: 37px!important;
     text-transform: uppercase;
     height: 96;
-    width: 350;
+    width: 379px;
     padding-top: 27px!important;
-    margin-left: 25px;
+    margin-left: -16px;
+    padding-left: 35px;
     background-color: #245B55!important;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar-light .navbar-nav .nav-link {
- color: white!important;
+    color: white!important;
     font-size: 26px!important;
     background-color: #245B55!important;
-    padding-left: 6.5rem!important;
+    padding-left: 0.5rem!important;
     text-transform: uppercase!important;
     padding-top: 38px;
-    height : 96px;
+    width: 377px;
+    height: 96px;
+    margin-right: -2px!important;
 }
 
 .navbar-nav .dropdown-menu {
@@ -112,15 +214,6 @@ a {
     font-size: 20px;
 }
 
-.navbar-deconnexion {
-color: white;
-    font-family: 'Abel', sans-serif;
-    padding-top: 34px!important;
-    background-color: #245B55;
-    text-transform: uppercase;
-    font-size: 20;
-    padding-left: 70px;
-}
 
 .navbar-nav .nav-link {
     padding-right: 45!important;
@@ -133,6 +226,23 @@ a.dropdown-item {
 
 a.dropdown-item:hover {
     text-decoration: underline;
+}
+
+.btnDeconnexion {
+	    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #245B55;
+    position: fixed;
+    bottom: 5;
+    right: 5;
+    border-radius: 100px;
+}
+
+.deconnexion {
+	    margin-top: 8;
+	    margin-right : 4;
 }
 
 /*<!--==============================SEARCH BAR=====================-->*/
@@ -221,6 +331,17 @@ justify-content: center;
   background-attachment: fixed;
 }
 
+.flex-container > div .imgPainDeMie {
+
+  text-align: center;
+  -webkit-transition: .4s ease-in-out opacity;
+  -moz-transition: .4s ease-in-out opacity;
+  -o-transition: .4s ease-in-out opacity;
+  transition: .4s ease-in-out opacity;
+  background-attachment: fixed;
+}
+
+
 .containerLblYaourt {
     position : absolute;
     font-size: 30;
@@ -237,7 +358,7 @@ justify-content: center;
 
 div > .imgContainerYaourt {
     position:relative;
-    top: 200;
+    top: 300;
     left: 110;
     margin-bottom: 50; 
     width: auto;
@@ -247,7 +368,7 @@ div > .imgContainerYaourt {
 
 div > .imgContainer {
     position:relative;
-    top: 200;
+    top: 300;
     left: 110;
     margin-bottom: 50; 
     width: auto;
@@ -265,6 +386,25 @@ div > .imgContainer {
     text-decoration: none;
 }
 
+.imgPainDeMie {
+	position : relative;
+	top: 360;
+	left: 110px;
+	margin-bottom: 50;
+	width : auto;
+	height: 211px;
+}
+
+.containerLblPainDeMie {
+    position : absolute;
+    font-size: 30;
+    text-transform: uppercase;
+    margin : 185 0 0 250;
+    font-family: 'Abel', sans-serif;
+    display:none;
+    text-decoration: none;
+}
+
 .imgContainer:hover {
     opacity: 0.8;
 }
@@ -273,12 +413,22 @@ div > .imgContainer {
     opacity : 0.8;
 }
 
+.imgPainDeMie:hover {
+    opacity : 0.8;
+}
+
+
 .imgContainer:hover .containerLblOeuf {
     display:block;
     color: black;
 }
 
 .imgContainerYaourt:hover .containerLblYaourt {
+    display:block;
+    color: black;
+}
+
+.imgContainerPainDeMie:hover .containerLblPainDeMie {
     display:block;
     color: black;
 }
@@ -295,8 +445,3 @@ div > .imgContainer {
 	justify-content: center;
 
 }
-
-input[type=text] {
-	dispay : none;
-}
-

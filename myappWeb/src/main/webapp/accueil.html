@@ -23,7 +23,7 @@
 
 <!--=========================================NAVBAR================================================-->
 <body>
-	<div id="fondNav"></div>
+<div class="test"></div>
 	<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-nav-color">
 		<a class="navbar-fontColor" href="accueil.html"><b>Food 2 Eat</b></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -32,7 +32,7 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
+<div class="test"></div>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item dropdown"><a
@@ -44,63 +44,106 @@
 							inventaire</a>
 					</div></li>
 
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Annonces </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" id="btnMesAnnonces" href="#">Mes annonces</a> 
-							<a class="dropdown-item" id="btnMesEnvies" href="#">Mes envies</a> 
-							<a class="dropdown-item" id="btnReponsesRecues" href="#">Réponses reçues</a>
-						</div>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Annonces </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" id="btnMesAnnonces" href="#">Mes
+							annonces</a> <a class="dropdown-item" id="btnMesEnvies" href="#">Mes
+							envies</a> <a class="dropdown-item" id="btnReponsesRecues" href="#">Réponses
+							reçues</a>
+					</div></li>
+
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Foodfriends </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" id="btnMesFoodFriends" href="#">Mes
+							foodfriends</a> <a class="dropdown-item" id="btnInvitationsRecues"
+							href="#">Invitations reçues</a>
+					</div>
 				</li>
 
-				<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Foodfriends </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" id="btnMesFoodFriends" href="#">Mes foodfriends</a> 
-						<a class="dropdown-item" id="btnInvitationsRecues" href="#">Invitations reçues</a>
-					</div></li>
 			</ul>
 		</div>
-	</div>
 	</nav>
+	
+
 	<!--=========================================SEARCH BAR================================================-->
 
-	<form id="searchBar">
-		<input type="text" name="search" placeholder="Rechercher..">
-	</form>
+	<!-- 	<form id="searchBar"> -->
+	<!-- 		<input type="text" name="search" placeholder="Rechercher.."> -->
+	<!-- 	</form> -->
 	<!--=========================================FLEX CONTAINER================================================-->
 	<div id="flexContent" class="flex-container">
-		
+
+
+
 		<div class="container">
 			<div class="lblTitre">
+					<div id="fondNav"></div>
+
+			<div class="container-dashboard">
+			<div class="lblUser">
+				<b>Bonjour {{utilisateur}} !</b>
+			</div>
+			<div class="lblStatsUser">
+				<p class="donTotal">Nombre total de don effectué : {{nbTotalDons}}</p> 
+				<p class="dernierDon"> Dernier don effectué : {{dernierDon (si possible sinon on rentre en dur)}} </p>
+				<b class="produitPeremption"> Produit(s) arrivant à péremption : {{}} </b>
+			</div>
+		</div>
 				<b>Les annonces en cours</b>
 			</div>
 		</div>
-			<div class="lblInfosOeufs">
-				<b>Informations concernant le don</b>
-			</div>
-			
-			<div class="lblInfosYaourt">
-				<b>Informations concernant le don</b>
-			</div>
-		
+		<div class="lblInfosOeufs">
+			<b>Informations concernant le don</b>
+		</div>
+
+		<div class="lblInfosYaourt">
+			<b>Informations concernant le don</b>
+		</div>
+
+		<div class="lblInfosPainDeMie">
+			<b>Informations concernant le don</b>
+		</div>
+
+
 		<div class="imgContainer">
+
 			<a href="#"><img class="imgOeuf" src="./resources/css/oeuf.png"></a>
-				<div class="containerLblOeuf">
-					<span><b>Détails de l'annonce</b></span>
-				</div>
+			<div class="containerLblOeuf">
+				<span><b>Détails de l'annonce</b></span>
+			</div>
 		</div>
 
 		<div class="separateur"></div>
 
 		<div class="imgContainerYaourt">
-			<a href="#"><img class="imgYaourt" src="./resources/css/yaourt.png"></a>
+			<a href="#"><img class="imgYaourt"
+				src="./resources/css/yaourt.png"></a>
 			<div class="containerLblYaourt">
 				<span><b>Détails de l'annonce</b></span>
 			</div>
 		</div>
 
+		<div class="imgContainerPainDeMie">
+			<a href="#"><img class="imgPainDeMie"
+				src="./resources/css/pain_de_mie.png"></a>
+			<div class="containerLblPainDeMie">
+				<span><b>Détails de l'annonce</b></span>
+			</div>
+		</div>
 	</div>
+
+
+	<footer>
+		<div class="btnDeconnexion">
+			<span class="deconnexion"><a href="login.html"><img src="./resources/css/deconnexion.png"></a></span>
+		</div>
+	</footer>
 </body>
 <!--==============================SCRIPT HOVER=====================-->
 <script>
@@ -127,23 +170,26 @@
 		$('#btnInventaire').on('click', function() {
 			$("#flexContent").load("./gestionInventaire.html");
 		});
-		
+
 		$('#btnMesAnnonces').on('click', function() {
 			$("#flexContent").load("./mesAnnonces.html");
 		});
-		
+		$('#btnMesAnnonces').on('click', function() {
+			$("#container-dashboard").load("./mesAnnonces.html");
+		});
+
 		$('#btnMesEnvies').on('click', function() {
 			$("#flexContent").load("./mesEnvies.html");
 		});
-		
+
 		$('#btnReponsesRecues').on('click', function() {
 			$("#flexContent").load("./reponsesRecues.html");
 		});
-		
+
 		$('#btnMesFoodFriends').on('click', function() {
 			$("#flexContent").load("./mesFoodFriends.html");
 		});
-		
+
 		$('#btnInvitationsRecues').on('click', function() {
 			$("#flexContent").load("./invitationsRecues.html");
 		});
