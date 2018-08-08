@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
-
 <meta charset="ISO-8859-1">
-<title>Mes foodfriends</title>
+<title>Food2Eat (beta)</title>
+	<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
 </head>
 <body>
+<input type="hidden" id="iduser" type="text" value="7"  />
+	
+		
+		<div id="listeFoodfriend">
+			
+   			<div id="friend-element" v-for="foodfriend in foodfriend">   
+   				<div v-if="foodfriend.utilisateur1.idUtilisateur == iduser">
+   					
 
+	   				<img v-bind:src="getSrc(foodfriend.utilisateur2.pseudo)"/><br/>	
+	   				{{foodfriend.utilisateur2.pseudo}} <br/>
+	   				{{foodfriend.utilisateur2.nom}} {{foodfriend.utilisateur2.prenom}} <br/><br/>
+	   				{{foodfriend.utilisateur2.email}} <br/>
+   				</div>
+   				<div v-else>
+					<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>	
+   					{{foodfriend.utilisateur1.pseudo}} <br/>
+	   				{{foodfriend.utilisateur1.nom}} {{foodfriend.utilisateur1.prenom}} <br/><br/>
+	   				{{foodfriend.utilisateur1.email}} <br/>
+   				</div>
+   			</div>
+  		</div>
+
+	<script src="./js/foodfriendtestJ2.js"></script>
 </body>
 </html>
