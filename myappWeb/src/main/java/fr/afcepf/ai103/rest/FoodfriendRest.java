@@ -33,7 +33,7 @@ public class FoodfriendRest {
 	}
 	
 	// requête test : afficher tous les foodfriend
-	//http://localhost:8080/myappWeb/services/rest/tousLesFoodfriend
+	//http://localhost:8080/myappWeb/services/rest/foodfriend/tous
 	@Path("/tous")
 	@GET
 	public List<Foodfriend> rechercherFoodfriend() {
@@ -42,33 +42,41 @@ public class FoodfriendRest {
 	}
 	
 	// Afficher la liste de mes foodfriend ______________________________________________________
-	//http://localhost:8080/myappWeb/services/rest/mesfoodfriend?utilisateur1=1
+	//http://localhost:8080/myappWeb/services/rest/foodfriend/mesfoodfriend?iduser=1
 	@Path("/mesfoodfriend")
 	@GET
-	public List<Foodfriend> rechercherMesFoodfriend(@QueryParam("utilisateur1")int num) {
+	public List<Foodfriend> rechercherMesFoodfriend(@QueryParam("iduser")int num) {
 		System.out.println("affichage utilisateur REST = " + num);
 		return serviceff.rechercherMesFoodfriend(num);
 	}
 	
+	
+	
+	
 	// Afficher la liste de mes demandes de ff reçues _____________________________________________
-	//http://localhost:8080/myappWeb/services/rest/mesdemandesrecues?utilisateur2=1
+	//http://localhost:8080/myappWeb/services/rest/foodfriend/mesdemandesrecues?iduser=1
 	@Path("/mesdemandesrecues")
 	@GET
-	public List<Foodfriend> rechercherMesDemandesFoodfriend(@QueryParam("utilisateur2")int num) {
+	public List<Foodfriend> rechercherMesDemandesFoodfriend(@QueryParam("iduser")int num) {
 		System.out.println("affichage utilisateur REST = " + num);
 		return serviceff.rechercherMesDemandesFoodfriendRecues(num);
 	}
 	
+	
+	
+	
 	// Afficher la liste des demandes de ff que j'ai envoyé ________________________________________
-	//http://localhost:8080/myappWeb/services/rest/mesdemandesenvoyees?utilisateur2=1
+	//http://localhost:8080/myappWeb/services/rest/foodfriend/mesdemandesenvoyees?iduser=1
 	@Path("/mesdemandesenvoyees")
 	@GET
-	public List<Foodfriend> rechercherMesDemandesFFEnvoyees(@QueryParam("utilisateur1")int num) {
+	public List<Foodfriend> rechercherMesDemandesFFEnvoyees(@QueryParam("iduser")int num) {
 		return serviceff.rechercherMesDemandesFFEnvoyees(num);
 	}
 	
+
+	
 	// Envoyer une demande de foodfriend ___________________________________________________________
-	@Path("")
+	@Path("/nouvelledemandeOLD")
 	@POST
 	@Consumes("application/json")
 	public Foodfriend postFoodfriend(Foodfriend ff) {
@@ -76,6 +84,8 @@ public class FoodfriendRest {
 		ff = serviceff.saveOrUpdate(ff);
 		return ff;
 	}
+	
+
 	
 
 	

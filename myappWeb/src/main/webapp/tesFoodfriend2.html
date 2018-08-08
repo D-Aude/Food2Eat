@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Food2Eat (beta)</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
+</head>
+<body>
+<h1>Foodfriend l'utilisateur n°<input id="iduser" type="text" value="1" /></h1>
+	
+		
+		<div id="listeFoodfriend">
+		<div id="navbar">
+
+		</div>
+			<h1 id="friend-element">{{titre}}</h1> <br/>
+			<div>
+			<!-- 
+				<button v-on:click="created">Mes Foodfriend</button>
+				<button v-on:click="request">Mes demandes de foodfriend</button>
+				<button v-on:click="sentrequest">Mes demandes envoyées</button>
+			 -->
+			
+   			<div id="friend-element" v-for="foodfriend in foodfriend">   
+   				<div v-if="foodfriend.utilisateur1.idUtilisateur == iduser">				
+	   				{{foodfriend.utilisateur2.pseudo}} <br/>
+	   				{{foodfriend.utilisateur2.nom}} {{foodfriend.utilisateur2.prenom}} <br/><br/>
+	   				{{foodfriend.utilisateur2.email}} <br/>
+   				</div>
+   				<div v-else>
+   					{{foodfriend.utilisateur1.pseudo}} <br/>
+	   				{{foodfriend.utilisateur1.nom}} {{foodfriend.utilisateur1.prenom}} <br/><br/>
+	   				{{foodfriend.utilisateur1.email}} <br/>
+   				</div>
+   			</div>
+		</div>   		
+
+	<script src="./js/foodfriendtestJ2.js"></script>
+</body>
+</html>
