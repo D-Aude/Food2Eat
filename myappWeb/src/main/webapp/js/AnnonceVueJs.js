@@ -1,13 +1,13 @@
 
 
 var vm = new Vue({
-	el: '#app',
+	el: '#Annonces-elements',
 	data: {
 		annonces: []
 	},
-	created () {
+	created : function () {
 		var vm = this
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/enCours/3')
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/terminees/10')
 		.then(function (response) {
 			vm.annonces = response.data
 		})
@@ -27,3 +27,10 @@ var vm = new Vue({
 		  }
 
 })
+
+/*var titre = new Vue({
+	el : '#pseudoTitre',
+	data : {
+		annonce 
+	},
+})*/

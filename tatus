@@ -1,0 +1,118 @@
+[33mcommit 9013c6962aac2430a2d6d433be217aae17236003[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 8c27a16 95273a4
+Author: wingy <liu.wingy@gmail.com>
+Date:   Wed Aug 8 13:52:50 2018 +0200
+
+    ajout vue.js foodfriend essai2
+
+[33mcommit 8c27a16721b0316a326491f24874fa90caacc791[m
+Author: wingy <liu.wingy@gmail.com>
+Date:   Wed Aug 8 13:50:31 2018 +0200
+
+    ajout vue.js foodfriend + modif foodfriendRest
+
+[33mcommit 95273a4f7fc2a7b9e38e36c72c36bbcf07ffc6b2[m
+Merge: 506bf2c ca86907
+Author: M-Aude <aude-mouries@laposte.net>
+Date:   Wed Aug 8 12:51:47 2018 +0200
+
+    MergeMesAnnonce
+
+[33mcommit 506bf2c89a0fa13cd62600871efe4f19a9ca6fc5[m
+Author: M-Aude <aude-mouries@laposte.net>
+Date:   Wed Aug 8 12:50:19 2018 +0200
+
+    mesAnnonces
+
+[33mcommit ca86907deda1e2cb85cd8b6e3bebaae1c99a377e[m
+Author: SithRon <sithigna@gmail.com>
+Date:   Wed Aug 8 12:39:09 2018 +0200
+
+    conflit résolu
+
+[33mcommit cd41fb357b22a890d2b03d9dfff67f351c411232[m
+Merge: 143cd9d ca783e0
+Author: SithRon <sithigna@gmail.com>
+Date:   Wed Aug 8 12:38:03 2018 +0200
+
+    testconflit
+
+[33mcommit 143cd9dd323bc7a86ddd8bae10cda64f6f875dce[m
+Author: SithRon <sithigna@gmail.com>
+Date:   Wed Aug 8 12:37:11 2018 +0200
+
+    testconflit
+
+[33mcommit ca783e0b77afc8fc6ec15f44d49c79f1a8b24374[m
+Author: wingy <liu.wingy@gmail.com>
+Date:   Wed Aug 8 12:36:25 2018 +0200
+
+    modif styleAccueil test
+
+[33mcommit 16f599244083dec8561c6aa541390ff703a00083[m
+Author: SithRon <sithigna@gmail.com>
+Date:   Wed Aug 8 12:32:32 2018 +0200
+
+    ajout page web
+
+[33mcommit 60d272a41c11216ad6421450ee92725836245ee9[m
+Author: wingy <liu.wingy@gmail.com>
+Date:   Wed Aug 8 12:12:31 2018 +0200
+
+    suppression TestGit
+
+[33mcommit bf78e6dfd7bbbac0b8a79414b008874009cabbf7[m
+Merge: 5f8e336 a1ef86b
+Author: FunkyJF <jeanfrancois.anthony@gmail.com>
+Date:   Wed Aug 8 12:08:39 2018 +0200
+
+    test2 merge anthony
+
+[33mcommit 5f8e3366ac4dcf48b631568dc3e21b9639e4408b[m
+Author: FunkyJF <jeanfrancois.anthony@gmail.com>
+Date:   Wed Aug 8 12:04:33 2018 +0200
+
+    test2 merge anthony
+
+[33mcommit a1ef86bb817f99a726b612b74970bc5ef30c1a58[m
+Merge: f03dc63 fc9d2b4
+Author: M-Aude <aude-mouries@laposte.net>
+Date:   Wed Aug 8 12:02:16 2018 +0200
+
+    essaiConflit
+
+[33mcommit f03dc639f9e4ee55381b4f50e31c2bc35a9a36e6[m
+Author: M-Aude <aude-mouries@laposte.net>
+Date:   Wed Aug 8 11:58:17 2018 +0200
+
+    essai2 Aude
+
+[33mcommit fc9d2b49902195f6bcb75f5acd5173c523579a03[m
+Author: wingy <liu.wingy@gmail.com>
+Date:   Wed Aug 8 11:57:17 2018 +0200
+
+    modif test ajout baba
+
+[33mcommit 3d82f8b543673a582fc46ddbf3f1d423abe7b3af[m
+Author: wingy <liu.wingy@gmail.com>
+Date:   Wed Aug 8 11:51:44 2018 +0200
+
+    modif test TestGit.java wingy
+
+[33mcommit 44ec278df11381ad4811ef99640843728982fb00[m
+Author: FunkyJF <jeanfrancois.anthony@gmail.com>
+Date:   Wed Aug 8 11:48:10 2018 +0200
+
+    modif
+
+[33mcommit 4f13128518d8c7add35efbc7c18df71dfc3b4827[m
+Author: M-Aude <aude-mouries@laposte.net>
+Date:   Wed Aug 8 11:36:07 2018 +0200
+
+    essaiGittest1Aude
+
+[33mcommit e08b77de67642c2b1532605bb9877db39e863560[m
+Author: FunkyJF <jeanfrancois.anthony@gmail.com>
+Date:   Wed Aug 8 11:10:02 2018 +0200
+
+    first commit
