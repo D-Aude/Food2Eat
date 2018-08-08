@@ -4,6 +4,7 @@ public class Test1Git {
 
 	public void plop(){
 		String azerty = "ratatatatatatatouille";
+		boolean estModifie = true;
 		
 	}
 }
