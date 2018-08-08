@@ -1,0 +1,11 @@
+*.class
+*.jar
+target
+*.war
+.settings
+.project
+.classpath
+.metadata
+.recommenders
+Servers
+RemoteSystemsTempFiles

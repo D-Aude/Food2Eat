@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.afcepf.ai103</groupId>
+    <artifactId>myapp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>myappEar</artifactId>
+  <description>projet technique pour fabriquer l'ear à déployer vers jboss</description>
+  
+   <packaging>ear</packaging>
+   <dependencies>
+   
+  <dependency>
+      <groupId>fr.afcepf.ai103</groupId>
+      <artifactId>myappCore</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <type>ejb</type>       
+    </dependency>
+    
+    <dependency>
+      <groupId>fr.afcepf.ai103</groupId>
+      <artifactId>myappWeb</artifactId>
+      <version>0.0.1-SNAPSHOT</version> 
+      <type>war</type>     
+    </dependency>
+    
+  </dependencies>
+
+  <build>
+    <plugins>
+          
+      <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<generateApplicationXml>true</generateApplicationXml>
+					<includeJar>false</includeJar>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<webModule>
+							<groupId>fr.afcepf.ai103</groupId>
+							<artifactId>myappWeb</artifactId>
+							<contextRoot>myappWeb</contextRoot>
+							<bundleFileName>myappWeb.war</bundleFileName>
+						</webModule>
+						
+						<ejbModule>
+							<groupId>fr.afcepf.ai103</groupId>
+							<artifactId>myappCore</artifactId>
+							<bundleFileName>myappCore.jar</bundleFileName>
+						</ejbModule>
+					</modules>	
+					<version>7</version>	<!-- 1.4 , 5 , 6 , 7-->			
+				</configuration>
+			</plugin>
+			
+		
+			
+      
+    </plugins>
+    <finalName>myapp</finalName> <!-- .ear -->
+  </build>
+  
+  
+</project>

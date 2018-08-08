@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.afcepf.ai103</groupId>
+    <artifactId>myapp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>myappWeb</artifactId>
+  <packaging>war</packaging>
+  
+   <properties>
+     <failOnMissingWebXml>false</failOnMissingWebXml>
+     <!-- le serveur JBoss comporte déjà en lui les .jar de JSF (équivalent de myfaces) -->
+  </properties>
+  
+  <dependencies>
+  
+  <dependency>
+	<groupId>org.primefaces</groupId>
+	<artifactId>primefaces</artifactId>
+	<!-- complément facultatif pour JSF 2 -->
+	<version>6.1</version>
+</dependency>
+  
+  
+   <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <!-- javaee-api = pack d'api jee : servlet-api + JSF + JAX-RS + ... --> 
+            <version>7.0</version>
+            <scope>provided</scope> <!-- dejà fourni par jboss -->
+   </dependency>
+   
+	
+
+	<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-annotations</artifactId>
+    		<version>2.8.11</version>
+    		<scope>provided</scope>
+   </dependency>
+	
+	<dependency>
+	     <groupId>fr.afcepf.ai103</groupId>
+  		<artifactId>myappCore</artifactId>
+  		 <!--  sans EJB avec tomcat maven placera dans la partie WEB-INF/lib du .war construit 
+  		       le fichier myappCore...jar (projet myappCore packagé ) 
+  		       et le scope devait être à compile (valeur par défaut) 
+  		     ============
+  		     Maintenant dans le cadre d'un EAR , le projet myappCore (EJB) 
+  		     sera déployé à coté du .war (dans l'ear)
+  		     et le code des EJB chargé dans jboss sera fourni à la partie web
+  		     ==> besoin de scopeprovided  
+  		 -->
+ 		 <version>0.0.1-SNAPSHOT</version>
+ 		 <scope>provided</scope>
+	</dependency>
+  
+  </dependencies>
+  
+  
+  <build>
+      <finalName>myappWeb</finalName> <!-- pour construire myappWeb.war -->
+  </build>
+  
+  
+</project>

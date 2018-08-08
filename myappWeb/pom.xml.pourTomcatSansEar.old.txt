@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.afcepf.ai103</groupId>
+    <artifactId>myapp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>myappWeb</artifactId>
+  <packaging>war</packaging>
+  
+   <properties>
+     <failOnMissingWebXml>false</failOnMissingWebXml>
+     <org.apache.myfaces.version>2.2.5</org.apache.myfaces.version>
+  </properties>
+  
+  <dependencies>
+  
+  <dependency>
+	<groupId>org.primefaces</groupId>
+	<artifactId>primefaces</artifactId>
+	<version>6.1</version>
+</dependency>
+  
+  <dependency>
+		<groupId>org.apache.myfaces.core</groupId>
+		<artifactId>myfaces-api</artifactId>
+		<version>${org.apache.myfaces.version}</version>
+		<scope>compile</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>org.apache.myfaces.core</groupId>
+		<artifactId>myfaces-impl</artifactId>
+		<version>${org.apache.myfaces.version}</version>
+		<scope>runtime</scope>
+	</dependency>
+   
+   
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>3.1.0</version>
+	    <!-- si scope=provided le .jar est utilisé à la compilation et est déjà
+	         fourni par le serveur (tomcat ou ...) et/ou la jvm -->
+	    <scope>provided</scope>
+	</dependency>
+	
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
+	
+	
+	
+	<dependency>
+    	<groupId>com.fasterxml.jackson.core</groupId>
+    	<artifactId>jackson-databind</artifactId>    <!-- pour générer du JSON depuis du java et vice versa -->
+    	<version>2.9.6</version>
+    	<!-- si scope=compile par défaut le .jar est utilisé à la compilation et à l'execution
+	         et sera placé dans la partie WEB-INF/lib du .war à déployer dans tomcat -->
+	</dependency>
+	
+	<dependency>
+	     <groupId>fr.afcepf.ai103</groupId>
+  		<artifactId>myappCore</artifactId>
+  		 <!--  maven placera dans la partie WEB-INF/lib du .war construit 
+  		       le fichier myappCore...jar (projet myappCore packagé )-->
+ 		 <version>0.0.1-SNAPSHOT</version>
+	</dependency>
+  
+  </dependencies>
+  
+  
+  <build>
+      <finalName>myappWeb</finalName> <!-- pour construire myappWeb.war -->
+  </build>
+  
+  
+</project>

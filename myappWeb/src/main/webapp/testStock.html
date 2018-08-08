@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Food2Eat (beta)</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+	<script src="http://momentjs.com/downloads/moment-with-locales.js" ></script>
+</head>
+<body>
+	<div id="filtres">
+	<h1>Stock de l'utilisateur n°<input id="idUtilisateur" type="text" v-model="id" /></h1>
+		<input type="button" id="btnChargerStock"  value="Charger" v-on:click="chargerStock"></input>
+		<select id="selectModeConservation" v-model="modeConservation">
+			<option value="">Tous</option> 
+			<option value="Frigo">Frigo</option> 
+			<option value="Congelateur">Congelateur</option>
+			<option value="Placard">Placard</option>
+		</select>
+	</div>
+	<br/>	
+	
+		 <table id="idTable" border="1">
+   		<thead>
+   			<tr><th>Quantite</th><th>Produit</th><th>DLC</th><th>Etat</th></tr>
+   		</thead>
+   		<tbody id="app">
+   			<tr v-for="stock in stocks">
+   				<td>{{stock.quantite}}</td><td>{{stock.produit.nomProduit}}</td><td>{{moment(stock.DLC).format('L')}}</td><td>{{stock.fractionRestante}}<strong>/{{stock.produit.nombreUnite}}</strong></td>
+   			</tr>
+   		</tbody>
+   		
+   </table>
+
+	<script src="./js/StockJS.js"></script>
+</body>
+</html>

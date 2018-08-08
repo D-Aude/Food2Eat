@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.afcepf.ai103</groupId>
+  <artifactId>myapp</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+   <properties>
+     <!-- propriétées qui seront héritées par tous les sous modules de l'application -->
+     <maven.compiler.source>1.8</maven.compiler.source>
+     <maven.compiler.target>1.8</maven.compiler.target>
+     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <!-- penser aussi à régler UTF8 dans eclipe (windows/preferences/general/workspace) -->
+  </properties>
+  
+  <modules>
+  	<module>myappWeb</module>
+  	<module>myappCore</module>
+  	<module>myappEar</module>
+  </modules>
+</project>

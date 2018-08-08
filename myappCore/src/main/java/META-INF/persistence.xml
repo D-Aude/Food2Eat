@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" 
+xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit  transaction-type="JTA"  name="myappCore">
+
+		<jta-data-source>java:jboss/datasources/food2eat_DS</jta-data-source>
+		<class>fr.afcepf.ai103.data.Annonce</class>
+		<class>fr.afcepf.ai103.data.Annulation</class>
+		<class>fr.afcepf.ai103.data.Categorie</class>
+		<class>fr.afcepf.ai103.data.Evaluation</class>
+		<class>fr.afcepf.ai103.data.Foodfriend</class>
+		<class>fr.afcepf.ai103.data.Groupe</class>
+		<class>fr.afcepf.ai103.data.Mesure</class>
+		<class>fr.afcepf.ai103.data.ModeConservation</class>
+		<class>fr.afcepf.ai103.data.Mojeter</class>
+		<class>fr.afcepf.ai103.data.Produit</class>
+		<class>fr.afcepf.ai103.data.Repannonce</class>
+		<class>fr.afcepf.ai103.data.Stock</class>
+		<class>fr.afcepf.ai103.data.Adresse</class>
+		<class>fr.afcepf.ai103.data.Useradresse</class>
+		<class>fr.afcepf.ai103.data.UseradressePK</class>
+		<class>fr.afcepf.ai103.data.Utilisateur</class>
+		<class>fr.afcepf.ai103.data.Modesinscription</class>
+		<class>fr.afcepf.ai103.data.Ville</class>
+
+
+		<properties>
+	
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+
+	</persistence-unit>
+</persistence>
