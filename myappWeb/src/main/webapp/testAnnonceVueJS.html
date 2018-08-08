@@ -20,7 +20,7 @@
 		</thead>
 		<tbody id="app">
 			<tr v-for="annonce in annonces">
-				<td>{{annonce.idAnnonce}}</td><td>{{annonce.dateRdv1}}</td>
+				<td>{{annonce.idAnnonce}}</td><td>{{moment(annonce.dateRdv1).format('L')}}</td>
 			</tr>
 		</tbody>
 
