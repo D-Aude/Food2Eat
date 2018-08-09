@@ -16,7 +16,10 @@ import java.util.List;
 @Entity
 @NamedQueries
 (value= {@NamedQuery(name="Repannonce.findAll", query="SELECT r FROM Repannonce r"),
-		@NamedQuery(name="Repannonce.essai", query ="SELECT r FROM Repannonce r  WHERE r.utilisateur.idUtilisateur =:idUtilisateur")})
+		@NamedQuery(name="Repannonce.essai", query ="SELECT r FROM Repannonce r  WHERE r.utilisateur.idUtilisateur =:idUtilisateur"),
+		@NamedQuery(name="Repannonce.parUtilisateur", query = "SELECT r FROM Repannonce r "
+																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :id "
+																+ "ORDER BY r.dateRdv")})
 		
 public class Repannonce implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -50,7 +53,7 @@ public class Repannonce implements Serializable {
 	//bi-directional many-to-one association to Evaluation
 	
 	@OneToMany(mappedBy="repannonce", fetch = FetchType.LAZY)
-	
+	@JsonIgnore
 	private List<Evaluation> evaluations;
 
 	//bi-directional many-to-one association to Annonce

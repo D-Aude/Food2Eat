@@ -23,6 +23,7 @@ public class MyRestApplicationConfig extends Application {
 		classes.add(StockRest.class);
 		classes.add(MesAnnoncesPosteesRest.class);
 		classes.add(FoodfriendRest.class);
+		classes.add(MesReponsesRecues.class);
 		//classes.add(ServiceRest2.class);
 		return classes;
 	}
