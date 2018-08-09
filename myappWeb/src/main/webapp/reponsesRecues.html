@@ -1,19 +1,19 @@
 
-<div class="container">
+<div id="pageReponses" class="container">
 	<div class="lblTitreAnnonces">
 		<b>Mes réponses reçues</b>
+		<br/>
 	</div>
-	<div id="pages-reponses-recues">
+	<div id="pages-reponses-recues" v-for="reponse in reponses">
 		<img src="./resources/css/pates.png">
 		<div class="reponse-utilisateur1"></div>
 		<div class="lbl-utilisateur1">
-			<p class="lbl-utilisateur1">{{Utilisateur1}} propose le {{DATE}} à {{HEURE}}</p>
+			<p class="lbl-utilisateur1">{{reponse.utilisateur.pseudo}} propose le {{date(reponse.dateRdv)}}</p>
 			</br>
-			<p class="lbl2-utilisateur1">Lieu : {{lieu}}</p>
+			<p class="lbl2-utilisateur1">Lieu : </p>
 		</div>
 		<!-- Trigger/Open The Modal -->
 		<button id="btn-accepte-utilisateur1" class="change">J'accepte ce rendez-vous</button>
-		<a href="http://localhost:8080/services/rest/reponses/7"></a>
 		<!-- The Modal -->
 		<div id="myModal" class="modal">
 
@@ -24,38 +24,39 @@
   			</div>
 		</div>
 	</div>
-	<div id="pages-reponses-recues">
-		<div class="reponse-utilisateur2"></div>
-		<div class="lbl-utilisateur2">
-			<p class="lbl-utilisateur2">{{Utilisateur2}} propose le {{DATE}} à {{HEURE}}</p>
-			</br>
-			<p class="lbl2-utilisateur2">Lieu : {{lieu}}</p>
-		</div>
-		<!-- Trigger/Open The Modal -->
-		<button id="btn-accepte-utilisateur2" class="change">J'accepte ce rendez-vous</button>
+<!-- 	<div id="pages-reponses-recues"> -->
+<!-- 		<div class="reponse-utilisateur2"></div> -->
+<!-- 		<div class="lbl-utilisateur2"> -->
+<!-- 			<p class="lbl-utilisateur2">{{Utilisateur2}} propose le {{DATE}} à {{HEURE}}</p> -->
+<!-- 			</br> -->
+<!-- 			<p class="lbl2-utilisateur2">Lieu : {{lieu}}</p> -->
+<!-- 		</div> -->
+ 		<!-- Trigger/Open The Modal --> 
+<!-- 		<button id="btn-accepte-utilisateur2" class="change">J'accepte ce rendez-vous</button> -->
 
-		<!-- The Modal -->
-		<div id="myModal" class="modal">
+ 		<!-- The Modal --> 
+<!-- 		<div id="myModal" class="modal"> -->
 
-  		<!-- Modal content -->
-  			<div class="modal-content">
-    			<span class="close">&times;</span>
-    			<p>Rendez-vous accepté !</p>
-  			</div>
-		</div>
-	</div>
+<!--   		Modal content -->
+<!--   			<div class="modal-content"> -->
+<!--     			<span class="close">&times;</span> -->
+<!--     			<p>Rendez-vous accepté !</p> -->
+<!--   			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
 	<div id="image-container-lait">
 		<img class="imgLait" src="./resources/css/lait.png">
 	</div>
 </div>
+<script src="./js/ReponsesJS.js"></script>
 <script>
 //Get the modal
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("btn-accepte-utilisateur1");
-var btn2 = document.getElementById("btn-accepte-utilisateur2");
+// var btn2 = document.getElementById("btn-accepte-utilisateur2");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
