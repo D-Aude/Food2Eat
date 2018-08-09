@@ -50,7 +50,7 @@ public class Repannonce implements Serializable {
 	//bi-directional many-to-one association to Evaluation
 	
 	@OneToMany(mappedBy="repannonce", fetch = FetchType.LAZY)
-	
+	@JsonIgnore
 	private List<Evaluation> evaluations;
 
 	//bi-directional many-to-one association to Annonce
