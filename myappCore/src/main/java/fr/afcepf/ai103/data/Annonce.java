@@ -19,19 +19,36 @@ import java.util.List;
 		@NamedQuery(name="Annonce.listeMesAnnoncesEnCours", query="SELECT a FROM Annonce a WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
 																								+ "and a.dateAnnulation is null "
 																								+ "and a.dateFinAnnonce is null"),
+		
 		@NamedQuery(name="Annonce.listeMesAnnoncesTerminees", query="SELECT a FROM Annonce a WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
 																								+ "and(a.dateAnnulation is not null "
 																								+ "or a.dateFinAnnonce is not null)"),
+		
 		@NamedQuery(name="Annonce.listeMesAValidees", query="SELECT a FROM Annonce a  join a.repannonces r WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
 																								+ "and a.dateAnnulation is null "
-																								+ "and r.dateReponse is not null"),
+																								+ "and r.dateReponse is not null and a.dateFinAnnonce is null"),
+		
 		@NamedQuery(name="Annonce.ListeAnnonceEnCoursSaufUtilisateur", query="SELECT a FROM Annonce a  join a.repannonces r WHERE a.stock.utilisateur.idUtilisateur <> :idUtilisateur "
-																								+ "and (r.dateAcceptationReponse is null or a.dateFinAnnonce is null)"),
+																								+ "and (r.dateAcceptationReponse is null and a.dateFinAnnonce is null)"),
+		
 		@NamedQuery(name="Annonce.ListeToutesLesAnnonces", query="SELECT a FROM Annonce a  join a.repannonces r WHERE a.dateAnnulation is null "
-																								+ "and (r.dateAcceptationReponse is null or a.dateFinAnnonce is null)")})		
-
+																								+ "and r.dateAcceptationReponse is null and a.dateFinAnnonce is null"),
+		
+		@NamedQuery(name="Annonce.listeMesEnvies", query= "SELECT a FROM Annonce a join a.repannonces r WHERE r.utilisateur.idUtilisateur =:idUtilisateur"
+																										+ " and( r.dateAcceptationReponse is null and a.dateFinAnnonce is  null)"),
+		
+		@NamedQuery(name="Annonce.listeMesEnviesConfirmes", query="SELECT a FROM Annonce a join a.repannonces r WHERE r.utilisateur.idUtilisateur =:idUtilisateur"
+																	+ " and( r.dateAcceptationReponse is not null and (a.dateFinAnnonce is  null and a.dateAnnulation is null))"),
+		
 	
-
+		@NamedQuery(name="Annonce.listeMesEnviesTermines", query="SELECT a FROM Annonce a join a.repannonces r join r.evaluations e  WHERE r.utilisateur.idUtilisateur =:idUtilisateur"
+																									+ " and r.dateRefus is null and ( r.dateAcceptationReponse is not null "
+																									+ "and (a.dateFinAnnonce is not null and a.dateAnnulation is null and e.note is not null))"),
+		
+		@NamedQuery(name="Annonce.listeMesEnviesTerminesAEvaluees", query ="SELECT a FROM Annonce a join a.repannonces r   WHERE r.utilisateur.idUtilisateur =:idUtilisateur"
+																								+ " and r.dateAcceptationReponse is not null and (r.dateRefus is null "
+																								+ "and a.dateFinAnnonce is not null and a.dateAnnulation is null) and r.evaluations is empty")
+		})
 
 public class Annonce implements Serializable {
 	private static final long serialVersionUID = 1L;

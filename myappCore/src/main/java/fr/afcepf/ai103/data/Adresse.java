@@ -35,7 +35,8 @@ public class Adresse implements Serializable {
 	@Column(name="DATE_FIN_VALIDITE")
 	private Date dateFinValidite;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+
+	@ManyToOne
 	@JoinColumn(name="ID_VILLE")
 	private Ville ville;
 
@@ -92,11 +93,15 @@ public class Adresse implements Serializable {
 		this.dateFinValidite = dateFinValidite;
 	}
 
+
 	public Ville getVille() {
 		return this.ville;
 	}
 
-	public void setIdVille(Ville ville) {
+
+
+	public void setVille(Ville ville) {
+
 		this.ville = ville;
 	}
 
