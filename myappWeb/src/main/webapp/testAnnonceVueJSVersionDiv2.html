@@ -5,6 +5,7 @@
 <title>Food2Eat (beta)</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+	<script src ="https://momentjs.com/downloads/moment-with-locales.js"></script>
 	<link rel="stylesheet" type="text/css" href="./resources/css/styleMesAnnonces.css"> 
 </head>
 <body>
@@ -25,7 +26,13 @@
 			
    			<div id="Annonces-elements" v-for="annonce in annonces">   
    							
-	   				 {{annonce.titre}}
+	   				 {{annonce.titre}} {{annonce.idAnnonce}}
+	   				 {{annonce.stock.produit.nomProduit}}
+	   			{{moment(annonce.dateRdv1).format('L')}}
+				{{moment(annonce.dateRdv2).format('L')}}
+				{{moment(annonce.dateRdv3).format('L')}}
+				<!-- {{ annonce.adresse.ville.ville}} -->
+				
    				
    			</div>
 		</div> 
