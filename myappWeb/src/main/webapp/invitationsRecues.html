@@ -9,27 +9,17 @@
 	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
 </head>
 <body>
-<h1>Invitation de l'utilisateur n°<input id="iduser" type="text" value="7" /></h1>
+	
+<input type="hidden" id="iduser" type="text" value="1" />
 	
 		
 		<div id="listeDemandesFoodfriend">
-
 			
-   			<div id="friend-element" v-for="foodfriend in foodfriend">   
-   				<div v-if="foodfriend.utilisateur1.idUtilisateur == iduser">
-   					
-
-	   				<img v-bind:src="getSrc(foodfriend.utilisateur2.pseudo)"/><br/>	
-	   				{{foodfriend.utilisateur2.pseudo}} <br/>
-	   				{{foodfriend.utilisateur2.nom}} {{foodfriend.utilisateur2.prenom}} <br/><br/>
-	   				{{foodfriend.utilisateur2.email}} <br/>
-   				</div>
-   				<div v-else>
-					<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>	
-   					{{foodfriend.utilisateur1.pseudo}} <br/>
+   			<div id="friend-element" v-for="foodfriend in foodfriend">  
+	   				<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>	
+	   				{{foodfriend.utilisateur1.pseudo}} <br/>
 	   				{{foodfriend.utilisateur1.nom}} {{foodfriend.utilisateur1.prenom}} <br/><br/>
 	   				{{foodfriend.utilisateur1.email}} <br/>
-   				</div>
    			</div>
 		</div>   		
 

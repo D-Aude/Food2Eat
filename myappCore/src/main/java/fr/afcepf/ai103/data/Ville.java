@@ -1,6 +1,8 @@
 package fr.afcepf.ai103.data;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -24,6 +26,9 @@ public class Ville implements Serializable {
 
 	private String ville;
 
+	@OneToMany(mappedBy="ville", fetch=FetchType.LAZY)
+	private List<Adresse> adresses;
+	
 	public Ville() {
 	}
 

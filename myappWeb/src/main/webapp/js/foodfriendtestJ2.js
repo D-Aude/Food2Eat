@@ -50,6 +50,6 @@ var mesDemandesFFRecues = new Vue({
 	      })
 	  }
 	  
-	})
+})
 
 
