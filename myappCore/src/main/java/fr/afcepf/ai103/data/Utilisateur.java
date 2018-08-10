@@ -15,8 +15,11 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Utilisateur.findAll", query="SELECT u FROM Utilisateur u")
+	
+
 public class Utilisateur implements Serializable {
-	private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = 1L;
+		
 
 	@Id
 	@SequenceGenerator(name="UTILISATEUR_IDUTILISATEUR_GENERATOR" )
