@@ -14,8 +14,15 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Utilisateur.findAll", query="SELECT u FROM Utilisateur u")
-	
+
+@NamedQueries({
+	@NamedQuery(name="Utilisateur.findAll", query="SELECT u FROM Utilisateur u"),
+	@NamedQuery(name="Utilisateur.Authentification", query="SELECT u FROM Utilisateur u "
+															+ "WHERE u.pseudo = :pseudo "
+															+ "and u.mdp = :mdp "
+															+ "and u.dateDesinscription is null"
+															)
+	})
 
 public class Utilisateur implements Serializable {
 		private static final long serialVersionUID = 1L;

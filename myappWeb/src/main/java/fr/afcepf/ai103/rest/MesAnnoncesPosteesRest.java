@@ -80,7 +80,7 @@ public class MesAnnoncesPosteesRest {
 	}
 	
 	
-	@Path("mesEnvies/{idAnnonce}/{idUtilisateur}")
+	@Path("mesEnvies/{idUtilisateur}")
 	@GET
 	public List<Annonce>toutesMesEnvies(@PathParam("idUtilisateur") int utilisateur )
 	{
