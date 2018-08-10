@@ -1,7 +1,7 @@
 
 <div id="pageReponses" class="container">
 	<div class="lblTitreAnnonces">
-		<b>Mes réponses reçues</b>
+		<b>Mes réponses kozekaoekazo</b>
 		<br/>
 	</div>
 	<div id="pages-reponses-recues" v-for="reponse in reponses">
@@ -10,7 +10,7 @@
 		<div class="lbl-utilisateur1">
 			<p class="lbl-utilisateur1">{{reponse.utilisateur.pseudo}} propose le {{date(reponse.dateRdv)}}</p>
 			</br>
-			<p class="lbl2-utilisateur1">Lieu : </p>
+			<p class="lbl2-utilisateur1">Lieu : blabla {{reponse.annonce.adresse.numeroVoie}}</p>
 		</div>
 		<!-- Trigger/Open The Modal -->
 		<button id="btn-accepte-utilisateur1" class="change">J'accepte ce rendez-vous</button>
