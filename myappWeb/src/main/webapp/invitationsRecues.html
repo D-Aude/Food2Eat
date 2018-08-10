@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Food2Eat (beta)</title>
 	<link rel="stylesheet" type="text/css" href="./resources/css/stylesReponsesRecues.css" media="all" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
 	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
+	<script src="./resources/js/jquery-3.3.1.min.js"></script>
+	<script src="http://momentjs.com/downloads/moment-with-locales.js" ></script>
+	
+	<script src="./js/foodfriendtest.js"></script>
 </head>
-<body>
+<body onload="initComportementJs()">
 	
 <input type="hidden" id="iduser" type="text" value="1" />
 	
@@ -19,10 +23,14 @@
 	   				<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>	
 	   				{{foodfriend.utilisateur1.pseudo}} <br/>
 	   				{{foodfriend.utilisateur1.nom}} {{foodfriend.utilisateur1.prenom}} <br/><br/>
-	   				{{foodfriend.utilisateur1.email}} <br/>
+	   				{{foodfriend.utilisateur1.email}} <br/><br/>
+	   				<!--  <input id="idfoodfriend" value="">{{foodfriend.idFoodfriend}}</input>-->
+	   				<button v-on:click="AccepterDemande(foodfriend.idFoodfriend)">ACCEPTER</button>
+	
    			</div>
-		</div>   		
+		</div>
 
 	<script src="./js/foodfriendtestJ2.js"></script>
+	<div>res = <span  id="spanRes"></span></div>
 </body>
 </html>

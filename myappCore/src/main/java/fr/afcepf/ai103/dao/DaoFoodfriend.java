@@ -81,9 +81,9 @@ public class DaoFoodfriend implements IDaoFoodfriend {
 
 	
 	@Override
-	public Foodfriend majRelationFoodfriend(Foodfriend f) {
+	public void majRelationFoodfriend(Foodfriend f) {
 		entityManager.merge(f);
-		return f;
+
 		
 	}
 	// ___________________Méthode de suppression ____________________________

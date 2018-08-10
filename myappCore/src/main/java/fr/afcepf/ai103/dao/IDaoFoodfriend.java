@@ -33,7 +33,7 @@ public interface IDaoFoodfriend {
 	public Foodfriend insererNouveauFoodfriend(Foodfriend f);
 	
 	// ______________________ FONCTION UPDATE _____________________________// 
-	public Foodfriend majRelationFoodfriend(Foodfriend f);
+	public void majRelationFoodfriend(Foodfriend f);
 	// Accepter une demande de foodfriend
 	public void accepterDemandeFoodfriend(Foodfriend f);
 		// Refuser une demande de foodfriend
