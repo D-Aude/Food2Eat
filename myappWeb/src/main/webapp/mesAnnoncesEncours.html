@@ -24,12 +24,11 @@
 				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
 				<div id="DatesRdv">
 					Choissisez votre date de rendez-vous : </br> 
-					<input type="radio" value="dateRdv1" id="dateRdv1" v-model="selected" name="plop">
+					<input type="radio" value="dateRdv1" id="dateRdv1" v-model="selected" name="plop"></input>
 <!-- 					<label id="date1" for="dateRdv1">{{moment(annonce.dateRdv1).format('L')}}</label></br> -->
-					<input type="radio" value="dateRdv2" id="dateRdv2" v-model="selected"
-						name="plop"> <label id="date2" for="dateRdv2">{{moment(annonce.dateRdv2).format('L')}}</label></br>
-					<input type="radio" value="dateRdv3" id="dateRdv3" v-model="selected"
-						name="plop"> <label id="date3" for="dateRdv3">{{moment(annonce.dateRdv3).format('L')}}</label></br>
+					<input type="radio" value="dateRdv2" id="dateRdv2" v-model="selected" name="plop"></input> 
+					<label id="date2" for="dateRdv2">{{moment(annonce.dateRdv2).format('L')}}</label></br>
+					<input type="radio" value="dateRdv3" id="dateRdv3" v-model="selected" name="plop"></input> <label id="date3" for="dateRdv3">{{moment(annonce.dateRdv3).format('L')}}</label></br>
 
 
 					<!-- IMPOSSIBLE DE RECUPERER VALEUR RADIO BUTTON -->
