@@ -33,6 +33,7 @@ var vl = new Vue({
 	el: '#listeMesAnnonceTermines',
 	data: {
 		annonces: []
+	
 	},
 	created : function () {
 		var vl = this
@@ -61,7 +62,6 @@ new Vue({
 	   el:"#DatesRdv",
 	   data(){
 	       selected : 'dateRdv1'
-	    	 
 	   }   
 	 })
 /*var titre = new Vue({

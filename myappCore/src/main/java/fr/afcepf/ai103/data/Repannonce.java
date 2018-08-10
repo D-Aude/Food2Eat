@@ -58,6 +58,7 @@ public class Repannonce implements Serializable {
 
 	//bi-directional many-to-one association to Annonce
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="ID_ANNONCE")
 	private Annonce annonce;
 
