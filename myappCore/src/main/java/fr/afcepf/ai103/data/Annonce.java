@@ -102,8 +102,8 @@ public class Annonce implements Serializable {
 
 	//bi-directional many-to-one association to Repannonce
 	
-	@OneToMany(mappedBy="annonce", fetch = FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="annonce", fetch = FetchType.EAGER)
+//	@JsonIgnore
 	private List<Repannonce> repannonces;
 
 	public Annonce() {

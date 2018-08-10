@@ -1,7 +1,7 @@
 
 <div id="pageReponses" class="container">
 	<div class="lblTitreAnnonces">
-		<b>Mes réponses reçues wow</b>
+		<b>Mes réponses reçues</b>
 		<br/>
 	</div>
 	<div id="pages-reponses-recues" v-for="reponse in reponses">
@@ -10,7 +10,8 @@
 		<div class="lbl-utilisateur1">
 			<p class="lbl-utilisateur1">{{reponse.utilisateur.pseudo}} propose le {{date(reponse.dateRdv)}}</p>
 			</br>
-			<p class="lbl2-utilisateur1">Lieu : blabla {{reponse.annonce.adresse.numeroVoie}}</p>
+			<p class="lbl2-utilisateur1">Lieu : {{reponse.annonce.adresse.numeroVoie}} {{reponse.annonce.adresse.typeVoie}} {{reponse.annonce.adresse.nomVoie}}
+												{{reponse.annonce.adresse.ville.ville}} {{reponse.annonce.adresse.ville.codePostal}}</p>
 		</div>
 		<!-- Trigger/Open The Modal -->
 		<button id="btn-accepte-utilisateur1" class="change">J'accepte ce rendez-vous</button>
@@ -24,26 +25,26 @@
   			</div>
 		</div>
 	</div>
-<!-- 	<div id="pages-reponses-recues"> -->
-<!-- 		<div class="reponse-utilisateur2"></div> -->
-<!-- 		<div class="lbl-utilisateur2"> -->
-<!-- 			<p class="lbl-utilisateur2">{{Utilisateur2}} propose le {{DATE}} à {{HEURE}}</p> -->
-<!-- 			</br> -->
-<!-- 			<p class="lbl2-utilisateur2">Lieu : {{lieu}}</p> -->
-<!-- 		</div> -->
- 		<!-- Trigger/Open The Modal --> 
-<!-- 		<button id="btn-accepte-utilisateur2" class="change">J'accepte ce rendez-vous</button> -->
+	<div id="pages-reponses-recues">
+		<div class="reponse-utilisateur2"></div>
+		<div class="lbl-utilisateur2">
+			<p class="lbl-utilisateur2">{{Utilisateur2}} propose le {{DATE}} à {{HEURE}}</p>
+			</br>
+			<p class="lbl2-utilisateur2">Lieu : {{lieu}}</p>
+		</div>
+<!--  		Trigger/Open The Modal  -->
+		<button id="btn-accepte-utilisateur2" class="change">J'accepte ce rendez-vous</button>
 
- 		<!-- The Modal --> 
-<!-- 		<div id="myModal" class="modal"> -->
+<!--  		The Modal  -->
+		<div id="myModal" class="modal">
 
 <!--   		Modal content -->
-<!--   			<div class="modal-content"> -->
-<!--     			<span class="close">&times;</span> -->
-<!--     			<p>Rendez-vous accepté !</p> -->
-<!--   			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+  			<div class="modal-content">
+    			<span class="close">&times;</span>
+    			<p>Rendez-vous accepté !</p>
+  			</div>
+		</div>
+	</div>
 	
 	<div id="image-container-lait">
 		<img class="imgLait" src="./resources/css/lait.png">
