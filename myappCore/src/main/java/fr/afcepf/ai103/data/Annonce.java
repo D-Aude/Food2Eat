@@ -19,15 +19,18 @@ import java.util.List;
 		@NamedQuery(name="Annonce.listeMesAnnoncesEnCours", query="SELECT a FROM Annonce a   WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
 																								+ "and a.dateAnnulation is null "
 																								+ "and a.dateFinAnnonce is null "
+
 																								+"and  a.repannonces is empty"),
-		
+
 		@NamedQuery(name="Annonce.listeMesAnnoncesTerminees", query="SELECT a FROM Annonce a WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
 																								+ "and(a.dateAnnulation is not null "
 																								+ "or a.dateFinAnnonce is not null)"),
 		
 		@NamedQuery(name="Annonce.listeMesAValidees", query="SELECT a FROM Annonce a  join a.repannonces r WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
 																								+ "and a.dateAnnulation is null "
-																								+ "and r.dateReponse is not null and a.dateFinAnnonce is null"),
+																								+ "and r.dateReponse is not null "
+																								+ "and a.dateFinAnnonce is null "
+																								+ "and r.dateAcceptationReponse is not null"),
 		
 		@NamedQuery(name="Annonce.ListeAnnonceEnCoursSaufUtilisateur", query="SELECT a FROM Annonce a  join a.repannonces r WHERE a.stock.utilisateur.idUtilisateur <> :idUtilisateur "
 																								+ "and (r.dateAcceptationReponse is null and a.dateFinAnnonce is null)"),
@@ -104,7 +107,7 @@ public class Annonce implements Serializable {
 	//bi-directional many-to-one association to Repannonce
 	
 	@OneToMany(mappedBy="annonce", fetch = FetchType.EAGER)
-	//@JsonIgnore
+//	@JsonIgnore
 	private List<Repannonce> repannonces;
 
 	public Annonce() {

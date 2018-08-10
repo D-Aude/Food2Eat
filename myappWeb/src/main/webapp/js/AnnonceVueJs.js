@@ -1,8 +1,10 @@
 
 
 var vm = new Vue({
+
 	
 	el: '#listeMesPotentiellesEnvies',
+
 	data: {
 		annonces: []
 	},
@@ -135,14 +137,16 @@ var vl = new Vue({
 })
 
 
-/* Pour RadioButton mais marche pas 
-new Vue({
-	   el:"#DatesRdv",
-	   data(){
-	       selected : 'dateRdv1'
-	   }   
-	 })
-	 */
+
+
+//Pour RadioButton mais marche pas 
+//new Vue({
+//	   el:"#DatesRdv",
+//	   data : {
+//		   picked : ''
+//	   }   
+//	 })
+	 
 /*var titre = new Vue({
 	el : '#pseudoTitre',
 	data : {

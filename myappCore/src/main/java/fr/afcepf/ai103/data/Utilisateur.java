@@ -14,6 +14,7 @@ import java.util.List;
  * 
  */
 @Entity
+
 @NamedQueries({
 	@NamedQuery(name="Utilisateur.findAll", query="SELECT u FROM Utilisateur u"),
 	@NamedQuery(name="Utilisateur.Authentification", query="SELECT u FROM Utilisateur u "
@@ -22,8 +23,10 @@ import java.util.List;
 															+ "and u.dateDesinscription is null"
 															)
 	})
+
 public class Utilisateur implements Serializable {
-	private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = 1L;
+		
 
 	@Id
 	@SequenceGenerator(name="UTILISATEUR_IDUTILISATEUR_GENERATOR" )

@@ -9,7 +9,6 @@ var vm = new Vue({
   },
   watch: {
 	  modeConservation: function (mode, oldMode) {
-		  console.log('watcher !!');
 		  this.chargerStockModeConservation(mode)
 	  }
   },
@@ -20,10 +19,6 @@ var vm = new Vue({
   },
   methods: 
   {
-	  produitSouris()
-	  {
-		  console.log('mouseOver Ok !!');
-	  },
 	  chargerStock()
 	  {
 		  id = document.getElementById('idUtilisateur').value;

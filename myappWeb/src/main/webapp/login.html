@@ -35,8 +35,8 @@
       <span onclick="document.getElementById('loginForm').style.display='none'" class="close" title="Close Modal">&times;</span>
 
       <!-- Contenu de la modal -->
-<!--       <form class="modal-content animate" action="accueil.html"> -->
-	<div class="modal-content animate" >
+       <form class="modal-content animate" @submit.prevent="seConnecter()"> 
+	<!--<div class="modal-content animate" >-->
 
       <div class="container">
           <label for="uname"><b>Nom d'utilisateur</b></label>
@@ -49,7 +49,7 @@
           <input id="mdp" type="password" placeholder="Votre mot de passe"> <!--name="psw" required>-->
           <br/>
 
-          <button type="submit" @click="seConnecter()">Se connecter</button>
+          <button type="submit">Se connecter</button>
           <label>
             <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
         </label>
@@ -58,7 +58,7 @@
     <div class="container" style="background-color:#fefefe">
       <button type="button" onclick="document.getElementById('loginForm').style.display='none'" class="cancelbtn">Retour</button>
   </div>
-</div>
+</form>
 </div>
 
 </body>

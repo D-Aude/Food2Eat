@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Food2Eat (beta)</title>
 	<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
@@ -13,7 +13,7 @@
 	
 		
 		<div id="listeFoodfriend">
-			
+
    			<div id="friend-element" v-for="foodfriend in foodfriend">   
    				<div v-if="foodfriend.utilisateur1.idUtilisateur == iduser">
    					
@@ -22,12 +22,14 @@
 	   				{{foodfriend.utilisateur2.pseudo}} <br/>
 	   				{{foodfriend.utilisateur2.nom}} {{foodfriend.utilisateur2.prenom}} <br/><br/>
 	   				{{foodfriend.utilisateur2.email}} <br/>
+	   				<button v-on:click="RetirerFF(foodfriend.idFoodfriend, foodfriend.utilisateur2.pseudo)">RETIRER DE MES FOODFRIEND</button>
    				</div>
    				<div v-else>
 					<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>	
    					{{foodfriend.utilisateur1.pseudo}} <br/>
 	   				{{foodfriend.utilisateur1.nom}} {{foodfriend.utilisateur1.prenom}} <br/><br/>
 	   				{{foodfriend.utilisateur1.email}} <br/>
+	   				<button v-on:click="RetirerFF(foodfriend.idFoodfriend, foodfriend.utilisateur1.pseudo)">RETIRER DE MES FOODFRIEND</button>
    				</div>
    			</div>
   		</div>
