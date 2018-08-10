@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Food2Eat (beta)</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/styleMesAnnonces.css">
+</head>
+</head>
+<body>
+
+	<div id="listeAnnonceEnCours">
+		
+		<h2 id="Annonces-Titre">Mes annonces en cours</h2>
+		<br />
+		<div>
+
+			<div id="Annonces-elements" v-for="annonce in annonces">
+
+				{{annonce.titre}} <br/> 
+				{{annonce.stock.utilisateur.pseudo}} vous propose :
+				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
+				<div id='DatesRdv'>
+				Choissisez votre date de rendez-vous :  </br>
+					<input type="radio" value="dateRdv1" id="dateRdv1"  v-model="selected" name ="plop" > 
+					<label  id="date1"for="dateRdv1">{{moment(annonce.dateRdv1).format('L')}}</label></br>
+					<input type="radio" value="dateRdv2" id="dateRdv2"  v-model="selected" name ="plop"> 
+					<label id="date2" for="dateRdv2">{{moment(annonce.dateRdv2).format('L')}}</label></br>
+					<input type="radio" value="dateRdv3" id="dateRdv3"  v-model="selected" name ="plop"> 
+					<label id="date3" for="dateRdv3">{{moment(annonce.dateRdv3).format('L')}}</label></br>
+					
+					<!-- IMPOSSIBLE DE RECUPERER VALEUR RADIO BUTTON -->
+					<div v-if =" selected === dateRdv1">
+					<span> {{selected}}</span></div>
+					<br/> Date de Rdb selectionnée : @{{selected}} <br/>
+					
+				Lieu du rendez-vous :<span>{{annonce.adresse.numeroVoie}} {{annonce.adresse.typeVoie}} {{annonce.adresse.nomVoie}} {{annonce.adresse.ville.ville}} {{annonce.adresse.ville.codePostal}}</span><br/>
+						<!-- {{moment(annonce.repannonces.dateRDV).format('L')}}  -->
+				</div>
+			</div>
+		</div>
+	</div>
+		<script src="./js/AnnonceVueJs.js"></script>
+</body>
+</html>

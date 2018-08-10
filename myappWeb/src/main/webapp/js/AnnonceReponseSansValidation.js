@@ -1,13 +1,13 @@
 
 
 var vm = new Vue({
-	el: '#listeAnnonceEnCours',
+	el: '#listeAnnonceReponseSansValidation',
 	data: {
 		annonces: []
 	},
 	created : function () {
 		var vm = this
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/enCours/3')
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/avalidees/3')
 		.then(function (response) {
 			vm.annonces = response.data
 		})

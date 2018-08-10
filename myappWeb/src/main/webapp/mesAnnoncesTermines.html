@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Food2Eat (beta)</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/styleMesAnnonces.css">
+</head>
+<body>
+	<div id="listeMesAnnonceTermines">
+
+		<h1 id="Annonces-Titre">Mes annonces terminées</h1>
+		<br />
+		<div>
+
+			<div id="Annonces-elements" v-for="annonce in annonces">
+				<div v-if="annonce.annulation == empty">
+					<div v-if=" annonce.repannonces.dateAcceptationReponse =! null">
+						<h3>Annonce terminée</h3>
+						<span>"{{annonce.titre}}" Votre annonce est terminée !<br />
+							Vous avez fait un don de : {{annonce.stock.quantite}}
+							{{annonce.stock.produit.nomProduit}} </br> le
+							{{moment(annonce.repannonces.dateRDV).format('L')}} à
+							{{annonce.repannonces[0].utilisateur.pseudo}} . </span> <br />
+					</div>
+				</div>
+				<div v-else>
+					<h3>Annonce annulée</h3>
+					<span>"{{annonce.titre}}" Vous avez annulé votre annonce <br />
+						Motif de l'annulation : {{annonce.annulation.nomAnnulation}}<br />
+						Date de l'annulation :
+						{{moment(annonce.dateAnnulation).format('L')}}
+					</span>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="./js/AnnonceVueJs.js"></script>
+</body>
+</html>
