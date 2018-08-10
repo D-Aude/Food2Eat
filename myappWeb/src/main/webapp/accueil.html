@@ -4,7 +4,10 @@
 <title>Food 2 Eat</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" />
-
+<!-- ===============================IMPORT VUEJS======================================================-->
+<script src="./resources/js/vue.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+<script src="http://momentjs.com/downloads/moment-with-locales.js" ></script>
 <!--==========================================FONTS===================================================-->
 <link href="https://fonts.googleapis.com/css?family=Abel"
 	rel="stylesheet">
@@ -78,9 +81,6 @@
 	<!-- 	</form> -->
 	<!--=========================================FLEX CONTAINER================================================-->
 	<div id="flexContent" class="flex-container">
-
-
-
 		<div class="container">
 			<div class="lblTitre">
 					<div id="fondNav"></div>
@@ -173,9 +173,6 @@
 
 		$('#btnMesAnnonces').on('click', function() {
 			$("#flexContent").load("./mesAnnonces.html");
-		});
-		$('#btnMesAnnonces').on('click', function() {
-			$("#container-dashboard").load("./mesAnnonces.html");
 		});
 
 		$('#btnMesEnvies').on('click', function() {
