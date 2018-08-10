@@ -18,32 +18,28 @@
 		
 		<h2 id="Annonces-Titre">Mes annonces en attente de validation</h2>
 		<br />
+		<h1>Annonce de l'utilisateur n°<input id="idUtilisateur" type="text" v-model="idUser" /></h1>
+		<button @click="chargerAnnonce()" >Charger</button>
 		<div>
 
 			<div id="Annonces-elements" v-for="annonce in annonces">
 
 				{{annonce.titre}} <br/> 
 				{{annonce.stock.utilisateur.pseudo}} vous propose :
-				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
+				Pour {{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}}, {{annonce.repannonces.pseudo}} a accepté la date du : </br>
 				<div id='DatesRdv'>
-				Choissisez votre date de rendez-vous :  </br>
-					<input type="radio" value="dateRdv1" id="dateRdv1"  v-model="selected" name ="plop" > 
-					<label  id="date1"for="dateRdv1">{{moment(annonce.dateRdv1).format('L')}}</label></br>
-					<input type="radio" value="dateRdv2" id="dateRdv2"  v-model="selected" name ="plop"> 
-					<label id="date2" for="dateRdv2">{{moment(annonce.dateRdv2).format('L')}}</label></br>
-					<input type="radio" value="dateRdv3" id="dateRdv3"  v-model="selected" name ="plop"> 
-					<label id="date3" for="dateRdv3">{{moment(annonce.dateRdv3).format('L')}}</label></br>
 					
 					<!-- IMPOSSIBLE DE RECUPERER VALEUR RADIO BUTTON -->
 					<div v-if =" selected === dateRdv1">
 					<span> {{selected}}</span></div>
-					<br/> Date de Rdb selectionnée : @{{selected}} <br/>
+					<br/> Date de rendez-vous selectionnée : {{selected}} <br/>
 					
 				Lieu du rendez-vous :<span>{{annonce.adresse.numeroVoie}} {{annonce.adresse.typeVoie}} {{annonce.adresse.nomVoie}} {{annonce.adresse.ville.ville}} {{annonce.adresse.ville.codePostal}}</span><br/>
 						<!-- {{moment(annonce.repannonces.dateRDV).format('L')}}  -->
 				</div>
 			</div>
 		</div>
+		
 	</div>
 		<script src="./js/AnnonceReponseSansValidation.js"></script>
 </body>
