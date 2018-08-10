@@ -87,12 +87,12 @@
 
 			<div class="container-dashboard">
 			<div class="lblUser">
-				<b>Bonjour {{utilisateur}} !</b>
+				<b>Bonjour {{pseudo}} !!</b> 	<button id="btnConnexion" @click="seConnecter()" >Se Connecter</button>
 			</div>
 			<div class="lblStatsUser">
-				<p class="donTotal">Nombre total de don effectué : {{nbTotalDons}}</p> 
-				<p class="dernierDon"> Dernier don effectué : {{dernierDon (si possible sinon on rentre en dur)}} </p>
-				<b class="produitPeremption"> Produit(s) arrivant à péremption : {{}} </b>
+				<p class="donTotal">Nombre total de don effectué : </p> 
+				<p class="dernierDon"> Dernier don effectué :  </p>
+				<b class="produitPeremption"> Produit(s) arrivant à péremption : </b>
 			</div>
 		</div>
 				<b>Les annonces en cours</b>
@@ -140,13 +140,27 @@
 
 
 	<footer>
-		<div class="btnDeconnexion">
-			<span class="deconnexion"><a href="login.html"><img src="./resources/css/deconnexion.png"></a></span>
+		<div class="btnDeconnexion" id="btnDeco">
+			<span class="deconnexion"><a href="#" @click="seDeconnecter()"><img src="./resources/css/deconnexion.png" ></a></span>
 		</div>
 	</footer>
 </body>
 <!--==============================SCRIPT HOVER=====================-->
+<script src="./js/archeJS.js"></script>
 <script>
+var foot = new Vue({
+	  el: '#btnDeco',
+	  methods: 
+	  {
+		seDeconnecter()
+		{
+	  		sessionStorage.clear();
+	  		console.log('session Utilisateur terminée');
+	  		window.location.href='http://localhost:8080/myappWeb/login.html'; 
+		}
+	  }
+})
+
 	$(function() {
 		$(".dropdown").hover(function() {
 			$('.dropdown-menu', this).stop(true, true).fadeIn("fast");
