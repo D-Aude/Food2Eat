@@ -1,13 +1,17 @@
 
 
-/*var vm = new Vue({
-	el: '#listeAnnonceEnCours',
+var vm = new Vue({
+
+	
+	el: '#listeMesPotentiellesEnvies',
+
 	data: {
 		annonces: []
 	},
 	created : function () {
 		var vm = this
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/enCours/3')
+		
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/autresAnnonces/3')
 		.then(function (response) {
 			vm.annonces = response.data
 		})
@@ -17,7 +21,7 @@
 			return moment(date);
 		},
 		date: function (date) {
-			return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
 		}
 	},
 	filters: {
@@ -26,14 +30,21 @@
 		    }
 		  }
 
-})*/
+})
 
 var vb = new Vue({
 	el: '#listeMesAnnonceTermines',
 	data: {
 		annonces: []
-	
 	},
+// Ecoute la valeur de la liste déroulante
+	watch :{							
+		typeAnnonceTerminees : function (typeAnnoncesTerminees,AncienTypeDemandé)
+		{
+			this.chargerTypeAnnoncesTerminees(typeAnnoncesTerminees)
+		}
+	},
+// Instancier automatique lorsqu'on arrive au div
 	created : function () {
 		var vb = this
 		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/terminees/8')
@@ -41,9 +52,43 @@ var vb = new Vue({
 			vb.annonces = response.data
 		})
 	},
+// Afficher les date correctement et en français
 	methods: {
 		moment: function (date) {
 			moment.local('fr');
+			return moment(date);
+		},
+		date: function (date) {
+			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
+			
+		}
+	},
+	chargerTypeAnnoncesTerminees(typeAnnoncesTerminees){
+		
+	},
+	filters: {
+		    moment: function (date) {
+		      return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+		    }
+		  }
+
+})
+
+var vplop = new Vue({
+	el: '#listeMesAnnonceEnCours',
+	data: {
+		annonces: []
+	},
+	created : function () {
+		var vplop = this
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/enCours/3')
+		.then(function (response) {
+			vplop.annonces = response.data
+		})
+	},
+	methods: {
+		moment: function (date) {
+		
 			return moment(date);
 		},
 		date: function (date) {
@@ -60,7 +105,7 @@ var vb = new Vue({
 })
 
 var vl = new Vue({
-	el: '#listeMesEnviesEnCours',
+	el: '#listeMesEnviesEnAttente',
 	data: {
 		annonces: []
 	
@@ -92,14 +137,16 @@ var vl = new Vue({
 })
 
 
-/* Pour RadioButton mais marche pas 
-new Vue({
-	   el:"#DatesRdv",
-	   data(){
-	       selected : 'dateRdv1'
-	   }   
-	 })
-	 */
+
+
+//Pour RadioButton mais marche pas 
+//new Vue({
+//	   el:"#DatesRdv",
+//	   data : {
+//		   picked : ''
+//	   }   
+//	 })
+	 
 /*var titre = new Vue({
 	el : '#pseudoTitre',
 	data : {

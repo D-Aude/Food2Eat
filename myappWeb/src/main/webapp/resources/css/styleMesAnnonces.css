@@ -27,3 +27,29 @@
     margin-right: auto;
     width: ...; /* largeur obligatoire pour être centré */
 }
+#btnAnnulerAnnonce{
+padding-top: 1px;
+  padding-left: 10px;
+   max-width: 970px;
+   height: 30px;
+    float:right;
+    height: 40px;
+   width : 100px;
+    
+}
+#btnValiderEnvie{
+padding-top: 1px;
+  padding-left: 10px;
+   max-width: 970px;
+   height: 40px;
+   width : 100px;
+    float:right;
+    
+}
+
+#dateMesAnnonces {
+ padding-left :120px;
+font-style : italic;
+
+	
+}

@@ -19,7 +19,9 @@ import java.util.List;
 		@NamedQuery(name="Repannonce.essai", query ="SELECT r FROM Repannonce r  WHERE r.utilisateur.idUtilisateur =:idUtilisateur"),
 		@NamedQuery(name="Repannonce.parUtilisateur", query = "SELECT r FROM Repannonce r "
 																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :id "
-																+ "ORDER BY r.dateRdv")})
+																+ "ORDER BY r.dateRdv"),
+		@NamedQuery(name="Repannonce.reponseParAnnonce", query = "SELECT r FROM Repannonce r "
+																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :utilisateurCourant ")})
 		
 public class Repannonce implements Serializable {
 	private static final long serialVersionUID = 1L;
