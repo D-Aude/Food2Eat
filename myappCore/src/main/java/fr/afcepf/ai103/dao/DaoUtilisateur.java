@@ -1,5 +1,6 @@
 package fr.afcepf.ai103.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -8,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import fr.afcepf.ai103.data.Foodfriend;
 import fr.afcepf.ai103.data.Utilisateur;
 
 //@Stateless
@@ -47,6 +49,22 @@ public class DaoUtilisateur implements IDaoUtilisateur {
 			e.printStackTrace();
 		}
 		return user;
+	}
+
+	// FOODFRIEND : Rechercher la liste des utilisateurs (pour leur envoyer des invitations foodfriend)
+	@Override
+	public List<Utilisateur> rechercherListUtilisateurs(int idUser) {
+
+		List<Utilisateur> listFoodfriend = new ArrayList<Utilisateur>();
+
+		
+		// Récupérer les utilisateurs join foodfriend
+		listFoodfriend.addAll(entityManager.createNamedQuery("Utilisateur.foodfriend",Utilisateur.class)
+				.setParameter("idUtilisateur", idUser)
+				.getResultList());
+
+				
+		return listFoodfriend;
 	}
 	
 }

@@ -10,5 +10,7 @@ public interface IDaoUtilisateur {
 
 	Utilisateur authentificationUtilisateur(String pseudo, String mdp);
 	
+	List<Utilisateur> rechercherListUtilisateurs(int idUser); 
+	
 
 }
