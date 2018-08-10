@@ -53,7 +53,7 @@ public class ServiceFoodfriend {
 	// _______________METHODE D'INSERTION _____________________________________________________________
 	// Envoyer une demande de foodfriend
 	public Foodfriend saveOrUpdate(Foodfriend ff) {
-		if (ff.getIdFoodfriend()==0) {
+		if (ff.getIdFoodfriend()==null) {
 			ff = daoff.insererNouveauFoodfriend(ff);
 		} else {
 			daoff.majRelationFoodfriend(ff);

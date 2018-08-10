@@ -28,7 +28,7 @@ public class FoodfriendRest {
 	//http://localhost:8080/myappWeb/services/rest/foodfriend/1
 	@Path("/{idFoodfriend}")
 	@GET
-	public Foodfriend rechercherFoodFriendQuiVaBien(@PathParam("idFoodfriend")int num) {
+	public Foodfriend rechercherFoodFriendparIdFoodfriend(@PathParam("idFoodfriend")int num) {
 		return serviceff.obtenirRelationFoodfriend(num);
 	}
 	
@@ -76,7 +76,7 @@ public class FoodfriendRest {
 
 	
 	// Envoyer une demande de foodfriend ___________________________________________________________
-	@Path("/nouvelledemandeOLD")
+	@Path("")
 	@POST
 	@Consumes("application/json")
 	public Foodfriend postFoodfriend(Foodfriend ff) {
@@ -84,17 +84,6 @@ public class FoodfriendRest {
 		ff = serviceff.saveOrUpdate(ff);
 		return ff;
 	}
-	
-
-	
-
-	
-	
-	
-
-	
-
-	
-	
+		
 
 }

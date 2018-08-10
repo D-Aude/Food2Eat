@@ -1,4 +1,7 @@
+
 var id = document.getElementById('iduser').value;
+
+
 
 var mesFoodfriend = new Vue({
   
@@ -13,7 +16,7 @@ var mesFoodfriend = new Vue({
   methods: {
 	getSrc: function(pseudo) {
 		return this.src + pseudo + this.imgtype;
-	}  
+	}
   },
    
   created: function() {
@@ -36,10 +39,38 @@ var mesDemandesFFRecues = new Vue({
 	    imgtype: ".jpeg"
 	    	
 	  },
+	  
+	  	  
 	  methods: {
 		getSrc: function(pseudo) {
 			return this.src + pseudo + this.imgtype;
-		}  
+		},
+		
+		AccepterDemande: function(idfoodfriend) {
+
+			alert("Félicitation ! Vous avez un nouveau foodfriend !")			
+			// Instanciation
+			var vm = this;
+
+			// Récupération du foodfriend qui nous interesse
+			axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/' + idfoodfriend)
+		      .then(function (response) {
+		    	  var ffjson = response.data;
+
+		    	  ffjson['dateReponse'] = Date.now();
+		    	  
+		    	  // post			    	  
+		    	  axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
+		    			  ffjson).then((response) => {
+		    				  console.log(response);
+		    			  });
+		    	  
+		    	  // récupérer les nouvelles données
+
+		      })		      
+		    
+		}
+	  
 	  },
 	   
 	  created: function() {

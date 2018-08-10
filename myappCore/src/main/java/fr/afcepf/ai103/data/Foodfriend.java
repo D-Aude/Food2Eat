@@ -25,7 +25,7 @@ public class Foodfriend implements Serializable {
 	@SequenceGenerator(name="FOODFRIEND_IDFOODFRIEND_GENERATOR", sequenceName="ORDER_SEQUENCE")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FOODFRIEND_IDFOODFRIEND_GENERATOR")
 	@Column(name="ID_FOODFRIEND")
-	private int idFoodfriend;
+	private Integer idFoodfriend;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_DEMANDE")
@@ -52,7 +52,7 @@ public class Foodfriend implements Serializable {
 	public Foodfriend() {
 	}
 
-	public int getIdFoodfriend() {
+	public Integer getIdFoodfriend() {
 		return this.idFoodfriend;
 	}
 
