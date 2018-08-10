@@ -24,15 +24,21 @@ var vm = new Vue({
 			  	.then(function (response) {
 			  		vm.utilisateur = response.data
 			  		
-			  		//si id à 0 mauvais pseudo/mdp
+			  		//si id à 0 : mauvais pseudo/mdp
 			  		console.log('id='+vm.utilisateur.idUtilisateur);
 					if(vm.utilisateur.idUtilisateur == 0 || vm.utilisateur.idUtilisateur == undefined)
 					{
-						console.log('Pseudo et/ou mdp érroné !!');	
+						console.log('Pseudo et/ou mdp érroné !!');
+				        sessionStorage.clear();
+						console.log('session Utilisateur terminée');
 					}
 					else
 					{
 				        console.log('Authentification OK !!');
+				        sessionStorage.setItem('utilisateurCourant', JSON.stringify(vm.utilisateur));
+				        window.location.href='http://localhost:8080/myappWeb/accueil.html';
+				        //				var data = sessionStorage.getItem('utilisateurCourant');
+				        //userInfo -> 	JSON.parse(data).pseudo;
 					}
 			});
 			
