@@ -21,10 +21,18 @@ import java.util.List;
 															+ "WHERE u.pseudo = :pseudo "
 															+ "and u.mdp = :mdp "
 															+ "and u.dateDesinscription is null"
-															)
+															),
+	@NamedQuery(name="Utilisateur.foodfriendtest", query="SELECT u.idUtilisateur FROM Utilisateur u join u.foodfriend1 f WHERE u.idUtilisateur = :idUtilisateur"),
+	@NamedQuery(name="Utilisateur.foodfriend", query="SELECT u FROM Utilisateur u WHERE u.idUtilisateur <> :idUtilisateur and u.idUtilisateur not in (SELECT f.utilisateur2.idUtilisateur FROM Utilisateur u join u.foodfriend1 f WHERE u.idUtilisateur = :idUtilisateur) ")															
 	})
 
 public class Utilisateur implements Serializable {
+		public List<Foodfriend> getFoodfriend1() {
+		return foodfriend1;
+	}
+
+
+
 		private static final long serialVersionUID = 1L;
 		
 
@@ -65,9 +73,21 @@ public class Utilisateur implements Serializable {
 	@OneToMany(mappedBy="utilisateur", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Useradresse> useradresses;
+	
+	//bi-directional many-to-one association to Foodfriend
+	@OneToMany(mappedBy="utilisateur1", fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Foodfriend> foodfriend1;
+	
+	//bi-directional many-to-one association to Foodfriend
+	@OneToMany(mappedBy="utilisateur2", fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Foodfriend> foodfriend2;
 
 	public Utilisateur() {
 	}
+	
+	
 
 	public int getIdUtilisateur() {
 		return this.idUtilisateur;
@@ -177,6 +197,18 @@ public class Utilisateur implements Serializable {
 		useradress.setUtilisateur(null);
 
 		return useradress;
+	}
+	
+	public void setFoodfriend1(List<Foodfriend> foodfriend1) {
+		this.foodfriend1 = foodfriend1;
+	}
+
+	public List<Foodfriend> getFoodfriend2() {
+		return foodfriend2;
+	}
+
+	public void setFoodfriend2(List<Foodfriend> foodfriend2) {
+		this.foodfriend2 = foodfriend2;
 	}
 
 }

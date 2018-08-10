@@ -1,5 +1,7 @@
 package fr.afcepf.ai103.rest;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 
+import fr.afcepf.ai103.data.Foodfriend;
 import fr.afcepf.ai103.data.Utilisateur;
 import fr.afcepf.ai103.service.IServiceUtilisateur;
 
@@ -57,6 +60,13 @@ public class UtilisateurRest {
 			//Utilisateur user = (Utilisateur) session.getAttribute("Utilisateur");
 		}
 			return user;
+	}
+	
+	@Path("/search")
+	@GET //URL = http://localhost:8080/myappWeb/services/rest/utilisateur/search?iduser=5
+	public List<Utilisateur> rechercherDesUtilisateurs(@QueryParam("iduser")int num) {
+		System.out.println("affichage liste des utilisateurs REST = " + num);
+		return serviceUtilisateur.rechercherListUtilisateurs(num);
 	}
 	
 }

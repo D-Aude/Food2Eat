@@ -27,4 +27,11 @@ public class MesReponsesRecues {
 		return serviceReponses.rechercherReponsesAnnonces(id);	
 	}
 	
+	@Path("/{idUtilisateur}")
+	@GET
+	
+	public List<Repannonce> rechercherReponseParAnnonce(@PathParam("idUtilisateur")int id) {
+		return serviceReponses.rechercherReponseParAnnonce(id);
+	}
+	
 }

@@ -24,4 +24,10 @@ public class ServiceReponses implements IServiceReponses {
 		return daoReponses.rechercherReponsesAnnonces(idUtilisateur);
 	}
 
+
+	@Override
+	public List<Repannonce> rechercherReponseParAnnonce(int utilisateurCourant) {
+		return daoReponses.rechercherReponsesAnnonces(utilisateurCourant);
+	}
+
 }
