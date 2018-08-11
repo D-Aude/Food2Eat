@@ -148,4 +148,36 @@ var mesDemandesFFRecues = new Vue({
 	  
 })
 
-
+// UTILISATEURS NOT FOODFRIEND
+var utilisateursNotFoodfriend = new Vue({
+	
+	  el: '#listeUtilisateurs',
+	  data: {
+	    utilisateur: [],
+	    iduser: id, // Récupération de l'idUtilisateur de la session
+	    src: "./resources/img/utilisateur/",
+	    imgtype: ".jpeg",
+	    
+	    
+	  },
+	  methods: {
+		// METHODE : générer le lien URL à partir d'un pseudo  
+		getSrc: function(pseudo) {
+			return this.src + pseudo + this.imgtype;
+		},
+		
+		EnvoyerInvitation: function() {
+			console.log("envoie d'une demande de foodfriend")
+		}
+	  },
+	  
+	  // METHODE : qui se lance à la création de la page : récupération de la liste des utilisateurs avec qui je ne suis pas foodfriend 
+	  created: function() {
+		var vm = this
+	    axios.get('http://localhost:8080/myappWeb/services/rest/utilisateur/search?iduser=' + vm.iduser)
+	      .then(function (response) {
+	        vm.utilisateur = response.data
+	      })
+	  }
+	
+})
