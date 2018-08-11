@@ -5,23 +5,21 @@
 <title>Food2Eat (beta)</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="./resources/css/styleMesAnnonces.css">
-</head>
+<link rel="stylesheet" type="text/css" href="./resources/css/styleMesAnnonces.css">
 </head>
 <body>
 
-	<div id="listeMesAnnonceEnCours">
-		
-		<h2 id="Annonces-Titre">Mes Annonces En cours sans réponse</h2>
+	<div id="listeAnnonceEnCours">
+
+		<h2 id="Annonces-Titre">Mes annonces en cours</h2>
 		<br />
 		<div>
 
 			<div id="Annonces-elements" v-for="annonce in annonces">
-				<input type="button" value="Annuler" id="btnAnnulerAnnonce" />
+
+						<input type="button" value="Annuler" id="btnAnnulerAnnonce" />
 				{{annonce.titre}} <br/>
 				{{annonce.stock.utilisateur.pseudo}}, vous proposez :
 				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
@@ -34,6 +32,6 @@
 			</div>
 		</div>
 	</div>
-		<script src="./js/AnnonceVueJs.js"></script>
+	<script src="./js/AnnonceVueJs.js"></script>
 </body>
 </html>
