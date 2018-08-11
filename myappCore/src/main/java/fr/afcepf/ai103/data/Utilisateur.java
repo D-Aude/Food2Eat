@@ -22,8 +22,13 @@ import java.util.List;
 															+ "and u.mdp = :mdp "
 															+ "and u.dateDesinscription is null"
 															),
-	@NamedQuery(name="Utilisateur.foodfriendtest", query="SELECT u.idUtilisateur FROM Utilisateur u join u.foodfriend1 f WHERE u.idUtilisateur = :idUtilisateur"),
-	@NamedQuery(name="Utilisateur.foodfriend", query="SELECT u FROM Utilisateur u WHERE u.idUtilisateur <> :idUtilisateur and u.idUtilisateur not in (SELECT f.utilisateur2.idUtilisateur FROM Utilisateur u join u.foodfriend1 f WHERE u.idUtilisateur = :idUtilisateur) ")															
+	// Requête pour retrouver les utilisateurs qui ne sont pas foodfriend avec moi et à qui je peux envoyer une invitations
+	@NamedQuery(name="Utilisateur.notFoodfriend", query="SELECT u FROM Utilisateur u "
+			+ "where u.idUtilisateur <> :idUtilisateur "
+			+ "and u.idUtilisateur not in "
+			+ "(SELECT f.utilisateur1.idUtilisateur FROM Utilisateur u join u.foodfriend2 f WHERE u.idUtilisateur = :idUtilisateur) "
+			+ "and u.idUtilisateur not in "
+			+ "(SELECT f.utilisateur2.idUtilisateur FROM Utilisateur u join u.foodfriend1 f WHERE u.idUtilisateur = :idUtilisateur)")
 	})
 
 public class Utilisateur implements Serializable {

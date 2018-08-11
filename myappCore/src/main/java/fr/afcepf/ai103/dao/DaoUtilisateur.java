@@ -59,11 +59,10 @@ public class DaoUtilisateur implements IDaoUtilisateur {
 
 		
 		// Récupérer les utilisateurs join foodfriend
-		listFoodfriend.addAll(entityManager.createNamedQuery("Utilisateur.foodfriend",Utilisateur.class)
+		listFoodfriend.addAll(entityManager.createNamedQuery("Utilisateur.notFoodfriend",Utilisateur.class)
 				.setParameter("idUtilisateur", idUser)
 				.getResultList());
-
-				
+		
 		return listFoodfriend;
 	}
 	
