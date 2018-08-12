@@ -62,10 +62,17 @@ public class UtilisateurRest {
 			return user;
 	}
 	
+	// requête test : afficher foodfriend selon idfoodfriend
+	//http://localhost:8080/myappWeb/services/rest/utilisateur/1
+	@Path("/{idUtilisateur}")
+	@GET
+	public Utilisateur rechercherFoodFriendparIdFoodfriend(@PathParam("idUtilisateur")int num) {
+		return serviceUtilisateur.rechercherUtilisateurParId(num);
+	}
+	
 	@Path("/search")
 	@GET //URL = http://localhost:8080/myappWeb/services/rest/utilisateur/search?iduser=5
 	public List<Utilisateur> rechercherDesUtilisateurs(@QueryParam("iduser")int num) {
-		System.out.println("affichage liste des utilisateurs REST = " + num);
 		return serviceUtilisateur.rechercherListUtilisateurs(num);
 	}
 	

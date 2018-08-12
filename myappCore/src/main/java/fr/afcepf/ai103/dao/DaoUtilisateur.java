@@ -66,4 +66,10 @@ public class DaoUtilisateur implements IDaoUtilisateur {
 		return listFoodfriend;
 	}
 	
+	// RECHERCHER UTILISATEUR PAR IDUTILISATEUR
+	@Override
+	public Utilisateur rechercherUtilisateurParId(int idUtilisateur) {
+		return entityManager.find(Utilisateur.class,idUtilisateur);
+	}
+	
 }

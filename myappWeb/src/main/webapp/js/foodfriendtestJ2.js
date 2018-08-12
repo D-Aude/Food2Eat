@@ -33,8 +33,9 @@ var mesFoodfriend = new Vue({
 	      .then(function (response) {
 	    	  var ffjson = response.data;
 
-	    	  ffjson['dateFinRelation'] = Date.now();
 	    	  
+	    	  ffjson['dateFinRelation'] = Date.now();
+
 	    	  // post			    	  
 	    	  axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
 	    			  ffjson).then((response) => {
@@ -166,8 +167,41 @@ var utilisateursNotFoodfriend = new Vue({
 			return this.src + pseudo + this.imgtype;
 		},
 		
-		EnvoyerInvitation: function() {
-			console.log("envoie d'une demande de foodfriend")
+		// METHODE : envoie d'une invitation foodfriend
+		EnvoyerInvitation: function(idFoodfriend) {
+			alert("Votre invitation a bien été envoyée.")
+			console.log("Début fonction EnvoyerInvitaion" + idFoodfriend)
+			var vm = this;
+			
+			// Récupérer l'utilisateur principale
+			axios.get('http://localhost:8080/myappWeb/services/rest/utilisateur/' + vm.iduser)
+		      .then(function (response) {
+		    	  var user1 = response.data;
+
+		    	  // Récupérer l'utilisateur qui recevra l'invitation
+		    	  axios.get('http://localhost:8080/myappWeb/services/rest/utilisateur/' + idFoodfriend)
+			      .then(function (response2) {
+			    	  var user2 = response2.data;
+			    	  
+			    	  // Instanciation d'un foodfriend
+			    	  var foodfriendJson = {
+			    			  "idFoodfriend" : null,
+			    			  "dateDemande" : Date.now(),
+			    			  "dateFinRelation" : null,
+			    			  "dateReponse" : null,
+			    			  "utilisateur1" : user1,
+			    			  "utilisateur2" : user2			    			  
+			    	  }
+
+			    	  // POST
+			    	  axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend/envoieInvitation',
+			    			  foodfriendJson).then((response) => {
+			    				  console.log(response);
+			    			  });
+			    	  
+			      })
+		    	  
+		      })		      
 		}
 	  },
 	  

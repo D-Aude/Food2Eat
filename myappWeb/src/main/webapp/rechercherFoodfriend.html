@@ -14,7 +14,7 @@
    			<div id="friend-element" v-for="utilisateur in utilisateur">
  	   				<img v-bind:src="getSrc(utilisateur.pseudo)"/><br/>	
 	   				{{utilisateur.pseudo}}<br/>
-	   				<button v-on:click="EnvoyerInvitation()">AJOUTER EN AMI</button>
+	   				<button v-on:click="EnvoyerInvitation(utilisateur.idUtilisateur)">AJOUTER EN AMI</button>
    			</div>   				
    		</div>
 

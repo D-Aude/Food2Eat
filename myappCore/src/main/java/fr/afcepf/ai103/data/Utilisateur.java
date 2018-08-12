@@ -31,21 +31,20 @@ import java.util.List;
 			+ "(SELECT f.utilisateur2.idUtilisateur FROM Utilisateur u join u.foodfriend1 f WHERE u.idUtilisateur = :idUtilisateur)")
 	})
 
-public class Utilisateur implements Serializable {
+public class Utilisateur {
 		public List<Foodfriend> getFoodfriend1() {
 		return foodfriend1;
 	}
 
 
 
-		private static final long serialVersionUID = 1L;
+		//private static final long serialVersionUID = 1L;
 		
 
 	@Id
-	@SequenceGenerator(name="UTILISATEUR_IDUTILISATEUR_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="UTILISATEUR_IDUTILISATEUR_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	
 	@Column(name="ID_UTILISATEUR")
-	private int idUtilisateur;
+	private Integer idUtilisateur;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_DE_NAISSANCE")
@@ -94,11 +93,11 @@ public class Utilisateur implements Serializable {
 	
 	
 
-	public int getIdUtilisateur() {
+	public Integer getIdUtilisateur() {
 		return this.idUtilisateur;
 	}
 
-	public void setIdUtilisateur(int idUtilisateur) {
+	public void setIdUtilisateur(Integer idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
 

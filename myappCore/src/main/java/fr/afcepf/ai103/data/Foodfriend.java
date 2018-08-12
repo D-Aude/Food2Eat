@@ -17,13 +17,11 @@ import java.util.Date;
 	@NamedQuery(name="Foodfriend.demandesrecues", query="SELECT f FROM Foodfriend f WHERE (f.utilisateur2.idUtilisateur =:utilisateur2) and (f.dateReponse is null)"),
 	@NamedQuery(name="Foodfriend.demandesenvoyees", query="SELECT f FROM Foodfriend f WHERE (f.utilisateur1.idUtilisateur =:utilisateur1) and (f.dateReponse is null)")
 })
-public class Foodfriend implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Foodfriend {
+	//private static final long serialVersionUID = 1L;
 	
-
 	@Id
-	@SequenceGenerator(name="FOODFRIEND_IDFOODFRIEND_GENERATOR", sequenceName="ORDER_SEQUENCE")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="FOODFRIEND_IDFOODFRIEND_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_FOODFRIEND")
 	private Integer idFoodfriend;
 
@@ -51,12 +49,18 @@ public class Foodfriend implements Serializable {
 
 	public Foodfriend() {
 	}
+	
+	
+
+
+
+
 
 	public Integer getIdFoodfriend() {
 		return this.idFoodfriend;
 	}
 
-	public void setIdFoodfriend(int idFoodfriend) {
+	public void setIdFoodfriend(Integer idFoodfriend) {
 		this.idFoodfriend = idFoodfriend;
 	}
 
