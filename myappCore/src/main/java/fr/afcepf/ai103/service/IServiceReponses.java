@@ -11,5 +11,11 @@ public interface IServiceReponses {
 
 	List<Repannonce> rechercherReponseParAnnonce(int utilisateurCourant);
 
+	List<Repannonce> rechercherToutesLesReponses();
+
+	Repannonce rechercherReponsesParId(int id);
+
+	Repannonce save(Repannonce rep);
+
 
 }

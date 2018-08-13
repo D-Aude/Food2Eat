@@ -31,14 +31,14 @@ import java.util.List;
 			+ "(SELECT f.utilisateur2.idUtilisateur FROM Utilisateur u join u.foodfriend1 f WHERE u.idUtilisateur = :idUtilisateur)")
 	})
 
-public class Utilisateur {
+public class Utilisateur implements Serializable {
 		public List<Foodfriend> getFoodfriend1() {
 		return foodfriend1;
 	}
 
 
 
-		//private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = 1L;
 		
 
 	@Id

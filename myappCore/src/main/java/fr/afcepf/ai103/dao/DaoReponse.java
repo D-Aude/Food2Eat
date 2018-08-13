@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import fr.afcepf.ai103.data.Foodfriend;
 import fr.afcepf.ai103.data.Repannonce;
 import fr.afcepf.ai103.data.Stock;
 
@@ -30,6 +31,23 @@ public class DaoReponse implements IDaoReponses {
 		return entityManager.createNamedQuery("Repannonce.parUtilisateur", Repannonce.class)
 				.setParameter("id", idUtilisateur)
 				.getResultList();
+	}
+
+	@Override
+	public List<Repannonce> rechercherToutesLesReponses() {
+		return entityManager.createNamedQuery("Repannonce.findAll", Repannonce.class)
+				.getResultList();
+	}
+
+	@Override
+	public Repannonce rechercherReponseParId(int id) {
+		return entityManager.find(Repannonce.class,id);
+	}
+
+	@Override
+	public Repannonce insererNouvelleReponse(Repannonce rep) {
+		entityManager.persist(rep);
+		return rep;
 	}
 
 }

@@ -17,8 +17,8 @@ import java.util.Date;
 	@NamedQuery(name="Foodfriend.demandesrecues", query="SELECT f FROM Foodfriend f WHERE (f.utilisateur2.idUtilisateur =:utilisateur2) and (f.dateReponse is null)"),
 	@NamedQuery(name="Foodfriend.demandesenvoyees", query="SELECT f FROM Foodfriend f WHERE (f.utilisateur1.idUtilisateur =:utilisateur1) and (f.dateReponse is null)")
 })
-public class Foodfriend {
-	//private static final long serialVersionUID = 1L;
+public class Foodfriend implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

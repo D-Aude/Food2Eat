@@ -8,4 +8,10 @@ public interface IDaoReponses {
 	
 	public List<Repannonce> rechercherReponsesAnnonces(int idUtilisateur);
 
+	public List<Repannonce> rechercherToutesLesReponses();
+
+	public Repannonce rechercherReponseParId(int id);
+
+	public Repannonce insererNouvelleReponse(Repannonce rep);
+
 }
