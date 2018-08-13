@@ -21,18 +21,30 @@ import java.util.List;
 															+ "WHERE u.pseudo = :pseudo "
 															+ "and u.mdp = :mdp "
 															+ "and u.dateDesinscription is null"
-															)
+															),
+	// Requête pour retrouver les utilisateurs qui ne sont pas foodfriend avec moi et à qui je peux envoyer une invitations
+	@NamedQuery(name="Utilisateur.notFoodfriend", query="SELECT u FROM Utilisateur u "
+			+ "where u.idUtilisateur <> :idUtilisateur "
+			+ "and u.idUtilisateur not in "
+			+ "(SELECT f.utilisateur1.idUtilisateur FROM Utilisateur u join u.foodfriend2 f WHERE u.idUtilisateur = :idUtilisateur) "
+			+ "and u.idUtilisateur not in "
+			+ "(SELECT f.utilisateur2.idUtilisateur FROM Utilisateur u join u.foodfriend1 f WHERE u.idUtilisateur = :idUtilisateur)")
 	})
 
-public class Utilisateur implements Serializable {
-		private static final long serialVersionUID = 1L;
+public class Utilisateur {
+		public List<Foodfriend> getFoodfriend1() {
+		return foodfriend1;
+	}
+
+
+
+		//private static final long serialVersionUID = 1L;
 		
 
 	@Id
-	@SequenceGenerator(name="UTILISATEUR_IDUTILISATEUR_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="UTILISATEUR_IDUTILISATEUR_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)	
 	@Column(name="ID_UTILISATEUR")
-	private int idUtilisateur;
+	private Integer idUtilisateur;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATE_DE_NAISSANCE")
@@ -65,15 +77,27 @@ public class Utilisateur implements Serializable {
 	@OneToMany(mappedBy="utilisateur", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Useradresse> useradresses;
+	
+	//bi-directional many-to-one association to Foodfriend
+	@OneToMany(mappedBy="utilisateur1", fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Foodfriend> foodfriend1;
+	
+	//bi-directional many-to-one association to Foodfriend
+	@OneToMany(mappedBy="utilisateur2", fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Foodfriend> foodfriend2;
 
 	public Utilisateur() {
 	}
+	
+	
 
-	public int getIdUtilisateur() {
+	public Integer getIdUtilisateur() {
 		return this.idUtilisateur;
 	}
 
-	public void setIdUtilisateur(int idUtilisateur) {
+	public void setIdUtilisateur(Integer idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
 
@@ -177,6 +201,18 @@ public class Utilisateur implements Serializable {
 		useradress.setUtilisateur(null);
 
 		return useradress;
+	}
+	
+	public void setFoodfriend1(List<Foodfriend> foodfriend1) {
+		this.foodfriend1 = foodfriend1;
+	}
+
+	public List<Foodfriend> getFoodfriend2() {
+		return foodfriend2;
+	}
+
+	public void setFoodfriend2(List<Foodfriend> foodfriend2) {
+		this.foodfriend2 = foodfriend2;
 	}
 
 }

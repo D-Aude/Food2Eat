@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Food2Eat (beta)</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/styleMesAnnonces.css">
+</head>
+</head>
+<body>
+
+	<div id="listeMesAnnonceEnCours">
+		
+		<h2 id="Annonces-Titre">Mes Annonces En cours sans réponse</h2>
+		<br />
+		<div>
+
+			<div id="Annonces-elements" v-for="annonce in annonces">
+				<input type="button" value="Annuler" id="btnAnnulerAnnonce" />
+				{{annonce.titre}} <br/>
+				{{annonce.stock.utilisateur.pseudo}}, vous proposez :
+				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
+			Vos choix de date : </br>
+				<div id="dateMesAnnonces">- {{moment(annonce.repannonces.dateRdv1).format('L')}}</br>
+				- {{moment(annonce.repannonces.dateRdv2).format('L')}}</br>
+				- {{moment(annonce.repannonces.dateRdv3).format('L')}}</br></div>
+			Votre lieu de rendez-vous :<span>{{annonce.adresse.numeroVoie}} {{annonce.adresse.typeVoie}} {{annonce.adresse.nomVoie}} {{annonce.adresse.ville.ville}} {{annonce.adresse.ville.codePostal}}</span><br/>
+				</div>
+			</div>
+		</div>
+	</div>
+		<script src="./js/AnnonceVueJs.js"></script>
+</body>
+</html>

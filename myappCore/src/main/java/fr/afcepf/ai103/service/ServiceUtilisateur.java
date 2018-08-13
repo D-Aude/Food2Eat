@@ -1,5 +1,7 @@
 package fr.afcepf.ai103.service;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.ejb.Local;
@@ -24,5 +26,17 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 	public Utilisateur authentificationUtilisateur(String pseudo, String mdp) {
 		return daoUtilisateur.authentificationUtilisateur(pseudo, mdp);
 	}
+
+	@Override
+	public List<Utilisateur> rechercherListUtilisateurs(int idUser) {
+		return daoUtilisateur.rechercherListUtilisateurs(idUser);
+	}
+
+	@Override
+	public Utilisateur rechercherUtilisateurParId(int idUtilisateur) {
+		return daoUtilisateur.rechercherUtilisateurParId(idUtilisateur);
+	}
+	
+	
 
 }
