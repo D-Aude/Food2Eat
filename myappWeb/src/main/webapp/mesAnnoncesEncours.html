@@ -24,17 +24,18 @@
 				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
 				<div id="DatesRdv">
 					Choissisez votre date de rendez-vous : </br> 
-					<input type="radio" value="dateRdv1" id="dateRdv1" v-model="selected" name="plop"></input>
-<!-- 					<label id="date1" for="dateRdv1">{{moment(annonce.dateRdv1).format('L')}}</label></br> -->
-					<input type="radio" value="dateRdv2" id="dateRdv2" v-model="selected" name="plop"></input> 
-					<label id="date2" for="dateRdv2">{{moment(annonce.dateRdv2).format('L')}}</label></br>
-					<input type="radio" value="dateRdv3" id="dateRdv3" v-model="selected" name="plop"></input> <label id="date3" for="dateRdv3">{{moment(annonce.dateRdv3).format('L')}}</label></br>
+					<input type="radio" value="dateRdv1" id="dateRdv1" v-model="selected" name="plop">
+					<label id="date1" for="dateRdv1">{{moment(annonce.dateRdv1).format('L')}}</label></br>
+					<input type="radio" value="dateRdv2" id="dateRdv2" v-model="selected"
+						name="plop"> <label id="date2" for="dateRdv2">{{moment(annonce.dateRdv2).format('L')}}</label></br>
+					<input type="radio" value="dateRdv3" id="dateRdv3" v-model="selected"
+						name="plop"> <label id="date3" for="dateRdv3">{{moment(annonce.dateRdv3).format('L')}}</label></br>
 
 
 					<!-- IMPOSSIBLE DE RECUPERER VALEUR RADIO BUTTON -->
 					<!-- 					<div v-if =" selected === dateRdv1"> -->
 <!-- 										<span> {{selected}}</span></div> -->
-					<span> Date de Rdv selectionnée : <label id="test"></label></span><br/> 
+<!-- 					<span> Date de Rdv selectionnée : <label id="test"></label></span><br/>  -->
 					Lieu du rendez-vous :<span> {{annonce.adresse.numeroVoie}} 
 												{{annonce.adresse.typeVoie}} 
 												{{annonce.adresse.nomVoie}} 
@@ -46,15 +47,5 @@
 		</div>
 	</div>
 	<script src="./js/AnnonceVueJs.js"></script>
-	<script>
-	(function (){
-	    var radios = document.getElementsByName('plop');
-	    for(var i = 0; i < radios.length; i++){
-	        radios[i].onclick = function(){
-	            document.getElementById('test').innerText = this.value;
-	        }
-	    }
-	})();
-	</script>
 </body>
 </html>

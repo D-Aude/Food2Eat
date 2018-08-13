@@ -25,14 +25,14 @@
 			<div id="Annonces-elements" v-for="annonce in annonces">
 
 				{{annonce.titre}} <br/> 
-				{{annonce.stock.utilisateur.pseudo}} vous propose :
-				Pour {{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}}, {{annonce.repannonces.pseudo}} a accepté la date du : </br>
+				{{annonce.stock.utilisateur.pseudo}} a confirmer la date du :   pour l'échange {{annonce.stock.produit.nomProduit}}
+<!-- 				Pour {{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}}, {{annonce.repannonces.pseudo}} a accepté la date du : </br> -->
 				<div id='DatesRdv'>
 					
 					<!-- IMPOSSIBLE DE RECUPERER VALEUR RADIO BUTTON -->
-					<div v-if =" selected === dateRdv1">
-					<span> {{selected}}</span></div>
-					<br/> Date de rendez-vous selectionnée : {{selected}} <br/>
+<!-- 					<div v-if =" selected === dateRdv1"> -->
+<!-- 					<span> {{selected}}</span></div> -->
+<!-- 					<br/> Date de rendez-vous selectionnée : {{selected}} <br/> -->
 					
 				Lieu du rendez-vous :<span>{{annonce.adresse.numeroVoie}} {{annonce.adresse.typeVoie}} {{annonce.adresse.nomVoie}} {{annonce.adresse.ville.ville}} {{annonce.adresse.ville.codePostal}}</span><br/>
 						<!-- {{moment(annonce.repannonces.dateRDV).format('L')}}  -->

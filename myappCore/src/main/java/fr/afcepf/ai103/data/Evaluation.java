@@ -10,7 +10,24 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Evaluation.findAll", query="SELECT e FROM Evaluation e")
+@NamedQueries({@NamedQuery(name="Evaluation.findAll", query="SELECT e FROM Evaluation e"),
+@NamedQuery(name="Evaluations.avecNoteEtCommentaire", query="SELECT e FROM Evaluation e "
+															+ "WHERE e.repannonce.idReponse = :idReponse "
+															+ "AND e.note IS NOT NULL "
+															+ "AND e.commentaire IS NOT NULL"),
+
+@NamedQuery(name="Evaluations.annoncesAvecEvaluationetNote", query="SELECT e from Evaluation e join e.repannonce r "
+															+ "WHERE e.repannonce.idReponse = :idReponse "
+															+ "AND r.idReponse = r.idReponse "), //en cours 
+
+@NamedQuery(name="Evaluations.avecNoteSansCommentaire", query="SELECT e FROM Evaluation e "
+															+ "WHERE e.repannonce.idReponse = :idReponse "
+															+ "AND e.note IS NOT NULL "
+															+ "AND e.commentaire IS NULL ")
+})
+
+
+
 public class Evaluation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
