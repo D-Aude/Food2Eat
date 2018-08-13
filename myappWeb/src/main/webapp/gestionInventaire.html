@@ -1,8 +1,53 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="./resources/css/stylesGestionInventaire.css" media="all" />
+<meta charset="UTF-8">
+<title>Food2Eat (beta)</title>
+	<link rel="stylesheet" type="text/css" href="./resources/css/styleInventaire.css">
 </head>
 <body>
+<!-- <input type="hidden" id="iduser" type="text" value="1"  /> -->
+
+	<div class="lblTitre">
+		<b>Mon Inventaire</b>
+		<br/>
+	</div>
+
+	<section id="gestionStock">
+	<div>
+        <button class="btnAction">Ajouter</button>
+        <button class="btnAction">Manger</button>
+        <button class="btnAction">Jeter</button>
+    </div>
+	<input type="hidden" id="idUser" type="text" v-model="idUser"  /><br/>
+        <label>Mode de Conservation</label>
+		<select id="selectModeConservation" v-model="modeConservation">
+			<option value="">Tous</option> 
+			<option value="Frigo">Frigo</option> 
+			<option value="Congelateur">Congelateur</option>
+			<option value="Placard">Placard</option>
+		</select>
+	
+	<br/>	
+	
+	<table id="idTable" border="1">
+   		<thead>
+   			<tr><th id="qte">Qte</th><th id="produit">Produit</th><th id="dlc">DLC</th><th id="etat">En stock</th></tr>
+   		</thead>
+   		<tbody id="app">
+   			<tr v-for="stock in stocks">
+   				<td >{{stock.quantite}}</td><td>{{stock.produit.nomProduit}}</td><td>{{moment(stock.DLC).format('L')}}</td>
+   				<td v-if="stock.produit.mesure.idMesure == 1"><progress id="file" name="file" max="100" :value="stock.fractionRestante"></progress></td>
+   				<td v-else>{{stock.fractionRestante}}<strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong></td>
+   			</tr>
+   		</tbody>
+   		
+   	</table>
+    </section>
+
+<script src="./js/InventaireJS.js"></script>
+		
 </body>
 </html>

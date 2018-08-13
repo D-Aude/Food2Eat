@@ -31,6 +31,7 @@ var vm = new Vue({
 						console.log('Pseudo et/ou mdp érroné !!');
 				        sessionStorage.clear();
 						console.log('session Utilisateur terminée');
+						alert('Pseudo/MDP erroné');
 					}
 					else
 					{

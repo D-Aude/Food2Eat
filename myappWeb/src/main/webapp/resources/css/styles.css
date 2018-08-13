@@ -105,13 +105,13 @@ b {
 }
 
 #log {
-	width: 150px;
-	margin-right: auto;
-	margin-left: auto;
+	text-align: center;
+	margin-top: 160px;
 }
 
 #log .btnLogin {
 	background-color: #49b6a8;
+	margin: auto;
 	font-size: 30px;
 	color: white;
 	width: 170px;
@@ -120,7 +120,6 @@ b {
 	text-align: center;
 	text-decoration: none;
 	border-radius: 12px;
-	margin-top: 160px;
 	font-family: 'Fjalla One', sans-serif;
 	text-transform: uppercase;
 }
