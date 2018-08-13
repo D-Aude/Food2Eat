@@ -1,5 +1,6 @@
 package fr.afcepf.ai103.rest;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.ws.rs.QueryParam;
 import fr.afcepf.ai103.data.Foodfriend;
 import fr.afcepf.ai103.data.Utilisateur;
 import fr.afcepf.ai103.service.ServiceFoodfriend;
+import fr.afcepf.ai103.service.ServiceUtilisateur;
 
 @Path("foodfriend")
 @Produces("application/json")
@@ -23,6 +25,7 @@ public class FoodfriendRest {
 	
 	@Inject
 	private ServiceFoodfriend serviceff;
+	private ServiceUtilisateur serviceUti;
 	
 	// requête test : afficher foodfriend selon idfoodfriend
 	//http://localhost:8080/myappWeb/services/rest/foodfriend/1
@@ -82,6 +85,16 @@ public class FoodfriendRest {
 	public Foodfriend postFoodfriend(Foodfriend ff) {
 		System.out.println("envoie d'une demande de foodfriend " + ff.toString());
 		ff = serviceff.saveOrUpdate(ff);
+		return ff;
+	}
+	
+	@Path("/envoieInvitation")
+	@POST
+	@Consumes("application/json")
+	public Foodfriend postNewFoodfriend(Foodfriend ff) {
+		System.out.println("_______________________________________________________Méthode postNewFoodfriend ______________________________________________________________");
+		
+		ff = serviceff.save(ff);
 		return ff;
 	}
 		
