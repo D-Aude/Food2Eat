@@ -49,18 +49,144 @@ th {
     opacity: 0.7;
 }
 
-th #qte, tr #qte {
+th #qteColumn, tr #qteColumn {
 	width: 50px;
 }
 
-th #etat, tr #etat {
+th #etatColumn, tr #etatColumn {
 	width: 175px;
 }
 
-/* th #produit, tr #produit { */
-/* 	width: 600px; */
-/* } */
-
-th #dlc, tr #dlc {
+th #dlcColumn, tr #dlcColumn {
 	width: 100px;
+}
+
+.modal {
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgb(0, 0, 0); 
+	background-color: rgba(0, 0, 0, 0.4); 
+	padding-top: 60px;
+}
+
+.modalContent {
+	width: 550px;
+	border: 1px solid rgba(0,0,0,.2);
+	border-radius: 15px;
+	background-color: #fff;
+	margin: 13% auto;
+	font-family: 'Abel', sans-serif !important;
+	font-size: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.container {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 900px;
+}
+
+/*-------------------- MODAL AJOUTER ------------------*/
+
+#headerAjouter {
+	border-radius: 15px 15px 0px 0px;
+	padding: 15px;
+}
+
+#headerAjouter {
+	width: 100%;
+	text-align: center;
+	background-color: #49b6a8;
+}
+
+#headerAjouter, .champAjouter {
+	width: 100%;
+  	display: inline-block;
+}
+
+/* The Close Button */
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#titreAjouter {
+	vertical-align: center;
+}
+
+.champAjouter * {
+	vertical-align: top;
+}
+	
+.champAjouter label {
+	margin-right: 20px;
+	
+}
+
+#infoAjout {
+	padding: 20px;
+}
+
+#btnAjouter {
+	background-color: #49b6a8;
+    border: 1px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    color: white;
+    width: 100px;
+    height: 55px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
+    display: block;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #49b6a8;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 30px;
+    background: #49b6a8;
+    cursor: pointer;
+    border: 2px solid black;
 }
