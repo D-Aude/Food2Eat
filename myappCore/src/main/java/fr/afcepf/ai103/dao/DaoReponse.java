@@ -32,4 +32,11 @@ public class DaoReponse implements IDaoReponses {
 				.getResultList();
 	}
 
+	// Insertion ________________________________________________________________________________
+	@Override
+	public Repannonce insererNouvelleReponse(Repannonce rep) {
+		entityManager.persist(rep);
+		return rep;
+	}
+
 }

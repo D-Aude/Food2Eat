@@ -125,4 +125,15 @@ public class ServiceMesAnnonces implements IServiceMesAnnonces {
 
 
 
+	// Test
+	@Override
+	public List<Annonce> rechercherAnnoncesAvecReponses(int iduser) {
+		// TODO Auto-generated method stub
+		return daoAnnonces.recupererAnnonceAvecReponse(iduser);
+	}
+
+
+
+
+
 }

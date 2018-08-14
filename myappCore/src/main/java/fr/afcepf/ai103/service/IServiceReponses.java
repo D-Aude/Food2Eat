@@ -11,5 +11,7 @@ public interface IServiceReponses {
 
 	List<Repannonce> rechercherReponseParAnnonce(int utilisateurCourant);
 
+	Repannonce save(Repannonce rep);
+
 
 }

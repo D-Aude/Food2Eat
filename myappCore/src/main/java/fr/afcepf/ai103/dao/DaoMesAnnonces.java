@@ -52,7 +52,9 @@ public class DaoMesAnnonces implements IDaoMesAnnonce {
 @Override
 	public List<Annonce> rechercherToutesLesAnnonces() {
 		return entityManager.createNamedQuery("Annonce.ListeToutesLesAnnonces",Annonce.class).getResultList();
-	}
+}
+
+
 
 // "idAnnonce" =>Celui qui est en parametre dans la requete, idAnnonce =>c''st mon attribut java
 	@Override
@@ -113,6 +115,27 @@ public class DaoMesAnnonces implements IDaoMesAnnonce {
 												.setParameter("idUtilisateur", utilisateur )
 												.getResultList();
 	}
+
+	
+	// Récupérer les annonces avec au moins une réponse
+	@Override
+	public List<Annonce> recupererAnnonceAvecReponse(int iduser) {
+		List<Annonce> resultat = entityManager.createQuery("Select a from Annonce a "
+				+ "left join a.repannonces r "
+				+ "GROUP BY a.idAnnonce "
+				+ "having count(r.idReponse) > 0 "
+				+ "and a.dateAnnulation is null "
+				+ "and a.dateFinAnnonce is null "
+				+ "and a.stock.utilisateur.idUtilisateur = idUtilisateur")
+				.setParameter("idUtilisateur", iduser)
+				.getResultList();
+		return resultat;
+	}
+	
+	
+
+	
+
 	
 	
 }

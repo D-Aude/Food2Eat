@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import fr.afcepf.ai103.data.Annonce;
 import fr.afcepf.ai103.data.Repannonce;
@@ -123,6 +124,17 @@ public class MesAnnoncesPosteesRest {
 	//{
 	//	return serviceAnnonce.modifierMonAnnonce(idAnnonce);
 	//}
+	
+	// Test
+	@Path("test/{idUtilisateur}")
+	@GET
+	public List <Annonce> test(@PathParam("idUtilisateur") int utilisateur )
+	{
+		return serviceAnnonce.rechercherAnnoncesAvecReponses(utilisateur);
+	}
+	
+
+	
 	
 
 }
