@@ -11,77 +11,39 @@
 </head>
 <body>
 
-<<<<<<< HEAD:myappWeb/src/main/webapp/mesPotentiellesEnvies.html
 	<div id="listeMesPotentiellesEnvies">
 		
 		<h2 id="Annonces-Titre">Mes potentielles Envies</h2>
-=======
-	<div id="listeAnnonceEnCours">
-
-		<h2 id="Annonces-Titre">Mes annonces en cours</h2>
->>>>>>> 99cb9a554c9b81cbace57a68ad8a953ea1cc0e14:myappWeb/src/main/webapp/mesAnnoncesEncours.html
 		<br />
 		<div>
 
 			<div id="Annonces-elements" v-for="annonce in annonces">
-<<<<<<< HEAD:myappWeb/src/main/webapp/mesPotentiellesEnvies.html
 				<input type="button" value="Valider" id="btnValiderEnvie" />
 				{{annonce.titre}} <br/>  {{annonce.idAnnonce}}
 				{{annonce.stock.utilisateur.pseudo}} vous proposez :
 				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
-				<div id='DatesRdv'>
-				Vous proposez comme date de rendez-vous :  </br>
-					<input type="radio" value="dateRdv1" id="dateRdv1"  v-model="selected" name ="plop" > 
-					<label  id="date1"for="dateRdv1">{{moment(annonce.dateRdv1).format('L')}}</label></br>
-					<input type="radio" value="dateRdv2" id="dateRdv2"  v-model="selected" name ="plop"> 
-=======
-
-				{{annonce.titre}} <br /> {{annonce.stock.utilisateur.pseudo}} vous
-				propose :
-				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
+	
 				<div id="DatesRdv">
 					Choissisez votre date de rendez-vous : </br> 
-					<input type="radio" value="dateRdv1" id="dateRdv1" v-model="selected" name="plop"></input>
-<!-- 					<label id="date1" for="dateRdv1">{{moment(annonce.dateRdv1).format('L')}}</label></br> -->
-					<input type="radio" value="dateRdv2" id="dateRdv2" v-model="selected" name="plop"></input> 
->>>>>>> 99cb9a554c9b81cbace57a68ad8a953ea1cc0e14:myappWeb/src/main/webapp/mesAnnoncesEncours.html
-					<label id="date2" for="dateRdv2">{{moment(annonce.dateRdv2).format('L')}}</label></br>
-					<input type="radio" value="dateRdv3" id="dateRdv3" v-model="selected" name="plop"></input> <label id="date3" for="dateRdv3">{{moment(annonce.dateRdv3).format('L')}}</label></br>
-
+					<input type="radio" value="dateRdv1" id="dateRdv1" v-model="selected" name="plop">
+					<label id="date1" for="dateRdv1">{{moment(annonce.dateRdv1).format('L')}}</label></br>
+					<input type="radio" value="dateRdv2" id="dateRdv2" v-model="selected"
+						name="plop"> <label id="date2" for="dateRdv2">{{moment(annonce.dateRdv2).format('L')}}</label></br>
+					<input type="radio" value="dateRdv3" id="dateRdv3" v-model="selected"
+						name="plop"> <label id="date3" for="dateRdv3">{{moment(annonce.dateRdv3).format('L')}}</label></br>
 
 					<!-- IMPOSSIBLE DE RECUPERER VALEUR RADIO BUTTON -->
-<<<<<<< HEAD:myappWeb/src/main/webapp/mesPotentiellesEnvies.html
-					<div v-if =" selected === dateRdv1">
-					<span> {{selected}}</span></div>
-					<br/> Date de Rdb selectionnée : @{{selected}} <br/>
+<!-- 					<div v-if =" selected === dateRdv1"> -->
+<!-- 					<span> {{selected}}</span></div> -->
+<!-- 					<br/> Date de Rdb selectionnée : @{{selected}} <br/> -->
 					
 				Votre lieu de rendez-vous :<span>{{annonce.adresse.numeroVoie}} {{annonce.adresse.typeVoie}} {{annonce.adresse.nomVoie}} {{annonce.adresse.ville.ville}} {{annonce.adresse.ville.codePostal}}</span><br/>
 				
-=======
-					<!-- 					<div v-if =" selected === dateRdv1"> -->
-<!-- 										<span> {{selected}}</span></div> -->
-					<span> Date de Rdv selectionnée : <label id="test"></label></span><br/> 
-					Lieu du rendez-vous :<span> {{annonce.adresse.numeroVoie}} 
-												{{annonce.adresse.typeVoie}} 
-												{{annonce.adresse.nomVoie}} 
-												{{annonce.adresse.ville.ville}}
-												{{annonce.adresse.ville.codePostal}}</span><br />
-					<!-- {{moment(annonce.repannonces.dateRDV).format('L')}}  -->
->>>>>>> 99cb9a554c9b81cbace57a68ad8a953ea1cc0e14:myappWeb/src/main/webapp/mesAnnoncesEncours.html
+		
 				</div>
 			</div>
 		</div>
 	</div>
 	<script src="./js/AnnonceVueJs.js"></script>
-	<script>
-	(function (){
-	    var radios = document.getElementsByName('plop');
-	    for(var i = 0; i < radios.length; i++){
-	        radios[i].onclick = function(){
-	            document.getElementById('test').innerText = this.value;
-	        }
-	    }
-	})();
-	</script>
 </body>
 </html>

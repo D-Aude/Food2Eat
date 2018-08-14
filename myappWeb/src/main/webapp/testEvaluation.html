@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Food2Eat (beta)</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./resources/css/styleMesAnnonces.css">
+</head>
+<body>
+
+	<div id="listeAnnonceAvecEvaletNote">
+		<h2 id="Annonces-Titre">Annonces avec commentaires & notes</h2>
+		<br />
+		<h1>Annonce n°<input id="idAnnonce" type="text" v-model="idUser" /></h1>
+		<button @click="chargerAnnonce()" >Charger</button>
+			<div id="Evaluations-elements" v-for="evaluation in evaluations">
+				<label>COMMENTAIRE : {{evaluation.commentaire}}</label> <br/> 
+				<span>NOTE : {{evaluation.note}} - EVALUATION : {{evaluation.repannonce.utilisateur.pseudo}}</span>
+			</div>
+	</div>
+		<script src="./js/EvaluationsJS.js"></script>
+</body>
+</html>
