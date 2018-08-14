@@ -1,5 +1,5 @@
 body {
-	background: url('./bg4.jpg');
+	background: url('./bg5.jpg');
 	background-attachment: fixed;
 }
 
@@ -8,8 +8,8 @@ body {
 	background-color: white !important;
 	height: 160;
 	position: absolute;
-	top: -182px;
-	left: -800;
+	top: -191px;
+	left: -796;
 }
 
 .navbar {
@@ -41,7 +41,7 @@ a .navbar-brand {
 .test {
 	position: absolute;
 	width: 50px;
-	height: 77px;
+	height: 69px;
 	background-color: #245B55;
 	/*     position: fixed; */
 	top: 0;
@@ -56,6 +56,22 @@ a {
 	height: 90px;
 	color: black;
 	position: fixed;
+}
+
+.btn {
+	color: white !important;
+	font-size: 26px !important;
+	text-transform: uppercase;
+	height: 80;
+	width: 379px;
+	padding-top: 7px!important;
+	margin-left: -16px;
+	padding-left: 35px;
+	background-color: #245B55 !important;
+	display: flex;
+	justify-content: center;
+	font-family : 'Abel', sans-serif;
+	border-radius: 0px!important;
 }
 
 .lblInfosOeufs {
@@ -169,9 +185,9 @@ a {
 	color: white !important;
 	font-size: 37px !important;
 	text-transform: uppercase;
-	height: 96;
+	height: 80;
 	width: 379px;
-	padding-top: 27px !important;
+	padding-top: 20px!important;
 	margin-left: -16px;
 	padding-left: 35px;
 	background-color: #245B55 !important;
@@ -185,10 +201,10 @@ a {
 	background-color: #245B55 !important;
 	padding-left: 0.5rem !important;
 	text-transform: uppercase !important;
-	padding-top: 38px;
-	width: 377px;
-	height: 96px;
-	margin-right: -2px !important;
+    padding-top: 20px;
+    width: 377px;
+	height: 80px;
+	margin-right: -43px !important;
 }
 
 .navbar-nav .dropdown-menu {
@@ -212,6 +228,33 @@ a {
 	background-color: transparent;
 	border: 0;
 	font-size: 20px;
+}
+#menuAnnonces {
+	left : 60px!important;
+	font-size : 20px!important;
+	text-decoration : none!important;
+	padding : 17 17 17 17px!important;
+}
+
+#menuAnnonces2 {
+		left : 60px!important;
+	font-size : 20px!important;
+	text-decoration : none!important;
+	padding : 17 17 17 17px!important;
+	width : 300px!important;
+}
+
+#policeMenu {
+		color: white!important;
+}
+
+menuReponsesRecues {
+		color: white!important;
+	
+}
+
+#policeMenu2 {
+	color : white!important;
 }
 
 .navbar-nav .nav-link {
@@ -244,26 +287,6 @@ a.dropdown-item:hover {
 	margin-right: 4;
 }
 
-/*<!--==============================SEARCH BAR=====================-->*/
-/* input[type=text] { */
-/* 	width: 180; */
-/* 	margin: 100px 100 -160px 113px; */
-/* 	box-sizing: border-box; */
-/* 	border: 2px solid #ccc; */
-/* 	border-radius: 4px; */
-/* 	font-size: 16px; */
-/* 	background-color: white; */
-/* 	background-image: url(searchicon.png); */
-/* 	background-position: 10px 10px; */
-/* 	background-repeat: no-repeat; */
-/* 	padding: 12px 20px 12px 40px; */
-/* 	-webkit-transition: width 0.4s ease-in-out; */
-/* 	transition: width 0.4s ease-in-out; */
-/* } */
-
-/* input[type=text]:focus { */
-/* 	width: 548; */
-/* } */
 /*<!--==============================ANIMATION HOVER=====================-->*/
 .mr-auto, .mx-auto {
 	margin-right: auto !important;
@@ -276,6 +299,7 @@ a.dropdown-item:hover {
 	transform: scale(1, 1);
 	opacity: 1;
 }
+
 
 .dropdown-menu {
 	opacity: .3;
@@ -308,6 +332,7 @@ a.dropdown-item:hover {
 .container {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .flex-container>.imgContainer {
@@ -456,22 +481,46 @@ div>.imgContainer {
 	top: 202px;
 	left: 440px;
 	font-family: Abel, sans-serif;
-	font-size: 30px;
+	font-size: 30px!important;
 	text-transform: uppercase;
-	background-color: #A5DCC7;
+	background-color: #A5DCC7!important;
 	border: none;
 	width: 200;
 	cursor: pointer;
+	height : 50px;
 }
 
 #lblModifierRaisin:hover {
 	color : white;
 }
 
+#lblModifierRaisin {
+	    position: absolute;
+    top: 1px;
+    left: 40px;
+}
+
 #lblModifier:hover {
 	color : white;
 }
 
+.btn-secondary {
+	    color: #fff;
+/*     background-color: #5a6268; */
+    border-color: #545b62;
+    padding: 0px 0px 0 0;
+    height: 50px;
+    width: 150px;
+}
+
+.btn-primary {
+		    color: #fff;
+/*     background-color: #5a6268; */
+    border-color: #545b62;
+    padding: 0px 0px 0 0;
+    height: 50px;
+    width: 150px;
+}
 
 #lblRecapAnnonce {
 	position: absolute;
@@ -509,6 +558,20 @@ div>.imgContainer {
 	border: none;
 	width: 200;
 	cursor: pointer;
+}
+
+.modal-footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 10;
+    border-top: 1px solid #e9ecef;
 }
 
 #lblModifierPasteque:hover {
@@ -843,4 +906,340 @@ to {
 	padding: 2px 16px;
 	background-color: #5cb85c;
 	color: white;
+}
+
+/*<!--==============================PAGE TTES ANNONCES=====================-->*/
+
+
+.page-toutesLesAnnonces-brocoli {
+  top: 268px;
+    left: 128px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+}
+
+.lblDetailsBrocoli{
+	    position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+top: 90px;
+    left: 120;
+    display:none;
+}
+
+.page-toutesLesAnnonces-brocoli:hover {
+	opacity : 0.7;
+	-webkit-transition: .4s ease-in-out opacity !important;
+	-moz-transition: .4s ease-in-out opacity !important;
+	-o-transition: .4s ease-in-out opacity !important;
+	transition: .4s ease-in-out opacity !important;
+}
+
+.page-toutesLesAnnonces-brocoli:hover .lblDetailsBrocoli {
+	display: block;
+	color: black;
+}
+
+.infoBrocoli {
+	width: 552;
+    height: 64px;
+    background-color: #a5dcc7;
+    top: 474px;
+    position: absolute;
+    -webkit-border-bottom-right-radius: 7px;
+-webkit-border-bottom-left-radius: 7px;
+-moz-border-radius-bottomright: 7px;
+-moz-border-radius-bottomleft: 7px;
+border-bottom-right-radius: 7px;
+border-bottom-left-radius: 7px;
+    left: 103px;
+    font-family : 'Abel', sans-serif;
+    font-size: 20px;
+}
+
+.page-toutesLesAnnonces-camembert {
+    top: 260;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    left: 900;
+}
+
+.lblDetailsCamembert{
+	    position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+top: 90px;
+    left: 120;
+    display:none;
+}
+
+.page-toutesLesAnnonces-camembert:hover {
+	opacity : 0.7;
+	-webkit-transition: .4s ease-in-out opacity !important;
+	-moz-transition: .4s ease-in-out opacity !important;
+	-o-transition: .4s ease-in-out opacity !important;
+	transition: .4s ease-in-out opacity !important;
+}
+
+.page-toutesLesAnnonces-camembert:hover .lblDetailsCamembert {
+	display: block;
+	color: black;
+}
+
+.infoCamembert {
+	width: 553px;
+    height: 64px;
+    background-color: #a5dcc7;
+    top: 473px;
+    position: absolute;
+    border-radius: 7px;
+    left: 872px;
+    font-family : 'Abel', sans-serif;
+    font-size: 20px;
+}
+
+.page-toutesLesAnnonces-cabillaud {
+	 top: 610;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    left: 130;
+    margin-bottom : 100px;
+}
+
+.lblDetailsCabillaud{
+	    position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+top: 90px;
+    left: 120;
+    display:none;
+}
+
+.page-toutesLesAnnonces-cabillaud:hover {
+	opacity : 0.7;
+	-webkit-transition: .4s ease-in-out opacity !important;
+	-moz-transition: .4s ease-in-out opacity !important;
+	-o-transition: .4s ease-in-out opacity !important;
+	transition: .4s ease-in-out opacity !important;
+}
+
+.page-toutesLesAnnonces-cabillaud:hover .lblDetailsCabillaud {
+	display: block;
+	color: black;
+}
+
+.page-toutesLesAnnonces-jusOrange {
+	 top: 610;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    left: 900;
+    margin-bottom : 100px;
+}
+
+.lblDetailsJusOrange{
+	    position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+	top: 90px;
+    left: 120;
+    display:none;
+}
+
+.page-toutesLesAnnonces-jusOrange:hover {
+	opacity : 0.7;
+	-webkit-transition: .4s ease-in-out opacity !important;
+	-moz-transition: .4s ease-in-out opacity !important;
+	-o-transition: .4s ease-in-out opacity !important;
+	transition: .4s ease-in-out opacity !important;
+}
+
+.page-toutesLesAnnonces-jusOrange:hover .lblDetailsJusOrange {
+	display: block;
+	color: black;
+}
+
+.page-toutesLesAnnonces-sauceTomate {
+	 top: 960;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    left: 130;
+    margin-bottom : 100px;
+}
+
+.lblDetailsSauceTomate{
+	position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+	top: 90px;
+    left: 120;
+    display:none;
+}
+
+.page-toutesLesAnnonces-sauceTomate:hover {
+	opacity : 0.7;
+	-webkit-transition: .4s ease-in-out opacity !important;
+	-moz-transition: .4s ease-in-out opacity !important;
+	-o-transition: .4s ease-in-out opacity !important;
+	transition: .4s ease-in-out opacity !important;
+}
+
+.page-toutesLesAnnonces-sauceTomate:hover .lblDetailsSauceTomate {
+	display: block;
+	color: black;
+}
+
+.page-toutesLesAnnonces-semoule {
+	 top: 960;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    left: 900;
+    margin-bottom : 100px;
+}
+
+.lblDetailsSemoule{
+	position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+	top: 90px;
+    left: 120;
+    display:none;
+}
+
+.page-toutesLesAnnonces-semoule:hover {
+	opacity : 0.7;
+	-webkit-transition: .4s ease-in-out opacity !important;
+	-moz-transition: .4s ease-in-out opacity !important;
+	-o-transition: .4s ease-in-out opacity !important;
+	transition: .4s ease-in-out opacity !important;
+}
+
+.page-toutesLesAnnonces-semoule:hover .lblDetailsSemoule {
+	display: block;
+	color: black;
+}
+
+.page-toutesLesAnnonces-tomate {
+	 top: 1320;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    left: 130;
+    margin-bottom : 100px;
+}
+
+.lblDetailsTomate{
+	position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+	top: 90px;
+    left: 120;
+    display:none;
+}
+
+.page-toutesLesAnnonces-tomate:hover {
+	opacity : 0.7;
+	-webkit-transition: .4s ease-in-out opacity !important;
+	-moz-transition: .4s ease-in-out opacity !important;
+	-o-transition: .4s ease-in-out opacity !important;
+	transition: .4s ease-in-out opacity !important;
+}
+
+.page-toutesLesAnnonces-tomate:hover .lblDetailsTomate {
+	display: block;
+	color: black;
+}
+
+.page-toutesLesAnnonces-oeuf {
+	 top: 1320;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    left: 900;
+    margin-bottom : 100px;
+}
+
+.lblDetailsOeuf{
+	position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+	top: 90px;
+    left: 120;
+    display:none;
+}
+
+.page-toutesLesAnnonces-oeuf:hover {
+	opacity : 0.7;
+	-webkit-transition: .4s ease-in-out opacity !important;
+	-moz-transition: .4s ease-in-out opacity !important;
+	-o-transition: .4s ease-in-out opacity !important;
+	transition: .4s ease-in-out opacity !important;
+}
+
+.page-toutesLesAnnonces-oeuf:hover .lblDetailsOeuf {
+	display: block;
+	color: black;
+}
+
+.page-toutesLesAnnonces-yaourt {
+	 top: 1690;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    left: 130;
+    margin-bottom : 100px;
+}
+
+.lblDetailsYaourt{
+	position: absolute;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+	top: 90px;
+    left: 120;
+    display:none;
+}
+
+.page-toutesLesAnnonces-yaourt:hover {
+	opacity : 0.7;
+	-webkit-transition: .4s ease-in-out opacity !important;
+	-moz-transition: .4s ease-in-out opacity !important;
+	-o-transition: .4s ease-in-out opacity !important;
+	transition: .4s ease-in-out opacity !important;
+}
+
+.page-toutesLesAnnonces-yaourt:hover .lblDetailsYaourt {
+	display: block;
+	color: black;
 }

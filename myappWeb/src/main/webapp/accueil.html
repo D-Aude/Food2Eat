@@ -46,26 +46,48 @@
 						<a id="btnInventaire" class="dropdown-item" href="#">Gérer mon
 							inventaire</a>
 					</div></li>
+					
+<ul class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
+   Annonces <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" id="menuAnnonces">
+    <li><a id="policeMenu2" href="#">Toutes les annonces</a></li>
+    <li class="dropdown">
+      <a id="policeMenu" href="#">Mes annonces</a>
+      <ul class="dropdown-menu" id="menuAnnonces2">
+        <li><a id="menuReponsesRecues" href="#">Réponses reçues</a></li>
+        <li><a id="policeMenu" href="#">Réponses en attente de validation</a></li>
+         <li><a id="policeMenu" href="#">Les annonces terminées</a></li>
+          </ul>
+        </li>
+       </ul>
+</ul>
 
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Annonces </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" id="btnMesAnnonces" href="#">Mes
-							annonces</a> <a class="dropdown-item" id="btnMesEnvies" href="#">Mes
-							envies</a> <a class="dropdown-item" id="btnReponsesRecues" href="#">Réponses
-							reçues</a>
-					</div></li>
+
+<!-- 				<li class="nav-item dropdown"> -->
+<!-- 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Annonces </a> -->
+<!-- 					<div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+<!-- 						<a class="dropdown-item" id="btnMesAnnonces" href="#">Toutes les annonces</a>  -->
+<!-- 						<a tabindex="-1" class="dropdown-item" id="btnMesEnvies">Mes Annonces <span class="caret"></span></a> -->
+<!-- 						<ul class="dropdown-menu"> -->
+<!-- 							<li> -->
+<!-- 								<a tabindex="-1" href="#">Réponses reçues</a> -->
+<!-- 							</li> -->
+<!-- 							<li> -->
+<!-- 								<a tabindex="-1" href="#">Réponses en attente de validation</a> -->
+<!-- 							</li> -->
+<!-- 						</ul>  -->
+<!-- 					</div> -->
+<!-- 				</li> -->
 
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Foodfriends </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" id="btnMesFoodFriends" href="#">Mes
-							foodfriends</a> <a class="dropdown-item" id="btnInvitationsRecues"
-							href="#">Invitations reçues</a>
+						<a class="dropdown-item" id="btnMesFoodFriends" href="#">Mes foodfriends</a> 
+						<a class="dropdown-item" id="btnInvitationsRecues" href="#">Invitations reçues</a>
 					</div>
 				</li>
 
@@ -185,10 +207,18 @@ var foot = new Vue({
 			$("#flexContent").load("./gestionInventaire.html");
 		});
 
-		$('#btnMesAnnonces').on('click', function() {
+		$('#policeMenu').on('click', function() {
 			$("#flexContent").load("./mesAnnonces.html");
 		});
 
+		$('#policeMenu2').on('click', function() {
+			$("#flexContent").load("./toutesLesAnnonces.html");
+		});
+		
+		$('#menuReponsesRecues').on('click', function() {
+			$("#flexContent").load("./toutesLesAnnonces.html");
+		});
+		
 		$('#btnMesEnvies').on('click', function() {
 			$("#flexContent").load("./mesEnvies.html");
 		});
