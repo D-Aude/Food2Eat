@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Food2Eat (beta)</title>
+	<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
+</head>
+<body>
+<!--  <input type="hidden" id="iduser" type="text" value="1"  />-->
+	
+		
+		<div id="annoncesCommunauteDetail">
+   			  	   									
+				<h2>{{annonce.titre}}</h2>
+   				Produit proposé : {{annonce.stock.produit.nomProduit}}<br/>
+   				à consommer avant le {{moment(annonce.stock.dateConsoPref).format('L')}}<br/><br/>
+   				{{annonce.stock.utilisateur.pseudo}} vous propose de venir récupérer le produit parmis les trois dates suivantes : <br/><br/>
+   				
+   				<input type="radio" v-bind:value="date1" id="dateRdv1" v-model="selected">
+				<label id="date1" for="dateRdv1">{{moment(annonce.dateRdv1).format('L')}}</label>
+				<input type="radio" v-bind:value="date2"  id="dateRdv2" v-model="selected"> 
+				<label id="date2" for="dateRdv2">{{moment(annonce.dateRdv2).format('L')}}</label>
+				<input type="radio" v-bind:value="date3" id="dateRdv3" v-model="selected"> 
+				<label id="date3" for="dateRdv3">{{moment(annonce.dateRdv3).format('L')}}</label><br/><br/>
+   				Date choisie : {{moment(selected).format('L')}}<br/>
+   				Adresse de récupération : {{annonce.adresse.numeroVoie}} {{annonce.adresse.typeVoie}} {{annonce.adresse.nomVoie}} {{annonce.adresse.ville.ville}} {{annonce.adresse.ville.codePostal}}<br/><br/> 
+  				 				
+   				<button v-on:click="envoyerDemandeProduit(annonce.idAnnonce)">VALIDER</button>   				
+			 
+  		</div>
+
+	<script src="./js/AnnoncesCommunaute.js"></script>
+</body>
+</html>

@@ -27,8 +27,7 @@ public class Repannonce implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="REPANNONCE_IDREPONSE_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REPANNONCE_IDREPONSE_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_REPONSE")
 	private int idReponse;
 
@@ -60,7 +59,7 @@ public class Repannonce implements Serializable {
 
 	//bi-directional many-to-one association to Annonce
 	@ManyToOne
-	@JsonIgnore
+//	@JsonIgnore
 	@JoinColumn(name="ID_ANNONCE")
 	private Annonce annonce;
 

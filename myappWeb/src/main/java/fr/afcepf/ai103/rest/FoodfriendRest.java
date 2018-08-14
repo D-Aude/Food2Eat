@@ -13,9 +13,12 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import fr.afcepf.ai103.data.Annonce;
 import fr.afcepf.ai103.data.Foodfriend;
 import fr.afcepf.ai103.data.Utilisateur;
+import fr.afcepf.ai103.service.IServiceMesAnnonces;
 import fr.afcepf.ai103.service.ServiceFoodfriend;
+import fr.afcepf.ai103.service.ServiceMesAnnonces;
 import fr.afcepf.ai103.service.ServiceUtilisateur;
 
 @Path("foodfriend")
@@ -97,6 +100,8 @@ public class FoodfriendRest {
 		ff = serviceff.save(ff);
 		return ff;
 	}
+	
+
 		
 
 }

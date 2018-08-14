@@ -7,5 +7,8 @@ import fr.afcepf.ai103.data.Repannonce;
 public interface IDaoReponses {
 	
 	public List<Repannonce> rechercherReponsesAnnonces(int idUtilisateur);
+	
+	// Insertion
+	public Repannonce insererNouvelleReponse(Repannonce rep);
 
 }

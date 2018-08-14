@@ -30,4 +30,10 @@ public class ServiceReponses implements IServiceReponses {
 		return daoReponses.rechercherReponsesAnnonces(utilisateurCourant);
 	}
 
+
+	@Override
+	public Repannonce save(Repannonce rep) {
+		return daoReponses.insererNouvelleReponse(rep);
+	}
+
 }
