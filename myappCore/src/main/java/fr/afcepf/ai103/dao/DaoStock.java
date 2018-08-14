@@ -25,16 +25,21 @@ public class DaoStock implements IDaoStock {
 		
 	}
 	
-	public Stock insererNouveauStock(Stock s) {
-		entityManager.persist(s);
-		return s;
-	}
-
 	public List<Stock> rechercherStocks() {
 		return entityManager.createQuery("SELECT s FROM Compte s",Stock.class)
 	            .getResultList();
 	}
-
+	
+	@Override
+	public Stock insererNouveauStock(Stock s) {
+		entityManager.persist(s);
+		return s;
+	}
+	
+	@Override
+	public void mettreAJourStock(Stock stock) {
+		entityManager.merge(stock);
+	}
 
 	@Override
 	public List<Stock> rechercherStockUtilisateur(int idUtilisateur) {

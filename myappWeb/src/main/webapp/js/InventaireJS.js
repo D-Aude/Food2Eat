@@ -141,10 +141,75 @@ var vmAjouter = new Vue({
 			Ajouter: function () {
 				var produit = document.getElementById('produit').value;
 				var quantite = document.getElementById('quantite').value;
-				var dlc = document.getElementById('dlc').value;
+				var dlc = document.getElementById('dlc');
 				
-				console.log('Stock.ajouterStock: produit='+produit+'; quantite='+quantite+'; dlc='+JSON.stringify(dlc)+';');
-			}
+				console.log('Ajouter Stock: produit='+produit+'; quantite='+quantite+'; dlc='+JSON.stringify(dlc.value)+';');
+				
+				
+				if(produit == 0)
+				{
+					alert('Veuillez rentrer un produit à ajouter !')
+				}
+				else
+				{
+					
+					var stock = {
+							idStock : 0,
+							dateConsoPref : new Date(),
+							dateJeter : null,
+							dateManger : null,
+							dlc : dlc.valueAsNumber,
+							fractionRestante : this.restant,
+							quantite : quantite,
+					};
+					
+			      //recuperation info stock
+					if(dlc.value == "")
+					{
+						var now = Date.now();
+						var nowNumber = Date.parse(now)/1000;
+						var dateConsoPref = moment(now).add(this.produits[produit-1].modeConservation.joursExtensionConservation, 'd');
+					    stock.dateConsoPref = Date.parse(dateConsoPref)/1000;
+					}
+					else
+					{
+						var dateConsoPref = moment(dlc.valueAsNumber).add(this.produits[produit-1].modeConservation.joursExtensionConservation, 'd');
+					      stock.dateConsoPref = Date.parse(dateConsoPref)/1000;
+					}
+				      
+				      if(this.restant == this.nombreUnite)
+				      {
+				    	  stock.entame = 0;
+				      }
+				      else
+				      {
+				    	  stock.entame = 1;
+				      }
+	
+				      stock.dateAchat = Date.now();
+	
+				      stock.produit = this.produits[produit-1];
+	
+				      var session = sessionStorage.getItem('utilisateurCourant');
+				      stock.utilisateur = JSON.parse(session);
+	
+				      var stockAsJsonString = JSON.stringify(stock);
+				      
+				      console.log(stockAsJsonString);
+				      
+				    //declenchement de la requête:
+				      var httpRequest = new XMLHttpRequest();
+				      httpRequest.open("POST", "./services/rest/stock/postStock");
+				      httpRequest.setRequestHeader("Content-Type" , "application/json");
+				      httpRequest.send(stockAsJsonString);
+				      console.log ("donnees de la requete envoyee : " + stockAsJsonString);
+				      
+				      //enlever modal + recharger page
+				      document.getElementById('AjouterForm').style.display='none';
+				      vm.chargerStock();
+					}
+					
+			}  
 	  
 		}
 	  

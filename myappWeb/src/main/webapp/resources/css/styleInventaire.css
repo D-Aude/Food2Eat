@@ -13,7 +13,7 @@
 	width: 100%;
   	display: inline-block;
     text-align: center;
-    margin-top: 160px;
+    margin-top: 130px;
 }
 
 .btnAction {
@@ -111,15 +111,9 @@ th #dlcColumn, tr #dlcColumn {
 }
 
 /* The Close Button */
-.close {
-    color: black;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
 
-.close:hover,
-.close:focus {
+.Xclose:hover,
+.Xclose:focus {
     color: red;
     text-decoration: none;
     cursor: pointer;

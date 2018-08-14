@@ -21,6 +21,7 @@
         <button class="btnAction" onclick="document.getElementById('AjouterForm').style.display='block'">Ajouter</button>
         <button class="btnAction">Manger</button>
         <button class="btnAction">Jeter</button>
+        <button class="btnAction">Donner</button>
     </div>
 	<input type="hidden" id="idUser" type="text" v-model="idUser" placeholder="Rechercher"  /><br/>
          <input type="text" v-model="searchKey"> <!-- class="form-control"> -->
@@ -40,7 +41,7 @@
    		</thead>
    		<tbody id="app">
    			<tr v-for="stock in stocks">
-   				<td >{{stock.quantite}}</td><td>{{stock.produit.nomProduit}}</td><td>{{moment(stock.DLC).format('L')}}</td>
+   				<td >{{stock.quantite}}</td><td>{{stock.produit.nomProduit}}</td><td>{{moment(stock.dlc).format('DD/MM/YYYY')}}</td>
    				<td v-if="stock.produit.mesure.idMesure == 1"><progress id="file" name="file" max="100" :value="stock.fractionRestante"></progress></td>
    				<td v-else>{{stock.fractionRestante}}<strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong></td>
    			</tr>
@@ -55,7 +56,7 @@
       <!-- Contenu de la modal -->
        <form class="modalContent" @submit.prevent="Ajouter()">
        	<div id="headerAjouter"> 
-			<span class="close" onclick="document.getElementById('AjouterForm').style.display='none'">&times;</span>
+			<span class="Xclose" onclick="document.getElementById('AjouterForm').style.display='none'">&times;</span>
   			<b id="TitreAjouter">AJOUTER A L'INVENTAIRE</b>
       	</div>
       	<br/>

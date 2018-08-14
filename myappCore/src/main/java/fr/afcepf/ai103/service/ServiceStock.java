@@ -28,4 +28,17 @@ public class ServiceStock implements IServiceStock {
 		
 	}
 
+	@Override
+	public Stock saveOrUpdateStock(Stock stock) {
+		if(stock.getIdStock() == 0)
+		{
+			stock = daoStock.insererNouveauStock(stock);
+		}
+		else
+		{
+			daoStock.mettreAJourStock(stock);
+		}
+		return stock;
+	}
+
 }

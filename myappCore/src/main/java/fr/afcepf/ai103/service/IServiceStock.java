@@ -9,5 +9,7 @@ public interface IServiceStock {
 	List<Stock> rechercherStockUtilisateur(int idUtilisateur);
 
 	List<Stock> rechercherStockModeConservation(int idUtilisateur, String nomModeConservation);
+
+	Stock saveOrUpdateStock(Stock stock);
 	
 }
