@@ -18,20 +18,21 @@
 		<div>
 
 			<div id="Annonces-elements" v-for="annonce in annonces">
-
-						<input type="button" value="Annuler" id="btnAnnulerAnnonce" />
+					
+			<button v-on:click="AnnulerMonAnnonce(annonce.idAnnonce)" id="btnAnnulerAnnonce">Annuler </button>
 				{{annonce.titre}} <br/>
 				{{annonce.stock.utilisateur.pseudo}}, vous proposez :
 				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
 			Vos choix de date : </br>
-				<div id="dateMesAnnonces">- {{moment(annonce.repannonces.dateRdv1).format('L')}}</br>
-				- {{moment(annonce.repannonces.dateRdv2).format('L')}}</br>
-				- {{moment(annonce.repannonces.dateRdv3).format('L')}}</br></div>
+				<div id="dateMesAnnonces">- {{moment(annonce.dateRdv1).format('L')}}</br>
+				- {{moment(annonce.dateRdv2).format('L')}}</br>
+				- {{moment(annonce.dateRdv3).format('L')}}</br></div>
 			Votre lieu de rendez-vous :<span>{{annonce.adresse.numeroVoie}} {{annonce.adresse.typeVoie}} {{annonce.adresse.nomVoie}} {{annonce.adresse.ville.ville}} {{annonce.adresse.ville.codePostal}}</span><br/>
+				
 				</div>
 			</div>
 		</div>
-	</div>
+	
 	<script src="./js/AnnonceVueJs.js"></script>
 </body>
 </html>

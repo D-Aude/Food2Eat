@@ -3,10 +3,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Food2Eat (beta)</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+	<script src="./resources/js/vue.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+	<script src="http://momentjs.com/downloads/moment-with-locales.js" ></script>
 <link rel="stylesheet" type="text/css" href="./resources/css/styleMesAnnonces.css">
 </head>
 <body>
@@ -47,15 +46,6 @@ Votre lieu de rendez-vous :<span>{{annonce.adresse.numeroVoie}} {{annonce.adress
 		</div>
 	</div>
 	<script src="./js/AnnonceVueJs.js"></script>
-	<script>
-	(function (){
-	    var radios = document.getElementsByName('plop');
-	    for(var i = 0; i < radios.length; i++){
-	        radios[i].onclick = function(){
-	            document.getElementById('test').innerText = this.value;
-	        }
-	    }
-	})();
-	</script>
+
 </body>
 </html>

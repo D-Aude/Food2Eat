@@ -17,7 +17,8 @@ public interface IDaoMesAnnonce {
 	public List <Annonce> rechercherAnnoncesDesAutresUtilisateurs(int idUtilisateur);
 	public void mettreAJourMonAnnonce(Annonce idAnnonce);
 	public Annonce AnnoncesParId(int Annonce);
-	
+	public List<Annonce> rechercherMesAnnoncesTerminesNonAnnulees(int idUtilisateur);
+	public List<Annonce> rechercherMesAnnoncesTerminesCarAnnulees(int idUtilisateur);
 	
 	/**********************MES ENVIES *************************************/
 	public List <Annonce> rechercherMesEnvies( int utilisateur );

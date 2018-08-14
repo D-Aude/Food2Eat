@@ -1,42 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Food2Eat (beta)</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script src="./resources/js/vue.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+<script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="./resources/css/styleMesAnnonces.css">
 </head>
 <body>
 	<div id="listeMesAnnonceTermines">
-
-		<h1 id="Annonces-Titre">Mes annonces terminées</h1>
+		<button @click="chargerAnnonces()">Listes annonces cloturÃ©es</button>
+		<select id="selectTypeAnnoncesTerminees"
+			v-model="typeAnnoncesCloturees">
+			<option value="plop">Toutes mes annonces terminÃ©es</option>
+			<option value="mesAnnoncesAnnulees">Mes annonces annulÃ©es</option>
+			<option value="mesAnnoncesTerminees">Mes annonces terminÃ©es</option>
+		</select>
+		<h1 id="Annonces-Titre">Mes annonces terminÃ©es</h1>
 		<br />
 		<div>
-
 			<div id="Annonces-elements" v-for="annonce in annonces">
-				<div v-if="annonce.annulation == empty">
-					<div v-if=" annonce.repannonces.dateAcceptationReponse =! null">
-						<h3>Annonce terminée</h3>
-						<span>"{{annonce.titre}}" Votre annonce est terminée !<br />
+				<div v-if="annonce.annulation == null">
+					<div v-if=" annonce.dateAnnulation == null">
+						<h3>Annonce terminÃ©e</h3>
+						<span>{{annonce.titre}} Votre annonce est terminÃ©e !<br />
 							Vous avez fait un don de : {{annonce.stock.quantite}}
 							{{annonce.stock.produit.nomProduit}} </br> le
-							{{moment(annonce.repannonces.dateRDV).format('L')}} à
-							{{annonce.repannonces[0].utilisateur.pseudo}} . </span> <br />
+							{{moment(annonce.repannonces.dateRDV).format('L')}} . </span> <br />
+					</div>
+					<div v-if="annonce.dateFinAnnonce == null">
+							Vous avez annulez votre don de :  {{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}}
+							Date de l'annulation :
+							{{moment(annonce.dateAnnulation).format('L')}}
+							Merci de renseigner un motif d'annulation :  </br>
+						
+						<select id="selectMotifAnnulation" v-model="nomAnnulation">
+							<option v-for="annulation in annulations":value="annulation.idAnnulation">
+							{{annulation.nomAnnulation}}</option>
+						</select>
+						<button v-on:click="insererMotifAnnulation(annonce.idAnnonce)" id="btnValiderMotifAnnulation">Valider</button>
 					</div>
 				</div>
 				<div v-else>
-					<h3>Annonce annulée</h3>
-					<span>"{{annonce.titre}}" Vous avez annulé votre annonce <br />
+					<h3>Annonce annulÃ©e</h3>
+					<span>"{{annonce.titre}}" Vous avez annulÃ© votre annonce <br />
 						Motif de l'annulation : {{annonce.annulation.nomAnnulation}}<br />
 						Date de l'annulation :
 						{{moment(annonce.dateAnnulation).format('L')}}
 					</span>
-
-				</div>
 			</div>
 		</div>
 	</div>
