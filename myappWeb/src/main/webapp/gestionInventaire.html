@@ -1,8 +1,95 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="./resources/css/stylesGestionInventaire.css" media="all" />
+<meta charset="UTF-8">
+<title>Food2Eat (beta)</title>
+	<link rel="stylesheet" type="text/css" href="./resources/css/styleInventaire.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.js"></script>
 </head>
 <body>
+<!-- <input type="hidden" id="iduser" type="text" value="1"  /> -->
+
+	<div class="lblTitre">
+		<b>Mon Inventaire</b>
+		<br/>
+	</div>
+
+	<section id="gestionStock">
+	<div>
+        <button class="btnAction" onclick="document.getElementById('AjouterForm').style.display='block'">Ajouter</button>
+        <button class="btnAction">Manger</button>
+        <button class="btnAction">Jeter</button>
+    </div>
+	<input type="hidden" id="idUser" type="text" v-model="idUser" placeholder="Rechercher"  /><br/>
+         <input type="text" v-model="searchKey"> <!-- class="form-control"> -->
+         <label>Mode de Conservation :</label>
+		<select id="selectModeConservation" v-model="modeConservation">
+			<option value="">Tous</option> 
+			<option value="Frigo">Frigo</option> 
+			<option value="Congelateur">Congelateur</option>
+			<option value="Placard">Placard</option>
+		</select>
+	
+	<br/>	
+	
+	<table id="idTable" border="1">
+   		<thead>
+   			<tr><th id="qteColumn">Qte</th><th id="produitColumn">Produit</th><th id="dlcColumn">DLC</th><th id="etatColumn">En stock</th></tr>
+   		</thead>
+   		<tbody id="app">
+   			<tr v-for="stock in stocks">
+   				<td >{{stock.quantite}}</td><td>{{stock.produit.nomProduit}}</td><td>{{moment(stock.DLC).format('L')}}</td>
+   				<td v-if="stock.produit.mesure.idMesure == 1"><progress id="file" name="file" max="100" :value="stock.fractionRestante"></progress></td>
+   				<td v-else>{{stock.fractionRestante}}<strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong></td>
+   			</tr>
+   		</tbody>
+   		
+   	</table>
+    </section>
+
+<!-- Modal -->
+    <div id="AjouterForm" class="modal">
+
+      <!-- Contenu de la modal -->
+       <form class="modalContent" @submit.prevent="Ajouter()">
+       	<div id="headerAjouter"> 
+			<span class="close" onclick="document.getElementById('AjouterForm').style.display='none'">&times;</span>
+  			<b id="TitreAjouter">AJOUTER A L'INVENTAIRE</b>
+      	</div>
+      	<br/>
+      	<div id=infoAjout>
+	      	<p class="champAjouter">
+				<label for="produit"><b>Produit :</b></label>
+				<select id="produit" v-model="selectProduit" >
+	       	  		<option value=0>-- Veuillez choisir un produit --</option>
+					<option v-for="produit in produits" :value="produit.idProduit">{{produit.nomProduit}}</option>
+				</select>
+			</p><br/>
+			<p class="champAjouter">
+				<label for="quantite"><b>Quantite :</b></label>
+				<input id="quantite" v-model="inputQuantite" type="number" min="1" >
+			</p><br/>
+			<p class="champAjouter">
+				<label for="dlc"><b>DLC/DDM :</b></label>
+				<input id="dlc" type="date" v-model="inputDlc" >
+			</p><br/>
+	          <p class="champAjouter">
+				<label for="etat"><b>Etat :</b></label>
+				<label v-if="idMesure == 1">{{restant}}%</label>
+				<input v-if="idMesure == 1" id="etat"  type="range" min="1" max="100" value="100" v-model="restant" class="slider" > 
+				<label v-if="estDenombrable">{{restant}}/{{nombreUnite}}</label>
+				<input v-if="estDenombrable" id="etat" type="range" min="1" :max="nombreUnite" value="100" v-model="restant" class="slider" >
+			</p><br/>
+			<button id="btnAjouter" type="submit">Ajouter</button>
+      	</div>
+		
+
+</form>
+</div>
+
+<script src="./js/InventaireJS.js"></script>
+		
 </body>
 </html>

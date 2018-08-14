@@ -32,4 +32,11 @@ public class ServiceUtilisateur implements IServiceUtilisateur {
 		return daoUtilisateur.rechercherListUtilisateurs(idUser);
 	}
 
+	@Override
+	public Utilisateur rechercherUtilisateurParId(int idUtilisateur) {
+		return daoUtilisateur.rechercherUtilisateurParId(idUtilisateur);
+	}
+	
+	
+
 }

@@ -13,4 +13,7 @@ public interface IServiceUtilisateur {
 	// rechercher la liste des utilisateur pour leur envoyer des invitations foodfriend
 	List<Utilisateur> rechercherListUtilisateurs(int idUser);
 	
+	// rechercher utilisateur par idUtilisateur
+	Utilisateur rechercherUtilisateurParId(int idUtilisateur);
+	
 }

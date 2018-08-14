@@ -29,7 +29,9 @@
      <!-- bouton pour ouvrir la modal -->
      <div id="log">
         <button class="btnLogin" onclick="document.getElementById('loginForm').style.display='block'">Login</button>
+        <button class="btnLogin">S'inscrire</button>
     </div>
+
     <!-- Modal -->
     <div id="loginForm" class="modal">
       <span onclick="document.getElementById('loginForm').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -41,12 +43,12 @@
       <div class="container">
           <label for="uname"><b>Nom d'utilisateur</b></label>
           <br/>
-          <input id="pseudo" type="text" placeholder="Votre nom d'utilisateur"> <!--  name="uname" required>-->
+          <input id="pseudo" type="text" placeholder="Votre nom d'utilisateur" name="uname" required>
           <br/>
 
           <label for="psw"><b>Password</b></label>
           <br/>
-          <input id="mdp" type="password" placeholder="Votre mot de passe"> <!--name="psw" required>-->
+          <input id="mdp" type="password" placeholder="Votre mot de passe" name="psw" required>
           <br/>
 
           <button type="submit">Se connecter</button>

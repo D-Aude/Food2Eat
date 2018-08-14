@@ -1,44 +1,24 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Food2Eat (beta)</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
-		<style>
-		[v-cloak] {display: none}
-		</style>
-		<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
-		<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
-	</head>
-	<body>
+<head>
+<meta charset="UTF-8">
+<title>Food2Eat (beta)</title>
+	<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
+</head>
+<body>	
+		<div id="listeUtilisateurs">
 
-		<div id="rechercherFoodfriend" v-cloak>
-			<input v-model="term" type="search">
-			<button @click="search">Search</button>
-			<p/>
+   			<div id="friend-element" v-for="utilisateur in utilisateur">
+ 	   				<img v-bind:src="getSrc(utilisateur.pseudo)"/><br/>	
+	   				{{utilisateur.pseudo}}<br/>
+	   				<button v-on:click="EnvoyerInvitation(utilisateur.idUtilisateur)">AJOUTER EN AMI</button>
+   			</div>   				
+   		</div>
 
-			<div v-for="foodfriend in foodfriend" class="result">
-				<img v-bind:src="getSrc(foodfriend.utilisateur2.pseudo)">
-				{{foodfriend.utilisateur2.pseudo}} <br/>
-	   			{{foodfriend.utilisateur2.nom}} {{foodfriend.utilisateur2.prenom}} <br/><br/>
-	   			{{foodfriend.utilisateur2.email}} <br/>
-	   			<button v-on:click="EnvoyerDemandesFF(foodfriend.idFoodfriend">ENVOYER UNE INVITATION</button>
-				<br clear="left">
-			</div>
 
-			<div v-if="noResults">
-				Désolé, aucun utilisateur a été retrouvé avec ce pseudo. Réessayer !
-			</div>
-
-			<div v-if="searching">
-				<i>Searching...</i>
-			</div>
-
-		</div>
-
-		<script src="./js/foodfriendtestJ2.js"></script>
-	</body>
+	<script src="./js/foodfriendtestJ2.js"></script>
+</body>
 </html>

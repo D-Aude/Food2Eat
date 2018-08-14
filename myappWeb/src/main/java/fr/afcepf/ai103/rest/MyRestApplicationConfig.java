@@ -25,6 +25,8 @@ public class MyRestApplicationConfig extends Application {
 		classes.add(FoodfriendRest.class);
 		classes.add(MesReponsesRecues.class);
 		classes.add(UtilisateurRest.class);
+		classes.add(ProduitRest.class);
+		classes.add(EvaluationsRest.class);
 		//classes.add(ServiceRest2.class);
 		return classes;
 	}
