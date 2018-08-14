@@ -13,13 +13,17 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Annulation.findAll", query="SELECT a FROM Annulation a")
+@NamedQueries (value= {@NamedQuery(name="Annulation.findAll", query="SELECT a FROM Annulation a"),
+		@NamedQuery(name="Annulation.chercherAnnulation", query="SELECT a FROM Annulation a"),
+	
+})
+		
 public class Annulation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="ANNULATION_IDANNULATION_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ANNULATION_IDANNULATION_GENERATOR")
+	
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_ANNULATION")
 	private int idAnnulation;
 

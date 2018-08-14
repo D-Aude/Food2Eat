@@ -114,5 +114,21 @@ public class DaoMesAnnonces implements IDaoMesAnnonce {
 												.getResultList();
 	}
 	
+	public List<Annonce> rechercherMesAnnoncesTerminesNonAnnulees(int utilisateur)
+	{
+		return entityManager.createNamedQuery("Annonce.listeMesAnnoncesTermineesNonAnnulees",Annonce.class)
+				.setParameter("idUtilisateur",utilisateur)
+				.getResultList();
+	}
+
+
+
+	@Override
+	public List<Annonce> rechercherMesAnnoncesTerminesCarAnnulees(int idUtilisateur) {
+		
+		return entityManager.createNamedQuery("Annonce.listeMesAnnoncesTermineesCarAnnulees",Annonce.class)
+				.setParameter("idUtilisateur",idUtilisateur)
+				.getResultList();
+	}
 	
 }
