@@ -75,8 +75,7 @@ public class Stock implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="STOCK_IDSTOCK_GENERATOR", sequenceName="ORDER_SEQUENCE")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="STOCK_IDSTOCK_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	//@GeneratedValue(strategy=GenerationType.IDENTITY) //IDENTITY convient le mieux
     //pour les bases de données récentes
 	@Column(name="ID_STOCK")

@@ -46,6 +46,15 @@ padding-top: 1px;
     float:right;
     
 }
+#btnValiderMotifAnnulation
+{
+	padding-top: 1px;
+  padding-left: 10px;
+   max-width: 970px;
+   height: 40px;
+   width : 100px;
+	
+}
 
 #dateMesAnnonces {
  padding-left :120px;

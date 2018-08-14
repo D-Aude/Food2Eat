@@ -25,6 +25,12 @@ import java.util.List;
 		@NamedQuery(name="Annonce.listeMesAnnoncesTerminees", query="SELECT a FROM Annonce a WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
 																								+ "and(a.dateAnnulation is not null "
 																								+ "or a.dateFinAnnonce is not null)"),
+		@NamedQuery(name="Annonce.listeMesAnnoncesTermineesNonAnnulees", query="SELECT a FROM Annonce a WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
+																								+ "and a.dateAnnulation is  null "
+																								+ "and a.dateFinAnnonce is not null"),
+		@NamedQuery(name="Annonce.listeMesAnnoncesTermineesCarAnnulees", query="SELECT a FROM Annonce a WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
+																								+ "and a.dateAnnulation is not null "
+																								+ "and a.dateFinAnnonce is null"),
 		
 		@NamedQuery(name="Annonce.listeMesAValidees", query="SELECT a FROM Annonce a  join a.repannonces r WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
 																								+ "and a.dateAnnulation is null "

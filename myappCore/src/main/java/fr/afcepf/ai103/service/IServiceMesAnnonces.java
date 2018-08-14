@@ -16,7 +16,9 @@ public interface IServiceMesAnnonces {
 	List<Annonce> rechercherAnnoncesAutresUtilisateur(int idUtilisateur);	
 	Annonce modifierMonAnnonce(Annonce idAnnonce);
 	public Annonce UneAnnonce(int idAnnonce);
-
+	List <Annonce>rechercherAnnonceTermineesNonAnnulees(int idUtilisateur);
+	List <Annonce>rechercherAnnonceTermineesCarAnnulees(int idUtilisateur);
+	
 	/********************* MES ENVIES *************************************/
 	
 	List<Annonce> rechercherMesEnvies(int utilisateur );
