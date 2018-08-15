@@ -99,7 +99,7 @@ var LesReponsesRecues = new Vue({
 		    	  annonceTerminee['dateFinAnnonce'] = Date.now();
 				
 		    	// POST Reponse acceptee
-//			    axios.post('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/maj',
+//			    axios.post('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees',
 //			    			annonceTerminee).then((response) => {			    				
 //			    			  });
 //				

@@ -6,144 +6,139 @@ var id = JSON.parse(Session)["idUtilisateur"];
 // MES FOODFRIEND ____________________________________________________________________________
 var mesFoodfriend = new Vue({
   
-  el: '#listeFoodfriend',
-  data: {
-    foodfriend: [],
-    iduser: id, // Récupération de l'idUtilisateur de la session
-    src: "./resources/img/utilisateur/",
-    imgtype: ".jpeg",
-    
-    
-  },
-  methods: {
-	// METHODE : générer le lien URL à partir d'un pseudo  
-	getSrc: function(pseudo) {
-		return this.src + pseudo + this.imgtype;
+	el: '#listeFoodfriend',
+	data: {
+	    foodfriend: [],
+	    iduser: id, // Récupération de l'idUtilisateur de la session
+		src: "./resources/img/utilisateur/",
+		imgtype: ".jpeg",
+		nbFoodfriend: ""    
 	},
-	
-	// METHODE : retirer un foodfriend
-	RetirerFF: function(idfoodfriend, pseudo) {
-
-		alert(pseudo + " n'est plus votre foodfriend.")			
-		// Instanciation
+  
+	watch: {
+	  // Méthode lancee à chaque fois que nbFoodfriend est modifié
+		nbFoodfriend: function() {
 		var vm = this;
-
-		// Récupération du foodfriend qui nous interesse
-		axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/' + idfoodfriend)
+	  	axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesfoodfriend?iduser=' + vm.iduser)
 	      .then(function (response) {
-	    	  var ffjson = response.data;
-
-	    	  
-	    	  ffjson['dateFinRelation'] = Date.now();
-
-	    	  // post			    	  
-	    	  axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
-	    			  ffjson).then((response) => {
-	    				  console.log(response);
-	    			  });
-	    	  
-	    	  // redirection vers l'acceuil
-	  	    location.reload();
-
-	      })		      
-	    
-	}
+	        vm.foodfriend = response.data;
+	      })
+		}
+	},
+  
+  	methods: {
+  		// METHODE : générer le lien URL à partir d'un pseudo  
+		getSrc: function(pseudo) {
+			return this.src + pseudo + this.imgtype;
+		},
 	
+		// METHODE : retirer un foodfriend
 	
-  },
-  // METHODE : qui se lance à la création de la page : récupération de la liste des foodfriend 
-  created: function() {
-	var vm = this
-    axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesfoodfriend?iduser=' + vm.iduser)
-      .then(function (response) {
-        vm.foodfriend = response.data
-      })
-  }
+		RetirerFF: function(foodfriend) {
+			console.log(foodfriend);
+			var vm = this;
+			
+			foodfriend.dateFinRelation = Date.now();
+			
+		  	  // post			    	  
+		  	axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
+		  			foodfriend).then((response) => {
+		  			vm.nbFoodfriend = vm.nbFoodfriend - 1;
+	  			  });	  		  	
+		},	
+  	},
+  	
+  	// METHODE : qui se lance à la création de la page : récupération de la liste des foodfriend 
+  	created: function() {
+		var vm = this
+	    axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesfoodfriend?iduser=' + vm.iduser)
+	      .then(function (response) {
+	        vm.foodfriend = response.data;
+	        vm.nbFoodfriend = vm.foodfriend.length;
+	      })
+  	}
   
 })
 
 // MES DEMANDES RECUES ________________________________________________________________________
 var mesDemandesFFRecues = new Vue({
 	  
-	  el: '#listeDemandesFoodfriend',
-	  data: {
+	el: '#listeDemandesFoodfriend',
+	data: {
 	    foodfriend: [],
 	    iduser: id,
 	    src: "./resources/img/utilisateur/",
-	    imgtype: ".jpeg"
+	    imgtype: ".jpeg",
+	    nbInvitations: ""
 	    	
-	  },
-	  
+	},
+	 
+	watch: {
+  // Méthode lancee à chaque fois que nbFoodfriend est modifié
+		nbInvitations: function() {
+		    var vm = this;
+			axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesdemandesrecues?iduser=' + vm.iduser)
+		      .then(function (response) {
+		        vm.foodfriend = response.data;
+		      })
+		}
+	},
 	  	  
-	  methods: {
+	methods: {
 		getSrc: function(pseudo) {
 			return this.src + pseudo + this.imgtype;
 		},
 		
-		RefuserDemande: function(idfoodfriend) {
+		RefuserDemande: function(foodfriend) {
 
 			alert("Votre réponse a bien été prise en compte.")			
 			// Instanciation
 			var vm = this;
-
-			// Récupération du foodfriend qui nous interesse
-			axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/' + idfoodfriend)
-		      .then(function (response) {
-		    	  var ffjson = response.data;
-
-		    	  ffjson['dateReponse'] = Date.now();
-		    	  ffjson['dateFinRelation'] = Date.now();
-		    	  
-		    	  // post			    	  
-		    	  axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
-		    			  ffjson).then((response) => {
-		    				  console.log(response);
-		    			  });
-		    	  
-		    	  // redirection vers la page d'accueil
-		  	    location.reload();
-
-		      })		      
-		    
+			
+			// Maj foodfriend
+	    	  foodfriend.dateReponse = Date.now();
+	    	  foodfriend.dateFinRelation = Date.now();
+	    	  
+	    	  // post			    	  
+	    	  axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
+	    			  foodfriend).then((response) => {
+	    			  vm.nbInvitations = vm.nbInvitations - 1;	     				  
+	    			  });
+	    	   
 		},
 		
 
-		AccepterDemande: function(idfoodfriend) {
-
+		AccepterDemande: function(foodfriend) {
+			console.log(foodfriend);
 			alert("Félicitation ! Vous avez un nouveau foodfriend !")			
 			// Instanciation
 			var vm = this;
 
-			// Récupération du foodfriend qui nous interesse
-			axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/' + idfoodfriend)
-		      .then(function (response) {
-		    	  var ffjson = response.data;
+			// Maj foodfriend
 
-		    	  ffjson['dateReponse'] = Date.now();
-		    	  
-		    	  // post			    	  
-		    	  axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
-		    			  ffjson).then((response) => {
-		    				  console.log(response);
-		    			  });
-		    	  
-		    	  // récupérer les nouvelles données
-		  	    location.reload();
-
-		      })		      
-		    
+			foodfriend.dateReponse = Date.now();
+		    console.log(foodfriend);	  
+	    	  // post			    	  
+	    	axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
+	    			  foodfriend).then((response) => {
+	    				  console.log(response);
+	    				  vm.nbInvitations = vm.nbInvitations - 1;
+	    				  
+	    			  });
+	    	
 		}
 	  
 	  },
 	   
+	  
 	  created: function() {
 	    
 		var vm = this
 	    axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesdemandesrecues?iduser=' + vm.iduser)
 	      .then(function (response) {
-	        vm.foodfriend = response.data
-	      })
-	      
+	        vm.foodfriend = response.data;
+	        vm.nbInvitation = vm.foodfriend.length;
+	      })	      
 	    
 	  }
 	  
