@@ -165,8 +165,9 @@ public class MesAnnoncesPosteesRest {
 	return annonce;
 }
 	
-	// Test
-	@Path("test/{idUtilisateur}")
+	// Récupérer les annonces de l'utilisateur session ayant au moins une réponse __________________________
+	// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/reponsesRecues/1
+	@Path("reponsesRecues/{idUtilisateur}")
 	@GET
 	public List <Annonce> test(@PathParam("idUtilisateur") int utilisateur )
 	{

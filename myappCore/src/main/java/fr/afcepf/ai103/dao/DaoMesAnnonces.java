@@ -117,16 +117,16 @@ public class DaoMesAnnonces implements IDaoMesAnnonce {
 	}
 
 	
-	// Récupérer les annonces avec au moins une réponse
+	// Récupérer les annonces de l'utilisateur session ayant au moins une réponse
 	@Override
 	public List<Annonce> recupererAnnonceAvecReponse(int iduser) {
 		List<Annonce> resultat = entityManager.createQuery("Select a from Annonce a "
 				+ "left join a.repannonces r "
+				+ "WHERE a.stock.utilisateur.idUtilisateur =:idUtilisateur "
 				+ "GROUP BY a.idAnnonce "
 				+ "having count(r.idReponse) > 0 "
 				+ "and a.dateAnnulation is null "
-				+ "and a.dateFinAnnonce is null "
-				+ "and a.stock.utilisateur.idUtilisateur = idUtilisateur")
+				+ "and a.dateFinAnnonce is null ")
 				.setParameter("idUtilisateur", iduser)
 				.getResultList();
 		return resultat;
