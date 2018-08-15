@@ -36,7 +36,6 @@ var annoncesAvecReponses = new Vue({
 	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/annoncesAvecRep/' + vm.iduser)
 	      .then(function (response) {
 	        vm.annonce = response.data;
-	        console.log(vm.annonce[0][0].titre);
 	      })
 	  }
 	
@@ -80,10 +79,9 @@ var LesReponsesRecues = new Vue({
 		accepterRep: function(idReponse, idAnnonce) {
 			
 			var vm = this;
-			console.log(vm.reponse[0].idReponse)
 			
 			var i;
-			for (i = 0 ; i <= vm.reponse.length ; i++) {				
+			for (i = 0 ; i < vm.reponse.length ; i++) {				
 				
 				if (vm.reponse[i].idReponse == idReponse) { // Accepter la reponse
 					// maj reponse
@@ -92,30 +90,27 @@ var LesReponsesRecues = new Vue({
 			    	// POST Reponse acceptee
 			    	axios.post('http://localhost:8080/myappWeb/services/rest/reponses/maj',
 			    			vm.reponse[i]).then((response) => {
-			    				  console.log(response);
-			    				  console.log("reponse acceptee termine !");
+			    				  
+			    				// Maj annonce				
+		    					// récupérer annonce
+		    					axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + idAnnonce)
+		    				      .then(function (response) {
+		    				    	  
+		    				    	  var annonceTerminee = response.data;
+		    				    	  annonceTerminee['dateFinAnnonce'] = Date.now();
+		    						
+		    				    	// POST Reponse acceptee
+		    					    axios.post('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees',
+		    					    			annonceTerminee).then((response) => {
+		    					    			  });			    						
+		    						      })			    				  			    				  
 			    			  });
 					
 				} else { // refuser les autres réponses
 					vm.refuserRep(vm.reponse[i]);
 				}
 			}
-				
-			// Maj annonce				
-			// récupérer annonce
-			axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + idAnnonce)
-		      .then(function (response) {
-		    	  
-		    	  var annonceTerminee = response.data;
-		    	  annonceTerminee['dateFinAnnonce'] = Date.now();
-				
-		    	// POST Reponse acceptee
-//			    axios.post('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees',
-//			    			annonceTerminee).then((response) => {			    				
-//			    			  });
-//				
-				      })
-				      
+							      
 			vm.nbReponses = 0;
 	    			
 		},
@@ -129,7 +124,6 @@ var LesReponsesRecues = new Vue({
     			  reponseRefusee).then((response) => {
     				  vm.nbReponses = vm.nbReponses - 1;
     			  });
-
 		     
 		}
 		
