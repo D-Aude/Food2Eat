@@ -24,19 +24,44 @@ public class MesReponsesRecues {
 	private IServiceReponses serviceReponses;
 	
 	@Path("/{idUtilisateur}")
-	@GET
-	
+	@GET	
 	public List<Repannonce> rechercherReponsesAnnonces(@PathParam("idUtilisateur")int id){
 		return serviceReponses.rechercherReponsesAnnonces(id);	
 	}
 	
-	@Path("/nouvelleReponse")
+	
+	// rechercher une reponse
+	//http://localhost:8080/myappWeb/services/rest/reponses/uneReponse/21
+	@Path("/uneReponse/{idReponse}")
+	@GET
+	public Repannonce rechercherReponseParId(@PathParam("idReponse")int id){
+		return serviceReponses.rechercherReponseParId(id);	
+	}
+	
+	
+	// Recuperer toutes les reponses d'une annonce en particulière
+	@Path("reponsesRecues/{idAnnonce}") //http://localhost:8080/myappWeb/services/rest/reponses/reponsesRecues/15
+	@GET
+	public List<Repannonce> rechercherReponsesPourAnnonce(@PathParam("idAnnonce")int id) {
+		return serviceReponses.rechercherReponsesPourAnnonce(id);	
+	}
+	
+	// Insertion nouvelle reponse
+	@Path("/nouvelleReponse") 
 	@POST
 	@Consumes("application/json")
-	public Repannonce postNewFoodfriend(Repannonce rep) {
-		System.out.println("_______________________________________________________Méthode postNewReponse ______________________________________________________________");
+	public Repannonce postNewReponse(Repannonce rep) {
 		
 		rep = serviceReponses.save(rep);
+		return rep;
+	}
+	
+	//Maj réponse
+	@Path("/maj")
+	@POST
+	@Consumes("application/json")
+	public Repannonce postReponse(Repannonce rep) {
+		rep = serviceReponses.update(rep);
 		return rep;
 	}
 	

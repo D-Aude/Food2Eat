@@ -33,79 +33,100 @@ var annoncesAvecReponses = new Vue({
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces ayant des réponses
 	  created: function() {
 		var vm = this
-	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/reponsesRecues/' + vm.iduser)
+	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/annoncesAvecRep/' + vm.iduser)
 	      .then(function (response) {
-	        vm.annonce = response.data
+	        vm.annonce = response.data;
+	        console.log(vm.annonce[0][0].titre);
 	      })
 	  }
 	
 })
 
 // LISTE DES REPONSES
-var reponsesAnnonce = new Vue({
-	  el: '#annoncesCommunauteDetail',
+var LesReponsesRecues = new Vue({
+	  el: '#LesReponsesRecues',
 	  data: {
-	    annonce: [],
+	    reponse: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
-
-
+	    src: "./resources/img/utilisateur/",
+	    imgtype: ".jpeg",
 	    	    
 	  },
 	  methods: { 
+		// METHODE : générer le lien URL à partir d'un pseudo  
+		getSrc: function(pseudo) {
+			return this.src + pseudo + this.imgtype;
+		},
 		moment: function (date) {
 			return moment(date);
 		},
+		
 		date: function (date) {
 			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
 		},
 		
-		voirReponses: function(idAnnonce) {
-			console.log("Début de la fonction");
+		accepterRep: function(idReponse, idAnnonce) {
+			
 			var vm = this;
+			console.log(vm.reponse[0].idReponse)
 			
-			// Instanciation d'une annonce avec l'idAnnonce
-			var annonceChoisie = {
-					"idAnnonce" : idAnnonce
+			var i;
+			for (i = 0 ; i <= vm.reponse.length ; i++) {				
+				
+				if (vm.reponse[i].idReponse == idReponse) { // Accepter la reponse
+					// maj reponse
+					vm.reponse[i].dateAcceptationReponse = Date.now();
+					
+			    	// POST Reponse acceptee
+			    	axios.post('http://localhost:8080/myappWeb/services/rest/reponses/maj',
+			    			vm.reponse[i]).then((response) => {
+			    				  console.log(response);
+			    				  console.log("reponse acceptee termine !");
+			    			  });
+					
+				} else { // refuser les autres réponses
+					vm.refuserRep(vm.reponse[i]);
+				}
 			}
+				
+			// Maj annonce
+				
+			// récupérer annonce
+			axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + idAnnonce)
+		      .then(function (response) {
+		    	  
+		    	  var annonceTerminee = response.data;
+		    	  annonceTerminee['dateFinAnnonce'] = Date.now();
+				
+		    	// POST Reponse acceptee
+//			    axios.post('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/maj',
+//			    			annonceTerminee).then((response) => {			    				
+//			    			  });
+//				
+				      })
+	    
 			
-			// Instanciation de l'utilisateur de la session
-			var utilisateurEnCours = {
-					"idUtilisateur" : vm.iduser
-			}
-			
-			
-			// Instanciation d'une Repannonce
-	    	var repannonce = {
-	    			  "idReponse" : null,
-	    			  "dateAcceptationReponse" : null,
-	    			  "dateAnnulationReponse" : null,
-	    			  "dateRdv" : vm.selected,
-	    			  "dateRefus" : null,
-	    			  "dateReponse" : Date.now(),
-	    			  "annonce" : annonceChoisie,
-	    			  "utilisateur" : utilisateurEnCours
-	    	  }
-			
-			// POST
-			console.log("début du post")
-			
-	    	axios.post('http://localhost:8080/myappWeb/services/rest/reponses/nouvelleReponse',
-	    			repannonce).then((response) => {
-	    				  console.log(response);
-	    				  console.log("terminé");
-	    			  });
+		},
+		
+		refuserRep: function(reponseRefusee) {
+			reponseRefusee.dateRefus = Date.now();
+    	  
+    	  // post			    	  
+    	  axios.post('http://localhost:8080/myappWeb/services/rest/reponses/maj',
+    			  reponseRefusee).then((response) => {
+    			  });
+
+		     
 		}
 		
 	  },
 	  
-	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
-	  created: function() {
+	  // METHODE : qui se lance à la création de la page : récupération les réponses d'une annonce
+	  created: function(idAnnonce) {
 		var vm = this
-	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + 15)
+	    axios.get('http://localhost:8080/myappWeb/services/rest/reponses/reponsesRecues/' + 14)
 	      .then(function (response) {
-	        vm.annonce = response.data;
-	        console.log(vm.annonce);
-	        
+	        vm.reponse = response.data;	        
 	      })
 	  }
 	

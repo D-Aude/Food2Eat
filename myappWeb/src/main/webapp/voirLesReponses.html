@@ -10,17 +10,19 @@
 	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
 </head>
 <body>		
-		<div id="annoncesAvecReponses">
-			<h1>Mes annonces publiees avec reponses</h1>
-   			<div id="annoncesReponses" v-for="annonce in annonce">     					
+		<div id="LesReponsesRecues">
+			<h1>Réponses recues pour l'annonce "Titre annonce récupéré"</h1>
 			
-					<span>ANNONCES	</span><br/><br/>
-					<span>				
-	   				Titre : {{annonce[0].titre}} <br/>
-	   				Produit proposé : {{annonce[0].stock.produit.nomProduit}}</span><br/><br/>				
-	   				<button>Voir les réponses reçues ({{annonce[1]}})</button>   				
-
+   			<div id="annoncesReponses" v-for="reponse in reponse">
+   				<img id="userimg" v-bind:src="getSrc(reponse.utilisateur.pseudo)"/>     					
+				{{reponse.utilisateur.pseudo}} est intérressé par votre produit.
+				Date choisie : {{moment(reponse.dateRdv).format('L')}}
+				
+				<button v-on:click="accepterRep(reponse.idReponse, reponse.annonce.idAnnonce)">ACCEPTER</button> 
+				<button v-on:click="refuserRep(reponse)">REFUSER</button>			
    			</div>
+   			
+   			
   		</div>
 
 	<script src="./js/ReponsesBis.js"></script>

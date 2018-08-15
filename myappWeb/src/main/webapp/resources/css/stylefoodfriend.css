@@ -28,3 +28,13 @@
 	
 }
 
+#annoncesReponses {
+	border: 2px solid black;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+}
+
+#userimg {
+	height: 50px;
+	width: 50px;
+}

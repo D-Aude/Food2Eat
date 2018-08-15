@@ -31,9 +31,29 @@ public class ServiceReponses implements IServiceReponses {
 	}
 
 
+	// Insérer une réponse dans la base de données
 	@Override
 	public Repannonce save(Repannonce rep) {
 		return daoReponses.insererNouvelleReponse(rep);
+	}
+
+	// Récupérer toutes les réponses d'une annonce
+	@Override
+	public List<Repannonce> rechercherReponsesPourAnnonce(int id) {
+		return daoReponses.rechercherReponsesPourAnnonce(id);
+	}
+
+
+	// rechercher réponse par son id
+	@Override
+	public Repannonce rechercherReponseParId(int id) {
+		return daoReponses.rechercherReponseParId(id);
+	}
+
+	// maj reponse dans la base
+	@Override
+	public Repannonce update(Repannonce rep) {
+		return daoReponses.mettreAjourReponse(rep);
 	}
 
 }
