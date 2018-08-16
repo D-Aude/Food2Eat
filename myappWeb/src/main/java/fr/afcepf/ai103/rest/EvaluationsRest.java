@@ -41,6 +41,12 @@ public class EvaluationsRest {
 	public List<Evaluation> rechercherEvaluationSansCommentaire(@PathParam("idReponse")int id){
 		return serviceEvaluations.rechercherEvaluationSansCommentaire(id);
 	}
+	@Path ("EvalCompleteIdUt/{idUtilisateur}")
+	@GET
+	public List<Evaluation> rechercherEvaluationCompleteParIdUti(@PathParam("idUtilisateur") int idUtilisateur)
+	{
+		return serviceEvaluations.rechercherEvalparIdUti(idUtilisateur);
+	}
 	
 	
 }

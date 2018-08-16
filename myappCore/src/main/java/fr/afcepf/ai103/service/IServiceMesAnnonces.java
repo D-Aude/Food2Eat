@@ -23,7 +23,13 @@ public interface IServiceMesAnnonces {
 	
 	List<Annonce> rechercherMesEnvies(int utilisateur );
 	List<Annonce> rechercherMesEnviesConfirmes(int utilisateur );
+	
+	
 	List<Annonce> rechercherMesEnviesTermines(int utilisateur );
 	List<Annonce> rechercherMesEnviesTerminesAEvaluer(int utilisateur );
+	List<Annonce> rechercherMesEnviesCloturees(int utilisateur);
+	
+	
+	
 	List<Repannonce> essaiReponse (int utilisateur);
 }

@@ -10,8 +10,8 @@ import javax.persistence.PersistenceContext;
 import fr.afcepf.ai103.data.Repannonce;
 import fr.afcepf.ai103.data.Stock;
 
-//@Stateless
-@Singleton //depuis la version 3.1 des EJB (comme @Stateless mais 
+@Stateless
+//@Singleton //depuis la version 3.1 des EJB (comme @Stateless mais 
 //avec la garantie d'avoir une seule instance de la classe d'EJB 
 //fabriquée par le serveur JEE)
 @Local
@@ -30,6 +30,15 @@ public class DaoReponse implements IDaoReponses {
 		return entityManager.createNamedQuery("Repannonce.parUtilisateur", Repannonce.class)
 				.setParameter("id", idUtilisateur)
 				.getResultList();
+	}
+
+	@Override
+	public List <Repannonce> RepannonceParIdAnnonce(int idAnnonce) {
+		System.out.println("je passe par le dao" + idAnnonce);
+		return entityManager.createNamedQuery("Repannonce.parIdAnnonce", Repannonce.class)
+				.setParameter("idAnnonce", idAnnonce)
+				.getResultList();
+		
 	}
 
 }

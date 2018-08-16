@@ -97,7 +97,7 @@ public class DaoMesAnnonces implements IDaoMesAnnonce {
 												.setParameter("idUtilisateur", utilisateur )
 												.getResultList();
 	}
-
+// Mes envies TERMINES QUI SONT EVALUE
 	@Override
 	public List<Annonce> rechercherMesEnviesTermines(int utilisateur) {
 		
@@ -105,7 +105,7 @@ public class DaoMesAnnonces implements IDaoMesAnnonce {
 												.setParameter("idUtilisateur", utilisateur )
 												.getResultList();
 	}
-
+// MES envies TERMINES QUI SONT A EVALUE
 	@Override
 	public List<Annonce> rechercherMesEnviesTerminesAEvaluer(int utilisateur) {
 		
@@ -113,6 +113,15 @@ public class DaoMesAnnonces implements IDaoMesAnnonce {
 												.setParameter("idUtilisateur", utilisateur )
 												.getResultList();
 	}
+// MES ENVIES TERMINES QUI SONT A EVALUER ET EVALUER
+	
+public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
+		
+		return entityManager.createNamedQuery("Annonce.listeMesEnviesCloturees",Annonce.class)
+												.setParameter("idUtilisateur", utilisateur )
+												.getResultList();
+}
+	
 	
 	public List<Annonce> rechercherMesAnnoncesTerminesNonAnnulees(int utilisateur)
 	{

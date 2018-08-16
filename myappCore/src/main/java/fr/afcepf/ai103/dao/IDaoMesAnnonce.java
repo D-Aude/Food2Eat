@@ -23,8 +23,12 @@ public interface IDaoMesAnnonce {
 	/**********************MES ENVIES *************************************/
 	public List <Annonce> rechercherMesEnvies( int utilisateur );
 	public List <Annonce> rechercherMesEnviesConfirmes( int utilisateur );
+	
+				/*******MES ENVIES TERMINES A EVAL, EVALUER ET LES DEUX ************/
 	public List <Annonce> rechercherMesEnviesTermines( int utilisateur );
 	public List <Annonce> rechercherMesEnviesTerminesAEvaluer (int utilisateur);
+	public List <Annonce> rechercherMesEnviesCloturees(int utilisateur);
+	
 	
 	public List <Repannonce> voirReponse (int utilisateur);
 }

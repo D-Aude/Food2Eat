@@ -10,6 +10,8 @@ public interface IServiceReponses {
 	List<Repannonce> rechercherReponsesAnnonces(int id);
 
 	List<Repannonce> rechercherReponseParAnnonce(int utilisateurCourant);
+	
+	List <Repannonce> repParIdAnnonce(int idAnnonce);
 
 
 }

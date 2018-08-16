@@ -123,6 +123,11 @@ public class ServiceMesAnnonces implements IServiceMesAnnonces {
 		return daoAnnonces.rechercherMesEnviesTerminesAEvaluer(utilisateur);
 	}
 
+	@Override
+	public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
+		
+		return daoAnnonces.rechercherMesEnviesCloturees(utilisateur);
+	}
 
 
 	@Override
@@ -139,6 +144,9 @@ public class ServiceMesAnnonces implements IServiceMesAnnonces {
 		return daoAnnonces.rechercherMesAnnoncesTerminesCarAnnulees(idUtilisateur);
 	}
 
+
+
+	
 
 
 }

@@ -2,6 +2,9 @@ package fr.afcepf.ai103.data;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 
 
@@ -23,7 +26,11 @@ import java.util.Date;
 @NamedQuery(name="Evaluations.avecNoteSansCommentaire", query="SELECT e FROM Evaluation e "
 															+ "WHERE e.repannonce.idReponse = :idReponse "
 															+ "AND e.note IS NOT NULL "
-															+ "AND e.commentaire IS NULL ")
+															+ "AND e.commentaire IS NULL "),
+@NamedQuery(name="Evaluations.avecNoteEtCommentairepParUt", query="SELECT e FROM Evaluation e "
+														+ "WHERE e.repannonce.utilisateur = :idUtilisateur "
+														+ "AND e.note IS NOT NULL "
+														+ "AND e.commentaire IS NOT NULL"),
 })
 
 
@@ -32,8 +39,8 @@ public class Evaluation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="EVALUATION_IDEVALUATION_GENERATOR", sequenceName="ORDER_SEQUENCE")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="EVALUATION_IDEVALUATION_GENERATOR")
+
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_EVALUATION")
 	private int idEvaluation;
 
@@ -47,6 +54,7 @@ public class Evaluation implements Serializable {
 
 	//bi-directional many-to-one association to Repannonce
 	@ManyToOne
+	//@JsonIgnore
 	@JoinColumn(name="ID_REPONSE")
 	private Repannonce repannonce;
 
