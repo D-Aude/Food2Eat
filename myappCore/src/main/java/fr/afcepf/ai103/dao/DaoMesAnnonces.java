@@ -52,7 +52,9 @@ public class DaoMesAnnonces implements IDaoMesAnnonce {
 @Override
 	public List<Annonce> rechercherToutesLesAnnonces() {
 		return entityManager.createNamedQuery("Annonce.ListeToutesLesAnnonces",Annonce.class).getResultList();
-	}
+}
+
+
 
 // "idAnnonce" =>Celui qui est en parametre dans la requete, idAnnonce =>c''st mon attribut java
 	@Override
@@ -113,6 +115,7 @@ public class DaoMesAnnonces implements IDaoMesAnnonce {
 												.setParameter("idUtilisateur", utilisateur )
 												.getResultList();
 	}
+
 // MES ENVIES TERMINES QUI SONT A EVALUER ET EVALUER
 	
 public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
@@ -122,6 +125,32 @@ public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
 												.getResultList();
 }
 	
+
+
+	
+	// Récupérer les annonces de l'utilisateur session ayant au moins une réponse
+	@Override
+	public List<Annonce> recupererAnnonceAvecReponse(int iduser) {
+		List<Annonce> resultat = entityManager.createQuery("Select a, count(r.idReponse) as nbreponses from Annonce a  "
+				+ "left join a.repannonces r "
+				+ "WHERE a.stock.utilisateur.idUtilisateur =:idUtilisateur "
+				+ "and r.dateAcceptationReponse is null "
+				+ "and r.dateAnnulationReponse is null "
+				+ "and r.dateRefus is null "
+				+ "GROUP BY a.idAnnonce "
+				+ "having count(r.idReponse) > 0 "
+				+ "and a.dateAnnulation is null "
+				+ "and a.dateFinAnnonce is null ")
+				.setParameter("idUtilisateur", iduser)
+				.getResultList();
+		return resultat;
+	}
+	
+	
+
+	
+
+
 	
 	public List<Annonce> rechercherMesAnnoncesTerminesNonAnnulees(int utilisateur)
 	{

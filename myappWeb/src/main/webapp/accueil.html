@@ -26,8 +26,7 @@
 
 <!--=========================================NAVBAR================================================-->
 <body>
-<div class="test"></div>
-	<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-nav-color">
+	<nav class="navbar navbar-expand-lg fixed-top grey-bg navbar-light bg-nav-color">
 		<a class="navbar-fontColor" href="accueil.html"><b>Food 2 Eat</b></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
@@ -35,38 +34,45 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-<div class="test"></div>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item dropdown"><a
+				<li class="nav-item col-xs-12 dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Inventaire </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a id="btnInventaire" class="dropdown-item" href="#">Gérer mon
 							inventaire</a>
-					</div></li>
+					</div>
+				</li>
 
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Annonces </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" id="btnMesAnnonces" href="#">Mes
-							annonces</a> <a class="dropdown-item" id="btnMesEnvies" href="#">Mes
-							envies</a> <a class="dropdown-item" id="btnReponsesRecues" href="#">Réponses
-							reçues</a>
-							<a class="dropdown-item" id="btnTestAude" href="#">test aude</a>
-					</div></li>
+				<li class="nav-item dropdown">
+					<ul class="dropdown no-padding">
+					  <button class="menu-annonce no-margin text-left btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
+					   Annonces <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" style="left:0 !important;display:none !important" id="menuAnnonces">
+					    <li><a id="policeMenu2" href="#">Toutes les annonces</a></li>
+					    <li class="dropdown">
+					      <a id="policeMenu" class="menu-mes-annonces" href="#">Mes annonces</a>
+					            <ul class="dropdown-menu" id="menuAnnonces2">
+							        <li><a id="menuReponsesRecues" href="#">Réponses reçues</a></li>
+							        <li><a id="policeMenu" href="#">Réponses en attente de validation</a></li>
+							         <li><a id="policeMenu" href="#">Les annonces terminées</a></li>
+								</ul>
+					    </li>
+					  </ul>
+					</ul>
+				</li>
+
 
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Foodfriends </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" id="btnMesFoodFriends" href="#">Mes
-							foodfriends</a> <a class="dropdown-item" id="btnInvitationsRecues"
-							href="#">Invitations reçues</a>
+						<a class="dropdown-item" id="btnMesFoodFriends" href="#">Mes foodfriends</a> 
+						<a class="dropdown-item" id="btnInvitationsRecues" href="#">Invitations reçues</a>
 					</div>
 				</li>
 
@@ -186,10 +192,18 @@ var foot = new Vue({
 			$("#flexContent").load("./gestionInventaire.html");
 		});
 
-		$('#btnMesAnnonces').on('click', function() {
+		$('#policeMenu').on('click', function() {
 			$("#flexContent").load("./mesAnnonces.html");
 		});
 
+		$('#policeMenu2').on('click', function() {
+			$("#flexContent").load("./toutesLesAnnonces.html");
+		});
+		
+		$('#menuReponsesRecues').on('click', function() {
+			$("#flexContent").load("./toutesLesAnnonces.html");
+		});
+		
 		$('#btnMesEnvies').on('click', function() {
 			$("#flexContent").load("./mesEnvies.html");
 		});
@@ -206,8 +220,15 @@ var foot = new Vue({
 			$("#flexContent").load("./invitationsRecues.html");
 		});
 		
+
 		$('#btnTestAude').on('click', function() {
 			$("#flexContent").load("./mesAnnoncesTerminesDesign.html");
+		});
+
+
+		$('#menuAnnonces2').on('hover', function() {
+			$("#menuAnnonces2").show();
+			$(".menu-mes-annonces").show();
 		});
 
 

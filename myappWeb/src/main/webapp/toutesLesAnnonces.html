@@ -1,0 +1,33 @@
+<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+
+<div class="container"  id="annoncesCommunaute">
+	<div class="lblTitreAnnonces">
+		<b>Toutes les annonces</b>
+	</div>
+<!--===============================TEST==============================-->
+	
+
+	<div id="" v-for="annonce in annonce">     					
+		<div class="">
+			<a href="#"><img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/></a>
+			<div>
+				<span><b>Détails de l'annonce</b></span>
+			</div>
+		</div>
+		
+		<div class="">
+			<span>
+				{{annonce.stock.produit.idProduit}} - {{annonce.titre}}<br/>
+				{{annonce.stock.produit.nomProduit}} proposé par {{annonce.stock.utilisateur.pseudo}}<br/>
+   				{{annonce.adresse.ville.ville}}, le {{moment(annonce.datePublication).format('L')}} 				
+			</span>
+		</div>								
+	   							
+
+	</div>  		
+
+</div>
+<script src="./js/AnnoncesCommunaute.js"></script>

@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
 import fr.afcepf.ai103.data.Stock;
+import fr.afcepf.ai103.data.Utilisateur;
 import fr.afcepf.ai103.service.IServiceStock;
 
 /*
@@ -42,6 +43,15 @@ public class StockRest {
 			return serviceStock.rechercherStockModeConservation(id, mode);
 		else
 			return serviceStock.rechercherStockUtilisateur(id);
+	}
+	
+	@Path("postStock") //dernière partie de l'URL
+	@POST 
+	//URL = http://localhost:8080/myappWeb/services/rest/stock/postStock
+	@Consumes("application/json")
+	public Stock postStock(Stock stock) {
+		return serviceStock.saveOrUpdateStock(stock);
+		
 	}
 	
 }

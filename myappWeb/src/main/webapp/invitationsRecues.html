@@ -17,13 +17,13 @@
 		<div id="listeDemandesFoodfriend">
 			
    			<div id="friend-element" v-for="foodfriend in foodfriend">  
-	   				<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>	
+	   				<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>
 	   				{{foodfriend.utilisateur1.pseudo}} <br/>
 	   				{{foodfriend.utilisateur1.nom}} {{foodfriend.utilisateur1.prenom}} <br/><br/>
 	   				{{foodfriend.utilisateur1.email}} <br/><br/>
 	   				<!--  <input id="idfoodfriend" value="">{{foodfriend.idFoodfriend}}</input>-->
-	   				<button v-on:click="AccepterDemande(foodfriend.idFoodfriend)">ACCEPTER</button>
-	   				<button v-on:click="RefuserDemande(foodfriend.idFoodfriend)">REFUSER</button>
+	   				<button v-on:click="AccepterDemande(foodfriend)">ACCEPTER</button>
+	   				<button v-on:click="RefuserDemande(foodfriend)">REFUSER</button>
 	
    			</div>
 		</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Food2Eat (beta)</title>
+	<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
+</head>
+<body>
+<!--  <input type="hidden" id="iduser" type="text" value="1"  />-->
+	
+		
+		<div id="annoncesCommunaute">
+			<h1>FILTRES DE RECHERCHE/TRIE + GEOLOCALISATION</h1>
+   			<div id="friend-element" v-for="annonce in annonce">     					
+			
+					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>						
+	   				{{annonce.titre}} <br/>
+	   				{{annonce.stock.produit.nomProduit}} proposé par {{annonce.stock.utilisateur.pseudo}}<br/>
+	   				{{annonce.adresse.ville.ville}}, le {{moment(annonce.datePublication).format('L')}} 				
+	   				<button>Plus de detail</button>   				
+
+   			</div>
+  		</div>
+
+	<script src="./js/AnnoncesCommunaute.js"></script>
+</body>
+</html>

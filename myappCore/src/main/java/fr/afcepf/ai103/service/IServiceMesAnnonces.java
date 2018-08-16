@@ -32,4 +32,9 @@ public interface IServiceMesAnnonces {
 	
 	
 	List<Repannonce> essaiReponse (int utilisateur);
+	
+	// Récupérer les annonces ayant des reponses
+	List<Annonce> rechercherAnnoncesAvecReponses(int iduser);
+	
+
 }
