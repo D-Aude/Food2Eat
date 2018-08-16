@@ -8,26 +8,54 @@
 		<b>Toutes les annonces</b>
 	</div>
 <!--===============================TEST==============================-->
-	
+<form id="searchBar">
+  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher...">
+</form>
 
-	<div id="" v-for="annonce in annonce">     					
-		<div class="">
-			<a href="#"><img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/></a>
-			<div>
-				<span><b>Détails de l'annonce</b></span>
+<button id="btnMap" type="button">Afficher la carte</button>
+
+	<div id="img-toutes-annonces-container" v-for="annonce in annonce">     					
+		<div class="imgAnnonce">
+			<a href="#" >
+				<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/>
+			</a>
+		<!-- Modal -->
+			<div id="lblDetailsAnnonceTomate">
+				<button v-on:click="test(annonce.idAnnonce)" id="btnDetailsAnnonce" type="button" class="btnAnnonce" data-toggle="modal" data-target="#modal">
+					<span><b>Détails de l'annonce</b></span>
+				</button>
 			</div>
 		</div>
-		
-		<div class="">
-			<span>
-				{{annonce.stock.produit.idProduit}} - {{annonce.titre}}<br/>
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  			<div class="modal-dialog" role="document">
+   				<div class="modal-content">
+      				<div class="modal-header">
+      					<h5 class="modal-title" id="exampleModalLabel">Informations concernant le don</h5>
+       					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     				    	<span aria-hidden="true">&times;</span>
+      					</button>
+    				</div>
+    				   <div class="modal-body">
+							<span>Produit que {{idAnnonceEnCours}} --- {{annonce.stock.utilisateur.pseudo}} donne :</span><br/>
+							<span><b>{{annonce.stock.produit.nomProduit}}</b></span>
+    				  </div>
+    				  <div class="modal-footer">
+    				   		<button type="button" class="btn btn-secondary" data-dismiss="modal">Valider</button>
+     					    <button type="button" class="btn btn-primary">Annuler</button>
+    				  </div>
+   					</div>
+ 			   </div>
+			</div>
+
+		<div class="lblAnnonce">
+			<span id="languetteAnnonce">
+				{{annonce.titre}}<br/>
 				{{annonce.stock.produit.nomProduit}} proposé par {{annonce.stock.utilisateur.pseudo}}<br/>
-   				{{annonce.adresse.ville.ville}}, le {{moment(annonce.datePublication).format('L')}} 				
+   				Lieu de l'échange : {{annonce.adresse.ville.ville}}, le {{moment(annonce.datePublication).format('L')}} 				
 			</span>
-		</div>								
-	   							
-
+		</div>															
 	</div>  		
-
 </div>
 <script src="./js/AnnoncesCommunaute.js"></script>
+<script src="./js/modalAnnonceJS.js"></script>
+

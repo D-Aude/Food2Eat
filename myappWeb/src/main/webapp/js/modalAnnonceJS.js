@@ -1,10 +1,10 @@
 //Get the modal
-var modal = document.getElementById('myModal');
+var modal = document.getElementById('modal');
 var modalAnnuler = document.getElementById('myModalAnnuler')
 var modalAnnulerRaisin = document.getElementById('myModalAnnulerRaisin')
 
 //Get the button that opens the modal
-var btn = document.getElementById("lblModifier");
+var btn = document.getElementById("btnDetailsAnnonce");
 var btnPasteque = document.getElementById("lblModifierPasteque");
 var btnAnnulerPasteque = document.getElementById("lblAnnulerPasteque")
 var btnAnnulerRaisin = document.getElementById("lblAnnuler")
@@ -69,3 +69,6 @@ window.onclick = function(event) {
 	     modalAnnulerRaisin.style.display = "none";
 	 }
 } 
+
+ 
+ 

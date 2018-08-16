@@ -11,10 +11,10 @@ var listeannoncesCommnunaute = new Vue({
 	  data: {
 	    annonce: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
+	    idAnnonceEncours : "",
 	    src: "./resources/img/annoncescom/",
 	    imgtype: ".png"
-	    
-	    
+	   
 	  },
 	  methods: {
 		// METHODE : générer le lien URL à partir d'un pseudo  
@@ -26,6 +26,11 @@ var listeannoncesCommnunaute = new Vue({
 		},
 		date: function (date) {
 			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
+		},
+		test: function (idAnnonce) {
+			console.log(idAnnonce)
+			this.idAnnonceEnCours = idAnnonce;
+			console.log("test:" + this.idAnnonceEnCours)
 		}
 		
 	  },
