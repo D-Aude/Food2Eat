@@ -12,7 +12,7 @@ var annoncesAvecReponses = new Vue({
 	    annonce: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 	    src: "./resources/img/annoncescom/",
-	    imgtype: ".png",
+	    imgtype: ".png"
 	    
 	    
 	  },

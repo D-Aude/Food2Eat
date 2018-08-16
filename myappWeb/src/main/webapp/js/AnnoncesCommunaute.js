@@ -12,7 +12,7 @@ var listeannoncesCommnunaute = new Vue({
 	    annonce: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 	    src: "./resources/img/annoncescom/",
-	    imgtype: ".jpeg",
+	    imgtype: ".png"
 	    
 	    
 	  },
@@ -48,11 +48,11 @@ var annoncesCommunauteDetail = new Vue({
 	    annonce: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 	    src: "./resources/img/annoncescom/",
-	    imgtype: ".jpeg",
+	    imgtype: ".png",
 	    selected: "",
 	    date1 : "",
 	    date2 : "",
-	    date3 : "",
+	    date3 : ""
 
 
 	    	    
