@@ -31,6 +31,12 @@ public class ServiceReponses implements IServiceReponses {
 	}
 
 
+
+	@Override
+	public List <Repannonce> repParIdAnnonce(int idAnnonce) {
+		System.out.println("je passe par le service" + idAnnonce);
+		return daoReponses.RepannonceParIdAnnonce(idAnnonce);
+	}
 	// Insérer une réponse dans la base de données
 	@Override
 	public Repannonce save(Repannonce rep) {
@@ -54,6 +60,7 @@ public class ServiceReponses implements IServiceReponses {
 	@Override
 	public Repannonce update(Repannonce rep) {
 		return daoReponses.mettreAjourReponse(rep);
+
 	}
 
 }

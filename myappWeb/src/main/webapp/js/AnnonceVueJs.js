@@ -1,21 +1,31 @@
 
+// Récupération de la Session
+var Session = sessionStorage.getItem('utilisateurCourant');
+var id = JSON.parse(Session)["idUtilisateur"];
+
 
 var vm = new Vue({
 	el: '#listeAnnonceEnCours',
 	data: {
-		annonces: [],
-		
+	annonces: [],
+	idUtilisateur : id,
+	src: "./resources/img/Annonce/",
+	 imgtype: ".png",
 
 	},
 	created : function () {
 		var vm = this
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/enCours/8')
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/enCours/' + vm.idUtilisateur)
 		.then(function (response) {
 			vm.annonces = response.data
 		})
 	
 	},
 	methods: {
+		getSrc: function(idProduit) {
+			return this.src + idProduit + this.imgtype;
+		},
+		
 		AnnulerMonAnnonce: function(idannonce){
 
 			var vm = this;
@@ -53,13 +63,20 @@ var vm = new Vue({
 
 })
 
+
+var Session = sessionStorage.getItem('utilisateurCourant');
+var id = JSON.parse(Session)["idUtilisateur"];
+
 var vb = new Vue({
 	el: '#listeMesAnnonceTermines',
 	data: {
 		annonces: [],
 		typeAnnoncesCloturees:'',
 		annulations :[],
-		nomAnnulation:''
+		nomAnnulation:'',
+		 src: "./resources/img/Annonce/",
+		 imgtype: ".png",
+		 idUtilisateur : id,
 	},
 	watch : {
 		typeAnnoncesCloturees: function (typeAnnonces, ancienTypeAnonces){
@@ -67,10 +84,12 @@ var vb = new Vue({
 		}
 	},
 	created : function () {
-		var vb = this
-		console.log('init');
-		this.chargerAnnonces(),
-
+		var vb=this
+		console.log('MesAnnoncesTermines')
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/terminees/'+ vb.idUtilisateur)
+		.then(function (response) {
+			vb.annonces = response.data
+		}),
 			axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/annulation')
 		.then(function(response) {
 			vb.annulations = response.data
@@ -78,15 +97,11 @@ var vb = new Vue({
 	},
 
 	methods: {
-		chargerAnnonces()
-		{
-			
-			console.log('plopplop charger annonce du dbéut')
-			axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/terminees/8')
-			.then(function (response) {
-				vb.annonces = response.data
-			})
+		
+		getSrc: function(idProduit) {
+			return this.src + idProduit + this.imgtype;
 		},
+		
 
 		chargerTypeAnnoncesCloturees(typeAnnonces)
 		{ 
@@ -95,7 +110,7 @@ var vb = new Vue({
 			if(typeAnnonces =="plop")
 			{
 				console.log(typeAnnonces + 'choix1')
-				axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/terminees/8')
+				axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/terminees/'+ vb.idUtilisateur)
 				.then(function (response) {
 					vb.annonces = response.data
 				})
@@ -103,7 +118,7 @@ var vb = new Vue({
 			if  (typeAnnonces =="mesAnnoncesAnnulees")
 			{ 
 				console.log(typeAnnonces + 'choix2')
-				axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesAnnoncesTerminesCarAnnulees/8')
+				axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesAnnoncesTerminesCarAnnulees/'+ vb.idUtilisateur)
 				.then(function(response)
 						{ 
 					vb.annonces = response.data
@@ -112,7 +127,7 @@ var vb = new Vue({
 			else 
 			{
 
-				axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesAnnoncesTerminesNonAnnulees/8')
+				axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesAnnoncesTerminesNonAnnulees/'+ vb.idUtilisateur)
 				.then(function(response)
 						{
 					vb.annonces = response.data
@@ -176,15 +191,19 @@ var vb = new Vue({
 
 })
 
+var Session = sessionStorage.getItem('utilisateurCourant');
+var id = JSON.parse(Session)["idUtilisateur"];
+
+// PAS UTILISE
 var vl = new Vue({
 	el: '#listeMesEnviesEnCours',
 	data: {
-		annonces: []
-
+		annonces: [],
+		id : idUtilisateur,
 	},
 	created : function () {
 		var vl = this
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnvies/8')
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnvies/' + vl.idUtilisateur)
 		.then(function (response) {
 			vl.annonces = response.data
 		})
@@ -207,16 +226,19 @@ var vl = new Vue({
 	}
 
 })
+
 var vm = new Vue({
 
 	el: '#listeMesPotentiellesEnvies',
 	data: {
-		annonces: []
+		annonces: [],
+		id : idUtilisateur
+	
 	},
 	created : function () {
 		var vm = this
 
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/autresAnnonces/3')
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/autresAnnonces/' + vm.idUtilisateur)
 		.then(function (response) {
 			vm.annonces = response.data
 		})
@@ -235,15 +257,18 @@ var vm = new Vue({
 		}
 	}
 })
+
+
 var vl = new Vue({
 	el: '#listeMesEnviesEnAttente',
 	data: {
-		annonces: []
+		annonces: [],
+		id : idUtilisateur,
 	
 	},
 	created : function () {
 		var vl = this
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnvies/8')
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnvies/' + vl.idUtilisateur)
 		.then(function (response) {
 			vl.annonces = response.data
 		})
@@ -267,6 +292,41 @@ var vl = new Vue({
 
 })
 
+
+var Session = sessionStorage.getItem('utilisateurCourant');
+var id = JSON.parse(Session)["idUtilisateur"];
+var vl = new Vue({
+	el: '#listeMesEnviesTermines',
+	data: {
+		annonces: [],
+		id : idUtilisateur,
+	},
+	created : function () {
+		var vl = this
+		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnviesTermines/' + vl.idUtilisateur)
+		.then(function (response) {
+			console.log("listeMesEnviesTermines"+response.data)
+			vl.annonces = response.data
+		})
+	},
+	methods: {
+		moment: function (date) {
+
+			return moment(date);
+		},
+		date: function (date) {
+
+
+			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
+		}
+	},
+	filters: {
+		moment: function (date) {
+			return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+		}
+	}
+
+})
 
 //Pour RadioButton mais marche pas 
 //new Vue({

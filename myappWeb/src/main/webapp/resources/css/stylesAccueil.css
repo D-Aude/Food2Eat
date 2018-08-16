@@ -628,7 +628,7 @@ div>.imgContainer {
 }
 
 #lblRecapAnnonceJambon{
-		position: absolute;
+	position: absolute;
     top: 90px;
     left: 320px;
     color: white;
@@ -694,7 +694,7 @@ div>.imgContainer {
     float: right;
     font-size: 28px;
     font-weight: bold;
-        position: absolute;
+    position: absolute;
     left: 480;
 }
 
@@ -710,7 +710,7 @@ div>.imgContainer {
     float: right;
     font-size: 28px;
     font-weight: bold;
-        position: absolute;
+    position: absolute;
     left: 480;
 }
 

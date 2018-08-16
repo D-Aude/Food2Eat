@@ -12,5 +12,10 @@ public interface IDaoEvaluations {
 	public List<Evaluation> rechercherAnnoncesAvecEvaluation(int id);
 
 	public List<Evaluation> rechercherEvaluationSansCommentaire(int id);
+	
+	public List<Evaluation> rechercherTouteslesEval();
+	
+	public List<Evaluation> rechercherEvalParIdUtilisateur(int idUtilisateur);
 
+	public Evaluation insererNouvelleEvaluation(Evaluation evaluation);
 }

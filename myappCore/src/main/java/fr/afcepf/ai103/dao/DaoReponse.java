@@ -11,8 +11,8 @@ import fr.afcepf.ai103.data.Foodfriend;
 import fr.afcepf.ai103.data.Repannonce;
 import fr.afcepf.ai103.data.Stock;
 
-//@Stateless
-@Singleton //depuis la version 3.1 des EJB (comme @Stateless mais 
+@Stateless
+//@Singleton //depuis la version 3.1 des EJB (comme @Stateless mais 
 //avec la garantie d'avoir une seule instance de la classe d'EJB 
 //fabriquée par le serveur JEE)
 @Local
@@ -32,6 +32,17 @@ public class DaoReponse implements IDaoReponses {
 				.setParameter("id", idUtilisateur)
 				.getResultList();
 	}
+
+
+	@Override
+	public List <Repannonce> RepannonceParIdAnnonce(int idAnnonce) {
+		System.out.println("je passe par le dao" + idAnnonce);
+		return entityManager.createNamedQuery("Repannonce.parIdAnnonce2", Repannonce.class)
+				.setParameter("idAnnonce", idAnnonce)
+				.getResultList();
+		
+	}
+
 
 	// Insertion ________________________________________________________________________________
 	@Override
@@ -64,6 +75,7 @@ public class DaoReponse implements IDaoReponses {
 		return entityManager.find(Repannonce.class,id);
 	}
 	
+
 
 
 }

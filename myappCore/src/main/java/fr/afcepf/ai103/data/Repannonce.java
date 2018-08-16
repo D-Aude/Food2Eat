@@ -23,11 +23,16 @@ import java.util.List;
 		@NamedQuery(name="Repannonce.reponseParAnnonce", query = "SELECT r FROM Repannonce r "
 																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :utilisateurCourant "),
 		
+
+		@NamedQuery(name="Repannonce.parIdAnnonce2", query = "SELECT r FROM Repannonce r WHERE  r.annonce.idAnnonce = :idAnnonce"),
+		
+
 		@NamedQuery(name="Repannonce.parIdAnnonce", query = "SELECT r FROM Repannonce r "
 																+ "WHERE r.annonce.idAnnonce = :idAnnonce "
 																+ "and r.dateAcceptationReponse is null "
 																+ "and r.dateAnnulationReponse is null "
 																+ "and r.dateRefus is null")
+
 })
 		
 public class Repannonce implements Serializable {
@@ -60,7 +65,7 @@ public class Repannonce implements Serializable {
 
 	//bi-directional many-to-one association to Evaluation
 	
-	@OneToMany(mappedBy="repannonce", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="repannonce", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<Evaluation> evaluations;
 

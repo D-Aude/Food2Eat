@@ -2,12 +2,18 @@ package fr.afcepf.ai103.dao;
 
 import java.util.List;
 
+import fr.afcepf.ai103.data.Annonce;
 import fr.afcepf.ai103.data.Repannonce;
 
 public interface IDaoReponses {
 	
 	public List<Repannonce> rechercherReponsesAnnonces(int idUtilisateur);
 	
+
+	public List <Repannonce> RepannonceParIdAnnonce(int idAnnonce);
+	
+
+
 	// Insertion dans la base de données
 	public Repannonce insererNouvelleReponse(Repannonce rep);
 
@@ -19,5 +25,6 @@ public interface IDaoReponses {
 
 	// Maj une réponse dans la base
 	public Repannonce mettreAjourReponse(Repannonce rep);
+
 
 }

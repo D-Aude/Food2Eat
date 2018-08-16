@@ -20,7 +20,7 @@
 			<div id="Annonces-elements" v-for="annonce in annonces">
 					
 			<button v-on:click="AnnulerMonAnnonce(annonce.idAnnonce)" id="btnAnnulerAnnonce">Annuler </button>
-				{{annonce.titre}} <br/>
+				{{annonce.titre}}
 				{{annonce.stock.utilisateur.pseudo}}, vous proposez :
 				{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}} </br>
 			Vos choix de date : </br>

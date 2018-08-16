@@ -64,25 +64,7 @@
 					  </ul>
 					</ul>
 				</li>
-				
-					
 
-
-<!-- 				<li class="nav-item dropdown"> -->
-<!-- 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Annonces </a> -->
-<!-- 					<div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
-<!-- 						<a class="dropdown-item" id="btnMesAnnonces" href="#">Toutes les annonces</a>  -->
-<!-- 						<a tabindex="-1" class="dropdown-item" id="btnMesEnvies">Mes Annonces <span class="caret"></span></a> -->
-<!-- 						<ul class="dropdown-menu"> -->
-<!-- 							<li> -->
-<!-- 								<a tabindex="-1" href="#">Réponses reçues</a> -->
-<!-- 							</li> -->
-<!-- 							<li> -->
-<!-- 								<a tabindex="-1" href="#">Réponses en attente de validation</a> -->
-<!-- 							</li> -->
-<!-- 						</ul>  -->
-<!-- 					</div> -->
-<!-- 				</li> -->
 
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -242,10 +224,17 @@ var foot = new Vue({
 			$("#flexContent").load("./invitationsRecues.html");
 		});
 		
+
+		$('#btnTestAude').on('click', function() {
+			$("#flexContent").load("./mesAnnoncesTerminesDesign.html");
+		});
+
+
 		$('#menuAnnonces2').on('hover', function() {
 			$("#menuAnnonces2").show();
 			$(".menu-mes-annonces").show();
 		});
+
 
 	});
 </script>
