@@ -12,7 +12,16 @@ var mesFoodfriend = new Vue({
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 		src: "./resources/img/utilisateur/",
 		imgtype: ".jpeg",
+		search: ''
 //		nbFoodfriend: ""    
+	},
+	
+	computed: {
+		filteredList() {
+		      return this.foodfriend.filter(post => {
+		        return post.pseudoff.toLowerCase().includes(this.search.toLowerCase())
+		      })
+		}
 	},
   
 //	watch: {
@@ -45,9 +54,11 @@ var mesFoodfriend = new Vue({
 					vm.foodfriend.splice(i,1);
 				}
 			}
-
+			console.log(foodfriend);
 			// maj attrinute dateFinRelation du foodfriend selectionne
 			foodfriend.dateFinRelation = Date.now();
+			delete foodfriend.pseudoff;
+			console.log(foodfriend);
 			
 		  	  // post			    	  
 		  	axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
@@ -65,9 +76,21 @@ var mesFoodfriend = new Vue({
 	      .then(function (response) {
 	        vm.foodfriend = response.data;
 //	        vm.nbFoodfriend = vm.foodfriend.length;
+	        
+	        // ajout du pseudo foodfriend
+	        var i;
+	        for (i=0 ; i < vm.foodfriend.length ; i++) {
+	        	if (vm.foodfriend[i].utilisateur1.idUtilisateur == vm.iduser) {
+	        		vm.foodfriend[i]['pseudoff'] = vm.foodfriend[i].utilisateur2.pseudo;
+	        	} else {
+	        		vm.foodfriend[i]['pseudoff'] = vm.foodfriend[i].utilisateur1.pseudo;
+	        	}
+	        }
+	        
+	        
 	      })
-  	}
-  
+  	
+	}
 })
 
 // MES DEMANDES RECUES ________________________________________________________________________
