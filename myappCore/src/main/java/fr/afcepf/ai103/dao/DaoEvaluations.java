@@ -67,9 +67,9 @@ public class DaoEvaluations implements IDaoEvaluations {
 
 	@Override
 	public List<Evaluation> rechercherEvalParIdUtilisateur(int idUtilisateur) {
-		return entityManager.createNamedQuery("Evaluations.avecNoteEtCommentairepParUt", Evaluation.class)
+		return entityManager.createNamedQuery("Evaluations.avecNoteEtCommentaireParUt", Evaluation.class)
+		.setParameter("idUtilisateur", idUtilisateur)
 		 .getResultList();
-		
 	}	
 	
 	

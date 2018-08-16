@@ -13,16 +13,31 @@
 			</select> <br />
 
 
-			<div id="Annonces-elementsTermines" v-for="annonce in annonces">
-		
+			<div id="Annonces-elementsTermines" v-for="evaluation in evaluations">
+					<img class="imgEnviesTermines" v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>
+					CHOIX *-----------1
+					Le {{moment(evaluation.repannonce.dateRDV).format('L')}} vous avez
+						reçu de {{evaluation.repannonce.annonce.stock.utilisateur.pseudo}}, </br>le don de :
+						{{evaluation.repannonce.annonce.stock.quantite}} {{evaluation.repannonce.annonce.stock.produit.nomProduit}} </br>
+						Note associé à ce don : {{evaluation.note}}/5 
+						Commentaire associé à ce don :  {{evaluation.commentaire}}</br>
+				</div>
 				
-				choix n°2
-					Le {{moment(annonce.repannonces.dateRDV).format('L')}} vous avez
-						reçu de {{annonce.stock.utilisateur.pseudo}}, </br>le don de :
-						{{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}} </br>
-						Vous avez noté votre échange
-						{{annonce.repannonces[0].evaluations[0].note}}/5 </br>
-		
+				<div id="Envies-elementsTermines" v-for="repannonce in repannonces">
+					le {{moment(repannonce.dateRdv).format('L')}} vous avez reçu de {{repannonce.annonce.stock.utilisateur.pseudo}}, </br> le don de : 
+					{{repannonce.annonce.stock.quantite}} {{repannonce.annonce.stock.produit.nomProduit}}
+					
+					Merci de noter votre échange : <select id="selectNoteEvaluation"
+						v-model="selected">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select> Vous pouvez laissez un commentaire : <INPUT type="text"
+						name="input" VALUE="" id="commentaireEval" />
+					<button v-on:click="insererEvaluation(repannonce.annonce.idAnnonce)"
+						id="btnValiderMotifAnnulation">Valider</button>
 			
 				</div>
 

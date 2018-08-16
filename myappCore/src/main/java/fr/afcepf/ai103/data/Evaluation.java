@@ -27,8 +27,9 @@ import java.util.Date;
 															+ "WHERE e.repannonce.idReponse = :idReponse "
 															+ "AND e.note IS NOT NULL "
 															+ "AND e.commentaire IS NULL "),
-@NamedQuery(name="Evaluations.avecNoteEtCommentairepParUt", query="SELECT e FROM Evaluation e "
-														+ "WHERE e.repannonce.utilisateur = :idUtilisateur "
+
+@NamedQuery(name="Evaluations.avecNoteEtCommentaireParUt", query="SELECT e FROM Evaluation e "
+														+ "WHERE e.repannonce.utilisateur.idUtilisateur = :idUtilisateur "
 														+ "AND e.note IS NOT NULL "
 														+ "AND e.commentaire IS NOT NULL"),
 })

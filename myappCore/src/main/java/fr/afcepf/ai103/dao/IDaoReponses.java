@@ -12,7 +12,10 @@ public interface IDaoReponses {
 
 	public List <Repannonce> RepannonceParIdAnnonce(int idAnnonce);
 	
-
+	public List <Repannonce> RepannonceParIdUtilisateurEvalAFaire(int idUtilisateur);
+	
+	public List <Repannonce> RepannoncePArIdUtilisateurEvalComplete(int idUtilisateur);
+	
 
 	// Insertion dans la base de données
 	public Repannonce insererNouvelleReponse(Repannonce rep);

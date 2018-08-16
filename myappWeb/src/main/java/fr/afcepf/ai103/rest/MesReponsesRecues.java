@@ -65,5 +65,20 @@ public class MesReponsesRecues {
 		return rep;
 	}
 	
+	@Path("reponseSansEval/{idUtilisateur}")
+	@GET
+	public List <Repannonce> chercherReponsesSansEval(@PathParam("idUtilisateur")int idUtilisateur){
+		System.out.println("je suis dans le reponse rest  sans eval" + idUtilisateur);
+		return serviceReponses.rechercheReponsesParIdUtilisateurSansEval(idUtilisateur);	
+	}
+	
+	@Path("reponseAvecEval/{idUtilisateur}")
+	@GET
+	public List <Repannonce> chercherReponsesAvecEval(@PathParam("idUtilisateur")int idUtilisateur){
+		
+		System.out.println("je suis dans le reponse rest avec Eval " + idUtilisateur);
+		return serviceReponses.rechercheReponsesParIdUtilisateurSansEval(idUtilisateur);	
+	}
+	
 	
 }
