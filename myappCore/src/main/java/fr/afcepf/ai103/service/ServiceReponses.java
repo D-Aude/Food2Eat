@@ -63,4 +63,20 @@ public class ServiceReponses implements IServiceReponses {
 
 	}
 
+
+
+
+	@Override
+	public List<Repannonce> rechercheReponsesParIdUtilisateurSansEval(int idUtilisateur) {
+		System.out.println("je suis dans le reponse rest  sans eval" + idUtilisateur);
+		return daoReponses.RepannonceParIdUtilisateurEvalAFaire(idUtilisateur);
+	}
+
+
+	@Override
+	public List<Repannonce> rechercherReponsesParIdUtilisateurAvecEval(int idUtilisateur) {
+	
+		return daoReponses.RepannoncePArIdUtilisateurEvalComplete(idUtilisateur);
+	}
+
 }

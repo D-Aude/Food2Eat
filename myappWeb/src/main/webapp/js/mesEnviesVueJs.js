@@ -4,8 +4,9 @@ var id = JSON.parse(Session)["idUtilisateur"];
 var vm =new Vue ({
 el : '#listeMesEnviesTermines',
 data : {
-	typeEnvies:'',
-	annonces :[],
+	typeEnvies:'plop',
+	evaluations :[],
+	repannonces :[],
 	idUtilisateur :id,
 	selected:'',
 },
@@ -18,9 +19,9 @@ created : function() {
 	var vm = this
 	
 
-axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnviesCloturees/' + vm.idUtilisateur)
+axios.get('http://localhost:8080/myappWeb/services/rest/eval/EvalCompleteIdUt/' + vm.idUtilisateur)
 .then(function(response){
-	vm.annonces = response.data
+	vm.evaluations = response.data
 })
 console.log(response.data)
 
@@ -34,19 +35,22 @@ methods: {
 		var vm= this
 	if (typeEnvies == "plop")
 		{
+		vm.repannonces = [];
 		console.log(typeEnvies +'tut')
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnviesCloturees/' + vm.idUtilisateur)
+		axios.get('http://localhost:8080/myappWeb/services/rest/eval/EvalCompleteIdUt/'+ vm.idUtilisateur)
 		.then(function(response){
-			vm.annonces = response.data
+			vm.evaluations = response.data
 		})
 		}
 	if (typeEnvies == "mesEnviesAEval")
 		{
 		console.log(typeEnvies +'envie a véal')
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnviesTerminesAEval/' + vm.idUtilisateur)
+		vm.evaluations = [];
+		axios.get('http://localhost:8080/myappWeb/services/rest/reponses/reponseSansEval/' + vm.idUtilisateur)
 		.then(function(response){
-			vm.annonces = response.data
+			vm.repannonces = response.data
 		})
+		
 		}
 	else
 	{
@@ -74,18 +78,18 @@ methods: {
 		var comm = document.getElementById("commentaireEval").value;
 		
 		
-		console.log(comm)
-		console.log(texte )
-			
+
 		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneReponse/'+idAnnonce)
 			.then(function (response){
 				var annonceAmodif= response.data;
-			console.log(annonceAmodif  )
-			
+		
+		console.log(annonceAmodif[0].idReponse)
+		
 				var Repannonce = {
-				
-				"idReponse" : annonceAmodif.idReponse,
+				"idReponse" : annonceAmodif[0]["idReponse"]
 			}
+			console.log(Repannonce)
+			
 				//I nstanciation evaluation
 				var Evaluation = {
 						"idEvaluation" :null,
@@ -98,7 +102,7 @@ methods: {
 					annonceAmodif.evaluations = Evaluation;
 				
 			// annonceAmodif vide
-			console.log(annonceAmodif)
+		
 		// POST pour evaluation
 				axios.post('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/insererEvaluation',
 				Evaluation).then((response)=>{

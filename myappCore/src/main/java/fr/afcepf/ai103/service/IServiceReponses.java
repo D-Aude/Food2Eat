@@ -24,6 +24,10 @@ public interface IServiceReponses {
 
 	// maj réponse
 	Repannonce update(Repannonce rep);
+	
+	List <Repannonce> rechercheReponsesParIdUtilisateurSansEval(int idUtilisateur );
+	
+	List <Repannonce> rechercherReponsesParIdUtilisateurAvecEval (int idUtilisateur);
 
 
 }

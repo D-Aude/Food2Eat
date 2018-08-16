@@ -74,6 +74,22 @@ public class DaoReponse implements IDaoReponses {
 	public Repannonce rechercherReponseParId(int id) {
 		return entityManager.find(Repannonce.class,id);
 	}
+
+	@Override
+	public List<Repannonce> RepannonceParIdUtilisateurEvalAFaire(int idUtilisateur) {
+		System.out.println("je suis dans le reponse rest  avec eval" + idUtilisateur);
+		return entityManager.createNamedQuery("Repannonce.parIdUtilisateurSansEval",Repannonce.class)
+				.setParameter("idUtilisateur", idUtilisateur)
+				.getResultList();
+	}
+
+	@Override
+	public List<Repannonce> RepannoncePArIdUtilisateurEvalComplete(int idUtilisateur) {
+		
+		return entityManager.createNamedQuery("Repannonce.parIdUtilisateurAvecEval",Repannonce.class)
+				.setParameter("idUtilisateur", idUtilisateur)
+				.getResultList();
+	}
 	
 
 

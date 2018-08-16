@@ -16,7 +16,9 @@ import java.util.List;
 @Entity
 @NamedQueries
 (value= {@NamedQuery(name="Repannonce.findAll", query="SELECT r FROM Repannonce r"),
+		
 		@NamedQuery(name="Repannonce.essai", query ="SELECT r FROM Repannonce r  WHERE r.utilisateur.idUtilisateur =:idUtilisateur"),
+		
 		@NamedQuery(name="Repannonce.parUtilisateur", query = "SELECT r FROM Repannonce r "
 																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :id "
 																+ "ORDER BY r.dateRdv"),
@@ -31,8 +33,21 @@ import java.util.List;
 																+ "WHERE r.annonce.idAnnonce = :idAnnonce "
 																+ "and r.dateAcceptationReponse is null "
 																+ "and r.dateAnnulationReponse is null "
-																+ "and r.dateRefus is null")
-
+																+ "and r.dateRefus is null"),
+	
+		@NamedQuery(name="Repannonce.parIdUtilisateurSansEval", query = "SELECT r FROM Repannonce r "
+																+ "WHERE r.utilisateur.idUtilisateur = :idUtilisateur "
+																+ "and r.dateAcceptationReponse is not null "
+																+ "and r.dateAnnulationReponse is null "
+																+ "and r.dateRefus is null "
+																+"and r.evaluations is empty"),
+		
+		@NamedQuery(name="Repannonce.parIdUtilisateurAvecEval", query = "SELECT r FROM Repannonce r "
+															+ "WHERE r.utilisateur.idUtilisateur = :idUtilisateur "
+															+ "and r.dateAcceptationReponse is not null "
+															+ "and r.dateAnnulationReponse is null "
+															+ "and r.dateRefus is null "
+															+ "and r.evaluations is not empty"),
 })
 		
 public class Repannonce implements Serializable {
@@ -65,7 +80,7 @@ public class Repannonce implements Serializable {
 
 	//bi-directional many-to-one association to Evaluation
 	
-	@OneToMany(mappedBy="repannonce", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="repannonce", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Evaluation> evaluations;
 
