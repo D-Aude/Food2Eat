@@ -1,112 +1,33 @@
-<div class="container">
+<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
+<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+
+<div class="container"  id="annoncesCommunaute">
 	<div class="lblTitreAnnonces">
 		<b>Toutes les annonces</b>
 	</div>
-<!--===============================BROCOLI==============================-->
+<!--===============================TEST==============================-->
 	
-	<div class="page-toutesLesAnnonces-brocoli">
-		<a href="#"><img src="./resources/css/brocoli.png"></a>
-		<div class="lblDetailsBrocoli">
-			<span><b>Détails de l'annonce</b></span>
-		</div>
-	</div>
-	<div class="infoBrocoli">
-		<span>Quantité et intitulé produit</span>
-	</div>
 
-<!--===============================CAMEMBERT==============================-->
-	<div class="page-toutesLesAnnonces-camembert">
-		<a href="#"><img src="./resources/css/camembert.png"></a>
-		<div class="lblDetailsCamembert">
-			<span><b>Détails de l'annonce</b></span>
-		</div>
-	</div>
-		<div class="infoCamembert">
-		<span>Quantité et intitulé produit</span>
-	</div>
-<!--===============================CABILLAUD==============================-->
-	
-	<div class="page-toutesLesAnnonces-cabillaud">
-		<a href="#"><img src="./resources/css/cabillaud_surgele.png"></a>
-			<div class="lblDetailsCabillaud">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-	</div>
-<!--===============================JUS D'ORANGE==============================-->
-	<div class="page-toutesLesAnnonces-jusOrange">
-		<a href="#"><img src="./resources/css/jus_orange.png"></a>
-			<div class="lblDetailsJusOrange">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-	</div>
-<!--===============================SAUCE TOMATE==============================-->
-	<div class="page-toutesLesAnnonces-sauceTomate">
-		<a href="#"><img src="./resources/css/sauce_tomate.png"></a>
-			<div class="lblDetailsSauceTomate">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-	</div>
-<!--===============================SEMOULE==============================-->
-		<div class="page-toutesLesAnnonces-semoule">
-		<a href="#"><img src="./resources/css/semoule.png"></a>
-			<div class="lblDetailsSemoule">
+	<div id="" v-for="annonce in annonce">     					
+		<div class="">
+			<a href="#"><img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/></a>
+			<div>
 				<span><b>Détails de l'annonce</b></span>
 			</div>
 		</div>
-<!--===============================TOMATE COEUR BOEUF==============================-->
-		<div class="page-toutesLesAnnonces-tomate">
-		<a href="#"><img src="./resources/css/tomate_coeur_boeuf.png"></a>
-			<div class="lblDetailsTomate">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-		</div>
-<!--===============================OEUF==============================-->
-		<div class="page-toutesLesAnnonces-oeuf">
-		<a href="#"><img src="./resources/css/oeuf.png"></a>
-			<div class="lblDetailsOeuf">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-		</div>
-<!--===============================LAIT==============================-->
-		<div class="page-toutesLesAnnonces-yaourt">
-		<a href="#"><img src="./resources/css/yaourt.png"></a>
-			<div class="lblDetailsYaourt">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-		</div>
-<!--===============================TABLETTE CHOCO PRALINE==============================-->
-		<div class="page-toutesLesAnnonces-choco">
-		<a href="#"><img src="./resources/css/tablette_choco_praline.png"></a>
-			<div class="lblDetailsChoco">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-		</div>
-<!--===============================GIGOT D'AGNEAU==============================-->
-			<div class="page-toutesLesAnnonces-gigot">
-		<a href="#"><img src="./resources/css/gigot_dagneau.png"></a>
-			<div class="lblDetailsGigot">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-		</div>
-<!--===============================PAIN DE MIE==============================-->
-		<div class="page-toutesLesAnnonces-painDeMie">
-		<a href="#"><img src="./resources/css/pain_de_mie.png"></a>
-			<div class="lblDetailsPainDeMie">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-		</div>
-<!--===============================HUILE OLIVE==============================-->
-		<div class="page-toutesLesAnnonces-huileOlive">
-		<a href="#"><img src="./resources/css/huile_olive.png"></a>
-			<div class="lblDetailsHuileOlive">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-		</div>
-<!--===============================LENTILLES==============================-->
-		<div class="page-toutesLesAnnonces-lentille">
-		<a href="#"><img src="./resources/css/lentilles.png"></a>
-			<div class="lblDetailsLentille">
-				<span><b>Détails de l'annonce</b></span>
-			</div>
-		</div>
+		
+		<div class="">
+			<span>
+				{{annonce.stock.produit.idProduit}} - {{annonce.titre}}<br/>
+				{{annonce.stock.produit.nomProduit}} proposé par {{annonce.stock.utilisateur.pseudo}}<br/>
+   				{{annonce.adresse.ville.ville}}, le {{moment(annonce.datePublication).format('L')}} 				
+			</span>
+		</div>								
+	   							
+
+	</div>  		
+
 </div>
+<script src="./js/AnnoncesCommunaute.js"></script>

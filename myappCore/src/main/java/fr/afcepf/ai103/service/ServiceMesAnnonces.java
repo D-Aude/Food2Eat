@@ -124,13 +124,19 @@ public class ServiceMesAnnonces implements IServiceMesAnnonces {
 	}
 
 
-
 	@Override
 	public List<Annonce> rechercherAnnonceTermineesNonAnnulees(int idUtilisateur) {
 	
 		return daoAnnonces.rechercherMesAnnoncesTerminesNonAnnulees(idUtilisateur);
 	}
+	
+	// Annonces ayant des réponses
+	@Override
+	public List<Annonce> rechercherAnnoncesAvecReponses(int iduser) {
+		// TODO Auto-generated method stub
+		return daoAnnonces.recupererAnnonceAvecReponse(iduser);
 
+	}
 
 
 	@Override

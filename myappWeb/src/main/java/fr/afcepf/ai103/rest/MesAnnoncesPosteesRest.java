@@ -9,6 +9,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import fr.afcepf.ai103.data.Annonce;
 import fr.afcepf.ai103.data.Annulation;
@@ -163,6 +164,18 @@ public class MesAnnoncesPosteesRest {
 		annonce = serviceAnnonce.modifierMonAnnonce(annonce);
 	return annonce;
 }
+	
+	// Récupérer les annonces de l'utilisateur session ayant au moins une réponse __________________________
+	// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/reponsesRecues/1
+	@Path("annoncesAvecRep/{idUtilisateur}")
+	@GET
+	public List <Annonce> test(@PathParam("idUtilisateur") int utilisateur )
+	{
+		return serviceAnnonce.rechercherAnnoncesAvecReponses(utilisateur);
+	}
+	
+
+	
 	
 
 }

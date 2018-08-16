@@ -21,14 +21,20 @@ import java.util.List;
 																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :id "
 																+ "ORDER BY r.dateRdv"),
 		@NamedQuery(name="Repannonce.reponseParAnnonce", query = "SELECT r FROM Repannonce r "
-																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :utilisateurCourant ")})
+																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :utilisateurCourant "),
+		
+		@NamedQuery(name="Repannonce.parIdAnnonce", query = "SELECT r FROM Repannonce r "
+																+ "WHERE r.annonce.idAnnonce = :idAnnonce "
+																+ "and r.dateAcceptationReponse is null "
+																+ "and r.dateAnnulationReponse is null "
+																+ "and r.dateRefus is null")
+})
 		
 public class Repannonce implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="REPANNONCE_IDREPONSE_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REPANNONCE_IDREPONSE_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_REPONSE")
 	private int idReponse;
 
@@ -60,7 +66,7 @@ public class Repannonce implements Serializable {
 
 	//bi-directional many-to-one association to Annonce
 	@ManyToOne
-	@JsonIgnore
+//	@JsonIgnore
 	@JoinColumn(name="ID_ANNONCE")
 	private Annonce annonce;
 

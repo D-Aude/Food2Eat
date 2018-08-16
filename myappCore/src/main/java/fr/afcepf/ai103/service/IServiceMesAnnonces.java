@@ -26,4 +26,9 @@ public interface IServiceMesAnnonces {
 	List<Annonce> rechercherMesEnviesTermines(int utilisateur );
 	List<Annonce> rechercherMesEnviesTerminesAEvaluer(int utilisateur );
 	List<Repannonce> essaiReponse (int utilisateur);
+	
+	// Récupérer les annonces ayant des reponses
+	List<Annonce> rechercherAnnoncesAvecReponses(int iduser);
+	
+
 }
