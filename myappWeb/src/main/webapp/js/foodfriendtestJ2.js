@@ -12,19 +12,19 @@ var mesFoodfriend = new Vue({
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 		src: "./resources/img/utilisateur/",
 		imgtype: ".jpeg",
-		nbFoodfriend: ""    
+//		nbFoodfriend: ""    
 	},
   
-	watch: {
+//	watch: {
 	  // Méthode lancee à chaque fois que nbFoodfriend est modifié
-		nbFoodfriend: function() {
-		var vm = this;
-	  	axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesfoodfriend?iduser=' + vm.iduser)
-	      .then(function (response) {
-	        vm.foodfriend = response.data;
-	      })
-		}
-	},
+//		nbFoodfriend: function() {
+//		var vm = this;
+//	  	axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesfoodfriend?iduser=' + vm.iduser)
+//	      .then(function (response) {
+//	        vm.foodfriend = response.data;
+//	      })
+//		}
+//	},
   
   	methods: {
   		// METHODE : générer le lien URL à partir d'un pseudo  
@@ -35,15 +35,25 @@ var mesFoodfriend = new Vue({
 		// METHODE : retirer un foodfriend
 	
 		RetirerFF: function(foodfriend) {
-			console.log(foodfriend);
-			var vm = this;
 			
+			var vm = this;
+			var i;
+
+			// Maj vm.foodfriend (liste des foodfriend)
+			for (i=0 ; i < vm.foodfriend.length ; i++) {
+				if (foodfriend.idFoodfriend == vm.foodfriend[i].idFoodfriend) {
+					vm.foodfriend.splice(i,1);
+				}
+			}
+
+			// maj attrinute dateFinRelation du foodfriend selectionne
 			foodfriend.dateFinRelation = Date.now();
 			
 		  	  // post			    	  
 		  	axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
 		  			foodfriend).then((response) => {
 		  			vm.nbFoodfriend = vm.nbFoodfriend - 1;
+		  				
 	  			  });	  		  	
 		},	
   	},
@@ -54,7 +64,7 @@ var mesFoodfriend = new Vue({
 	    axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesfoodfriend?iduser=' + vm.iduser)
 	      .then(function (response) {
 	        vm.foodfriend = response.data;
-	        vm.nbFoodfriend = vm.foodfriend.length;
+//	        vm.nbFoodfriend = vm.foodfriend.length;
 	      })
   	}
   
@@ -69,20 +79,20 @@ var mesDemandesFFRecues = new Vue({
 	    iduser: id,
 	    src: "./resources/img/utilisateur/",
 	    imgtype: ".jpeg",
-	    nbInvitations: ""
+//	    nbInvitations: ""
 	    	
 	},
 	 
-	watch: {
-  // Méthode lancee à chaque fois que nbFoodfriend est modifié
-		nbInvitations: function() {
-		    var vm = this;
-			axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesdemandesrecues?iduser=' + vm.iduser)
-		      .then(function (response) {
-		        vm.foodfriend = response.data;
-		      })
-		}
-	},
+//	watch: {
+//  // Méthode lancee à chaque fois que nbFoodfriend est modifié
+//		nbInvitations: function() {
+//		    var vm = this;
+//			axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesdemandesrecues?iduser=' + vm.iduser)
+//		      .then(function (response) {
+//		        vm.foodfriend = response.data;
+//		      })
+//		}
+//	},
 	  	  
 	methods: {
 		getSrc: function(pseudo) {
@@ -95,6 +105,15 @@ var mesDemandesFFRecues = new Vue({
 			// Instanciation
 			var vm = this;
 			
+
+			// Maj vm.foodfriend (liste des invitations)
+			for (i=0 ; i < vm.foodfriend.length ; i++) {
+				if (foodfriend.idFoodfriend == vm.foodfriend[i].idFoodfriend) {
+					vm.foodfriend.splice(i,1);
+				}
+			}
+			
+			
 			// Maj foodfriend
 	    	  foodfriend.dateReponse = Date.now();
 	    	  foodfriend.dateFinRelation = Date.now();
@@ -102,7 +121,7 @@ var mesDemandesFFRecues = new Vue({
 	    	  // post			    	  
 	    	  axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
 	    			  foodfriend).then((response) => {
-	    			  vm.nbInvitations = vm.nbInvitations - 1;	     				  
+//	    			  vm.nbInvitations = vm.nbInvitations - 1;	     				  
 	    			  });
 	    	   
 		},
@@ -113,6 +132,13 @@ var mesDemandesFFRecues = new Vue({
 			alert("Félicitation ! Vous avez un nouveau foodfriend !")			
 			// Instanciation
 			var vm = this;
+			
+			// Maj vm.foodfriend (liste des invitations)
+			for (i=0 ; i < vm.foodfriend.length ; i++) {
+				if (foodfriend.idFoodfriend == vm.foodfriend[i].idFoodfriend) {
+					vm.foodfriend.splice(i,1);
+				}
+			}
 
 			// Maj foodfriend
 
@@ -122,7 +148,7 @@ var mesDemandesFFRecues = new Vue({
 	    	axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
 	    			  foodfriend).then((response) => {
 	    				  console.log(response);
-	    				  vm.nbInvitations = vm.nbInvitations - 1;
+//	    				  vm.nbInvitations = vm.nbInvitations - 1;
 	    				  
 	    			  });
 	    	
@@ -137,7 +163,7 @@ var mesDemandesFFRecues = new Vue({
 	    axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesdemandesrecues?iduser=' + vm.iduser)
 	      .then(function (response) {
 	        vm.foodfriend = response.data;
-	        vm.nbInvitation = vm.foodfriend.length;
+//	        vm.nbInvitation = vm.foodfriend.length;
 	      })	      
 	    
 	  }

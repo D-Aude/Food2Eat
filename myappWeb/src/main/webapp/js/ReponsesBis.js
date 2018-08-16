@@ -49,19 +49,19 @@ var LesReponsesRecues = new Vue({
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 	    src: "./resources/img/utilisateur/",
 	    imgtype: ".jpeg",
-	    nbReponses: ""
+//	    nbReponses: ""
 	    	    
 	  },
 	  
-	  watch: {
-		  nbReponses: function() {
-			var vm = this
-		    axios.get('http://localhost:8080/myappWeb/services/rest/reponses/reponsesRecues/' + 14)
-		      .then(function (response) {
-		        vm.reponse = response.data;
-		      })		  
-		  }
-	  },
+//	  watch: {
+//		  nbReponses: function() {
+//			var vm = this
+//		    axios.get('http://localhost:8080/myappWeb/services/rest/reponses/reponsesRecues/' + 14)
+//		      .then(function (response) {
+//		        vm.reponse = response.data;
+//		      })		  
+//		  }
+//	  },
 	  
 	  methods: { 
 		// METHODE : générer le lien URL à partir d'un pseudo  
@@ -111,18 +111,28 @@ var LesReponsesRecues = new Vue({
 				}
 			}
 							      
-			vm.nbReponses = 0;
+//			vm.nbReponses = 0;
+			// maj vm.reponse à vide
+			vm.reponse = [];
 	    			
 		},
 		
 		refuserRep: function(reponseRefusee) {
 			var vm = this;
+			
+			// maj vm.reponse :
+			var i;
+			for (i = 0 ; i < vm.reponse.length ; i++) {								
+				if (vm.reponse[i].idReponse == reponseRefusee.idReponse) {
+					vm.reponse.splice(i,1);
+				}
+			}
 			reponseRefusee.dateRefus = Date.now();
     	  
     	  // post			    	  
     	  axios.post('http://localhost:8080/myappWeb/services/rest/reponses/maj',
     			  reponseRefusee).then((response) => {
-    				  vm.nbReponses = vm.nbReponses - 1;
+//    				  vm.nbReponses = vm.nbReponses - 1;
     			  });
 		     
 		}
@@ -135,7 +145,7 @@ var LesReponsesRecues = new Vue({
 	    axios.get('http://localhost:8080/myappWeb/services/rest/reponses/reponsesRecues/' + 14)
 	      .then(function (response) {
 	        vm.reponse = response.data;
-	        vm.nbReponses = vm.reponse.length;
+//	        vm.nbReponses = vm.reponse.length;
 	      })
 	  }
 	
