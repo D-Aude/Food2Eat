@@ -206,10 +206,14 @@ var foot = new Vue({
 	/*<--==============================SWITCH PAGE=====================-->*/
 
 	$(function() {
+		$('#test').on('click', function() {
+			$("#flexContent").load("./mesAnnoncesTerminesDesign.html");
+		});
+
 		$('#btnInventaire').on('click', function() {
 			$("#flexContent").load("./gestionInventaire.html");
 		});
-
+		
 		$('#policeMenu').on('click', function() {
 			$("#flexContent").load("./mesAnnonces.html");
 		});

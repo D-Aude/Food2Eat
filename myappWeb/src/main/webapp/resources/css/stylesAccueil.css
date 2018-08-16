@@ -373,6 +373,7 @@ a.dropdown-item:hover {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
+	max-width: 100%!important;
 }
 
 .flex-container>.imgContainer {
@@ -505,7 +506,7 @@ div>.imgContainer {
 	font-family: 'Abel', sans-serif;
 	font-size: 50;
 	/* left: 555px; */
-	top: 131px;
+	top: 120px;
 	text-transform: uppercase;
 }
 
@@ -959,6 +960,7 @@ to {
     justify-content: center;
     width: 500px;
     height: 200px;
+    
 }
 
 .lblDetailsBrocoli{
@@ -1001,27 +1003,22 @@ border-bottom-left-radius: 7px;
     font-size: 20px;
 }
 
-.page-toutesLesAnnonces-camembert {
-    top: 260;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 900;
-}
-
-.lblDetailsCamembert{
-	    position: absolute;
+#img-toutes-annonces-container {
+    display: inline-block;
+    /* padding: 10 10 10 0; */
+    width: 511 !important;
+    /* margin: 120 0 10 100!important; */
     font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-top: 90px;
-    left: 120;
-    display:none;
+    /* height: 500px; */
+    position: relative;
+    top: 260px;
+        margin-bottom: 50;
+	margin-left: 65px;
+    margin-right: 113px;
+
 }
 
-.page-toutesLesAnnonces-camembert:hover {
+.imgAnnonce:hover {
 	opacity : 0.7;
 	-webkit-transition: .4s ease-in-out opacity !important;
 	-moz-transition: .4s ease-in-out opacity !important;
@@ -1029,432 +1026,84 @@ top: 90px;
 	transition: .4s ease-in-out opacity !important;
 }
 
-.page-toutesLesAnnonces-camembert:hover .lblDetailsCamembert {
-	display: block;
-	color: black;
+#lblDetailsAnnonceTomate {
+text-transform: uppercase;
+font-size: 30px;
+position: relative;
+top: -125px;
+left: 147px;
+display:none;
+height: 0px;
 }
 
-.infoCamembert {
-	width: 553px;
-    height: 64px;
-    background-color: #a5dcc7;
-    top: 473px;
-    position: absolute;
-    border-radius: 7px;
-    left: 872px;
-    font-family : 'Abel', sans-serif;
+#img-toutes-annonces-container:hover #lblDetailsAnnonceTomate {
+	display: block;
+	color:black;
+}
+
+.lblAnnonce {
+	    background-color: #a5dcc7;
+    width: 552px;
+    position: relative;
+    top: -10px;
+    -webkit-border-bottom-right-radius: 7px;
+    -webkit-border-bottom-left-radius: 7px;
+    -moz-border-radius-bottomright: 7px;
+    -moz-border-radius-bottomleft: 7px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    left: 3;
+        height: 70;
     font-size: 20px;
+    text-align: -webkit-center;
 }
 
-.page-toutesLesAnnonces-cabillaud {
-	 top: 610;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 130;
-    margin-bottom : 100px;
-}
-
-.lblDetailsCabillaud{
+#languetteAnnonce {
 	    position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-top: 90px;
-    left: 120;
-    display:none;
+       top: -24px;
+    left: 88px;
 }
 
-.page-toutesLesAnnonces-cabillaud:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-cabillaud:hover .lblDetailsCabillaud {
-	display: block;
+.btnAnnonce {
+	text-decoration : none;
+	border : none;
 	color: black;
+	background-color : transparent;
+	font-family: 'Abel', sans-serif;
+	text-transform: uppercase;
+	font-size : 30px;
+	cursor: pointer;
 }
 
-.page-toutesLesAnnonces-jusOrange {
-	 top: 610;
+#searchBar {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 900;
-    margin-bottom : 100px;
+    top: 218px;
+    left: 140;
 }
 
-.lblDetailsJusOrange{
-	    position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
+.inputSearchBar{
+	width: 192px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
 
-.page-toutesLesAnnonces-jusOrange:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
+.inputSearchBar:focus{
+	width:450px;
 }
 
-.page-toutesLesAnnonces-jusOrange:hover .lblDetailsJusOrange {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-sauceTomate {
-	 top: 960;
+#btnMap {
+	    width: 138px;
+    height: 41px;
     position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 130;
-    margin-bottom : 100px;
-}
-
-.lblDetailsSauceTomate{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-sauceTomate:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-sauceTomate:hover .lblDetailsSauceTomate {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-semoule {
-	 top: 960;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 900;
-    margin-bottom : 100px;
-}
-
-.lblDetailsSemoule{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-semoule:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-semoule:hover .lblDetailsSemoule {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-tomate {
-	 top: 1320;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 130;
-    margin-bottom : 100px;
-}
-
-.lblDetailsTomate{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-tomate:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-tomate:hover .lblDetailsTomate {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-oeuf {
-	 top: 1320;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 900;
-    margin-bottom : 100px;
-}
-
-.lblDetailsOeuf{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-oeuf:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-oeuf:hover .lblDetailsOeuf {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-yaourt {
-	 top: 1690;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 130;
-    margin-bottom : 100px;
-}
-
-.lblDetailsYaourt{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-yaourt:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-yaourt:hover .lblDetailsYaourt {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-choco {
-	 top: 1690;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 900;
-    margin-bottom : 100px;
-}
-
-.lblDetailsChoco{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-choco:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-choco:hover .lblDetailsChoco {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-gigot {
-	 top: 2050;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 130;
-    margin-bottom : 100px;
-}
-
-.lblDetailsGigot{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-gigot:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-gigot:hover .lblDetailsGigot {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-painDeMie {
-	 top: 2050;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 900;
-    margin-bottom : 100px;
-}
-
-.lblDetailsPainDeMie{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-painDeMie:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-painDeMie:hover .lblDetailsPainDeMie {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-huileOlive {
-	 top: 2410;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 130;
-    margin-bottom : 100px;
-}
-
-.lblDetailsHuileOlive{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-huileOlive:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-huileOlive:hover .lblDetailsHuileOlive {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-painDeMie:hover .lblDetailsPainDeMie {
-	display: block;
-	color: black;
-}
-
-.page-toutesLesAnnonces-lentille {
-	 top: 2410;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 200px;
-    left: 900;
-    margin-bottom : 100px;
-}
-
-.lblDetailsLentille{
-	position: absolute;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-    text-transform: uppercase;
-	top: 90px;
-    left: 120;
-    display:none;
-}
-
-.page-toutesLesAnnonces-lentille:hover {
-	opacity : 0.7;
-	-webkit-transition: .4s ease-in-out opacity !important;
-	-moz-transition: .4s ease-in-out opacity !important;
-	-o-transition: .4s ease-in-out opacity !important;
-	transition: .4s ease-in-out opacity !important;
-}
-
-.page-toutesLesAnnonces-lentille:hover .lblDetailsLentille {
-	display: block;
-	color: black;
+    top: 292px;
+    left: 140px
 }
