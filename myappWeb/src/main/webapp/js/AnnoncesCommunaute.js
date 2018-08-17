@@ -13,7 +13,14 @@ var listeannoncesCommnunaute = new Vue({
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 	    idAnnonceEncours : "",
 	    src: "./resources/img/annoncescom/",
-	    imgtype: ".png"
+	    imgtype: ".png",
+	    annonceDetail : [],
+	    produitDetail : [],
+	    utilisateurDonneurDetail : [],
+	    date1: "",
+	    date2: "",
+	    date3: "",
+	    dateChoisie: ""
 	   
 	  },
 	  methods: {
@@ -27,10 +34,18 @@ var listeannoncesCommnunaute = new Vue({
 		date: function (date) {
 			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
 		},
-		test: function (idAnnonce) {
-			console.log(idAnnonce)
-			this.idAnnonceEnCours = idAnnonce;
-			console.log("test:" + this.idAnnonceEnCours)
+		voirAnnonceDetail: function (annonceSelection) {
+			
+			this.annonceDetail = annonceSelection;
+			this.produitDetail = annonceSelection.stock.produit;
+			this.utilisateurDonneurDetail = annonceSelection.stock.utilisateur;
+			
+			this.date1 = annonceSelection.dateRdv1;
+			this.date2 = annonceSelection.dateRdv2;
+			this.date3 = annonceSelection.dateRdv3;
+			
+			console.log(this.utilisateurDonneurDetail)
+
 		}
 		
 	  },
@@ -50,7 +65,7 @@ var listeannoncesCommnunaute = new Vue({
 var annoncesCommunauteDetail = new Vue({
 	  el: '#annoncesCommunauteDetail',
 	  data: {
-	    annonce: [],
+		annonceDetail: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 	    src: "./resources/img/annoncescom/",
 	    imgtype: ".png",
@@ -61,7 +76,26 @@ var annoncesCommunauteDetail = new Vue({
 
 
 	    	    
+//	  },
+//	  
+//	  watch: {
+//		  idAnnonce: function() {
+//			  var vm = this
+//			  axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + vm.idAnnonce)
+//			      .then(function (response) {
+//			        vm.annonceDetail = response.data;
+//			        vm.date1 = vm.annonceDetail.dateRdv1;
+//			        vm.date2 = vm.annonceDetail.dateRdv2;
+//			        vm.date3 = vm.annonceDetail.dateRdv3;
+//			        vm.selected = "";
+//			        console.log("annoncedetail");
+//			        console.log(vm.annonceDetail.stock.produit.nomProduit);
+//			      })
+//		  }
+		  
+		  
 	  },
+	  
 	  methods: {
 		// METHODE : générer le lien URL à partir d'un pseudo  
 		getSrc: function(idproduit) {
@@ -111,20 +145,20 @@ var annoncesCommunauteDetail = new Vue({
 	    			  });
 		}
 		
-	  },
-	  
-	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
-	  created: function() {
-		var vm = this
-	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + 15)
-	      .then(function (response) {
-	        vm.annonce = response.data;
-	        vm.date1 = vm.annonce.dateRdv1;
-	        vm.date2 = vm.annonce.dateRdv2;
-	        vm.date3 = vm.annonce.dateRdv3;
-	        vm.selected = "";
-	        
-	      })
+//	  },
+//	  
+//	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
+//	  created: function() {
+//		var vm = this
+//	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + vm.idAnnonce)
+//	      .then(function (response) {
+//	        vm.annonce = response.data;
+//	        vm.date1 = vm.annonce.dateRdv1;
+//	        vm.date2 = vm.annonce.dateRdv2;
+//	        vm.date3 = vm.annonce.dateRdv3;
+//	        vm.selected = "";
+//	        
+//	      })
 	  }
 	
 	

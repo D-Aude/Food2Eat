@@ -21,7 +21,7 @@
 			</a>
 		<!-- Modal -->
 			<div id="lblDetailsAnnonceTomate">
-				<button v-on:click="test(annonce.idAnnonce)" id="btnDetailsAnnonce" type="button" class="btnAnnonce" data-toggle="modal" data-target="#modal">
+				<button v-on:click="voirAnnonceDetail(annonce)" id="btnDetailsAnnonce" type="button" class="btnAnnonce" data-toggle="modal" data-target="#modal">
 					<span><b>Détails de l'annonce</b></span>
 				</button>
 			</div>
@@ -36,8 +36,8 @@
       					</button>
     				</div>
     				   <div class="modal-body">
-							<span>Produit que {{idAnnonceEnCours}} --- {{annonce.stock.utilisateur.pseudo}} donne :</span><br/>
-							<span><b>{{annonce.stock.produit.nomProduit}}</b></span>
+							<span>Produit que --- {{utilisateurDonneurDetail.pseudo}} donne :</span><br/>
+							<span><b>{{produitDetail.nomProduit}}</b></span>
     				  </div>
     				  <div class="modal-footer">
     				   		<button type="button" class="btn btn-secondary" data-dismiss="modal">Valider</button>
