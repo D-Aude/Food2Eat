@@ -51,7 +51,7 @@ var listeannoncesCommnunaute = new Vue({
 			return moment(date);
 		},
 		date: function (date) {
-			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
+			return moment(date).locale('fr').format('Do MMMM YYYY, h:mm:ss a');
 		},
 		voirAnnonceDetail: function (annonceSelection) {
 			vm = this;
@@ -93,7 +93,7 @@ var listeannoncesCommnunaute = new Vue({
 	    			  "annonce" : annonceChoisie,
 	    			  "utilisateur" : utilisateurEnCours
 	    	  }
-			
+			console.log(repannonce);
 			// POST
 			console.log("début du post")
 			
