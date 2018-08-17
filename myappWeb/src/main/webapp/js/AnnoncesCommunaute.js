@@ -20,7 +20,8 @@ var listeannoncesCommnunaute = new Vue({
 	    date2: "",
 	    date3: "",
 	    dateChoisie: null,
-	    search: ''
+	    search: '',
+	    carte: false
 	   
 	  },
 	  
@@ -102,6 +103,19 @@ var listeannoncesCommnunaute = new Vue({
 	    				  console.log(response);
 	    				  console.log("terminé");
 	    			  });
+		},
+		
+		// afficher sous forme de carte
+		afficherCarte: function() {
+			if (this.carte == false) {
+				this.carte = true;
+				document.getElementById('btnMap').textContent = "Afficher liste";
+			} else {
+				this.carte = false;
+				document.getElementById('btnMap').textContent = "Afficher la carte";
+			}
+			
+			
 		}
 
 		

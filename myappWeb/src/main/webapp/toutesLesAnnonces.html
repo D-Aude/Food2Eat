@@ -12,8 +12,14 @@
   <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher..." v-model="search">
 </form>
 
-<button id="btnMap" type="button">Afficher la carte</button>
+<button id="btnMap" type="button" v-on:click="afficherCarte()">Afficher la carte</button>
 
+<div id="img-toutes-annonces-container" v-if="carte == true">
+	<span>afficher la carte</span>
+</div>
+
+
+<div id="annoncesSurListe" v-if="carte == false">	
 	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
 		<div class="imgAnnonce">
 			<a href="#" >
@@ -66,7 +72,8 @@
    				Lieu de l'échange : {{annonce.adresse.ville.ville}}, le {{moment(annonce.datePublication).format('L')}} 				
 			</span>
 		</div>															
-	</div>  		
+	</div>
+</div>  		
 </div>
 <script src="./js/AnnoncesCommunaute.js"></script>
 <script src="./js/modalAnnonceJS.js"></script>
