@@ -14,7 +14,6 @@ var vm = new Vue({
   },
   created: function () {
 	  console.log('Init InventaireJS');
-	  
 	  var session = sessionStorage.getItem('utilisateurCourant');
 	  console.log('session = '+session);
 	  
@@ -50,7 +49,6 @@ var vm = new Vue({
 			  this.desactiverManger();
 			  document.getElementById("btnEnregistrer").style.display="none";
 			  document.getElementById("btnAnnuler").style.display="none";
-			  
 		  }
 		  else
 		  {
@@ -145,12 +143,16 @@ var vm = new Vue({
 			     httpRequest.setRequestHeader("Content-Type" , "application/json");
 			     httpRequest.send(newStock);
 			     console.log ("donnees de la requete envoyee : " + newStock + '/n');
-			      
+			     
+			     httpRequest.onreadystatechange = function() {
+				  		if (this.readyState == 4 && this.status == 200) {
+				  		//si status HTTP en retour == 200 : OK 
+				  		vm.chargerStockModeConservation("");
+				  		}
+				   };
 			 }
 			 this.btnAnnuler();
-			 
-			 
-				 
+			 stockModif[0].value = oldFractionRestante;
 		  }
 	  },
 	  btnAnnuler()
@@ -283,14 +285,12 @@ var vmAjouter = new Vue({
 				
 				console.log('Ajouter Stock: produit='+produit+'; quantite='+quantite+'; dlc='+JSON.stringify(dlc.value)+';');
 				
-				
 				if(produit == 0)
 				{
 					alert('Veuillez rentrer un produit à ajouter !')
 				}
 				else
 				{
-					
 					var stock = {
 							idStock : 0,
 							dateConsoPref : new Date(),
@@ -344,13 +344,42 @@ var vmAjouter = new Vue({
 				      httpRequest.send(stockAsJsonString);
 				      console.log ("donnees de la requete envoyee : " + stockAsJsonString);
 				      
-				      //enlever modal + recharger page
-				      
+				      //enlever modal 
 				      document.getElementById('AjouterForm').style.display='none';
+				      
+				      //reinitialiser modal
 				      vmAjouter.selectProduit = 0;
 				      vmAjouter.inputDlc = "";
 				      vmAjouter.inputQuantite = '1';
-					}
+				      
+				      //Recharger page apres requete
+				      httpRequest.onreadystatechange = function() {
+				  		if (this.readyState == 4 && this.status == 200) {
+				  		//si status HTTP en retour == 200 : OK 
+				  		vm.chargerStockModeConservation("");
+				  		}
+				      };
+				      
+//				      window.location.href="http://localhost:8080/myappWeb/gestionInventaire.html";
+//				      $("#flexContent").load("./gestionInventaire.html");
+//				      var session = sessionStorage.getItem('utilisateurCourant');
+//					  
+//					  if(session == null)
+//					  {
+//						  console.log('Utilisateur inconnu, identification necessaire.');
+//						  window.location.href='http://localhost:8080/myappWeb/login.html';
+//					  }
+//					  else
+//					  {
+//					      var utilisateur = JSON.parse(session);
+//						  console.log('Stock.parUtilisateur: '+utilisateur.idUtilisateur);
+//						  var vmAjouter = this
+//					      axios.get('http://localhost:8080/myappWeb/services/rest/stock/'+utilisateur.idUtilisateur)
+//					          .then(function (response) {
+//					        	  vmAjouter.stocks = response.data
+//					          })
+//				      }
+				}
 					
 			}  
 	  

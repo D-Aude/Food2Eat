@@ -63,7 +63,7 @@
 	   					<input id="enStockRange" type="range" min="0" :max="stock.produit.nombreUnite" :value="stock.fractionRestante" class="sliderTable"> 
 	   				</div>
 	   				<div v-else class="case4">
-	   					<input id="enStockNumber" type="number" min="0" :max="stock.produit.fractionRestante" :value="stock.fractionRestante" ><strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong>
+	   					<input id="enStockNumber" type="number" min="0" :max="stock.fractionRestante" :value="stock.fractionRestante" ><strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong>
 	   				</div>
 	   			</div>
 		   	</div>
