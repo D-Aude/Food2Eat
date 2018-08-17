@@ -18,7 +18,8 @@ var mesFoodfriend = new Vue({
 	
 	computed: {
 		filteredList() {
-		      return this.foodfriend.filter(post => {
+
+			return this.foodfriend.filter(post => {
 		        return post.pseudoff.toLowerCase().includes(this.search.toLowerCase())
 		      })
 		}

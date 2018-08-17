@@ -9,12 +9,12 @@
 	</div>
 <!--===============================TEST==============================-->
 <form id="searchBar">
-  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher...">
+  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher..." v-model="search">
 </form>
 
 <button id="btnMap" type="button">Afficher la carte</button>
 
-	<div id="img-toutes-annonces-container" v-for="annonce in annonce">     					
+	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
 		<div class="imgAnnonce">
 			<a href="#" >
 				<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/>
@@ -52,7 +52,7 @@
     				  </div>
     				  <div class="modal-footer">
     				   		<button type="button" class="btn btn-secondary" data-dismiss="modal" v-on:click="envoyerDemandeProduit(annonceDetail.idAnnonce)">Valider</button>
-     					    <button type="button" class="btn btn-primary">Annuler</button>
+     					    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
     				  </div>
    					</div>
    					
