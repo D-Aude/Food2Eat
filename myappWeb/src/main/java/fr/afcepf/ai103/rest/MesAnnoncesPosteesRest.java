@@ -9,12 +9,18 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import fr.afcepf.ai103.data.Annonce;
 import fr.afcepf.ai103.data.Annulation;
+import fr.afcepf.ai103.data.Evaluation;
 import fr.afcepf.ai103.data.Repannonce;
 import fr.afcepf.ai103.service.IServiceAnnulation;
+import fr.afcepf.ai103.service.IServiceEvaluations;
 import fr.afcepf.ai103.service.IServiceMesAnnonces;
+import fr.afcepf.ai103.service.IServiceReponses;
+import fr.afcepf.ai103.service.ServiceEvaluations;
+import fr.afcepf.ai103.service.ServiceReponses;
 
 @Path("mesAnnoncesPostees")
 @Produces("application/json")
@@ -28,6 +34,14 @@ public class MesAnnoncesPosteesRest {
 	
 	@Inject
 	private IServiceAnnulation serviceAnnulation;
+	
+	@Inject
+	private IServiceEvaluations serviceEvaluation;
+	
+	@Inject
+	private IServiceReponses serviceReponse;
+	
+	
 	/*
 	@Path("")
 	@GET
@@ -122,7 +136,16 @@ public class MesAnnoncesPosteesRest {
 	public List <Annonce> mesEnviesTerminesAEval( @PathParam("idUtilisateur") int utilisateur )
 	{
 		return serviceAnnonce.rechercherMesEnviesTerminesAEvaluer(utilisateur);
+		
 	}
+	
+	@Path("mesEnviesCloturees/{idUtilisateur}")
+	@GET
+	public List <Annonce> mesEnviesCloturees( @PathParam("idUtilisateur") int utilisateur )
+	{
+		return serviceAnnonce.rechercherMesEnviesCloturees(utilisateur);
+	}
+	
 	
 	@Path("mesAnnoncesTerminesNonAnnulees/{idUtilisateur}")
 	@GET
@@ -144,6 +167,35 @@ public class MesAnnoncesPosteesRest {
 	{
 		return serviceAnnulation.rechercherAnnulation();
 	}
+	// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/evaluation
+		@Path("evaluation")
+		@GET
+		public List <Evaluation> evaluation()
+		{
+			return serviceEvaluation.rechercherTouteslesEval();
+		}
+	
+		// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneReponse/2
+		@Path("uneReponse/{idAnnonce}")
+		@GET
+		public List <Repannonce> UneReponse(@PathParam ("idAnnonce")int idAnnonce)
+		{
+			System.out.println("je passe par le rest" + idAnnonce);
+			return serviceReponse.repParIdAnnonce(idAnnonce);
+		}
+		
+		// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/insererEvaluation
+	@Path("insererEvaluation")
+	@POST
+	@Consumes("application/json")
+	
+	public Evaluation insererEvaluation ( Evaluation evaluation)
+	{
+		
+		evaluation = serviceEvaluation.insererNouvelleEvaluation(evaluation);
+		return evaluation;
+	}
+		
 	
 	@Path("insererAnnulation")
 	@POST
@@ -163,6 +215,18 @@ public class MesAnnoncesPosteesRest {
 		annonce = serviceAnnonce.modifierMonAnnonce(annonce);
 	return annonce;
 }
+	
+	// Récupérer les annonces de l'utilisateur session ayant au moins une réponse __________________________
+	// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/reponsesRecues/1
+	@Path("annoncesAvecRep/{idUtilisateur}")
+	@GET
+	public List <Annonce> test(@PathParam("idUtilisateur") int utilisateur )
+	{
+		return serviceAnnonce.rechercherAnnoncesAvecReponses(utilisateur);
+	}
+	
+
+	
 	
 
 }

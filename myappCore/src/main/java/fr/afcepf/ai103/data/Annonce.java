@@ -38,8 +38,10 @@ import java.util.List;
 																								+ "and a.dateFinAnnonce is null "
 																								+ "and r.dateAcceptationReponse is not null"),
 		
-		@NamedQuery(name="Annonce.ListeAnnonceEnCoursSaufUtilisateur", query="SELECT a FROM Annonce a  join a.repannonces r WHERE a.stock.utilisateur.idUtilisateur <> :idUtilisateur "
-																								+ "and (r.dateAcceptationReponse is null and a.dateFinAnnonce is null)"),
+//		@NamedQuery(name="Annonce.ListeAnnonceEnCoursSaufUtilisateur", query="SELECT a FROM Annonce a  join a.repannonces r WHERE a.stock.utilisateur.idUtilisateur <> :idUtilisateur "
+//																								+ "and (r.dateAcceptationReponse is null and a.dateFinAnnonce is null)"),
+		@NamedQuery(name="Annonce.ListeAnnonceEnCoursSaufUtilisateur", query="SELECT a FROM Annonce a  WHERE a.stock.utilisateur.idUtilisateur <> :idUtilisateur "
+				+ "and (a.dateAnnulation is null and a.dateFinAnnonce is null)"),
 		
 		@NamedQuery(name="Annonce.ListeToutesLesAnnonces", query="SELECT a FROM Annonce a  join a.repannonces r WHERE a.dateAnnulation is null "
 																								+ "and r.dateAcceptationReponse is null and a.dateFinAnnonce is null"),
@@ -57,8 +59,12 @@ import java.util.List;
 		
 		@NamedQuery(name="Annonce.listeMesEnviesTerminesAEvaluees", query ="SELECT a FROM Annonce a join a.repannonces r   WHERE r.utilisateur.idUtilisateur =:idUtilisateur"
 																								+ " and r.dateAcceptationReponse is not null and (r.dateRefus is null "
-																								+ "and a.dateFinAnnonce is not null and a.dateAnnulation is null) and r.evaluations is empty")
-		})
+																								+ "and a.dateFinAnnonce is not null and a.dateAnnulation is null) and r.evaluations is empty"),
+		
+		@NamedQuery(name="Annonce.listeMesEnviesCloturees", query ="SELECT a FROM Annonce a join a.repannonces r   WHERE r.utilisateur.idUtilisateur =:idUtilisateur"
+																									+ " and r.dateAcceptationReponse is not null and (r.dateRefus is null "
+																									+ "and a.dateFinAnnonce is not null and a.dateAnnulation is null)")		
+})
 
 public class Annonce implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -112,8 +118,10 @@ public class Annonce implements Serializable {
 
 	//bi-directional many-to-one association to Repannonce
 	
-	@OneToMany(mappedBy="annonce", fetch = FetchType.EAGER)
-//	@JsonIgnore
+
+	@OneToMany(mappedBy="annonce", fetch = FetchType.LAZY)
+	@JsonIgnore
+
 	private List<Repannonce> repannonces;
 
 	public Annonce() {

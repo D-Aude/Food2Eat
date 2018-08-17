@@ -3,7 +3,7 @@ package fr.afcepf.ai103.service;
 import java.util.List;
 
 import fr.afcepf.ai103.data.Evaluation;
-import fr.afcepf.ai103.data.Stock;
+
 
 public interface IServiceEvaluations {
 	
@@ -13,4 +13,9 @@ public interface IServiceEvaluations {
 
 	List<Evaluation> rechercherEvaluationSansCommentaire(int id);
 	
+	List<Evaluation> rechercherTouteslesEval();
+	
+	Evaluation insererNouvelleEvaluation(Evaluation evaluation);
+	
+	List <Evaluation> rechercherEvalparIdUti (int utilisateur);
 }

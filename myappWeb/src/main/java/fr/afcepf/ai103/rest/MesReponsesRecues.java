@@ -3,11 +3,14 @@ package fr.afcepf.ai103.rest;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import fr.afcepf.ai103.data.Foodfriend;
 import fr.afcepf.ai103.data.Repannonce;
 import fr.afcepf.ai103.service.IServiceReponses;
 
@@ -21,10 +24,60 @@ public class MesReponsesRecues {
 	private IServiceReponses serviceReponses;
 	
 	@Path("/{idUtilisateur}")
-	@GET
-	
+	@GET	
 	public List<Repannonce> rechercherReponsesAnnonces(@PathParam("idUtilisateur")int id){
 		return serviceReponses.rechercherReponsesAnnonces(id);	
+	}
+	
+	
+	// rechercher une reponse
+	//http://localhost:8080/myappWeb/services/rest/reponses/uneReponse/21
+	@Path("/uneReponse/{idReponse}")
+	@GET
+	public Repannonce rechercherReponseParId(@PathParam("idReponse")int id){
+		return serviceReponses.rechercherReponseParId(id);	
+	}
+	
+	
+	// Recuperer toutes les reponses d'une annonce en particulière
+	@Path("reponsesRecues/{idAnnonce}") //http://localhost:8080/myappWeb/services/rest/reponses/reponsesRecues/15
+	@GET
+	public List<Repannonce> rechercherReponsesPourAnnonce(@PathParam("idAnnonce")int id) {
+		return serviceReponses.rechercherReponsesPourAnnonce(id);	
+	}
+	
+	// Insertion nouvelle reponse
+	@Path("/nouvelleReponse") 
+	@POST
+	@Consumes("application/json")
+	public Repannonce postNewReponse(Repannonce rep) {
+		
+		rep = serviceReponses.save(rep);
+		return rep;
+	}
+	
+	//Maj réponse
+	@Path("/maj")
+	@POST
+	@Consumes("application/json")
+	public Repannonce postReponse(Repannonce rep) {
+		rep = serviceReponses.update(rep);
+		return rep;
+	}
+	
+	@Path("reponseSansEval/{idUtilisateur}")
+	@GET
+	public List <Repannonce> chercherReponsesSansEval(@PathParam("idUtilisateur")int idUtilisateur){
+		System.out.println("je suis dans le reponse rest  sans eval" + idUtilisateur);
+		return serviceReponses.rechercheReponsesParIdUtilisateurSansEval(idUtilisateur);	
+	}
+	
+	@Path("reponseAvecEval/{idUtilisateur}")
+	@GET
+	public List <Repannonce> chercherReponsesAvecEval(@PathParam("idUtilisateur")int idUtilisateur){
+		
+		System.out.println("je suis dans le reponse rest avec Eval " + idUtilisateur);
+		return serviceReponses.rechercheReponsesParIdUtilisateurSansEval(idUtilisateur);	
 	}
 	
 	

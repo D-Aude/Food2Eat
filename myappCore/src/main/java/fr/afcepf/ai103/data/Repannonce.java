@@ -16,19 +16,45 @@ import java.util.List;
 @Entity
 @NamedQueries
 (value= {@NamedQuery(name="Repannonce.findAll", query="SELECT r FROM Repannonce r"),
+		
 		@NamedQuery(name="Repannonce.essai", query ="SELECT r FROM Repannonce r  WHERE r.utilisateur.idUtilisateur =:idUtilisateur"),
+		
 		@NamedQuery(name="Repannonce.parUtilisateur", query = "SELECT r FROM Repannonce r "
 																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :id "
 																+ "ORDER BY r.dateRdv"),
 		@NamedQuery(name="Repannonce.reponseParAnnonce", query = "SELECT r FROM Repannonce r "
-																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :utilisateurCourant ")})
+																+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :utilisateurCourant "),
+		
+
+		@NamedQuery(name="Repannonce.parIdAnnonce2", query = "SELECT r FROM Repannonce r WHERE  r.annonce.idAnnonce = :idAnnonce"),
+		
+
+		@NamedQuery(name="Repannonce.parIdAnnonce", query = "SELECT r FROM Repannonce r "
+																+ "WHERE r.annonce.idAnnonce = :idAnnonce "
+																+ "and r.dateAcceptationReponse is null "
+																+ "and r.dateAnnulationReponse is null "
+																+ "and r.dateRefus is null"),
+	
+		@NamedQuery(name="Repannonce.parIdUtilisateurSansEval", query = "SELECT r FROM Repannonce r "
+																+ "WHERE r.utilisateur.idUtilisateur = :idUtilisateur "
+																+ "and r.dateAcceptationReponse is not null "
+																+ "and r.dateAnnulationReponse is null "
+																+ "and r.dateRefus is null "
+																+"and r.evaluations is empty"),
+		
+		@NamedQuery(name="Repannonce.parIdUtilisateurAvecEval", query = "SELECT r FROM Repannonce r "
+															+ "WHERE r.utilisateur.idUtilisateur = :idUtilisateur "
+															+ "and r.dateAcceptationReponse is not null "
+															+ "and r.dateAnnulationReponse is null "
+															+ "and r.dateRefus is null "
+															+ "and r.evaluations is not empty"),
+})
 		
 public class Repannonce implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="REPANNONCE_IDREPONSE_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="REPANNONCE_IDREPONSE_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_REPONSE")
 	private int idReponse;
 
@@ -60,7 +86,7 @@ public class Repannonce implements Serializable {
 
 	//bi-directional many-to-one association to Annonce
 	@ManyToOne
-	@JsonIgnore
+//	@JsonIgnore
 	@JoinColumn(name="ID_ANNONCE")
 	private Annonce annonce;
 

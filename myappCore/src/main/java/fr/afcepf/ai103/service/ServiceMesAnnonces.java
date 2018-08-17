@@ -123,14 +123,25 @@ public class ServiceMesAnnonces implements IServiceMesAnnonces {
 		return daoAnnonces.rechercherMesEnviesTerminesAEvaluer(utilisateur);
 	}
 
-
+	@Override
+	public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
+		
+		return daoAnnonces.rechercherMesEnviesCloturees(utilisateur);
+	}
 
 	@Override
 	public List<Annonce> rechercherAnnonceTermineesNonAnnulees(int idUtilisateur) {
 	
 		return daoAnnonces.rechercherMesAnnoncesTerminesNonAnnulees(idUtilisateur);
 	}
+	
+	// Annonces ayant des réponses
+	@Override
+	public List<Annonce> rechercherAnnoncesAvecReponses(int iduser) {
+		// TODO Auto-generated method stub
+		return daoAnnonces.recupererAnnonceAvecReponse(iduser);
 
+	}
 
 
 	@Override
@@ -139,6 +150,9 @@ public class ServiceMesAnnonces implements IServiceMesAnnonces {
 		return daoAnnonces.rechercherMesAnnoncesTerminesCarAnnulees(idUtilisateur);
 	}
 
+
+
+	
 
 
 }

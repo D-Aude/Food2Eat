@@ -7,12 +7,13 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import fr.afcepf.ai103.data.Annulation;
 import fr.afcepf.ai103.data.Evaluation;
 import fr.afcepf.ai103.data.Repannonce;
 import fr.afcepf.ai103.data.Stock;
 
-//@Stateless
-@Singleton //depuis la version 3.1 des EJB (comme @Stateless mais 
+@Stateless
+//@Singleton //depuis la version 3.1 des EJB (comme @Stateless mais 
 //avec la garantie d'avoir une seule instance de la classe d'EJB 
 //fabriquée par le serveur JEE)
 @Local
@@ -48,5 +49,28 @@ public class DaoEvaluations implements IDaoEvaluations {
 		return entityManager.createNamedQuery("Evaluations.avecNoteSansCommentaire", Evaluation.class)
 				.setParameter("idReponse", id)
 				.getResultList();
+	}
+
+	@Override
+	public List<Evaluation> rechercherTouteslesEval() {
+		return entityManager.createNamedQuery("Evaluation.findAll", Evaluation.class)
+				.getResultList();
+	
+	}
+
+	@Override
+	public Evaluation insererNouvelleEvaluation(Evaluation evaluation) {
+	
+			entityManager.persist(evaluation);
+			return evaluation;
+	}
+
+	@Override
+	public List<Evaluation> rechercherEvalParIdUtilisateur(int idUtilisateur) {
+		return entityManager.createNamedQuery("Evaluations.avecNoteEtCommentaireParUt", Evaluation.class)
+		.setParameter("idUtilisateur", idUtilisateur)
+		 .getResultList();
 	}	
+	
+	
 }

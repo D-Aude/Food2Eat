@@ -1,9 +1,8 @@
 #listeFoodfriend {
 	font-style : italic;
-	border-style: solid;
-	border-color: red;
+	_border-style: solid;
 	border-width: 2px;
-	border-color: black;
+	_border-color: black;
 	_display:flex;
 	flex-direction: row;
 	padding: 5px 5px 5px 5px;
@@ -11,10 +10,11 @@
 
 #friend-element {
 	display: inline-block;
-    border: 2px solid black;
+    _border: 2px solid black;
     margin: 5px;
     padding: 10px;
     background-color:white;
+    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
 }
 
 #friend-elementOLD {
@@ -27,3 +27,15 @@
 	display: inline-block;
 	
 }
+
+#annoncesReponses {
+	border: 2px solid black;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+}
+
+#userimg {
+	height: 50px;
+	width: 50px;
+}
+

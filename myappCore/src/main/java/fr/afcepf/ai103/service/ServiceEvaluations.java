@@ -35,4 +35,22 @@ public class ServiceEvaluations implements IServiceEvaluations {
 		return daoEvaluations.rechercherEvaluationSansCommentaire(id);
 	}
 
+	@Override
+	public List<Evaluation> rechercherTouteslesEval() {
+		
+		return daoEvaluations.rechercherTouteslesEval();
+	}
+
+	@Override
+	public Evaluation insererNouvelleEvaluation(Evaluation evaluation) {
+		evaluation = daoEvaluations.insererNouvelleEvaluation(evaluation);
+		return evaluation;
+	}
+
+	@Override
+	public List<Evaluation> rechercherEvalparIdUti(int utilisateur) {
+		
+		return daoEvaluations.rechercherEvalParIdUtilisateur(utilisateur);
+	}
+
 }

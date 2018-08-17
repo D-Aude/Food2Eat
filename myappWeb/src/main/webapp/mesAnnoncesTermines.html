@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="listeMesAnnonceTermines">
-		<button @click="chargerAnnonces()">Listes annonces cloturées</button>
+	  <button @click="chargerAnnonces()">Listes annonces cloturées</button>
 		<select id="selectTypeAnnoncesTerminees"
 			v-model="typeAnnoncesCloturees">
 			<option value="plop">Toutes mes annonces terminées</option>
@@ -23,21 +23,26 @@
 		<br />
 		<div>
 			<div id="Annonces-elements" v-for="annonce in annonces">
+			
 				<div v-if="annonce.annulation == null">
 					<div v-if=" annonce.dateAnnulation == null">
+					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>
 						<h3>Annonce terminée</h3>
 						<span>{{annonce.titre}} Votre annonce est terminée !<br />
 							Vous avez fait un don de : {{annonce.stock.quantite}}
 							{{annonce.stock.produit.nomProduit}} </br> le
-							{{moment(annonce.repannonces.dateRDV).format('L')}} . </span> <br />
+							{{moment(annonce.repannonces.dateRDV).format('L')}} 
+							Nom du produit : {{annonce.stock.produit.idProduit}}. </span> <br />
 					</div>
 					<div v-if="annonce.dateFinAnnonce == null">
+					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>
 							Vous avez annulez votre don de :  {{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}}
 							Date de l'annulation :
 							{{moment(annonce.dateAnnulation).format('L')}}
 							Merci de renseigner un motif d'annulation :  </br>
 						
 						<select id="selectMotifAnnulation" v-model="nomAnnulation">
+					
 							<option v-for="annulation in annulations":value="annulation.idAnnulation">
 							{{annulation.nomAnnulation}}</option>
 						</select>
@@ -45,11 +50,15 @@
 					</div>
 				</div>
 				<div v-else>
+					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>
 					<h3>Annonce annulée</h3>
-					<span>"{{annonce.titre}}" Vous avez annulé votre annonce <br />
+					<span>{{annonce.titre}} Vous avez annulé votre annonce <br />
+					{{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}}
+						Nom du produit : {{annonce.stock.produit.idProduit}}.
 						Motif de l'annulation : {{annonce.annulation.nomAnnulation}}<br />
 						Date de l'annulation :
 						{{moment(annonce.dateAnnulation).format('L')}}
+						Nom du produit : {{annonce.stock.produit.idProduit}}.
 					</span>
 			</div>
 		</div>
