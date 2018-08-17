@@ -14,13 +14,15 @@ var listeannoncesCommnunaute = new Vue({
 	    idAnnonceEncours : "",
 	    src: "./resources/img/annoncescom/",
 	    imgtype: ".png",
+	    afficherModal : false,
 	    annonceDetail : [],
-	    produitDetail : [],
-	    utilisateurDonneurDetail : [],
+//	    produitDetail : [],
+//	    utilisateurDonneurDetail : [],
+//	    stockDetail : [],
 	    date1: "",
 	    date2: "",
 	    date3: "",
-	    dateChoisie: ""
+	    dateChoisie: null
 	   
 	  },
 	  methods: {
@@ -35,21 +37,56 @@ var listeannoncesCommnunaute = new Vue({
 			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
 		},
 		voirAnnonceDetail: function (annonceSelection) {
-			
-			this.annonceDetail = annonceSelection;
-			this.produitDetail = annonceSelection.stock.produit;
-			this.utilisateurDonneurDetail = annonceSelection.stock.utilisateur;
+			vm = this;
+			vm.annonceDetail = annonceSelection;
 			
 			this.date1 = annonceSelection.dateRdv1;
 			this.date2 = annonceSelection.dateRdv2;
 			this.date3 = annonceSelection.dateRdv3;
-			
-			console.log(this.utilisateurDonneurDetail)
 
-		}
+			vm.afficherModal = true;
+
+		},
 		
-	  },
 	  
+	  
+		envoyerDemandeProduit: function(idAnnonce) {
+			console.log("Début de la fonction");
+			var vm = this;
+			
+			// Instanciation d'une annonce avec l'idAnnonce
+			var annonceChoisie = {
+					"idAnnonce" : idAnnonce
+			}
+			
+			// Instanciation de l'utilisateur de la session
+			var utilisateurEnCours = {
+					"idUtilisateur" : vm.iduser
+			}
+			
+			
+			// Instanciation d'une Repannonce
+	    	var repannonce = {
+	    			  "idReponse" : null,
+	    			  "dateAcceptationReponse" : null,
+	    			  "dateAnnulationReponse" : null,
+	    			  "dateRdv" : vm.dateChoisie,
+	    			  "dateRefus" : null,
+	    			  "dateReponse" : Date.now(),
+	    			  "annonce" : annonceChoisie,
+	    			  "utilisateur" : utilisateurEnCours
+	    	  }
+			
+			// POST
+			console.log("début du post")
+			
+	    	axios.post('http://localhost:8080/myappWeb/services/rest/reponses/nouvelleReponse',
+	    			repannonce).then((response) => {
+	    				  console.log(response);
+	    				  console.log("terminé");
+	    			  });
+		}
+	  },
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
 	  created: function() {
 		var vm = this
