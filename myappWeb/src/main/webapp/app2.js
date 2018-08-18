@@ -7,7 +7,7 @@ var id = 1;
 // ANNONCES DE LA COMMUNAUTE
 var listeannoncesCommnunaute = new Vue({
 	
-	  el: '#app2',
+	  el: '#annoncesCommunaute',
 	  data: {
 	    annonce: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
@@ -25,6 +25,7 @@ var listeannoncesCommnunaute = new Vue({
 	    map: null,
 	    tileLayer: null,
 	    layers: [],
+	    seen: true
 
 	   
 	  },
@@ -69,6 +70,8 @@ var listeannoncesCommnunaute = new Vue({
 			  );
 			  
 			  this.tileLayer.addTo(this.map);
+			  
+			  console.log(document.getElementById('map'));
 			  
 		  },
 		  initLayers() {},
@@ -136,17 +139,18 @@ var listeannoncesCommnunaute = new Vue({
 		
 		// afficher sous forme de carte
 		afficherCarte: function() {
-//			if (this.voirCarte == false) {
-//				this.voirCarte = true;
-//				document.getElementById('btnMap').textContent = "Afficher liste";
-//				console.log("fonction afficher carte");
-//				
-//				// initialisation de la carte				
-//				
-//			} else {
-//				this.voirCarte = false;
-//				document.getElementById('btnMap').textContent = "Afficher la carte";
-//			}
+			if (this.seen == false) {
+				this.seen = true;
+				document.getElementById('btnMap').textContent = "Afficher liste";				
+			
+				
+				
+				// initialisation de la carte				
+				
+			} else {
+				this.seen = false;
+				document.getElementById('btnMap').textContent = "Afficher la carte";
+			}
 			
 			
 		}

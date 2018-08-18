@@ -17,13 +17,16 @@
 			
 		
 		<div id="app2" class="container">
+		
+
+		
 			<div id="mapContainer">
-				<div id="map" class="map" style="height: 600px;"></div>
+				<div v-if="seen" id="map" class="map" style="height: 400px;"></div>
 			</div>
 			
 		
 
-   			<div id="friend-element" v-for="annonce in annonce">     					
+   			<div id="" v-for="annonce in annonce">     					
 			
 					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>						
 	   				{{annonce.titre}} <br/>
