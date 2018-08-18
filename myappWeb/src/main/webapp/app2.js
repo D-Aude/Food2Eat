@@ -1,7 +1,7 @@
 
 // Récupération de la Session
 var Session = sessionStorage.getItem('utilisateurCourant');
-var id = 1;
+var id = 5;
 
 
 // ANNONCES DE LA COMMUNAUTE
@@ -25,7 +25,8 @@ var listeannoncesCommnunaute = new Vue({
 	    map: null,
 	    tileLayer: null,
 	    layers: [],
-	    seen: true
+	    seen: true,
+	    markerList: []
 
 	   
 	  },
@@ -59,17 +60,20 @@ var listeannoncesCommnunaute = new Vue({
 		// Code pour la carte
 		  initMap() {
 			  
-			  this.map = L.map('map').setView([38.63, -90.23], 12);
+			  this.map = L.map('map').setView([48.8162038, 2.327159599999959], 16);
 
 			  this.tileLayer = L.tileLayer(
 			    'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
 			    {
 			      maxZoom: 18,
-			      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
+			      id: 'mapbox.streets',
+			      accessToken: 'pk.eyJ1Ijoid2luZ3kiLCJhIjoiY2preThmNnB3MGZlYTNrcWk3cWQzeDFtdCJ9.fRvBd-XU2TlX9QRMye3zLA'
 			    }
 			  );
 			  
 			  this.tileLayer.addTo(this.map);
+			  
+
 			  
 			  console.log(document.getElementById('map'));
 			  
@@ -135,6 +139,36 @@ var listeannoncesCommnunaute = new Vue({
 	    				  console.log(response);
 	    				  console.log("terminé");
 	    			  });
+		},
+		
+		afficherAnnonces: function() {
+			
+			var i;
+
+			for (i=0; i < this.annonce.length ; i++) {
+				var marker = L.marker([this.annonce[i].adresse.x, this.annonce[i].adresse.y]).addTo(this.map);
+				var nomProduit = this.annonce[i].stock.produit.nomProduit
+				marker.bindPopup(nomProduit);
+				
+				// Evenement
+				marker.on('mouseover', function (e) {
+		            this.openPopup();
+		        });
+				
+				marker.on('mouseout', function (e) {
+		            this.closePopup();
+		        });
+				
+				var info = this.annonce[i].stock.produit.nomProduit;
+				marker.on('click', function(e) {
+					    alert(nomProduit);
+					});				
+				
+				this.markerList.push(marker);
+			}
+			
+
+			
 		},
 		
 		// afficher sous forme de carte
