@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
+    <title>Interactive Map</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body>
+  
+  <div id="app2" class="container">
+  
+		
+			<div id="mapid" style="height:400px;"></div>
+
+   			<div id="friend-element" v-for="annonce in annonce">     					
+			
+					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>						
+	   				{{annonce.titre}} <br/>
+	   				{{annonce.stock.produit.nomProduit}} proposé par {{annonce.stock.utilisateur.pseudo}}<br/>
+	   				{{annonce.adresse.ville.ville}}, le {{moment(annonce.datePublication).format('L')}} 				
+	   				<button>Plus de detail</button>   				
+
+   			</div>
+  		</div>
+
+
+  	<button id="btnMap" v-on:click="afficherCarte()">voir carte</button>
+  
+  	<div v-if="carte==false">
+	  	annonce 1<br/>
+	  	annonce 2<br/>
+	  	annonce 3<br/>
+	  	annonce 4<br/>
+	  	annonce 5<br/>
+	  	annonce 6<br/>
+	  	annonce 7<br/>
+	  	annonce 8<br/>	  	
+	 </div>
+  
+	
+	 <div class="carteContainer">
+	      <div  id="map" class="map" style="height: 400px;"></div>
+	 </div>	  
+
+	  
+</div>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+<script src="app2.js"></script>
+
+    
+  </body>
+</html>

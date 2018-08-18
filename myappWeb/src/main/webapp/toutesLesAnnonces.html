@@ -1,9 +1,14 @@
-<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
 <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+<link rel="stylesheet" href="./resources/leaflet/leaflet.css" />
+<script src="./resources/leaflet/leaflet.js"></script>
 
-<div class="container"  id="annoncesCommunaute">
+
+
+<div id="annoncesCommunaute">
+<div class="container">
+
 	<div class="lblTitreAnnonces">
 		<b>Toutes les annonces</b>
 	</div>
@@ -14,12 +19,15 @@
 
 <button id="btnMap" type="button" v-on:click="afficherCarte()">Afficher la carte</button>
 
-<div id="img-toutes-annonces-container" v-if="carte == true">
-	<span>afficher la carte</span>
-</div>
+<div id="annoncesSurListe" v-if="voirCarte == true"></div>
+
+<!-- =========================Affichage de la carte ================== -->
+<div id="map" class="map" style="height:600px;"></div>
 
 
-<div id="annoncesSurListe" v-if="carte == false">	
+
+
+<div id="annoncesSurListe" v-if="voirCarte == false">	
 	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
 		<div class="imgAnnonce">
 			<a href="#" >
@@ -75,5 +83,11 @@
 	</div>
 </div>  		
 </div>
+</div>
 <script src="./js/AnnoncesCommunaute.js"></script>
 <script src="./js/modalAnnonceJS.js"></script>
+<script>
+			
+			
+			
+</script>

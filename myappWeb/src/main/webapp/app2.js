@@ -1,13 +1,13 @@
 
 // Récupération de la Session
 var Session = sessionStorage.getItem('utilisateurCourant');
-var id = JSON.parse(Session)["idUtilisateur"];
+var id = 1;
 
 
 // ANNONCES DE LA COMMUNAUTE
 var listeannoncesCommnunaute = new Vue({
 	
-	  el: '#annoncesCommunaute',
+	  el: '#app2',
 	  data: {
 	    annonce: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
@@ -23,10 +23,15 @@ var listeannoncesCommnunaute = new Vue({
 	    search: '',
 	    voirCarte: false,
 	    map: null,
-	    tileLayer:null,
-	    layers: []
+	    tileLayer: null,
+	    layers: [],
 
 	   
+	  },
+	  
+	  mounted() {
+		  this.initMap();
+		  this.initLayers();
 	  },
 	  
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
@@ -46,29 +51,27 @@ var listeannoncesCommnunaute = new Vue({
 			      })
 			      
 			}
-	  },
-	  
-	  mounted() {
-		this.initMap();
-		this.initLayers();
-	  },
+	  },	  
 	  
 	  methods: {
-		  
-		initMap() {
-			this.map = L.map(this.carte).setView([51.505, -0.09], 13);
-
-			this.tileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-			    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-			    maxZoom: 18,
-			    id: 'mapbox.streets',
-			    accessToken: 'pk.eyJ1Ijoid2luZ3kiLCJhIjoiY2preThmNnB3MGZlYTNrcWk3cWQzeDFtdCJ9.fRvBd-XU2TlX9QRMye3zLA'
-			}).addTo(this.map);
-		},
 		
-		initLayers() {
-			
-		},
+		// Code pour la carte
+		  initMap() {
+			  
+			  this.map = L.map('map').setView([38.63, -90.23], 12);
+
+			  this.tileLayer = L.tileLayer(
+			    'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
+			    {
+			      maxZoom: 18,
+			      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
+			    }
+			  );
+			  
+			  this.tileLayer.addTo(this.map);
+			  
+		  },
+		  initLayers() {},
 		  
 		// METHODE : générer le lien URL à partir d'un pseudo  
 		getSrc: function(idproduit) {
@@ -133,49 +136,26 @@ var listeannoncesCommnunaute = new Vue({
 		
 		// afficher sous forme de carte
 		afficherCarte: function() {
-			if (this.voirCarte == false) {
-				this.voirCarte = true;
-				document.getElementById('btnMap').textContent = "Afficher liste";
-				console.log("fonction afficher carte");
-				
-				// initialisation de la carte
-				
-
-				
-				
-				
-				
-			} else {
-				this.voirCarte = false;
-				document.getElementById('btnMap').textContent = "Afficher la carte";
-			}
+//			if (this.voirCarte == false) {
+//				this.voirCarte = true;
+//				document.getElementById('btnMap').textContent = "Afficher liste";
+//				console.log("fonction afficher carte");
+//				
+//				// initialisation de la carte				
+//				
+//			} else {
+//				this.voirCarte = false;
+//				document.getElementById('btnMap').textContent = "Afficher la carte";
+//			}
 			
 			
 		}
-
-		
-	  },
-	  // CREATED NUMERO 2
-	  // METHODEBIS : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
-	  created: function() {
-		var vm = this
-	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + vm.iduser)
-	      .then(function (response) {
-	        vm.annonce = response.data;
-	        vm.date1 = vm.annonce.dateRdv1;
-	        vm.date2 = vm.annonce.dateRdv2;
-	        vm.date3 = vm.annonce.dateRdv3;
-	        vm.selected = "";
-	        
-	      })
-
 	  }
 	
 })
 
 
 // Carte
-
 
 
 
