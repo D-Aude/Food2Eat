@@ -1112,9 +1112,10 @@ height: 0px;
 }
 
 #btnMap {
-	    width: 138px;
+	width: 138px;
     height: 41px;
     position: absolute;
-    top: 292px;
+    top: 100px;
     left: 140px
 }
+

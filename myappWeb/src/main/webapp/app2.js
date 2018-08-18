@@ -1,7 +1,7 @@
 
 // Récupération de la Session
 var Session = sessionStorage.getItem('utilisateurCourant');
-var id = 5;
+var id = JSON.parse(Session)["idUtilisateur"];
 
 
 // ANNONCES DE LA COMMUNAUTE
@@ -31,9 +31,15 @@ var listeannoncesCommnunaute = new Vue({
 	   
 	  },
 	  
+	  watch: {
+		  map: function() {
+			  console.log("watcher map")
+			  this.initLayers();
+		  }
+	  },
+	  
 	  mounted() {
-		  this.initMap();
-		  this.initLayers();
+		  this.initMap();		  
 	  },
 	  
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
@@ -41,8 +47,11 @@ var listeannoncesCommnunaute = new Vue({
 		var vm = this
 	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/autresAnnonces/' + vm.iduser)
 	      .then(function (response) {
-	        vm.annonce = response.data
-	      })
+	        vm.annonce = response.data;
+	        console.log("fin fonction created")
+	      });
+	    
+	      
 	  },
 	  
 	  computed: {
@@ -73,12 +82,34 @@ var listeannoncesCommnunaute = new Vue({
 			  
 			  this.tileLayer.addTo(this.map);
 			  
-
-			  
-			  console.log(document.getElementById('map'));
+			  console.log(this.annonce);
 			  
 		  },
-		  initLayers() {},
+		  initLayers() {
+			  
+			  for (i=0; i < this.annonce.length ; i++) {
+					var marker = L.marker([this.annonce[i].adresse.x, this.annonce[i].adresse.y]).addTo(this.map);
+					var nomProduit = this.annonce[i].stock.produit.nomProduit
+					marker.bindPopup(nomProduit);
+					marker.annonce = this.annonce[i];
+					// Evenement
+					marker.on('mouseover', function (e) {
+			            this.openPopup();
+			        });
+					
+					marker.on('mouseout', function (e) {
+			            this.closePopup();
+			        });
+					
+					marker.on('click', function(e, info) {
+						alert(this.annonce.stock.utilisateur.pseudo + " donne " + this.annonce.stock.produit.nomProduit);
+						});				
+					
+					
+					this.markerList.push(marker);
+			  }
+			  
+		  },
 		  
 		// METHODE : générer le lien URL à partir d'un pseudo  
 		getSrc: function(idproduit) {
@@ -149,7 +180,7 @@ var listeannoncesCommnunaute = new Vue({
 				var marker = L.marker([this.annonce[i].adresse.x, this.annonce[i].adresse.y]).addTo(this.map);
 				var nomProduit = this.annonce[i].stock.produit.nomProduit
 				marker.bindPopup(nomProduit);
-				
+				marker.annonce = this.annonce[i];
 				// Evenement
 				marker.on('mouseover', function (e) {
 		            this.openPopup();
@@ -159,10 +190,10 @@ var listeannoncesCommnunaute = new Vue({
 		            this.closePopup();
 		        });
 				
-				var info = this.annonce[i].stock.produit.nomProduit;
-				marker.on('click', function(e) {
-					    alert(nomProduit);
+				marker.on('click', function(e, info) {
+					alert(this.annonce.stock.utilisateur.pseudo + " donne " + this.annonce.stock.produit.nomProduit);
 					});				
+				
 				
 				this.markerList.push(marker);
 			}
@@ -175,15 +206,15 @@ var listeannoncesCommnunaute = new Vue({
 		afficherCarte: function() {
 			if (this.seen == false) {
 				this.seen = true;
-				document.getElementById('btnMap').textContent = "Afficher liste";				
-			
-				
-				
+				document.getElementById('btnMap').textContent = "Afficher sur la carte";
+				document.getElementById('map').style.visibility = "hidden";
 				// initialisation de la carte				
 				
 			} else {
 				this.seen = false;
-				document.getElementById('btnMap').textContent = "Afficher la carte";
+				document.getElementById('btnMap').textContent = "Afficher la liste";
+				document.getElementById('map').style.visibility = "visible";
+				this.initLayers();
 			}
 			
 			

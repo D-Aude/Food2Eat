@@ -18,7 +18,6 @@
 </form>
 
 <button id="btnMap" type="button" v-on:click="afficherCarte()">Afficher liste</button>
-<button id="btnMapAn" type="button" v-on:click="afficherAnnonces()">Afficher Les annonces sur la carte</button>
 
 
 <!-- =========================Affichage de la carte ================== -->
@@ -27,7 +26,7 @@
 </div>
 
 <div id="annoncesSurListe">	
-	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
+	<div id="img-toutes-annonces-container" v-for="annonce in filteredList" v-if="seen">     					
 		<div class="imgAnnonce">
 			<a href="#" >
 				<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/>

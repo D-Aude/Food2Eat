@@ -7,6 +7,22 @@
 
 
 <div id="annoncesCommunaute">
+<div   id="mapContainer">		
+	<div id="map" 
+		class="map" 
+		style="
+			width: 1000px;
+		    height: 400px;
+		    position: absolute;
+		    top: 300px;
+		    left: 140px;
+		    visibility: hidden;
+		    vertical-align: middle;
+		    border: 1px solid black;
+		    display: block;			
+			">
+	</div>
+</div>
 <div class="container">
 
 	<div class="lblTitreAnnonces">
@@ -17,17 +33,13 @@
   <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher..." v-model="search">
 </form>
 
-<button id="btnMap" type="button" v-on:click="afficherCarte()">Afficher la carte</button>
+<button id="btnMap" type="button" v-on:click="afficherCarte()">Afficher sur la carte</button>
 
-<div id="annoncesSurListe" v-if="voirCarte == true"></div>
 
 <!-- =========================Affichage de la carte ================== -->
-<div id="map" class="map" style="height:600px;"></div>
 
 
-
-
-<div id="annoncesSurListe" v-if="voirCarte == false">	
+<div id="annoncesSurListe" v-if="seen">	
 	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
 		<div class="imgAnnonce">
 			<a href="#" >
@@ -84,7 +96,7 @@
 </div>  		
 </div>
 </div>
-<script src="./js/AnnoncesCommunaute.js"></script>
+<script src="./app2.js"></script>
 <script src="./js/modalAnnonceJS.js"></script>
 <script>
 			
