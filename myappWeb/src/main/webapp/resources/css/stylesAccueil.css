@@ -284,6 +284,17 @@ a {
     min-width:360px;
 }
 
+#menuAnnonces3 {
+	font-size : 20px!important;
+	text-decoration : none!important;
+	padding : 17 17 17 17px!important;
+	display:none;
+	width: 100%;
+    left: 150px !important;
+    top: 47px;
+    min-width:360px;	
+}
+
 #policeMenu {
 		color: white!important;
 }

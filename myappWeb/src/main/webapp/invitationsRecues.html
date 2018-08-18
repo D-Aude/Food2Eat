@@ -12,10 +12,17 @@
 	
 	<script src="./js/foodfriendtest.js"></script>
 </head>
-<body onload="initComportementJs()">	
-			
+<body onload="initComportementJs()">
+
+
+		<div class="lblTitreAnnonces">
+			<b>Invitations Foodfriend reçue(s)</b>
+		</div>	
+<br/><br/><br/><br/><br/><br/><br/><br/>			
 		<div id="listeDemandesFoodfriend">
-			
+			<div v-if="foodfriend.length == 0">
+				pas d'invitation...
+			</div>
    			<div id="friend-element" v-for="foodfriend in foodfriend">  
 	   				<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>
 	   				{{foodfriend.utilisateur1.pseudo}} <br/>

@@ -5,7 +5,7 @@ var vm = new Vue({
     stocks: [],
     idUser: '',
   	modeConservation: '',
-  	searchKey: ''
+  	consommation: 0
   },
   watch: {
 	  modeConservation: function (mode, oldMode) {
@@ -14,7 +14,6 @@ var vm = new Vue({
   },
   created: function () {
 	  console.log('Init InventaireJS');
-	  
 	  var session = sessionStorage.getItem('utilisateurCourant');
 	  console.log('session = '+session);
 	  
@@ -25,6 +24,8 @@ var vm = new Vue({
 	  }
 	  else
 	  {
+		  document.getElementById("btnEnregistrer").style.display="none";
+		  document.getElementById("btnAnnuler").style.display="none";
 		  var utilisateur = JSON.parse(session);
 		  this.idUser = utilisateur.idUtilisateur;
 		  console.log('Stock.parUtilisateur: '+utilisateur.idUtilisateur);
@@ -38,6 +39,129 @@ var vm = new Vue({
   },
   methods: 
   {
+	  btnManger()
+	  {
+		  console.log('Mode Manger');
+		  //Si bouton deja appuyé
+		  if(document.getElementById("btnManger").style.backgroundColor == "rgb(33, 37, 41)")
+		  {
+			  console.log('   => OFF');
+			  this.desactiverManger();
+			  document.getElementById("btnEnregistrer").style.display="none";
+			  document.getElementById("btnAnnuler").style.display="none";
+		  }
+		  else
+		  {
+			  console.log('   => ON');
+			  this.desactiverJeter();
+			  this.activerManger();
+			  document.getElementById("btnEnregistrer").style.display="block";
+			  document.getElementById("btnAnnuler").style.display="block";
+		  }
+		  
+	  },
+	  btnJeter()
+	  {
+		  console.log('Bouton Jeter');
+		  //Si bouton deja appuyé
+		  if(document.getElementById("btnJeter").style.backgroundColor == "rgb(33, 37, 41)")
+		  {
+			  console.log('   => OFF');
+			  this.desactiverJeter();
+			  document.getElementById("btnEnregistrer").style.display="none";
+			  document.getElementById("btnAnnuler").style.display="none";
+		  }
+		  else
+		  {
+			  console.log('   => ON');
+			  this.desactiverManger();
+			  this.activerJeter();
+			  document.getElementById("btnEnregistrer").style.display="block";
+			  document.getElementById("btnAnnuler").style.display="block";
+		  }
+		  
+		  
+	  },
+	  btnEnregistrer()
+	  {
+		  console.log('Bouton Enregistrer');
+		  var liste = document.getElementsByClassName("infosStock");
+		  
+		  for(var i =0; i<liste.length; i++)
+		  {
+			 var info = liste[i].children;
+			 var stockModif = info[3].children;
+			 var newFractionRestante = stockModif[0].value;
+			 
+			 var stockEnBase = this.stocks[i];
+			 var oldFractionRestante = stockEnBase.fractionRestante;
+			 
+			 if(oldFractionRestante > newFractionRestante)
+			 {
+				 console.log('Modification du Stock : '+stockEnBase.produit.nomProduit);
+				 console.log('Ancienne valeur fraction dans base = '+ oldFractionRestante);
+				 console.log('Nouvelle valeur fraction en base = '+newFractionRestante);
+				 
+				 if(newFractionRestante == 0)
+				 {
+					 console.log('Quantite du stock réduit de 1');
+					 stockEnBase.quantite--;
+					 
+					 if(stockEnBase.quantite == 0)
+					 {
+						 if(document.getElementById("btnManger").style.backgroundColor == "rgb(33, 37, 41)") //si produit manger
+						 {
+							 console.log('Stock entierement mangé');
+							 stockEnBase.dateManger = Date.now();
+						 }
+						 else
+						 {
+							 console.log('Stock entierement jeté');
+							 stockEnBase.dateJeter = Date.now();
+						 }
+						 
+						//retirer stock entierement mangé ou jeté
+						 console.log('Stock a retirer de la table');
+						 var table = document.getElementById("table");
+						 liste[i].parentNode.removeChild(liste[i]);
+					 }
+					 else
+					 {
+						 stockEnBase.fractionRestante = stockEnBase.produit.nombreUnite;
+					 }
+				 }
+				 else
+				 {
+					 stockEnBase.fractionRestante = newFractionRestante;
+				 }
+				 
+				 var newStock = JSON.stringify(stockEnBase);
+				 
+				 //declenchement de la requête:
+				 var httpRequest = new XMLHttpRequest();
+			     httpRequest.open("POST", "./services/rest/stock/postStock");
+			     httpRequest.setRequestHeader("Content-Type" , "application/json");
+			     httpRequest.send(newStock);
+			     console.log ("donnees de la requete envoyee : " + newStock + '/n');
+			     
+			     httpRequest.onreadystatechange = function() {
+				  		if (this.readyState == 4 && this.status == 200) {
+				  		//si status HTTP en retour == 200 : OK 
+				  		vm.chargerStockModeConservation("");
+				  		}
+				   };
+			 }
+			 this.btnAnnuler();
+			 stockModif[0].value = oldFractionRestante;
+		  }
+	  },
+	  btnAnnuler()
+	  {
+		  this.desactiverJeter();
+		  this.desactiverManger();
+		  document.getElementById("btnEnregistrer").style.display="none";
+		  document.getElementById("btnAnnuler").style.display="none";
+	  },
 	  chargerStock()
 	  {
 		  console.log('Stock.parUtilisateur: '+idUser.value);
@@ -67,7 +191,23 @@ var vm = new Vue({
 				 })
 		  }
 	  },
-		
+	  activerManger(){
+		  document.getElementById("btnManger").style.backgroundColor = "#212529";
+		  var vm = this
+		  vm.consommation = 1;
+	  },
+	  desactiverManger(){
+		  document.getElementById("btnManger").style.backgroundColor = "#49b6a8";
+		  this.consommation = 0;
+	  },
+	  activerJeter(){
+		  document.getElementById("btnJeter").style.backgroundColor = "#212529";
+		  this.consommation = 2;
+	  },
+	  desactiverJeter(){
+		  document.getElementById("btnJeter").style.backgroundColor = "#49b6a8";
+		  this.consommation = 0;
+	  },
 	  moment: function (date) 
 	  {
 	      return moment(date);
@@ -145,14 +285,12 @@ var vmAjouter = new Vue({
 				
 				console.log('Ajouter Stock: produit='+produit+'; quantite='+quantite+'; dlc='+JSON.stringify(dlc.value)+';');
 				
-				
 				if(produit == 0)
 				{
 					alert('Veuillez rentrer un produit à ajouter !')
 				}
 				else
 				{
-					
 					var stock = {
 							idStock : 0,
 							dateConsoPref : new Date(),
@@ -166,8 +304,10 @@ var vmAjouter = new Vue({
 			      //recuperation info stock
 					if(dlc.value == "")
 					{
+						console.log('DLC non renseigné');
+						
 						var now = Date.now();
-						var nowNumber = Date.parse(now)/1000;
+						stock.dlc = moment(now).add(7, 'd');
 						var dateConsoPref = moment(now).add(this.produits[produit-1].modeConservation.joursExtensionConservation, 'd');
 					    stock.dateConsoPref = Date.parse(dateConsoPref)/1000;
 					}
@@ -204,10 +344,42 @@ var vmAjouter = new Vue({
 				      httpRequest.send(stockAsJsonString);
 				      console.log ("donnees de la requete envoyee : " + stockAsJsonString);
 				      
-				      //enlever modal + recharger page
+				      //enlever modal 
 				      document.getElementById('AjouterForm').style.display='none';
-				      vm.chargerStock();
-					}
+				      
+				      //reinitialiser modal
+				      vmAjouter.selectProduit = 0;
+				      vmAjouter.inputDlc = "";
+				      vmAjouter.inputQuantite = '1';
+				      
+				      //Recharger page apres requete
+				      httpRequest.onreadystatechange = function() {
+				  		if (this.readyState == 4 && this.status == 200) {
+				  		//si status HTTP en retour == 200 : OK 
+				  		vm.chargerStockModeConservation("");
+				  		}
+				      };
+				      
+//				      window.location.href="http://localhost:8080/myappWeb/gestionInventaire.html";
+//				      $("#flexContent").load("./gestionInventaire.html");
+//				      var session = sessionStorage.getItem('utilisateurCourant');
+//					  
+//					  if(session == null)
+//					  {
+//						  console.log('Utilisateur inconnu, identification necessaire.');
+//						  window.location.href='http://localhost:8080/myappWeb/login.html';
+//					  }
+//					  else
+//					  {
+//					      var utilisateur = JSON.parse(session);
+//						  console.log('Stock.parUtilisateur: '+utilisateur.idUtilisateur);
+//						  var vmAjouter = this
+//					      axios.get('http://localhost:8080/myappWeb/services/rest/stock/'+utilisateur.idUtilisateur)
+//					          .then(function (response) {
+//					        	  vmAjouter.stocks = response.data
+//					          })
+//				      }
+				}
 					
 			}  
 	  

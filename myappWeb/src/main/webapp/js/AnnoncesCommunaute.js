@@ -13,26 +13,15 @@ var listeannoncesCommnunaute = new Vue({
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 	    idAnnonceEncours : "",
 	    src: "./resources/img/annoncescom/",
-	    imgtype: ".png"
+	    imgtype: ".png",
+	    afficherModal : false,
+	    annonceDetail : [],
+	    date1: "",
+	    date2: "",
+	    date3: "",
+	    dateChoisie: null,
+	    search: ''
 	   
-	  },
-	  methods: {
-		// METHODE : générer le lien URL à partir d'un pseudo  
-		getSrc: function(idproduit) {
-			return this.src + idproduit + this.imgtype;
-		},
-		moment: function (date) {
-			return moment(date);
-		},
-		date: function (date) {
-			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
-		},
-		test: function (idAnnonce) {
-			console.log(idAnnonce)
-			this.idAnnonceEnCours = idAnnonce;
-			console.log("test:" + this.idAnnonceEnCours)
-		}
-		
 	  },
 	  
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
@@ -42,25 +31,16 @@ var listeannoncesCommnunaute = new Vue({
 	      .then(function (response) {
 	        vm.annonce = response.data
 	      })
-	  }
-	
-})
+	  },
+	  
+	  computed: {
+			filteredList() {
 
-// ANNONCES DETAIL : REPONDRE A L ANNONCE
-var annoncesCommunauteDetail = new Vue({
-	  el: '#annoncesCommunauteDetail',
-	  data: {
-	    annonce: [],
-	    iduser: id, // Récupération de l'idUtilisateur de la session
-	    src: "./resources/img/annoncescom/",
-	    imgtype: ".png",
-	    selected: "",
-	    date1 : "",
-	    date2 : "",
-	    date3 : ""
-
-
-	    	    
+				return this.annonce.filter(post => {
+			        return post.stock.produit.nomProduit.toLowerCase().includes(this.search.toLowerCase())
+			      })
+			      
+			}
 	  },
 	  methods: {
 		// METHODE : générer le lien URL à partir d'un pseudo  
@@ -71,9 +51,22 @@ var annoncesCommunauteDetail = new Vue({
 			return moment(date);
 		},
 		date: function (date) {
-			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
+			return moment(date).locale('fr').format('Do MMMM YYYY, h:mm:ss a');
+		},
+		voirAnnonceDetail: function (annonceSelection) {
+			vm = this;
+			vm.annonceDetail = annonceSelection;
+			
+			this.date1 = annonceSelection.dateRdv1;
+			this.date2 = annonceSelection.dateRdv2;
+			this.date3 = annonceSelection.dateRdv3;
+
+			vm.afficherModal = true;
+
 		},
 		
+	  
+	  
 		envoyerDemandeProduit: function(idAnnonce) {
 			console.log("Début de la fonction");
 			var vm = this;
@@ -94,13 +87,13 @@ var annoncesCommunauteDetail = new Vue({
 	    			  "idReponse" : null,
 	    			  "dateAcceptationReponse" : null,
 	    			  "dateAnnulationReponse" : null,
-	    			  "dateRdv" : vm.selected,
+	    			  "dateRdv" : vm.dateChoisie,
 	    			  "dateRefus" : null,
 	    			  "dateReponse" : Date.now(),
 	    			  "annonce" : annonceChoisie,
 	    			  "utilisateur" : utilisateurEnCours
 	    	  }
-			
+			console.log(repannonce);
 			// POST
 			console.log("début du post")
 			
@@ -110,10 +103,11 @@ var annoncesCommunauteDetail = new Vue({
 	    				  console.log("terminé");
 	    			  });
 		}
+
 		
 	  },
-	  
-	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
+	  // CREATED NUMERO 2
+	  // METHODEBIS : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
 	  created: function() {
 		var vm = this
 	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + vm.iduser)
@@ -125,7 +119,7 @@ var annoncesCommunauteDetail = new Vue({
 	        vm.selected = "";
 	        
 	      })
+
 	  }
-	
 	
 })	

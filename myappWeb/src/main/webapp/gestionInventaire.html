@@ -17,37 +17,136 @@
 	</div>
 
 	<section id="gestionStock">
-	<div>
-        <button class="btnAction" onclick="document.getElementById('AjouterForm').style.display='block'">Ajouter</button>
-        <button class="btnAction">Manger</button>
-        <button class="btnAction">Jeter</button>
-        <button class="btnAction">Donner</button>
-    </div>
-	<input type="hidden" id="idUser" type="text" v-model="idUser" placeholder="Rechercher"  /><br/>
-         <input type="text" v-model="searchKey"> <!-- class="form-control"> -->
-         <label>Mode de Conservation :</label>
-		<select id="selectModeConservation" v-model="modeConservation">
-			<option value="">Tous</option> 
-			<option value="Frigo">Frigo</option> 
-			<option value="Congelateur">Congelateur</option>
-			<option value="Placard">Placard</option>
-		</select>
+		<button class="btnActionEnd" id="btnEnregistrer" v-on:click="btnEnregistrer()">Enregistrer</button>
+		<button class="btnActionEnd" id="btnAnnuler" v-on:click="btnAnnuler()">Annuler</button>
+		<div>
+	        <button class="btnAction" onclick="document.getElementById('AjouterForm').style.display='block'">Ajouter</button>
+	        <button class="btnAction" id="btnManger" v-on:click="btnManger()" >Manger</button>
+	        <button class="btnAction" id="btnJeter" v-on:click="btnJeter()" >Jeter</button>
+	        <button class="btnAction">Donner</button>
+	    </div>
+		<input type="hidden" id="idUser" type="text" v-model="idUser"  /><br/>
+	         <input type="text" placeholder="Rechercher" > <!-- class="form-control"> -->
+	         <label>Mode de Conservation :</label>
+			<select id="selectModeConservation" v-model="modeConservation">
+				<option value="">Tous</option> 
+				<option value="Frigo">Frigo</option> 
+				<option value="Congelateur">Congelateur</option>
+				<option value="Placard">Placard</option>
+			</select>
+		
+		<br/>
 	
-	<br/>	
+			<div id="table" class="table" border="1" >
+		   		<div class="ligne">
+		   			<div id="qteColumn" class="header" >Qte</div>
+		   			<div id="produitColumn" class="header" >Produit</div>
+		   			<div id="dlcColumn" class="header" >DLC</div>
+		   			<div id="etatColumn" class="header">En stock</div>
+		   		</div>
+		   		<div  v-for="stock in stocks" class="ligne infosStock" v-if="consommation == 0">
+	   				<div class="case1"><strong>{{stock.quantite}}</strong></div>
+	   				<div class="case2">{{stock.produit.nomProduit}}</div>
+	   				<div class="case3">{{moment(stock.dlc).format('DD/MM/YYYY')}}</div>
+	   				<div v-if="stock.produit.mesure.idMesure == 1" class="case4">
+	   					<progress id="file" name="file" max="100" :value="stock.fractionRestante"></progress>
+	   				</div>
+	   				<div v-else class="case4">
+	   					{{stock.fractionRestante}}<strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong>
+	   				</div>
+	   			</div>
+	   			<div class="ligne infosStock" v-else>
+	   				<div class="case1"><strong>{{stock.quantite}}</strong></div>
+	   				<div class="case2">{{stock.produit.nomProduit}}</div>
+	   				<div class="case3">{{moment(stock.dlc).format('DD/MM/YYYY')}}</div>
+	   				<div v-if="stock.produit.mesure.idMesure == 1" class="case4">
+	   					<input id="enStockRange" type="range" min="0" :max="stock.produit.nombreUnite" :value="stock.fractionRestante" class="sliderTable"> 
+	   				</div>
+	   				<div v-else class="case4">
+	   					<input id="enStockNumber" type="number" min="0" :max="stock.fractionRestante" :value="stock.fractionRestante" ><strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong>
+	   				</div>
+	   			</div>
+		   	</div>
+		   	<br/>
+		   	<br/>
+		   	<br/>
 	
-	<table id="idTable" border="1">
-   		<thead>
-   			<tr><th id="qteColumn">Qte</th><th id="produitColumn">Produit</th><th id="dlcColumn">DLC</th><th id="etatColumn">En stock</th></tr>
-   		</thead>
-   		<tbody id="app">
-   			<tr v-for="stock in stocks">
-   				<td >{{stock.quantite}}</td><td>{{stock.produit.nomProduit}}</td><td>{{moment(stock.dlc).format('DD/MM/YYYY')}}</td>
-   				<td v-if="stock.produit.mesure.idMesure == 1"><progress id="file" name="file" max="100" :value="stock.fractionRestante"></progress></td>
-   				<td v-else>{{stock.fractionRestante}}<strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong></td>
-   			</tr>
-   		</tbody>
+	<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------- -->
+		
+<!-- 	<div v-if="consommation == 0"> -->
+<!-- 		<table id="idTable" border="1" > -->
+<!-- 	   		<thead> -->
+<!-- 	   			<tr> -->
+<!-- 		   			<th id="qteColumn">Qte</th> -->
+<!-- 		   			<th id="produitColumn">Produit</th> -->
+<!-- 		   			<th id="dlcColumn">DLC</th> -->
+<!-- 		   			<th id="etatColumn">En stock</th> -->
+<!-- 	   			</tr> -->
+<!-- 	   		</thead> -->
+<!-- 	   		<tbody id="tbodyStock" > -->
+<!-- 	   			<tr v-for="stock in stocks"> -->
+<!-- 	   				<td >{{stock.quantite}}</td> -->
+<!-- 	   				<td>{{stock.produit.nomProduit}}</td> -->
+<!-- 	   				<td>{{moment(stock.dlc).format('DD/MM/YYYY')}}</td> -->
+<!-- 	   				<td v-if="stock.produit.mesure.idMesure == 1"> -->
+<!-- 	   					<progress id="file" name="file" max="100" :value="stock.fractionRestante"></progress> -->
+<!-- 	   				</td> -->
+<!-- 	   				<td v-else> -->
+<!-- 	   					{{stock.fractionRestante}}<strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong> -->
+<!-- 	   				</td> -->
+<!-- 	   			</tr> -->
+<!-- 	   		</tbody> -->
+<!-- 	   	</table> -->
+<!-- 	</div> -->
+<!-- 	<div v-else> -->
+<!-- 		<div class="table" border="1" > -->
+<!-- 	   		<div class="ligne"> -->
+<!-- 	   			<div id="qteColumn"class="header" >Qte</div> -->
+<!-- 	   			<div id="produitColumn" class="header" >Produit</div> -->
+<!-- 	   			<div id="dlcColumn" class="header" >DLC</div> -->
+<!-- 	   			<div id="etatColumn" class="header">En stock</div> -->
+<!-- 	   		</div> -->
+<!--    			<div  v-for="stock in stocks" class="ligne"> -->
+<!--    				<div class="case1">{{stock.quantite}}</div> -->
+<!--    				<div class="case2">{{stock.produit.nomProduit}}</div> -->
+<!--    				<div class="case3">{{moment(stock.dlc).format('DD/MM/YYYY')}}</div> -->
+<!--    				<div v-if="stock.produit.mesure.idMesure == 1" class="case4"> -->
+<!--    					<input id="enStockRange"  type="range" min="0" :max="stock.produit.nombreUnite" :value="stock.fractionRestante" class="sliderTable">  -->
+<!--    				</div> -->
+<!--    				<div v-else class="case4"> -->
+<!--    					<input id="enStockNumber" type="number" min="0" :value="stock.fractionRestante" >/{{stock.produit.nombreUnite}} -->
+<!--    				</div> -->
+<!--    			</div> -->
+<!-- 	   	</div> -->
+<!-- 	</div> -->
+	<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- 	<table id="idTable" border="1"> -->
+<!--    		<thead> -->
+<!--    			<tr><th id="qteColumn">Qte</th><th id="produitColumn">Produit</th><th id="dlcColumn">DLC</th><th id="etatColumn">En stock</th></tr> -->
+<!--    		</thead> -->
+<!--    		<tbody id="tbodyStock" v-if="consommation == 0"> -->
+<!--    			<tr v-for="stock in stocks"> -->
+<!--    				<td >{{stock.quantite}}</td><td>{{stock.produit.nomProduit}}</td><td>{{moment(stock.dlc).format('DD/MM/YYYY')}}</td> -->
+<!--    				<td v-if="stock.produit.mesure.idMesure == 1"> -->
+<!--    					<progress id="file" name="file" max="100" :value="stock.fractionRestante"></progress> -->
+<!--    				</td> -->
+<!--    				<td v-else>{{stock.fractionRestante}}<strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong> -->
+<!--    				</td> -->
+<!--    			</tr> -->
+<!--    		</tbody> -->
+<!--    		<tbody id="tbodyStock" v-else> -->
+<!--    			<tr v-for="stock in stocks"> -->
+<!--    				<td >{{stock.quantite}}</td><td>{{stock.produit.nomProduit}}</td><td>{{moment(stock.dlc).format('DD/MM/YYYY')}}</td> -->
+<!--    				<td v-if="stock.produit.mesure.idMesure == 1"> -->
+<!--    					<input id="enStock"  type="range" min="0" :max="stock.fractionRestante" :value="stock.fractionRestante" class="slider" >  -->
+<!--    				</td> -->
+<!--    				<td v-else> -->
+<!--    					<input id="enStock" type="number" min="0" v-model="" >/{{stock.produit.nombreUnite}} -->
+<!--    				</td> -->
+<!--    			</tr> -->
+<!--    		</tbody> -->
    		
-   	</table>
+<!--    	</table> -->
     </section>
 
 <!-- Modal -->
