@@ -52,7 +52,13 @@
 					   Annonces <span class="caret"></span>
 					  </button>
 					  <ul class="dropdown-menu" style="left:0 !important;display:none !important" id="menuAnnonces">
-					    <li><a id="policeMenu2" href="#">Toutes les annonces</a></li>
+					    <li><a id="policeMenu2" href="#"></a></li>
+					     <li class="dropdown">
+					      <a id="policeMenu" class="menu-mes-annonces" href="#">Toutes les annonces</a>
+					            <ul class="dropdown-menu" id="menuAnnonces3">
+							        <li><a id="mesSouhaits" href="#" style="color:white!important;">Mes souhaits</a></li>
+							        <li><a id="mesEnviesTerminees" href="#" style="color:white;">Mes souhaits cloturés</a></li>
+								</ul>
 					    <li class="dropdown">
 					      <a id="policeMenu" class="menu-mes-annonces" href="#">Mes annonces</a>
 					            <ul class="dropdown-menu" id="menuAnnonces2">
@@ -198,11 +204,20 @@ var foot = new Vue({
 			$("#flexContent").load("./gestionInventaire.html");
 		});
 		
+		$('#mesSouhaits').on('click', function() {
+			$("#flexContent").load("./mesEnviesAttente.html");
+		});
+		
+		$('#mesEnviesTerminees').on('click', function() {
+			$("#flexContent").load("./mesEnviesTermines.html");
+		});
+		mesEnviesTerminees
+		
 		$('#policeMenu').on('click', function() {
 			$("#flexContent").load("./mesAnnoncesEncoursDesign.html");
 		});
 
-		$('#policeMenu2').on('click', function() {
+		$('#policeMenu').on('click', function() {
 			$("#flexContent").load("./toutesLesAnnonces.html");
 		});
 		

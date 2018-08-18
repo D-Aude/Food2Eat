@@ -116,7 +116,7 @@ var annoncesCommunauteDetail = new Vue({
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
 	  created: function() {
 		var vm = this
-	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + 15)
+	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + vm.iduser)
 	      .then(function (response) {
 	        vm.annonce = response.data;
 	        vm.date1 = vm.annonce.dateRdv1;

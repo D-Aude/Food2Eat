@@ -85,7 +85,7 @@ var vb = new Vue({
 	},
 	created : function () {
 		var vb=this
-		console.log('MesAnnoncesTermines')
+		console.log('mes annonceTermines')
 		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/terminees/'+ vb.idUtilisateur)
 		.then(function (response) {
 			vb.annonces = response.data
@@ -109,6 +109,7 @@ var vb = new Vue({
 			var vb=this
 			if(typeAnnonces =="plop")
 			{
+				vb.annonce =[]
 				console.log(typeAnnonces + 'choix1')
 				axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/terminees/'+ vb.idUtilisateur)
 				.then(function (response) {
@@ -117,6 +118,7 @@ var vb = new Vue({
 			}
 			if  (typeAnnonces =="mesAnnoncesAnnulees")
 			{ 
+				vb.annonce =[]
 				console.log(typeAnnonces + 'choix2')
 				axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesAnnoncesTerminesCarAnnulees/'+ vb.idUtilisateur)
 				.then(function(response)
@@ -126,7 +128,7 @@ var vb = new Vue({
 			}
 			else 
 			{
-
+				vb.annonce =[]
 				axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesAnnoncesTerminesNonAnnulees/'+ vb.idUtilisateur)
 				.then(function(response)
 						{
@@ -257,20 +259,26 @@ var vm = new Vue({
 		}
 	}
 })
-
-
+/*
+var Session = sessionStorage.getItem('utilisateurCourant');
+var id = JSON.parse(Session)["idUtilisateur"];
 var vl = new Vue({
-	el: '#listeMesEnviesEnAttente',
+	el: '#mesEnvieEnAttentes',
 	data: {
-		annonces: [],
+		repannonces: [],
 		id : idUtilisateur,
+		src: "./resources/img/Annonce/",
+		 imgtype: ".png",	
 	
 	},
 	created : function () {
 		var vl = this
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnvies/' + vl.idUtilisateur)
+		console.log("début")
+		
+		axios.get('http://localhost:8080/myappWeb/services/rest/reponses/envieAttente/' + vl.idUtilisateur)
 		.then(function (response) {
-			vl.annonces = response.data
+			vl.repannonces = response.data
+			console.log(vl.repannonces)
 		})
 	},
 	methods: {
@@ -327,7 +335,7 @@ var vl = new Vue({
 	}
 
 })
-
+*/
 //Pour RadioButton mais marche pas 
 //new Vue({
 //el:"#DatesRdv",

@@ -16,6 +16,9 @@ public interface IDaoReponses {
 	
 	public List <Repannonce> RepannoncePArIdUtilisateurEvalComplete(int idUtilisateur);
 	
+	public List <Repannonce> RepannoncesParIdUtilisateurRdvAvenir(int idUtilisateur);
+	
+	public List <Repannonce> RepannonceParIdEnvieEnAttente( int idUtilisateur);
 
 	// Insertion dans la base de données
 	public Repannonce insererNouvelleReponse(Repannonce rep);
