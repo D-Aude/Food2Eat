@@ -26,8 +26,7 @@ var listeannoncesCommnunaute = new Vue({
 	    tileLayer: null,
 	    layers: [],
 	    seen: true,
-	    markerList: []
-
+	    annonceMapChoisie: []
 	   
 	  },
 	  
@@ -49,14 +48,12 @@ var listeannoncesCommnunaute = new Vue({
 	      .then(function (response) {
 	        vm.annonce = response.data;
 	        console.log("fin fonction created")
-	      });
-	    
+	      });	    
 	      
 	  },
 	  
 	  computed: {
 			filteredList() {
-
 				return this.annonce.filter(post => {
 			        return post.stock.produit.nomProduit.toLowerCase().includes(this.search.toLowerCase())
 			      })
@@ -82,6 +79,11 @@ var listeannoncesCommnunaute = new Vue({
 			  
 			  this.tileLayer.addTo(this.map);
 			  
+			  var marker = L.marker([48.8162038, 2.327159599999959]).addTo(this.map);
+			  marker.valueOf()._icon.src = "http://localhost:8080/myappWeb/resources/leaflet/images/marker-icon-green.png";
+			  marker.bindPopup("Ma position !").openPopup();
+			  
+			  
 			  console.log(this.annonce);
 			  
 		  },
@@ -102,11 +104,12 @@ var listeannoncesCommnunaute = new Vue({
 			        });
 					
 					marker.on('click', function(e, info) {
-						alert(this.annonce.stock.utilisateur.pseudo + " donne " + this.annonce.stock.produit.nomProduit);
+						this.annonceDetail = this.annonce;
+						vm.afficherModal = true;
+						console.log(this.annonceDetail.stock.produit.nomProduit);
+						console.log(this);
 						});				
-					
-					
-					this.markerList.push(marker);
+										
 			  }
 			  
 		  },
@@ -170,40 +173,39 @@ var listeannoncesCommnunaute = new Vue({
 	    				  console.log(response);
 	    				  console.log("terminé");
 	    			  });
-		},
-		
-		afficherAnnonces: function() {
-			
-			var i;
-
-			for (i=0; i < this.annonce.length ; i++) {
-				var marker = L.marker([this.annonce[i].adresse.x, this.annonce[i].adresse.y]).addTo(this.map);
-				var nomProduit = this.annonce[i].stock.produit.nomProduit
-				marker.bindPopup(nomProduit);
-				marker.annonce = this.annonce[i];
-				// Evenement
-				marker.on('mouseover', function (e) {
-		            this.openPopup();
-		        });
-				
-				marker.on('mouseout', function (e) {
-		            this.closePopup();
-		        });
-				
-				marker.on('click', function(e, info) {
-					alert(this.annonce.stock.utilisateur.pseudo + " donne " + this.annonce.stock.produit.nomProduit);
-					});				
-				
-				
-				this.markerList.push(marker);
-			}
-			
-
+//		},
+//		
+//		afficherAnnonces: function() {
+//			
+//			var i;
+//
+//			for (i=0; i < this.annonce.length ; i++) {
+//				var marker = L.marker([this.annonce[i].adresse.x, this.annonce[i].adresse.y]).addTo(this.map);
+//				var nomProduit = this.annonce[i].stock.produit.nomProduit
+//				marker.bindPopup(nomProduit);
+//				marker.annonce = this.annonce[i];
+//				// Evenement
+//				marker.on('mouseover', function (e) {
+//		            this.openPopup();
+//		        });
+//				
+//				marker.on('mouseout', function (e) {
+//		            this.closePopup();
+//		        });
+//				
+//				marker.on('click', function(e, info) {
+//					
+//					});				
+//								
+//				this.markerList.push(marker);
+//			}			
 			
 		},
 		
 		// afficher sous forme de carte
 		afficherCarte: function() {
+			
+			
 			if (this.seen == false) {
 				this.seen = true;
 				document.getElementById('btnMap').textContent = "Afficher sur la carte";

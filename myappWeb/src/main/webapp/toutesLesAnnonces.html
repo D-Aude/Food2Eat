@@ -4,10 +4,12 @@
 <link rel="stylesheet" href="./resources/leaflet/leaflet.css" />
 <script src="./resources/leaflet/leaflet.js"></script>
 
-
+<!-- =========================Affichage de la carte ================== -->
 
 <div id="annoncesCommunaute">
-<div   id="mapContainer">		
+
+<div   id="mapContainer">
+	
 	<div id="map" 
 		class="map" 
 		style="
@@ -19,24 +21,23 @@
 		    visibility: hidden;
 		    vertical-align: middle;
 		    border: 1px solid black;
-		    display: block;			
+		    display: block;
+		    		
 			">
 	</div>
+
 </div>
 <div class="container">
 
 	<div class="lblTitreAnnonces">
 		<b>Toutes les annonces</b>
 	</div>
-<!--===============================TEST==============================-->
+<!--===============================barre de recherche==============================-->
 <form id="searchBar">
   <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher..." v-model="search">
 </form>
 
 <button id="btnMap" type="button" v-on:click="afficherCarte()">Afficher sur la carte</button>
-
-
-<!-- =========================Affichage de la carte ================== -->
 
 
 <div id="annoncesSurListe" v-if="seen">	
