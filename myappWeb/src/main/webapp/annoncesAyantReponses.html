@@ -2,27 +2,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Food2Eat (beta)</title>
-	<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
+<title>Food2Eat (beta)</title>	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
 	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
-	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
+	<link rel="stylesheet" type="text/css" href="./resources/css/styleReponse.css">
 </head>
-<body>		
-		<div id="annoncesAvecReponses">
-			<h1>Mes annonces publiees avec reponses</h1>
-   			<div id="annoncesReponses" v-for="annonce in annonce">     					
-			
-					<span>ANNONCES	</span><br/><br/>
-					<span>				
-	   				Titre : {{annonce[0].titre}} <br/>
-	   				Produit proposé : {{annonce[0].stock.produit.nomProduit}}</span><br/><br/>				
-	   				<button>Voir les réponses reçues ({{annonce[1]}})</button>   				
+<body>	
 
+		<div id="annoncesAvecReponses">
+			<div id="titre"><h1 >MES ANNONCES POURVUES</h1><br/>
+			
+			<div id="filtrerReponses">
+			<!--===============================filtre de trie==============================-->
+				<select id="filtrerLesAnnoncesRep" v-model="filtreRech">
+					<option disabled value="">Afficher ...</option>
+					<option>Les réponses à valider</option>
+					<option>Les réponses validée</option>
+				</select>			
+			</div>
+			
+			</div>
+			
+
+			
+			<!--===============================affichage tableau ==============================-->
+			
+			<div class="ligne">
+				<div id="colDate" class="header">Date de publication</div>
+				<div id="colAnnonce" class="header">Annonce</div>
+				<div id="colNbRep" class="header">Nombre de réponses</div>
+				<div id="colBtn" class="header"></div>
+			</div>
+			
+			
+	   			<div id="annoncesReponses" v-for="annonce in annonce">     															
+
+					<div class="case1">{{moment(annonce[0].datePublication).format('DD/MM/YYYY')}}</div>
+					
+					<div class="case2"><b>Titre : {{annonce[0].titre}} <br/>
+		   				Produit proposé : {{annonce[0].stock.produit.nomProduit}}</b>
+		   			</div>
+		   				
+					<div class="case3">{{annonce[1]}}</div>
+					
+					<div class="case4"><button>afficher</button></div>					
+		   				  				
+	
+	   			</div>
    			</div>
-  		</div>
+  		
 
 	<script src="./js/ReponsesBis.js"></script>
+
 </body>
 </html>
