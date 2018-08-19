@@ -36,10 +36,18 @@
 <form id="searchBar">
   <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher..." v-model="search">
 </form>
-
+<!--===============================bouton map==============================-->
 <button id="btnMap" type="button" v-on:click="afficherCarte()">Afficher sur la carte</button>
 
+<!--===============================filtre de trie==============================-->
+<select id="filtreRech" v-model="filtreRech">
+	<option disabled value="">Trier par ...</option>
+	<option>Distance</option>
+	<option>Date de publication</option>
+	<option>Foodfriend</option>
+</select>
 
+<!--===============================liste des annonces==============================-->
 <div id="annoncesSurListe" v-if="seen">	
 	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
 		<div class="imgAnnonce">
@@ -90,7 +98,8 @@
 		<div class="lblAnnonce">
 			<span id="languetteAnnonce">
 				{{annonce.titre}}<br/>
-				{{annonce.stock.produit.nomProduit}}<br/> 
+				{{annonce.stock.produit.nomProduit}}<br/>
+				<img v-if="annonce.foodfriend == 1" src="./resources/img/starff.png"/> 
 				proposé par {{annonce.stock.utilisateur.pseudo}}, le {{moment(annonce.datePublication).format('L')}} à {{annonce.adresse.ville.ville}} <b>({{annonce.distance}} km)</b><br/>
    				<!--  Lieu de l'échange : {{annonce.adresse.ville.ville}},  -->			
 			</span>

@@ -26,21 +26,41 @@ var listeannoncesCommnunaute = new Vue({
 	    map: null,
 	    tileLayer: null,
 //	    layers: [],
-	    seen: true
+	    seen: true,
 //	    annonceMapChoisie: [],
+	    filtreRech : "",
+	    listeIdFF : []
 	    
 	   
 	  },
 	  
 	  watch: {
-		  map: function() {
-			  this.initLayers();
+//		  map: function() {
+//			  this.initLayers();
+//		  },
+		  
+		  filtreRech: function() {
+			  if (this.filtreRech == "Distance") {
+				  this.annonce.sort(function(a, b) {
+					  return a.distance - b.distance;
+				  });				  
+				  
+			  } else if (this.filtreRech == "Date de publication") {
+				  this.annonce.sort(function(a,b) {
+					 return b.datePublication -  a.datePublication; 
+				  });
+				  
+			  } else if (this.filtreRech == "Foodfriend"){
+				  this.annonce.sort(function(a,b) {
+					  return b.foodfriend - a.foodfriend;
+				  });
+			  }
 		  }
 	  },
 	  
-	  mounted() {
-		  this.initMap();		  
-	  },
+//	  mounted() {
+//		  this.initMap();		  
+//	  },
 	  
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
 	  created: function() {
@@ -50,23 +70,49 @@ var listeannoncesCommnunaute = new Vue({
 		axios.get('http://localhost:8080/myappWeb/services/rest/utilisateur/adresse?iduser=' + vm.iduser)
 	      .then(function (response) {
 	        vm.useradresseprinc = response.data;
+	        
+	        // Récupère la liste des foodfriend et construction de listeIdFF :
+	        axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/mesfoodfriend?iduser=' + vm.iduser)
+		      .then(function (response) {
+		        var foodfriend = response.data;
+		        
+		        // construction de la liste des foodfriend
+		        for (var i=0 ; i < foodfriend.length ; i++) {
+		        	if (foodfriend[i].utilisateur1.idUtilisateur == vm.iduser) {
+		        		vm.listeIdFF.push(foodfriend[i].utilisateur2.idUtilisateur);
+		        	} else {
+		        		vm.listeIdFF.push(foodfriend[i].utilisateur1.idUtilisateur);
+		        	}
+		        }
+		      
+	        
+	        // récupération des annonces
+		    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/autresAnnonces/' + vm.iduser)
+		      .then(function (response) {
+		        vm.annonce = response.data;
+		        
+		        // Ajout d'attributs personnalisés pour totues les annonces
+		        var i;
+			    for (i=0 ; i < vm.annonce.length ; i++) {
+			    	// Ajout distance en km par rapport à l'utilisateur
+			    	vm.annonce[i].distance = vm.calculDistance(vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y, vm.annonce[i].adresse.x, vm.annonce[i].adresse.y, "K");
+			    	
+			    	// Ajout info foodfriend
+			    	if (vm.listeIdFF.includes(vm.annonce[i].stock.utilisateur.idUtilisateur)) {
+			    		vm.annonce[i].foodfriend = 1;
+			    	} else {
+			    		vm.annonce[i].foodfriend = 0;
+			    	}
+			    }
+			    
+
+		      });
+	        
+	        
 	      });
 		
-		// récupération des annonces
-	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/autresAnnonces/' + vm.iduser)
-	      .then(function (response) {
-	        vm.annonce = response.data;
-	        
-	        // Calcul de la distance en km par rapport à l'utilisateur pour chaque annonce
-	        var i;
-		    for (i=0 ; i < vm.annonce.length ; i++) {	    	
-		    	vm.annonce[i].distance = vm.calculDistance(vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y, vm.annonce[i].adresse.x, vm.annonce[i].adresse.y, "K");
-		    }
-		    
-		    
-	        
-	      });
-	    
+		
+	  });
 	    
       
 	  },
@@ -84,6 +130,8 @@ var listeannoncesCommnunaute = new Vue({
 		
 		// Code pour la carte
 		  initMap() {
+			  
+			  var vm = this;
 			  
 			  this.map = L.map('map').setView([vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y], 16);
 
@@ -161,7 +209,7 @@ var listeannoncesCommnunaute = new Vue({
 			return moment(date);
 		},
 		date: function (date) {
-			return moment(date).locale('fr').format('Do MMMM YYYY, h:mm:ss a');
+			return moment(date).locale('fr').format('DD MMMM YYYY, h:mm:ss a');
 		},
 		voirAnnonceDetail: function (annonceSelection) {
 			vm = this;
@@ -178,7 +226,7 @@ var listeannoncesCommnunaute = new Vue({
 	  
 	  
 		envoyerDemandeProduit: function(idAnnonce) {
-			console.log("Début de la fonction");
+
 			var vm = this;
 			
 			// Instanciation d'une annonce avec l'idAnnonce
@@ -220,12 +268,14 @@ var listeannoncesCommnunaute = new Vue({
 				this.seen = true;
 				document.getElementById('btnMap').textContent = "Afficher sur la carte";
 				document.getElementById('map').style.visibility = "hidden";
-				// initialisation de la carte				
+			
 				
 			} else {
 				this.seen = false;
 				document.getElementById('btnMap').textContent = "Afficher la liste";
 				document.getElementById('map').style.visibility = "visible";
+				
+				this.initMap();
 				this.initLayers();
 			}
 			
