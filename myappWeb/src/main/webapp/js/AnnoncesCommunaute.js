@@ -4,6 +4,7 @@ var Session = sessionStorage.getItem('utilisateurCourant');
 var id = JSON.parse(Session)["idUtilisateur"];
 
 
+
 // ANNONCES DE LA COMMUNAUTE
 var listeannoncesCommnunaute = new Vue({
 	

@@ -45,6 +45,7 @@
 		<div class="imgAnnonce">
 			<a href="#" >
 				<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/>
+				
 			</a>
 		<!-- Modal -->
 			<div id="lblDetailsAnnonceTomate">
@@ -89,8 +90,9 @@
 		<div class="lblAnnonce">
 			<span id="languetteAnnonce">
 				{{annonce.titre}}<br/>
-				{{annonce.stock.produit.nomProduit}} proposé par {{annonce.stock.utilisateur.pseudo}}<br/>
-   				Lieu de l'échange : {{annonce.adresse.ville.ville}}, le {{moment(annonce.datePublication).format('L')}} 				
+				{{annonce.stock.produit.nomProduit}}<br/> 
+				proposé par {{annonce.stock.utilisateur.pseudo}}, le {{moment(annonce.datePublication).format('L')}} à {{annonce.adresse.ville.ville}} <b>({{annonce.distance}} km)</b><br/>
+   				<!--  Lieu de l'échange : {{annonce.adresse.ville.ville}},  -->			
 			</span>
 		</div>															
 	</div>

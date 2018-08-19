@@ -2,6 +2,7 @@ package fr.afcepf.ai103.service;
 
 import java.util.List;
 
+import fr.afcepf.ai103.data.Useradresse;
 import fr.afcepf.ai103.data.Utilisateur;
 
 
@@ -15,5 +16,8 @@ public interface IServiceUtilisateur {
 	
 	// rechercher utilisateur par idUtilisateur
 	Utilisateur rechercherUtilisateurParId(int idUtilisateur);
+	
+	// rechercher adresse principale de l'utilisateur
+	Useradresse rechercherAdressePrincipaleUser(int iduser);
 	
 }

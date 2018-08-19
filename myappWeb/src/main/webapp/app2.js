@@ -11,6 +11,7 @@ var listeannoncesCommnunaute = new Vue({
 	  data: {
 	    annonce: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
+	    useradresseprinc: "", // adresse principale de l'utilisateur
 	    idAnnonceEncours : "",
 	    src: "./resources/img/annoncescom/",
 	    imgtype: ".png",
@@ -21,18 +22,18 @@ var listeannoncesCommnunaute = new Vue({
 	    date3: "",
 	    dateChoisie: null,
 	    search: '',
-	    voirCarte: false,
+//	    voirCarte: false,
 	    map: null,
 	    tileLayer: null,
-	    layers: [],
-	    seen: true,
-	    annonceMapChoisie: []
+//	    layers: [],
+	    seen: true
+//	    annonceMapChoisie: [],
+	    
 	   
 	  },
 	  
 	  watch: {
 		  map: function() {
-			  console.log("watcher map")
 			  this.initLayers();
 		  }
 	  },
@@ -44,12 +45,30 @@ var listeannoncesCommnunaute = new Vue({
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
 	  created: function() {
 		var vm = this
+		
+		// récupération de l'adresse principale de l'utilisateur
+		axios.get('http://localhost:8080/myappWeb/services/rest/utilisateur/adresse?iduser=' + vm.iduser)
+	      .then(function (response) {
+	        vm.useradresseprinc = response.data;
+	      });
+		
+		// récupération des annonces
 	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/autresAnnonces/' + vm.iduser)
 	      .then(function (response) {
 	        vm.annonce = response.data;
-	        console.log("fin fonction created")
-	      });	    
-	      
+	        
+	        // Calcul de la distance en km par rapport à l'utilisateur pour chaque annonce
+	        var i;
+		    for (i=0 ; i < vm.annonce.length ; i++) {	    	
+		    	vm.annonce[i].distance = vm.calculDistance(vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y, vm.annonce[i].adresse.x, vm.annonce[i].adresse.y, "K");
+		    }
+		    
+		    
+	        
+	      });
+	    
+	    
+      
 	  },
 	  
 	  computed: {
@@ -66,7 +85,7 @@ var listeannoncesCommnunaute = new Vue({
 		// Code pour la carte
 		  initMap() {
 			  
-			  this.map = L.map('map').setView([48.8162038, 2.327159599999959], 16);
+			  this.map = L.map('map').setView([vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y], 16);
 
 			  this.tileLayer = L.tileLayer(
 			    'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
@@ -81,10 +100,15 @@ var listeannoncesCommnunaute = new Vue({
 			  
 			  var marker = L.marker([48.8162038, 2.327159599999959]).addTo(this.map);
 			  marker.valueOf()._icon.src = "http://localhost:8080/myappWeb/resources/leaflet/images/marker-icon-green.png";
-			  marker.bindPopup("Ma position !").openPopup();
+			  marker.bindPopup("Ma position !");
+			  marker.on('mouseover', function (e) {
+		            this.openPopup();
+		        });
+				
+				marker.on('mouseout', function (e) {
+		            this.closePopup();
+		        });
 			  
-			  
-			  console.log(this.annonce);
 			  
 		  },
 		  initLayers() {
@@ -106,13 +130,28 @@ var listeannoncesCommnunaute = new Vue({
 					marker.on('click', function(e, info) {
 						this.annonceDetail = this.annonce;
 						vm.afficherModal = true;
-						console.log(this.annonceDetail.stock.produit.nomProduit);
-						console.log(this);
 						});				
 										
 			  }
 			  
-		  },
+		},
+		
+		calculDistance: function(lat1, lon1, lat2, lon2, unit) {
+			var radlat1 = Math.PI * lat1/180;
+			var radlat2 = Math.PI * lat2/180;
+			var theta = lon1-lon2;
+			var radtheta = Math.PI * theta/180;
+			var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+			if (dist > 1) {
+				dist = 1;
+			}
+			dist = Math.acos(dist);
+			dist = dist * 180/Math.PI;
+			dist = dist * 60 * 1.1515;
+			if (unit=="K") { dist = dist * 1.609344 };
+			if (unit=="N") { dist = dist * 0.8684 };
+			return dist.toFixed(2);
+		},
 		  
 		// METHODE : générer le lien URL à partir d'un pseudo  
 		getSrc: function(idproduit) {
@@ -164,41 +203,12 @@ var listeannoncesCommnunaute = new Vue({
 	    			  "annonce" : annonceChoisie,
 	    			  "utilisateur" : utilisateurEnCours
 	    	  }
-			console.log(repannonce);
+
 			// POST
-			console.log("début du post")
 			
 	    	axios.post('http://localhost:8080/myappWeb/services/rest/reponses/nouvelleReponse',
 	    			repannonce).then((response) => {
-	    				  console.log(response);
-	    				  console.log("terminé");
-	    			  });
-//		},
-//		
-//		afficherAnnonces: function() {
-//			
-//			var i;
-//
-//			for (i=0; i < this.annonce.length ; i++) {
-//				var marker = L.marker([this.annonce[i].adresse.x, this.annonce[i].adresse.y]).addTo(this.map);
-//				var nomProduit = this.annonce[i].stock.produit.nomProduit
-//				marker.bindPopup(nomProduit);
-//				marker.annonce = this.annonce[i];
-//				// Evenement
-//				marker.on('mouseover', function (e) {
-//		            this.openPopup();
-//		        });
-//				
-//				marker.on('mouseout', function (e) {
-//		            this.closePopup();
-//		        });
-//				
-//				marker.on('click', function(e, info) {
-//					
-//					});				
-//								
-//				this.markerList.push(marker);
-//			}			
+	    			  });		
 			
 		},
 		
@@ -226,7 +236,7 @@ var listeannoncesCommnunaute = new Vue({
 })
 
 
-// Carte
+
 
 
 
