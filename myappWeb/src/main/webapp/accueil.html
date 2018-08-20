@@ -37,7 +37,7 @@
 				<li class="nav-item col-xs-12 dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Inventaire </a>
+					aria-expanded="false"><img src="./resources/css/refrigerateur.png"> Inventaire </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a id="btnInventaire" class="dropdown-item" href="#">Gérer mon
 							inventaire</a>
@@ -47,7 +47,7 @@
 				<li class="nav-item dropdown">
 					<ul class="dropdown no-padding">
 					  <button class="menu-annonce no-margin text-left btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown">
-					   Annonces <span class="caret"></span>
+					  <img src="./resources/css/annonces.png"> Annonces <span class="caret"></span>
 					  </button>
 					  <ul class="dropdown-menu" style="left:0 !important;display:none !important" id="menuAnnonces">
 					    <li><a id="policeMenu2" href="#"></a></li>
@@ -69,12 +69,10 @@
 					  </ul>
 					</ul>
 				</li>
-
-
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Foodfriends </a>
+					aria-expanded="false"> <img src="./resources/css/friends.png"> Foodfriends </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" id="btnMesFoodFriends" href="#">Mes foodfriends</a> 
 						<a class="dropdown-item" id="btnInvitationsRecues" href="#">Invitations reçues</a>
@@ -95,18 +93,17 @@
 	<div id="flexContent" class="flex-container">
 		<div class="container">
 			<div class="lblTitre">
-					<div id="fondNav"></div>
-
-			<div class="container-dashboard">
-			<div class="lblUser">
-				<b>Bonjour {{pseudo}} !!</b> 	<button id="btnConnexion" @click="seConnecter()" >Se Connecter</button>
-			</div>
-			<div class="lblStatsUser">
-				<p class="donTotal">Nombre total de don effectué : </p> 
-				<p class="dernierDon"> Dernier don effectué :  </p>
-				<b class="produitPeremption"> Produit(s) arrivant à péremption : </b>
-			</div>
-		</div>
+				<div id="fondNav"></div>
+				<div class="container-dashboard">
+					<div class="lblUser">
+						<b>Bonjour {{pseudo}} !!</b> 	<button id="btnConnexion" @click="seConnecter()" >Se Connecter</button>
+					</div>
+					<div class="lblStatsUser">
+					<p class="donTotal">Nombre total de don effectué : </p> 
+					<p class="dernierDon"> Dernier don effectué :  </p>
+					<b class="produitPeremption"> Produit(s) arrivant à péremption : </b>
+					</div>
+				</div>
 				<b>Les annonces récentes</b>
 			</div>
 		</div>
@@ -202,7 +199,7 @@ var foot = new Vue({
 		});
 		
 		$('#mesSouhaits').on('click', function() {
-			$("#flexContent").load("./mesEnviesEnAttentes.html");
+			$("#flexContent").load("./EnviesEnAttenteDesign.html");
 		});
 		
 		$('#mesSouhaitsClotures').on('click', function() {

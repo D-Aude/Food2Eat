@@ -5,7 +5,7 @@ var vm = new Vue({
   el: '#EssaiEnvieEnAttenteEssai',
   data: {
     repannonces: [],
-    src: "./ressources/img/Annonce/",
+    src: "./resources/img/Annonce/",
     imgtype :".png",
     iduser: id,
   },

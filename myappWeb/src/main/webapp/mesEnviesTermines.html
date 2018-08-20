@@ -9,7 +9,7 @@
 		<span class="lblFiltre">Filtre d'affichage :</span>
 			<br />
 
-			<select id="selectTypeEnvieTerminees" v-model="typeEnvies">
+			<select class="styled-select green rounded" id="selectTypeEnvieTerminees" v-model="typeEnvies">
 				<option value="rdvAvenir">Vos prochains rendez-vous</option>
 				<option value="mesEnviesAEval">Mes envies à évaluer</option>
 				  <option value="MesEnviesTerminesEtEval">Toutes mes envies terminées</option>
@@ -18,7 +18,6 @@
 
 			<div id="Annonces-elementsTermines" v-for="evaluation in evaluations">
 		 <img class="imgEnviesTermines" v-bind:src="getSrc(evaluation.repannonce.annonce.stock.produit.idProduit)"/> </br>
-				
 					Le {{moment(evaluation.repannonce.dateRdv).format('DD/MM/YYYY')}} vous avez
 						reçu de {{evaluation.repannonce.annonce.stock.utilisateur.pseudo}}, </br>le don de :
 						{{evaluation.repannonce.annonce.stock.quantite}} {{evaluation.repannonce.annonce.stock.produit.nomProduit}} </br>
@@ -29,7 +28,7 @@
 				<div id="Envies-elementsTermines" v-for="repannonce in repannonces">
 				   <img class ="imgEnviesTermines" v-bind:src="getSrc(repannonce.annonce.stock.produit.idProduit)"/> </br>
 				 <div v-if=" aujourdhui < repannonce.dateRdv ">
-					Vous avez rendez-vous le {{moment(repannonce.dateRdv).format('DD/MM/YYYY,hh:mm:ss')}} avec {{repannonce.annonce.stock.utilisateur.pseudo}} </br>
+					Vous avez rendez-vous le {{moment(repannonce.dateRdv).format('DD/MM/YYYY')}} avec {{repannonce.annonce.stock.utilisateur.pseudo}} </br>
 					concernant le don de {{repannonce.annonce.stock.quantite}} {{repannonce.annonce.stock.produit.nomProduit}} !
 				
 				</hr></br>
