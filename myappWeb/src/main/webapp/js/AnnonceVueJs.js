@@ -38,6 +38,12 @@ var vm = new Vue({
 
 				annonceAmodif['dateAnnulation'] = Date.now();
 
+				for (i=0 ; i < vm.pannonces.length ; i++) {
+					if (idannonce == vm.annonces[i].idAnnonce) {
+						vm.annonces.splice(i,1);
+					}
+				}
+				
 				//post pour la modification
 				axios.post('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees',
 						annonceAmodif).then((response)=> {
