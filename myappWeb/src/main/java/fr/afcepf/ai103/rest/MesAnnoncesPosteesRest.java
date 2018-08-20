@@ -15,6 +15,7 @@ import fr.afcepf.ai103.data.Annonce;
 import fr.afcepf.ai103.data.Annulation;
 import fr.afcepf.ai103.data.Evaluation;
 import fr.afcepf.ai103.data.Repannonce;
+import fr.afcepf.ai103.data.Stock;
 import fr.afcepf.ai103.service.IServiceAnnulation;
 import fr.afcepf.ai103.service.IServiceEvaluations;
 import fr.afcepf.ai103.service.IServiceMesAnnonces;
@@ -226,7 +227,14 @@ public class MesAnnoncesPosteesRest {
 	}
 	
 
-	
+	@Path("creerAnnonce") //dernière partie de l'URL
+	@POST 
+	//URL = http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/creerAnnonce
+	@Consumes("application/json")
+	public Annonce postStock(Annonce annonce) {
+		return serviceAnnonce.creerAnnonce(annonce);
+		
+	}
 	
 
 }

@@ -1,11 +1,12 @@
-
+ 
 var vm = new Vue({
   el: '#gestionStock',
   data: {
     stocks: [],
     idUser: '',
   	modeConservation: '',
-  	consommation: 0
+  	consommation: 0,
+  	selectedStock : []
   },
   watch: {
 	  modeConservation: function (mode, oldMode) {
@@ -14,8 +15,12 @@ var vm = new Vue({
   },
   created: function () {
 	  console.log('Init InventaireJS');
+	  document.getElementById("btnEnregistrer").style.display="none";
+	  document.getElementById("btnAnnuler").style.display="none";
+	  document.getElementById("detailStock").style.display="none";
 	  var session = sessionStorage.getItem('utilisateurCourant');
 	  console.log('session = '+session);
+	  document.getElementById("detailStock").style.display="none";
 	  
 	  if(session == null)
 	  {
@@ -24,8 +29,6 @@ var vm = new Vue({
 	  }
 	  else
 	  {
-		  document.getElementById("btnEnregistrer").style.display="none";
-		  document.getElementById("btnAnnuler").style.display="none";
 		  var utilisateur = JSON.parse(session);
 		  this.idUser = utilisateur.idUtilisateur;
 		  console.log('Stock.parUtilisateur: '+utilisateur.idUtilisateur);
@@ -39,6 +42,62 @@ var vm = new Vue({
   },
   methods: 
   {
+	  clickStock(stock)
+	  {
+		  var liste = document.getElementsByClassName("infosStock");
+		  for(var i =0; i<liste.length; i++)
+		  {
+			  liste[i].style.border = 'none';
+			  if(this.stocks[i].idStock==stock.idStock)
+				  liste[i].style.border = 'solid #245B55';
+		  }
+		  
+		  //Affichage div detailStock
+		  if(document.getElementById("detailStock").style.display == 'none') 
+			  document.getElementById("detailStock").style.display="block";
+		  
+		//Affichage Boutton creation Annonce
+		  if(document.getElementById("btnManger").style.backgroundColor != document.getElementById("btnJeter").style.backgroundColor)
+				document.getElementById("btnAnnonce").style.display="none";
+		  else
+			  document.getElementById("btnAnnonce").style.display="block";
+		  
+		  //recuperation id Stock
+		  var idSelectedStockOld =  document.getElementById("idSelectedStock").value;
+		  var idSelectedStock = stock.idStock;
+		  //Si nouveau produit cliqué
+		  if(idSelectedStockOld == "" || idSelectedStockOld != idSelectedStock)
+		  {
+			  console.log('Affichage stock : '+stock.produit.nomProduit+', id : '+idSelectedStock);
+			  document.getElementById("idSelectedStock").value = stock.idStock;
+			  this.selectedStock = stock;
+			  
+			  //Modification image Stock
+			  var idProduit = stock.produit.idProduit;
+			  var lienImageOld = document.getElementById('imageDetail').src;
+			  var lienImage = "./resources/img/stock/produit_"+idProduit+".jpg";
+			  
+			  if(lienImageOld != lienImage)
+				  document.getElementById('imageDetail').src = lienImage;
+				  
+			  //Modification detail Stock
+			  
+		  }
+		  
+	  },
+	  btnAjouter()
+	  {
+		  this.btnAnnuler();
+		  document.getElementById("btnAnnonce").style.display="none";
+		  document.getElementById("detailStock").style.display="none"
+		  document.getElementById('AjouterForm').style.display='block'; 
+	  },
+	  btnAnnonce()
+	  {
+		  console.log('Donner '+this.selectedStock.produit.nomProduit);
+		  sessionStorage.setItem('publicationAnnonce', JSON.stringify(this.selectedStock));
+		  $("#flexContent").load("./publierAnnonce.html");
+	  },
 	  btnManger()
 	  {
 		  console.log('Mode Manger');
@@ -49,6 +108,7 @@ var vm = new Vue({
 			  this.desactiverManger();
 			  document.getElementById("btnEnregistrer").style.display="none";
 			  document.getElementById("btnAnnuler").style.display="none";
+			  document.getElementById("btnAnnonce").style.display="block";
 		  }
 		  else
 		  {
@@ -57,6 +117,7 @@ var vm = new Vue({
 			  this.activerManger();
 			  document.getElementById("btnEnregistrer").style.display="block";
 			  document.getElementById("btnAnnuler").style.display="block";
+			  document.getElementById("btnAnnonce").style.display="none";
 		  }
 		  
 	  },
@@ -70,6 +131,7 @@ var vm = new Vue({
 			  this.desactiverJeter();
 			  document.getElementById("btnEnregistrer").style.display="none";
 			  document.getElementById("btnAnnuler").style.display="none";
+			  document.getElementById("btnAnnonce").style.display="block";
 		  }
 		  else
 		  {
@@ -78,6 +140,7 @@ var vm = new Vue({
 			  this.activerJeter();
 			  document.getElementById("btnEnregistrer").style.display="block";
 			  document.getElementById("btnAnnuler").style.display="block";
+			  document.getElementById("btnAnnonce").style.display="none";
 		  }
 		  
 		  
@@ -86,6 +149,7 @@ var vm = new Vue({
 	  {
 		  console.log('Bouton Enregistrer');
 		  var liste = document.getElementsByClassName("infosStock");
+		  
 		  
 		  for(var i =0; i<liste.length; i++)
 		  {
@@ -102,10 +166,13 @@ var vm = new Vue({
 				 console.log('Ancienne valeur fraction dans base = '+ oldFractionRestante);
 				 console.log('Nouvelle valeur fraction en base = '+newFractionRestante);
 				 
+				 
+				 
 				 if(newFractionRestante == 0)
 				 {
 					 console.log('Quantite du stock réduit de 1');
 					 stockEnBase.quantite--;
+					 stockEnBase.entame = 0;
 					 
 					 if(stockEnBase.quantite == 0)
 					 {
@@ -119,11 +186,6 @@ var vm = new Vue({
 							 console.log('Stock entierement jeté');
 							 stockEnBase.dateJeter = Date.now();
 						 }
-						 
-						//retirer stock entierement mangé ou jeté
-						 console.log('Stock a retirer de la table');
-						 var table = document.getElementById("table");
-						 liste[i].parentNode.removeChild(liste[i]);
 					 }
 					 else
 					 {
@@ -132,6 +194,7 @@ var vm = new Vue({
 				 }
 				 else
 				 {
+					 stockEnBase.entame = 1;
 					 stockEnBase.fractionRestante = newFractionRestante;
 				 }
 				 
@@ -151,8 +214,10 @@ var vm = new Vue({
 				  		}
 				   };
 			 }
+			 document.getElementById("detailStock").style.display="none";
 			 this.btnAnnuler();
 			 stockModif[0].value = oldFractionRestante;
+			 liste[i].style.border = 'none';
 		  }
 	  },
 	  btnAnnuler()
@@ -258,8 +323,6 @@ var vmAjouter = new Vue({
 	  },
 	  watch: {
 		  selectProduit: function (val, oldVal) {
-			 
-			  
 			  if(val==0)
 			  {
 				  var nbUnite = 0;
@@ -270,7 +333,6 @@ var vmAjouter = new Vue({
 				  var nbUnite = this.produits[val-1].nombreUnite;
 				  var idMesure = this.produits[val-1].mesure.idMesure;
 			  }
-			  
 			  this.idMesure=idMesure;
 			  this.nombreUnite=nbUnite;
 			  this.restant = nbUnite;
@@ -308,13 +370,13 @@ var vmAjouter = new Vue({
 						
 						var now = Date.now();
 						stock.dlc = moment(now).add(7, 'd');
-						var dateConsoPref = moment(now).add(this.produits[produit-1].modeConservation.joursExtensionConservation, 'd');
-					    stock.dateConsoPref = Date.parse(dateConsoPref)/1000;
+						var dateConsoPref = moment(stock.dlc).add(this.produits[produit-1].modeConservation.joursExtensionConservation, 'd');
+					    stock.dateConsoPref = dateConsoPref
 					}
 					else
 					{
 						var dateConsoPref = moment(dlc.valueAsNumber).add(this.produits[produit-1].modeConservation.joursExtensionConservation, 'd');
-					      stock.dateConsoPref = Date.parse(dateConsoPref)/1000;
+					      stock.dateConsoPref = dateConsoPref;
 					}
 				      
 				      if(this.restant == this.nombreUnite)
@@ -360,25 +422,6 @@ var vmAjouter = new Vue({
 				  		}
 				      };
 				      
-//				      window.location.href="http://localhost:8080/myappWeb/gestionInventaire.html";
-//				      $("#flexContent").load("./gestionInventaire.html");
-//				      var session = sessionStorage.getItem('utilisateurCourant');
-//					  
-//					  if(session == null)
-//					  {
-//						  console.log('Utilisateur inconnu, identification necessaire.');
-//						  window.location.href='http://localhost:8080/myappWeb/login.html';
-//					  }
-//					  else
-//					  {
-//					      var utilisateur = JSON.parse(session);
-//						  console.log('Stock.parUtilisateur: '+utilisateur.idUtilisateur);
-//						  var vmAjouter = this
-//					      axios.get('http://localhost:8080/myappWeb/services/rest/stock/'+utilisateur.idUtilisateur)
-//					          .then(function (response) {
-//					        	  vmAjouter.stocks = response.data
-//					          })
-//				      }
 				}
 					
 			}  

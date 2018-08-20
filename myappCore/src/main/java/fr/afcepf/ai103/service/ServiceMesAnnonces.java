@@ -152,6 +152,15 @@ public class ServiceMesAnnonces implements IServiceMesAnnonces {
 
 
 
+	@Override
+	public Annonce creerAnnonce(Annonce annonce) {
+
+			annonce = daoAnnonces.creerAnnonce(annonce);
+			return annonce;
+	}
+
+
+
 	
 
 
