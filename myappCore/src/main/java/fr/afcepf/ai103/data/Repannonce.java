@@ -82,6 +82,18 @@ import java.util.List;
 									+ "and r.dateAcceptationReponse is null "
 									+ "and r.dateAnnulationReponse is null "
 									+ "and r.dateRefus is null"),
+
+														
+		
+		@NamedQuery(name="Repannonce.parMesAnnoncesRdvAvenir", query = "SELECT r FROM Repannonce r WHERE "
+														+ "r.annonce.stock.utilisateur.idUtilisateur = :idUtilisateur "
+														+ "and r.dateRdv > CURRENT_DATE "
+														+ "and r.dateAcceptationReponse is not null "
+														+ "and r.dateAnnulationReponse is null "
+														+ "and r.annonce.dateAnnulation is null ")
+		
+		
+// reponses à valider + req rdv à venir
 })
 		
 public class Repannonce implements Serializable {

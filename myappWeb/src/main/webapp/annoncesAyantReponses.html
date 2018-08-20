@@ -11,46 +11,103 @@
 <body>	
 
 		<div id="annoncesAvecReponses">
-			<div id="titre"><h1 >MES ANNONCES POURVUES</h1><br/>
-			
-			<div id="filtrerReponses">
-			<!--===============================filtre de trie==============================-->
-				<select id="filtrerLesAnnoncesRep" v-model="filtreRech">
-					<option disabled value="">Afficher ...</option>
-					<option>Les réponses à valider</option>
-					<option>Les réponses validée</option>
-				</select>			
-			</div>
-			
-			</div>
-			
-
-			
-			<!--===============================affichage tableau ==============================-->
-			
-			<div class="ligne">
-				<div id="colDate" class="header">Date de publication</div>
-				<div id="colAnnonce" class="header">Annonce</div>
-				<div id="colNbRep" class="header">Nombre de réponses</div>
-				<div id="colBtn" class="header"></div>
-			</div>
-			
-			
-	   			<div id="annoncesReponses" v-for="annonce in annonce">     															
-
-					<div class="case1">{{moment(annonce[0].datePublication).format('DD/MM/YYYY')}}</div>
-					
-					<div class="case2"><b>Titre : {{annonce[0].titre}} <br/>
-		   				Produit proposé : {{annonce[0].stock.produit.nomProduit}}</b>
-		   			</div>
-		   				
-					<div class="case3">{{annonce[1]}}</div>
-					
-					<div class="case4"><button>afficher</button></div>					
-		   				  				
+		
+		
+				<div id="titre"><h1 >MES ANNONCES POURVUES</h1><br/>
+				
+				<!--===============================Bouton de recherche==============================-->
+					<div id="boutons">			
+						<button v-on:click="voirRdvAconfirmer()" type="button">Mes RDV à confirmer</button>
+						<button v-on:click="voirRdvAVenir()" type="button">Mes RDV à venir</button>			
+					</div><br/>
 	
-	   			</div>
-   			</div>
+				</div>		
+			
+			<!--===============================tableau RDV à confirmer==============================-->
+ 			<div v-if="btnRDVaConfirmer == true" class="table-responsive-sm">
+				<table class="table table-hover">
+				  <thead class="thead-dark">
+				    <tr>
+				      <!-- <th scope="col">#</th> -->
+				      <th scope="col">Date de publication</th>
+				      <th scope="col">Annonces avec RDV à confirmer</th>
+				      <th scope="col">Nombre de réponses</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  				  
+					  	<tr v-for="annonce in annonce" v-on:click="afficherReponse(annonce[0])" data-toggle="modal" data-target="#modal">
+						  	<!-- <th scope="row">{{incrementer()}}</th> -->
+						      <td>{{moment(annonce[0].datePublication).format('DD/MM/YYYY')}}</td>
+						      <td>Titre : {{annonce[0].titre}} <br/>Produit proposé : {{annonce[0].stock.produit.nomProduit}}						      						      
+						      
+						      </td>
+						      <td>{{annonce[1]}}</td>
+					  	</tr>			  			  
+				  </tbody>
+				</table>
+			</div>
+			
+			<!--===============================tableau RDV à venir==============================-->
+ 			<div v-if="btnRDVaConfirmer == false" class="table-responsive-sm">
+				<table class="table table-hover">
+				  <thead class="thead-dark">
+				    <tr>
+				      <!-- <th scope="col">#</th> -->
+				      <th scope="col">Date de publication</th>
+				      <th scope="col">Annonces avec RDV à venir</th>
+				      <th scope="col">RDV</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  				  
+					  	<tr v-for="annonce in annonce" v-on:click="afficherReponse(annonce[0])" data-toggle="modal" data-target="#modal">
+						  	<!-- <th scope="row">{{incrementer()}}</th> -->
+						      <td>{{moment(annonce[0].datePublication).format('DD/MM/YYYY')}}</td>
+						      <td>Titre : {{annonce[0].titre}} <br/>Produit proposé : {{annonce[0].stock.produit.nomProduit}}						      						      
+						      
+						      </td>
+						      <td>{{annonce[1]}}</td>
+					  	</tr>			  			  
+				  </tbody>
+				</table>
+			</div>
+			
+			
+
+			
+			<!--===============================Modal ==============================-->
+			
+			<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  			<div class="modal-dialog" role="document">
+   				<div class="modal-content">
+      				<div class="modal-header">
+      					<h5 class="modal-title" id="exampleModalLabel">REPONSES RECUES<br/>Annonce : "{{annonceSelectionnee.titre}}"</h5>
+       					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     				    	<span aria-hidden="true">&times;</span>
+      					</button>
+    				</div>
+    				   <div id="modal-body-rep">					
+							<span v-for="reponse in reponse">
+								<img id="userRep" v-bind:src="getSrcUser(reponse.utilisateur.pseudo)"/>
+								{{reponse.utilisateur.pseudo}} souhaite {{moment(reponse.dateRdv).format('DD/MM/YYYY')}}
+								<button v-on:click="accepterRep(annonceSelectionnee, reponse.idReponse)">ACCEPTER</button>
+								<button v-on:click="refuserRep(reponse)">REFUSER</button><br/>
+																						
+							</span>
+							
+													
+    				  </div>
+    				  <div class="modal-footer">   				   		
+     					    <button type="button" class="btn btn-primary" data-dismiss="modal">Retour</button>
+    				  </div>
+   					</div>
+   					
+ 			   </div>
+			</div>
+
+	   			
+   		</div>
   		
 
 	<script src="./js/ReponsesBis.js"></script>

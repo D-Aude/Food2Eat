@@ -107,6 +107,7 @@ public class DaoReponse implements IDaoReponses {
 				.getResultList();
 	}
 
+
 	@Override
 	public Long countNotifEnvieValidé(int idUtilisateur) {
 		
@@ -121,6 +122,16 @@ public class DaoReponse implements IDaoReponses {
 		return entityManager.createNamedQuery("Repannonce.CountRepAnnonceParIdUser",Long.class)
 				.setParameter("idUtilisateur", idUtilisateur)
 				.getSingleResult();
+
+	}
+	// Chercher les RDV à venir de mes annonces
+	@Override
+	public List<Repannonce> repannonceMesAnnoncesRdvAVenir(int idUtilisateur) {
+		
+		return entityManager.createNamedQuery("Repannonce.parMesAnnoncesRdvAvenir",Repannonce.class)
+				.setParameter("idUtilisateur", idUtilisateur)
+				.getResultList();
+		//reponses à valider + req rdv à venir
 	}
 	
 
