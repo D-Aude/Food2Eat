@@ -19,7 +19,7 @@
 			<div id="Annonces-elementsTermines" v-for="evaluation in evaluations">
 		 <img class="imgEnviesTermines" v-bind:src="getSrc(evaluation.repannonce.annonce.stock.produit.idProduit)"/> </br>
 				
-					Le {{moment(evaluation.repannonce.dateRDV).format('DD/MM/YYYY,hh:mm:ss')}} vous avez
+					Le {{moment(evaluation.repannonce.dateRdv).format('DD/MM/YYYY')}} vous avez
 						reçu de {{evaluation.repannonce.annonce.stock.utilisateur.pseudo}}, </br>le don de :
 						{{evaluation.repannonce.annonce.stock.quantite}} {{evaluation.repannonce.annonce.stock.produit.nomProduit}} </br>
 						Note associée à ce don : {{evaluation.note}}/5 
@@ -27,19 +27,20 @@
 				</div>
 				
 				<div id="Envies-elementsTermines" v-for="repannonce in repannonces">
-				 <img class ="imgEnviesTermines" v-bind:src="getSrc(repannonce.annonce.stock.produit.idProduit)"/> </br>
-			<!--	<div v-if=" {{aujourdhui}} > {{repannonce.dateRdv}} "></div>-->
+				   <img class ="imgEnviesTermines" v-bind:src="getSrc(repannonce.annonce.stock.produit.idProduit)"/> </br>
+				 <div v-if=" aujourdhui < repannonce.dateRdv ">
 					Vous avez rendez-vous le {{moment(repannonce.dateRdv).format('DD/MM/YYYY,hh:mm:ss')}} avec {{repannonce.annonce.stock.utilisateur.pseudo}} </br>
 					concernant le don de {{repannonce.annonce.stock.quantite}} {{repannonce.annonce.stock.produit.nomProduit}} !
-				{{aujourdhui}}
 				
-			<!--	</div>-->
-			<!--	<div v-if=" ({{aujourdhui}} < moment{{repannonce.dateRdv}}.format('L'))">-->
-					le {{moment(repannonce.dateRdv).format('DD/MM/YYYY,hh:mm:ss')}} vous avez reçu de {{repannonce.annonce.stock.utilisateur.pseudo}}, le don de :</br>  
+				</hr></br>
+			</div>
+			<div v-else>
+				<!-- <div v-if=" aujourdhui > repannonce.dateRdv "> -->
+				</br>
+					le {{moment(repannonce.dateRdv).format('DD/MM/YYYY')}} vous avez reçu de {{repannonce.annonce.stock.utilisateur.pseudo}}, le don de :</br>  
 					{{repannonce.annonce.stock.quantite}} {{repannonce.annonce.stock.produit.nomProduit}}
 					</br>
-					Merci de noter votre échange : <select id="selectNoteEvaluation"
-						v-model="selected">
+					Merci de noter votre échange : <select id="selectNoteEvaluation" v-model="selected">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -48,9 +49,9 @@
 					</select></br>
 					 Vous pouvez laissez un commentaire : <INPUT type="text"
 						name="input" VALUE="" id="commentaireEval" />
-					<button v-on:click="insererEvaluation(repannonce.annonce.idAnnonce)"
+					<button v-on:click="insererEvaluation(repannonce.annonce.idAnnonce,selected)"
 						id="btnValiderMotifAnnulation">Valider</button>
-				<!--</div>  -->
+			 </div>
 
 			</div>
 		</div>
@@ -82,8 +83,7 @@
 	</div>
 </div>
 
-<script> var {{moment(repannonce.dateRdv).format('L')}} = rdv </script>
-<script> var aujourdhui = moment()</script>
+
 <script src="./js/mesEnviesVueJs.js"></script>
 <script src="./js/modalAnnonceJS.js"></script>
 <link rel="stylesheet" type="text/css"

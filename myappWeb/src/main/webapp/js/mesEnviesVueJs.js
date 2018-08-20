@@ -54,8 +54,8 @@ methods: {
 		var vm= this
 	if (typeEnvies == "rdvAvenir")
 		{
-		vm.repannonces=[]
-		vm.evaluations=[]
+		vm.repannonces=[],
+		vm.evaluations=[],
 		axios.get('http://localhost:8080/myappWeb/services/rest/reponses/rdvAVenir/'+ vm.idUtilisateur)
 		.then(function(response){
 			vm.repannonces = response.data
@@ -85,23 +85,28 @@ methods: {
 		}
 	},
 
-	insererEvaluation:function(idAnnonce)
+	insererEvaluation:function(idAnnonce, selected)
 	{
 		//console.log("debut fonction" + idAnnonce)
 		var vm = this;
-	alert("Votre evaluation est enregistrée,////////////// Merci!" + idAnnonce)
+	alert("Votre evaluation est enregistrée,////////////// Merci! note : " + selected)
 		
 		
 		
-		var liste, texte;
-		liste = document.getElementById("selectNoteEvaluation");
-		texte = liste.options[selectNoteEvaluation.selectedIndex].text;
-	
+		//var liste, texte;
+		//liste = document.getElementById("selectNoteEvaluation");
+		//texte = liste.options[selectNoteEvaluation.selectedIndex].text;
+		//console.log(texte)
 		//var idReponse =document.getElementById("idReponse").value;
 		//console.log (idReponse + " idReponse")
 		var comm = document.getElementById("commentaireEval").value;
 		
-		
+	for (i=0 ; i < vm.repannonces.length ; i++) {
+		if (idAnnonce == vm.repannonces[i].annonce.idAnnonce) {
+			vm.repannonces.splice(i,1);
+		}
+		console.log(vm.repannonces)
+	}
 
 		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneReponse/'+idAnnonce)
 			.then(function (response){
@@ -117,15 +122,15 @@ methods: {
 				//I nstanciation evaluation
 				var Evaluation = {
 						"idEvaluation" :null,
-						"note" : texte,
+						"note" : selected,
 						"commentaire" : comm,
 						"repannonce" : Repannonce,
 						"dateEvaluation" :Date.now()
 				}
-				console.log(Evaluation)
+				console.log(vm.repannonces)
 					annonceAmodif.evaluations = Evaluation;
-				
-			// annonceAmodif vide
+		// maj list des repannones. splice(i,1) i 1= idAnnonce a retire à partir de 1)
+	
 		
 		// POST pour evaluation
 				axios.post('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/insererEvaluation',
@@ -134,7 +139,7 @@ methods: {
 					console.log(response);
 					
 				});
-				//location.reload();
+			
 			})
 	},
 	getSrc: function(idProduit) {

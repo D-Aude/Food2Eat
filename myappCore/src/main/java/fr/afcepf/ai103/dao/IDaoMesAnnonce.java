@@ -29,8 +29,8 @@ public interface IDaoMesAnnonce {
 	public List <Annonce> rechercherMesEnviesTerminesAEvaluer (int utilisateur);
 	public List <Annonce> rechercherMesEnviesCloturees(int utilisateur);
 	
-	
-
+	public Long CountAnnonceParId(int idUtilisateur);
+	public Long CountAnnonceTermines();
 	public List <Repannonce> voirReponse (int utilisateur);
 	
 	// Recupérer la liste des annonces avec au moins une annonce
