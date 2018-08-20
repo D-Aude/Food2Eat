@@ -23,7 +23,7 @@
 						reçu de {{evaluation.repannonce.annonce.stock.utilisateur.pseudo}}, </br>le don de :
 						{{evaluation.repannonce.annonce.stock.quantite}} {{evaluation.repannonce.annonce.stock.produit.nomProduit}} </br>
 						Note associée à ce don : {{evaluation.note}}/5 
-						Commentaire associé à ce don :  {{evaluation.commentaires}}</br>
+						Commentaire associé à ce don :  {{evaluation.commentaire}}</br>
 				</div>
 				
 				<div id="Envies-elementsTermines" v-for="repannonce in repannonces">
@@ -49,7 +49,7 @@
 					</select></br>
 					 Vous pouvez laissez un commentaire : <INPUT type="text"
 						name="input" VALUE="" id="commentaireEval" />
-					<button v-on:click="insererEvaluation(repannonce.annonce.idAnnonce)"
+					<button v-on:click="insererEvaluation(repannonce.annonce.idAnnonce,selected)"
 						id="btnValiderMotifAnnulation">Valider</button>
 			 </div>
 
