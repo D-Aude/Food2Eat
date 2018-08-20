@@ -6,7 +6,8 @@ var vm = new Vue({
     idUser: '',
   	modeConservation: '',
   	consommation: 0,
-  	selectedStock : []
+  	selectedStock : [],
+  	search: ''
   },
   watch: {
 	  modeConservation: function (mode, oldMode) {
@@ -40,6 +41,14 @@ var vm = new Vue({
 	  }
 	  
   },
+//  computed: {
+//		filteredList() {
+//			return this.stocks.filter(post => {
+//		        return post.stock.produit.nomProduit.toLowerCase().includes(this.search.toLowerCase())
+//		      })
+//		      
+//		}
+//  },
   methods: 
   {
 	  clickStock(stock)
@@ -57,11 +66,13 @@ var vm = new Vue({
 			  document.getElementById("detailStock").style.display="block";
 		  
 		//Affichage Boutton creation Annonce
-		  if(document.getElementById("btnManger").style.backgroundColor != document.getElementById("btnJeter").style.backgroundColor)
+		  var now = Date.now();
+		  if(document.getElementById("btnManger").style.backgroundColor != document.getElementById("btnJeter").style.backgroundColor || stock.dlc<now)
 				document.getElementById("btnAnnonce").style.display="none";
 		  else
 			  document.getElementById("btnAnnonce").style.display="block";
 		  
+			  
 		  //recuperation id Stock
 		  var idSelectedStockOld =  document.getElementById("idSelectedStock").value;
 		  var idSelectedStock = stock.idStock;
@@ -75,13 +86,24 @@ var vm = new Vue({
 			  //Modification image Stock
 			  var idProduit = stock.produit.idProduit;
 			  var lienImageOld = document.getElementById('imageDetail').src;
-			  //var lienImage = "./resources/img/stock/produit_"+idProduit+".jpg";
 			  var lienImage = "./resources/img/annoncescom/"+idProduit+".png";
 			  if(lienImageOld != lienImage)
 				  document.getElementById('imageDetail').src = lienImage;
 				  
 			  //Modification detail Stock
+			  document.getElementById("nomDetail").innerHTML = stock.produit.nomProduit;
+			  document.getElementById("dateAchatDetail").innerHTML = moment(stock.dateAchat).format('DD/MM/YYYY');
+			  document.getElementById("dateConsoPrefDetail").innerHTML = moment(stock.dateConsoPref).format('DD/MM/YYYY') ;
 			  
+			  //Modification info
+			  if(stock.dlc<now)
+			  {
+				  document.getElementById("info").innerHTML = "Attention la DLC de ce produit est dépassé (don impossible)"
+			  }
+			  else
+			  {
+				  document.getElementById("info").innerHTML = '';
+			  }
 			  
 		  }
 		  
