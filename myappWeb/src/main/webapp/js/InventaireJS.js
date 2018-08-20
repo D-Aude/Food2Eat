@@ -75,12 +75,13 @@ var vm = new Vue({
 			  //Modification image Stock
 			  var idProduit = stock.produit.idProduit;
 			  var lienImageOld = document.getElementById('imageDetail').src;
-			  var lienImage = "./resources/img/stock/produit_"+idProduit+".jpg";
-			  
+			  //var lienImage = "./resources/img/stock/produit_"+idProduit+".jpg";
+			  var lienImage = "./resources/img/annoncescom/"+idProduit+".png";
 			  if(lienImageOld != lienImage)
 				  document.getElementById('imageDetail').src = lienImage;
 				  
 			  //Modification detail Stock
+			  
 			  
 		  }
 		  
