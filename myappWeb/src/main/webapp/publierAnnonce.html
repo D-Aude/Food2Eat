@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Food2Eat (beta)</title>
+	<link rel="stylesheet" type="text/css" href="./resources/css/styleInventaire.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.js"></script>
+</head>
+<body>
+	<div class="lblTitre">
+		<b>Publier Une Annonce</b>
+		<br/>
+	</div>
+
+	<form id="publicationForm" @submit.prevent="Publier()" >
+			<div class="row">
+		      <div class="col-25">
+		        <label class="labelPublication" for="">Titre</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" id="inputTitre" class="inputPublication" placeholder="Titre de l'annonce">
+		      </div>
+		    </div>
+			<div class="row">
+		      <div class="col-25">
+		        <label class="labelPublication" for="labelProduit">Aliment</label>
+		      </div>
+		      <div class="col-75">
+		        <label class="inputPublication" id="labelProduit">{{stock.produit.nomProduit}}</label>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="col-25">
+		        <label class="labelPublication" for="labelQuantite">Quantite</label>
+		      </div>
+		      <div class="col-30">
+		        <label  class="inputPublication" id="labelQuantite">{{stock.quantite}}</label>
+		      </div>
+		      <div class="col-25">
+		        <div v-if="stock.entame == 1">
+		        	<label class="labelPublication" for="labelRestant">dont 1 Entamé, Etat :</label>
+		        </div>
+		        <div v-else class="labelPublication" for="labelRestant">
+		        	Neuf
+		        </div>
+		      </div>
+		      <div class="col-30" v-if="stock.entame == 1">
+		        <label class="inputPublication" id="labelRestant">
+		        	<br>{{stock.fractionRestante}}/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}
+		        </label>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="col-25">
+		        <label class="labelPublication" for="labelDLC">DLC</label>
+		      </div>
+		      <div class="col-30">
+		        <label class="inputPublication" id="labelDLC">{{moment(stock.dlc).format('DD/MM/YYYY')}}</label>
+		      </div>
+		      <div class="col-25">
+		        <label class="labelPublication" for="labelDateConsoPref">Date de Conso. Pref.</label>
+		      </div>
+		      <div class="col-30">
+		        <label class="inputPublication" id="labelDateConsoPref">{{moment(stock.dateConsoPref).format('DD/MM/YYYY')}}</label>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="col-25">
+		        <label class="labelPublication" for="selectAdresse">Adresse</label>
+		      </div>
+		      <div class="col-75">
+		        <select id="selectAdresse" class="inputPublication">
+		          <option value="0">-- Veuillez choisir une adresse pour le RDV --</option>
+		          <option v-for="userAdresse in userAdresses" :value="userAdresse.adresse.idAdresse">
+		          	{{userAdresse.adresse.numeroVoie}}, {{userAdresse.adresse.typeVoie}} {{userAdresse.adresse.nomVoie}} - {{userAdresse.adresse.ville.codePostal}} {{userAdresse.adresse.ville.ville}}
+		          </option>
+		        </select>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="col-25">
+		        <label class="labelPublication" for="inputDate1">Date n°1</label>
+		      </div>
+		      <div class="col-30">
+		      	<input id="inputDate1" class="datePublication" type="date">
+		      	<input id="inputHeure1" class="heurePublication" type="time">
+		      </div>
+		      <div class="col-25">
+		        <label class="labelPublication" for="inputDate2">Date n°2</label>
+		      </div>
+		      <div class="col-30">
+		      	<input id="inputDate2" class="datePublication" type="date">
+		      	<input id="inputHeure2" class="heurePublication" type="time">
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="col-25">
+		        <label class="labelPublication" for="inputDate3">Date n°3</label>
+		      </div>
+			  <div class="col-30">
+		      	<input id="inputDate3" class="datePublication" type="date">
+		      	<input id="inputHeure3" class="heurePublication" type="time">
+		      </div>
+		    </div>
+		    <div class="row">
+		      <button type="submit" id="btnPublier" >Publier</button>
+		      <button id="btnAnnulerPubli" v-on:click="backToInventaire" >Annuler</button>
+		    </div>
+	</form>
+
+<script>
+var vmPublication = new Vue({
+	  el: '#publicationForm',
+	  data: {
+		  Annonce : [],
+		  userAdresses : [],
+		  stock : []
+	  },
+	  created: function () {
+		  console.log('Init Publier');
+		  
+		  //charger Stock selectionné
+		  this.stock = JSON.parse(sessionStorage.getItem('publicationAnnonce'));
+		  
+		  //charger dans select adresse(s) utilisaateur
+		  var session = sessionStorage.getItem('utilisateurCourant');
+		  var utilisateur = JSON.parse(session);
+		  console.log('Stock.parUtilisateur: '+utilisateur.idUtilisateur);
+		  var vmPublication = this
+	      axios.get('http://localhost:8080/myappWeb/services/rest/useradresse/'+utilisateur.idUtilisateur)
+	          .then(function (response) {
+	        	  vmPublication.userAdresses = response.data
+	      })
+	  },
+	  methods: 
+	  {
+		  	Publier: function ()
+		  	{
+				console.log('Btn Publier');
+			  	var titre = document.getElementById('inputTitre').value;
+			  	console.log('titre:'+titre);
+			  	
+			  	//recuperaion infos annonce
+			  	var titre = document.getElementById('inputTitre').value;
+			  	var datePublication = Date.now();
+			  	var idAdresse = document.getElementById('selectAdresse').value;
+			  	for(var i=0; i< this.userAdresses.length; i++)
+			  	{
+			  		if(this.userAdresses[i].adresse.idAdresse == idAdresse)
+			  			var adresse = this.userAdresses[i].adresse;
+			  	}
+			  	var jourRdv1 = document.getElementById('inputDate1').value;
+			  	var jourRdv2 = document.getElementById('inputDate2').value;
+			  	var jourRdv3 = document.getElementById('inputDate3').value;
+			  	
+			  	var heureRdv1 = document.getElementById('inputHeure1').value;
+			  	var heureRdv2 = document.getElementById('inputHeure2').value;
+			  	var heureRdv3 = document.getElementById('inputHeure3').value;
+			  	
+			  	var dateRdv1 = this.moment(jourRdv1+' '+heureRdv1);
+			  	var dateRdv2 = this.moment(jourRdv2+' '+heureRdv2);
+			  	var dateRdv3 = this.moment(jourRdv3+' '+heureRdv3);
+			  	//requete nouvelle annonce
+			  	var Annonce = {
+			  				idAnnonce : 0,
+			  				dateAnnulation : null,
+			  				dateFinAnnonce : null,
+			  				datePublication : datePublication,
+			  				dateRdv1 : dateRdv1,
+			  				dateRdv2 : dateRdv2,
+			  				dateRdv3 : dateRdv3,
+			  				titre : titre,
+			  				adresse : adresse,
+			  				annulation :null,
+			  				stock : this.stock,
+			  				repannonces : []
+			  				
+					};
+			  	var annonceAsJsonString = JSON.stringify(Annonce)
+			  	//declenchement de la requête:
+				var httpRequest = new XMLHttpRequest();
+				httpRequest.open("POST", "./services/rest/mesAnnoncesPostees/creerAnnonce");
+				httpRequest.setRequestHeader("Content-Type" , "application/json");
+				httpRequest.send(annonceAsJsonString);
+			  	console.log('Annonce.creerAnnonce :'+annonceAsJsonString);
+			  	
+			  	//Charger page apres requete
+			      httpRequest.onreadystatechange = function() {
+			  		if (this.readyState == 4 && this.status == 200) {
+			  		//si status HTTP en retour == 200 : OK 
+			  			this.backToInvantaire();
+			  		}
+			      };
+			      
+			  	
+		  	},
+// 		  	Annuler: function ()
+// 		  	{
+// 		  		this.backToInvantaire();
+// 		  	},
+		  	backToInvantaire: function()
+		  	{
+		  		sessionStorage.removeItem('publicationAnnonce');
+		  		$("#flexContent").load("./gestionInventaire.html");
+		  	},
+		  	moment: function (date) 
+		  	{
+				return moment(date);
+		  	},    
+			date: function (date) 
+			{
+			    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+			}
+		},
+		filters: {
+			moment: function (date) 
+			{
+			  return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+			}
+		}
+		  
+	})
+</script>
+
+</body>
+</html>

@@ -168,6 +168,12 @@ public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
 				.setParameter("idUtilisateur",idUtilisateur)
 				.getResultList();
 	}
+
+	@Override
+	public Annonce creerAnnonce(Annonce annonce) {
+		entityManager.persist(annonce);
+		return annonce;
+	}
 	
 	public Long CountAnnonceParId(int idUtilisateur)
 	{

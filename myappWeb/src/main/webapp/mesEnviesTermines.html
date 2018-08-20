@@ -2,10 +2,13 @@
 
 <div class="container">
 	<div class="lblTitreAnnonces">
-		<b>Mes envies cloturées</b>
+		<b>Mes souhaits cloturés</b>
 	</div>
 	<div id="page-annonces">
 		<div id="listeMesEnviesTermines">
+		<span class="lblFiltre">Filtre d'affichage :</span>
+			<br />
+
 			<select id="selectTypeEnvieTerminees" v-model="typeEnvies">
 				<option value="rdvAvenir">Vos prochains rendez-vous</option>
 				<option value="mesEnviesAEval">Mes envies à évaluer</option>

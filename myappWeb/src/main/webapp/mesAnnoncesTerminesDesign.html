@@ -6,10 +6,11 @@
 	</div>
 	<div id="page-annonces">
 		<div id="listeMesAnnonceTermines">
+				<span class="lblFiltre">Filtre d'affichage :</span>
 			 <!--  <button @click="chargerAnnonces()" id="btnSelectionAnnoncesTerminees">Liste annonces cloturées</button>-->
-			<select id="selectTypeAnnoncesTerminees" v-model="typeAnnoncesCloturees">
+			<select class="styled-select green rounded" id="selectTypeAnnoncesTerminees" v-model="typeAnnoncesCloturees">
 				<option value="plop">Toutes mes annonces terminées</option>
-				<option value="mesAnnoncesAnnulees">Mes annonces annulées</option>
+				<option value="mesAnnoncesAnnulees" selected>Mes annonces annulées</option>
 				<option value="mesAnnoncesTerminees">Mes annonces terminées</option>
 			</select> <br/>
 			<br/>

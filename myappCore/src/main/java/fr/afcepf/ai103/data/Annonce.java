@@ -75,7 +75,7 @@ public class Annonce implements Serializable {
 
 	@Id
 	@SequenceGenerator(name="ANNONCE_IDANNONCE_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ANNONCE_IDANNONCE_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_ANNONCE")
 	private int idAnnonce;
 

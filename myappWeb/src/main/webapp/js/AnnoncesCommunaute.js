@@ -4,6 +4,7 @@ var Session = sessionStorage.getItem('utilisateurCourant');
 var id = JSON.parse(Session)["idUtilisateur"];
 
 
+
 // ANNONCES DE LA COMMUNAUTE
 var listeannoncesCommnunaute = new Vue({
 	
@@ -20,7 +21,12 @@ var listeannoncesCommnunaute = new Vue({
 	    date2: "",
 	    date3: "",
 	    dateChoisie: null,
-	    search: ''
+	    search: '',
+	    voirCarte: false,
+	    map: null,
+	    tileLayer:null,
+	    layers: []
+
 	   
 	  },
 	  
@@ -42,7 +48,29 @@ var listeannoncesCommnunaute = new Vue({
 			      
 			}
 	  },
+	  
+	  mounted() {
+		this.initMap();
+		this.initLayers();
+	  },
+	  
 	  methods: {
+		  
+		initMap() {
+			this.map = L.map(this.carte).setView([51.505, -0.09], 13);
+
+			this.tileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+			    maxZoom: 18,
+			    id: 'mapbox.streets',
+			    accessToken: 'pk.eyJ1Ijoid2luZ3kiLCJhIjoiY2preThmNnB3MGZlYTNrcWk3cWQzeDFtdCJ9.fRvBd-XU2TlX9QRMye3zLA'
+			}).addTo(this.map);
+		},
+		
+		initLayers() {
+			
+		},
+		  
 		// METHODE : générer le lien URL à partir d'un pseudo  
 		getSrc: function(idproduit) {
 			return this.src + idproduit + this.imgtype;
@@ -102,6 +130,28 @@ var listeannoncesCommnunaute = new Vue({
 	    				  console.log(response);
 	    				  console.log("terminé");
 	    			  });
+		},
+		
+		// afficher sous forme de carte
+		afficherCarte: function() {
+			if (this.voirCarte == false) {
+				this.voirCarte = true;
+				document.getElementById('btnMap').textContent = "Afficher liste";
+				console.log("fonction afficher carte");
+				
+				// initialisation de la carte
+				
+
+				
+				
+				
+				
+			} else {
+				this.voirCarte = false;
+				document.getElementById('btnMap').textContent = "Afficher la carte";
+			}
+			
+			
 		}
 
 		
@@ -122,4 +172,11 @@ var listeannoncesCommnunaute = new Vue({
 
 	  }
 	
-})	
+})
+
+
+// Carte
+
+
+
+

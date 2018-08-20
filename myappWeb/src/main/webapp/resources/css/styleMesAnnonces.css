@@ -9,16 +9,17 @@
 	padding: 5px 5px 5px 5px;
 }
 
-#Annonces-elements {
-	display: inline-block;
-    margin: 2px;
-    padding: 2px;
-    color: white;
-    font-size: 20px;
-    top: 2px;
-    left: 5px;
-    
-}
+/* #Annonces-elements { */
+/*     display: inline-block; */
+/*     margin: 2px; */
+/*     padding: 2px; */
+/*     color: white; */
+/*     font-size: 20px; */
+/*     top: 204px; */
+/*     left: 9px; */
+/*     position: relative; */
+/*     background-color: black; */
+/* } */
 #Annonces-elementsTermines{
 	display: inline-block;
     border: 3px solid black;
@@ -170,7 +171,7 @@ position: absolute;
  width:552px;	
  margin-left: auto;
  margin-right: auto;
-    width: ...; /* largeur obligatoire pour être centré */
+    width: ...; /* largeur obligatoire pour ï¿½tre centrï¿½ */
   /*background-position:100% 100%;
   position: absolute;*/
 }	

@@ -13,8 +13,9 @@
 </head>
 <body>
 	<div id="mesEnvieEnAttentes">
-
-		<h1 id="Annonces-Titre">Mes envies en attentes</h1>
+			<div class="lblTitreAnnonces">
+			<b>Mes souhaits en attente</b>
+			</div>
 		<br />
 		<div>
 
@@ -24,16 +25,12 @@
 						<span> Vous êtes interessé par l'annonce de {{repannonce.annonce.stock.utilisateur.pseudo}}  <br />
 							  qui vous propose : {{repannonce.annonce.stock.quantite}} {{repannonces.annonce.stock.produit.nomProduit}} </br> 
 							 Vous avez choisi le {{moment(annonce.repannonces.dateReponse).format('L')}} pour le don. </br>
-							 
-							</span> <br />
 						
+							</span> <br />
 					</div>
 				</div>
-		
 			</div>
-		</div>
-	</div>
-	</div>
 	<script src="./js/mesEnvieVueJs.js"></script>
+
 </body>
 </html>

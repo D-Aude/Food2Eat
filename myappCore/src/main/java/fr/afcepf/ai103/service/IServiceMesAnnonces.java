@@ -9,6 +9,7 @@ public interface IServiceMesAnnonces {
 
 	
 	/********************* MES ANNONCES *************************************/
+	Annonce creerAnnonce(Annonce annonce);
 	List<Annonce> rechercherToutesLesAnnonces();
 	List<Annonce> rechercherAnnoncesEnCoursUtilisateur(int idUtilisateur);
 	List<Annonce> rechercherAnnoncesTermineesUtilisateur(int idUtilisateur);
