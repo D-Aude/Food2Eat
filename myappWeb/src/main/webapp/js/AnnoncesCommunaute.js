@@ -4,6 +4,7 @@ var Session = sessionStorage.getItem('utilisateurCourant');
 var id = JSON.parse(Session)["idUtilisateur"];
 
 
+
 // ANNONCES DE LA COMMUNAUTE
 var listeannoncesCommnunaute = new Vue({
 	
@@ -13,26 +14,20 @@ var listeannoncesCommnunaute = new Vue({
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 	    idAnnonceEncours : "",
 	    src: "./resources/img/annoncescom/",
-	    imgtype: ".png"
+	    imgtype: ".png",
+	    afficherModal : false,
+	    annonceDetail : [],
+	    date1: "",
+	    date2: "",
+	    date3: "",
+	    dateChoisie: null,
+	    search: '',
+	    voirCarte: false,
+	    map: null,
+	    tileLayer:null,
+	    layers: []
+
 	   
-	  },
-	  methods: {
-		// METHODE : générer le lien URL à partir d'un pseudo  
-		getSrc: function(idproduit) {
-			return this.src + idproduit + this.imgtype;
-		},
-		moment: function (date) {
-			return moment(date);
-		},
-		date: function (date) {
-			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
-		},
-		test: function (idAnnonce) {
-			console.log(idAnnonce)
-			this.idAnnonceEnCours = idAnnonce;
-			console.log("test:" + this.idAnnonceEnCours)
-		}
-		
 	  },
 	  
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
@@ -42,27 +37,40 @@ var listeannoncesCommnunaute = new Vue({
 	      .then(function (response) {
 	        vm.annonce = response.data
 	      })
-	  }
-	
-})
-
-// ANNONCES DETAIL : REPONDRE A L ANNONCE
-var annoncesCommunauteDetail = new Vue({
-	  el: '#annoncesCommunauteDetail',
-	  data: {
-	    annonce: [],
-	    iduser: id, // Récupération de l'idUtilisateur de la session
-	    src: "./resources/img/annoncescom/",
-	    imgtype: ".png",
-	    selected: "",
-	    date1 : "",
-	    date2 : "",
-	    date3 : ""
-
-
-	    	    
 	  },
+	  
+	  computed: {
+			filteredList() {
+
+				return this.annonce.filter(post => {
+			        return post.stock.produit.nomProduit.toLowerCase().includes(this.search.toLowerCase())
+			      })
+			      
+			}
+	  },
+	  
+	  mounted() {
+		this.initMap();
+		this.initLayers();
+	  },
+	  
 	  methods: {
+		  
+		initMap() {
+			this.map = L.map(this.carte).setView([51.505, -0.09], 13);
+
+			this.tileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+			    maxZoom: 18,
+			    id: 'mapbox.streets',
+			    accessToken: 'pk.eyJ1Ijoid2luZ3kiLCJhIjoiY2preThmNnB3MGZlYTNrcWk3cWQzeDFtdCJ9.fRvBd-XU2TlX9QRMye3zLA'
+			}).addTo(this.map);
+		},
+		
+		initLayers() {
+			
+		},
+		  
 		// METHODE : générer le lien URL à partir d'un pseudo  
 		getSrc: function(idproduit) {
 			return this.src + idproduit + this.imgtype;
@@ -71,9 +79,22 @@ var annoncesCommunauteDetail = new Vue({
 			return moment(date);
 		},
 		date: function (date) {
-			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
+			return moment(date).locale('fr').format('Do MMMM YYYY, h:mm:ss a');
+		},
+		voirAnnonceDetail: function (annonceSelection) {
+			vm = this;
+			vm.annonceDetail = annonceSelection;
+			
+			this.date1 = annonceSelection.dateRdv1;
+			this.date2 = annonceSelection.dateRdv2;
+			this.date3 = annonceSelection.dateRdv3;
+
+			vm.afficherModal = true;
+
 		},
 		
+	  
+	  
 		envoyerDemandeProduit: function(idAnnonce) {
 			console.log("Début de la fonction");
 			var vm = this;
@@ -94,13 +115,13 @@ var annoncesCommunauteDetail = new Vue({
 	    			  "idReponse" : null,
 	    			  "dateAcceptationReponse" : null,
 	    			  "dateAnnulationReponse" : null,
-	    			  "dateRdv" : vm.selected,
+	    			  "dateRdv" : vm.dateChoisie,
 	    			  "dateRefus" : null,
 	    			  "dateReponse" : Date.now(),
 	    			  "annonce" : annonceChoisie,
 	    			  "utilisateur" : utilisateurEnCours
 	    	  }
-			
+			console.log(repannonce);
 			// POST
 			console.log("début du post")
 			
@@ -109,11 +130,34 @@ var annoncesCommunauteDetail = new Vue({
 	    				  console.log(response);
 	    				  console.log("terminé");
 	    			  });
+		},
+		
+		// afficher sous forme de carte
+		afficherCarte: function() {
+			if (this.voirCarte == false) {
+				this.voirCarte = true;
+				document.getElementById('btnMap').textContent = "Afficher liste";
+				console.log("fonction afficher carte");
+				
+				// initialisation de la carte
+				
+
+				
+				
+				
+				
+			} else {
+				this.voirCarte = false;
+				document.getElementById('btnMap').textContent = "Afficher la carte";
+			}
+			
+			
 		}
+
 		
 	  },
-	  
-	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
+	  // CREATED NUMERO 2
+	  // METHODEBIS : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
 	  created: function() {
 		var vm = this
 	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/' + vm.iduser)
@@ -125,7 +169,14 @@ var annoncesCommunauteDetail = new Vue({
 	        vm.selected = "";
 	        
 	      })
+
 	  }
 	
-	
-})	
+})
+
+
+// Carte
+
+
+
+

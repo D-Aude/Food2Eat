@@ -1101,7 +1101,7 @@ height: 0px;
 #searchBar {
     position: absolute;
     top: 218px;
-    left: 140;
+    left: 560px;
 }
 
 .inputSearchBar{
@@ -1123,10 +1123,10 @@ height: 0px;
 }
 
 #btnMap {
-	    width: 138px;
+	width: 160px;
     height: 41px;
     position: absolute;
-    top: 292px;
+    top: 218px;
     left: 140px
 }
 
@@ -1258,4 +1258,12 @@ font-family: Abel, sans-serif;
 font-size: 20px;
 left: -715;
 top: -65;
+}
+
+#filtreRech {
+	width: 160px;
+    height: 41px;
+    position: absolute;
+    top: 218px;
+    left: 350px
 }

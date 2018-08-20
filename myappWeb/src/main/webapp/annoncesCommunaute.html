@@ -8,13 +8,19 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
 	<script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
+	<link rel="stylesheet" href="./resources/leaflet/leaflet.css" />
+<script src="./resources/leaflet/leaflet.js"></script>
 </head>
 <body>
 <!--  <input type="hidden" id="iduser" type="text" value="1"  />-->
-	
+			
+
+			
 		
 		<div id="annoncesCommunaute">
-			<h1>FILTRES DE RECHERCHE/TRIE + GEOLOCALISATION</h1>
+		
+			<div id="mapid" style="height:400px;"></div>
+
    			<div id="friend-element" v-for="annonce in annonce">     					
 			
 					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>						
@@ -27,5 +33,16 @@
   		</div>
 
 	<script src="./js/AnnoncesCommunaute.js"></script>
+	<script>
+			
+			var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+			    maxZoom: 18,
+			    id: 'mapbox.streets',
+			    accessToken: 'pk.eyJ1Ijoid2luZ3kiLCJhIjoiY2preThmNnB3MGZlYTNrcWk3cWQzeDFtdCJ9.fRvBd-XU2TlX9QRMye3zLA'
+			}).addTo(mymap);
+			
+			</script>
 </body>
 </html>

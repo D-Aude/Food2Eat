@@ -9,12 +9,19 @@
 	<link rel="stylesheet" type="text/css" href="./resources/css/stylefoodfriend.css">
 </head>
 <body>
-<!--  <input type="hidden" id="iduser" type="text" value="1"  />-->
-	
+
+
+		<div class="lblTitreAnnonces">
+			<b>Mes Foodfriends</b>
+		</div>
 		
 		<div id="listeFoodfriend">
-
-   			<div id="friend-element" v-for="foodfriend in foodfriend">   
+		
+		<form id="searchBar">
+		  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher ..." v-model="search">
+		</form>
+<br/><br/><br/><br/><br/><br/><br/><br/>
+   			<div id="friend-element" v-for="foodfriend in filteredList">   
    				<div v-if="foodfriend.utilisateur1.idUtilisateur == iduser">  					
 	   				<img v-bind:src="getSrc(foodfriend.utilisateur2.pseudo)"/><br/>	
 	   				{{foodfriend.utilisateur2.pseudo}} <br/>
@@ -33,5 +40,6 @@
   		</div>
 
 	<script src="./js/foodfriendtestJ2.js"></script>
+
 </body>
 </html>

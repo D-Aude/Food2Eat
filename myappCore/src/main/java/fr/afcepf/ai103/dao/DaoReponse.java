@@ -90,6 +90,22 @@ public class DaoReponse implements IDaoReponses {
 				.setParameter("idUtilisateur", idUtilisateur)
 				.getResultList();
 	}
+
+	@Override
+	public List<Repannonce> RepannoncesParIdUtilisateurRdvAvenir(int idUtilisateur) {
+		
+		return entityManager.createNamedQuery("Repannonce.parIdUtilisateurRdvAvenir",Repannonce.class)
+				.setParameter("idUtilisateur", idUtilisateur)
+				.getResultList();
+	}
+
+	@Override
+	public List<Repannonce> RepannonceParIdEnvieEnAttente(int idUtilisateur) {
+		System.out.println("je suis dans le reponse dao avec en envieattente " + idUtilisateur);
+		return entityManager.createNamedQuery("Repannonce.parIdUtilisateurMesEnviesEnAttente",Repannonce.class)
+				.setParameter("idUtilisateur", idUtilisateur)
+				.getResultList();
+	}
 	
 
 

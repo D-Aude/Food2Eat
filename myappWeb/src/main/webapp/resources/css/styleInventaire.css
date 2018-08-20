@@ -15,7 +15,46 @@
     text-align: center;
     margin-top: 130px;
 }
+#btnEnregistrer{
+    position: fixed;
+    top: 200;
+    left: 1250;
+    z-index: 1030;
+    
+    background-color: green;
+    border: 1px solid white;
+    margin: 15px;
+    font-size: 27px;
+    color: white;
+    width: 180px;
+    height: 80px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
 
+}
+
+#btnAnnuler{
+	position: fixed;
+    top: 350; 
+    left: 1250;
+    z-index: 1030;
+    
+    background-color: red;
+    border: 1px solid white;
+    margin: 15px;
+    font-size: 27px;
+    color: white;
+    width: 180px;
+    height: 80px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
+}
 .btnAction {
     background-color: #49b6a8;
     border: 1px solid white;
@@ -59,6 +98,78 @@ th #etatColumn, tr #etatColumn {
 
 th #dlcColumn, tr #dlcColumn {
 	width: 100px;
+}
+
+.table {
+    margin: 0px auto;
+    table-layout: fixed;
+    width: 860px; 
+    text-align: center;           
+}​
+
+.table:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.ligne {
+	height: 50px;
+	text-align: center;
+	display: flex;
+}
+
+.header {
+	display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    background-color: black;
+    opacity: 0.7;
+    
+}
+
+.ligne div {
+	display: inline-block;
+	margin: auto;
+	font-size: 20px;
+}
+
+.case1, .ligne #qteColumn {
+	width: 50px;
+}
+
+.case2, .ligne #produitColumn {
+	width: 450px;
+}
+.case3, .ligne #dlcColumn {
+	width: 100px;
+}
+
+.case4, .ligne #etatColumn {
+	width: 240px;
+}
+
+#enStockNumber {
+	width: 50px;
+}
+
+.sliderTable:hover {
+    opacity: 1;
+}
+
+.sliderTable::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #49b6a8;
+    cursor: pointer;
+}
+
+.sliderTable::-moz-range-thumb {
+    width: 10px;
+    height: 20px;
+    background: #49b6a8;
+    cursor: pointer;
+    border: 2px solid black;
 }
 
 .modal {
@@ -111,6 +222,11 @@ th #dlcColumn, tr #dlcColumn {
 }
 
 /* The Close Button */
+
+.Xclose{
+	position: absolute;
+	left: 1000px;
+}
 
 .Xclose:hover,
 .Xclose:focus {

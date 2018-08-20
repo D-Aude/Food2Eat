@@ -45,6 +45,16 @@
     left: 5px;
 	
 }
+#Annonces-elementEnvieAttenteEssai{
+font-family: Abel, sans-serif;	
+font-size: 30px;
+ text-align : center;
+    border: 5px solid black;
+    margin: 5px;
+    padding: 10px;
+    background-color:white
+}
+
 
 #Annonces-titre {
 	display: inline-block;
@@ -140,7 +150,22 @@ background-position:100% 100%;
 position: absolute;
 	
 }
+.imgEnvieEnAttente{
+width: 1008px;
+height: 216px;
+background-position:100% 100%;
+position: absolute;
+		
+}
 
+
+.imgEnviesEnAttenteEssai{
+width: 1008px;
+height: 216px;
+background-position:100% 100%;
+position: absolute;
+	
+}
 .imgEnviesTermines{
 	height: 212px;
  width:552px;	

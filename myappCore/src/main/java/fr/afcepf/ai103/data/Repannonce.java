@@ -40,6 +40,15 @@ import java.util.List;
 																+ "and r.dateAcceptationReponse is not null "
 																+ "and r.dateAnnulationReponse is null "
 																+ "and r.dateRefus is null "
+																+"and r.dateRdv < CURRENT_DATE "
+																+"and r.evaluations is empty"),
+		
+		@NamedQuery(name="Repannonce.parIdUtilisateurRdvAvenir", query = "SELECT r FROM Repannonce r "
+																+ "WHERE r.utilisateur.idUtilisateur = :idUtilisateur "
+																+ "and r.dateAcceptationReponse is not null "
+																+ "and r.dateAnnulationReponse is null "
+																+ "and r.dateRefus is null "
+																+"and r.dateRdv > CURRENT_DATE "
 																+"and r.evaluations is empty"),
 		
 		@NamedQuery(name="Repannonce.parIdUtilisateurAvecEval", query = "SELECT r FROM Repannonce r "
@@ -48,6 +57,16 @@ import java.util.List;
 															+ "and r.dateAnnulationReponse is null "
 															+ "and r.dateRefus is null "
 															+ "and r.evaluations is not empty"),
+		
+		@NamedQuery(name="Repannonce.parIdUtilisateurMesEnviesEnAttente", query = "SELECT r FROM Repannonce r "
+														+ "WHERE r.utilisateur.idUtilisateur = :idUtilisateur "
+														+ "and r.dateAcceptationReponse is  null "
+														+"and r.dateReponse is not null "
+														+"and r.annonce.dateFinAnnonce is null "
+														+"and r.annonce.dateAnnulation is null "
+														+ "and r.dateAnnulationReponse is null "
+														+ "and r.dateRefus is null "
+														+"and r.dateRdv is null")
 })
 		
 public class Repannonce implements Serializable {

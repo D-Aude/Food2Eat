@@ -1,0 +1,34 @@
+<meta charset="utf-8">
+
+<div class="container">
+	<div class="lblTitreAnnonces">
+		<b>Mes envies en attentes</b>
+	</div>
+		<div id="page-annonces">
+
+
+			<div id="EssaiEnvieEnAttenteEssai">
+
+				<div id="Annonces-elementEnvieAttenteEssai" v-for="repannonce in repannonces">
+					<img class="imgEnviesEnAttenteEssai"
+						v-bind:src=getSrc(repannonce.annonce.stock.produit.idProduit) />
+
+					<h3>Envie en attente</h3>
+					 Vous êtes interessé par l'annonce de
+						{{repannonce.annonce.stock.utilisateur.pseudo}} <br /> qui vous
+						propose : {{repannonce.annonce.stock.quantite}}
+						{{repannonce.annonce.stock.produit.nomProduit}} <br /> Vous avez
+						choisi le {{moment(repannonces.dateReponse).format('L')}} pour le
+						don.
+
+					
+				</div>
+
+			</div>
+		</div>
+
+
+</div>
+<link rel="stylesheet" type="text/css" href="./resources/css/styleMesAnnonces.css">
+<script src="./js/envieEnAttenteEssai.js"></script>
+<script src="./js/modalAnnonceJS.js"></script>

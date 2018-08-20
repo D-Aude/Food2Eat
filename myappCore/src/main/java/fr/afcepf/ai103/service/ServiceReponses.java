@@ -79,4 +79,18 @@ public class ServiceReponses implements IServiceReponses {
 		return daoReponses.RepannoncePArIdUtilisateurEvalComplete(idUtilisateur);
 	}
 
+
+	@Override
+	public List<Repannonce> rechercherReponseParIdUtilisateurRdvAVenir(int idUtilisateur) {
+		
+		return daoReponses.RepannoncesParIdUtilisateurRdvAvenir(idUtilisateur);
+	}
+
+
+	@Override
+	public List<Repannonce> rechercherReponseParIdUtilisateurEnvieEnAttente(int idUtilisateur) {
+		System.out.println("je suis dans le reponse rest avec en attente " + idUtilisateur);
+		return daoReponses.RepannonceParIdEnvieEnAttente(idUtilisateur);
+	}
+
 }
