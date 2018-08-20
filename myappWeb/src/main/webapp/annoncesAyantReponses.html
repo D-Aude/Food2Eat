@@ -36,7 +36,7 @@
 				  </thead>
 				  <tbody>
 				  				  
-					  	<tr v-for="annonce in annonce" v-on:click="afficherReponse(annonce[0])" data-toggle="modal" data-target="#modal">
+					  	<tr v-if="btnRDVaConfirmer == true" v-for="annonce in annonce" v-on:click="afficherReponse(annonce[0])" data-toggle="modal" data-target="#modal">
 						  	<!-- <th scope="row">{{incrementer()}}</th> -->
 						      <td>{{moment(annonce[0].datePublication).format('DD/MM/YYYY')}}</td>
 						      <td>Titre : {{annonce[0].titre}} <br/>Produit proposé : {{annonce[0].stock.produit.nomProduit}}						      						      
@@ -61,13 +61,12 @@
 				  </thead>
 				  <tbody>
 				  				  
-					  	<tr v-for="annonce in annonce" v-on:click="afficherReponse(annonce[0])" data-toggle="modal" data-target="#modal">
+					  	<tr v-for="repRdv in reponseRdv"  v-if="btnRDVaConfirmer == false">
 						  	<!-- <th scope="row">{{incrementer()}}</th> -->
-						      <td>{{moment(annonce[0].datePublication).format('DD/MM/YYYY')}}</td>
-						      <td>Titre : {{annonce[0].titre}} <br/>Produit proposé : {{annonce[0].stock.produit.nomProduit}}						      						      
-						      
+						      <td>{{moment(repRdv.annonce.datePublication).format('DD/MM/YYYY')}}</td>
+						      <td>Titre : {{repRdv.annonce.titre}} <br/>Produit proposé : {{repRdv.annonce.stock.produit.nomProduit}}						      						      						      
 						      </td>
-						      <td>{{annonce[1]}}</td>
+						      <td>date: {{repRdv.dateRdv}}<br/> lieu : </td>
 					  	</tr>			  			  
 				  </tbody>
 				</table>

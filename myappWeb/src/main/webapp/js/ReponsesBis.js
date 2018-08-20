@@ -11,6 +11,7 @@ var annoncesAvecReponses = new Vue({
 	  data: {
 	    annonce: [],
 	    reponse: [],
+	    reponseRdv: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session
 	    src: "./resources/img/annoncescom/",
 	    imgtype: ".png",
@@ -140,11 +141,18 @@ var annoncesAvecReponses = new Vue({
 	  
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces ayant des réponses
 	  created: function() {
-		var vm = this
+		var vm = this;
+		
+		// annonce
 	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/annoncesAvecRep/' + vm.iduser)
 	      .then(function (response) {
-	        console.log("test");
 	    	  vm.annonce = response.data;
+	    	  
+	    	  // repRdv
+	    	  axios.get('http://localhost:8080/myappWeb/services/rest/reponses/mesAnnoncesRdvAVenir/' + vm.iduser)
+		      .then(function (response) {
+		    	  vm.reponseRdv = response.data;
+		      })
 
 	      })
 	  }
