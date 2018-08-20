@@ -1,9 +1,18 @@
+
 package fr.afcepf.ai103.dao;
+
+import java.util.List;
 
 import fr.afcepf.ai103.data.Useradresse;
 
 public interface IDaoUseradresse {
-	
-	public Useradresse rechercherAdressePrincipaleUser(int iduser);
+
+	List<Useradresse> rechercherAdresseUtilisateur(int idUtilisateur);
+
+	Useradresse rechercherAdressePrincipaleUser(int iduser);
+
+
 
 }
+
+

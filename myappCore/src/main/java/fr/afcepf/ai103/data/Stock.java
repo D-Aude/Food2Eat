@@ -22,7 +22,7 @@ import java.util.List;
 														+ "WHERE s.utilisateur.idUtilisateur = :idUtilisateur "
 															+ "and s.dateJeter is null "
 															+ "and s.dateManger is null "
-															+ "and (s.annonces is empty or a.dateFinAnnonce is null) "
+															+ "and (s.annonces is empty or a.dateAnnulation is not null) "
 														+ "ORDER BY s.dlc"),
 		
 		@NamedQuery(name="Stock.parModeConservation", query="SELECT s FROM Stock s "
@@ -31,7 +31,7 @@ import java.util.List;
 																+ "and s.produit.modeConservation.nomModeConservation = :nomModeConservation "
 																+ "and s.dateJeter is null "
 																+ "and s.dateManger is null "
-																+ "and (s.annonces is empty or a.dateFinAnnonce is null) "
+																+ "and (s.annonces is empty or a.dateAnnulation is not null) "
 															+ "ORDER BY s.dlc"),
 		
 		@NamedQuery(name="Stock.Congelateur", query="SELECT s FROM Stock s "
@@ -40,7 +40,7 @@ import java.util.List;
 														+ "and s.produit.modeConservation.nomModeConservation = :nomModeConservation "
 														+ "and s.dateJeter is null "
 														+ "and s.dateManger is null "
-														+ "and (s.annonces is empty or a.dateFinAnnonce is null) "
+														+ "and (s.annonces is empty or a.dateAnnulation is not null) "
 													+ "ORDER BY s.dlc"),
 		
 		@NamedQuery(name="Stock.Frigo", query="SELECT s FROM Stock s "
@@ -53,7 +53,7 @@ import java.util.List;
 													+ "and s.entame = 1)) "
 												+ "and s.dateJeter is null "
 												+ "and s.dateManger is null "
-												+ "and (s.annonces is empty or a.dateFinAnnonce is null) "
+												+ "and (s.annonces is empty or a.dateAnnulation is not null) "
 											+ "ORDER BY s.dlc"),
 		
 		@NamedQuery(name="Stock.Placard", query="SELECT s FROM Stock s "
@@ -67,7 +67,7 @@ import java.util.List;
 														+ "and s.entame = 0)) "
 													+ "and s.dateJeter is null "
 													+ "and s.dateManger is null "
-													+ "and (s.annonces is empty or a.dateFinAnnonce is null) "
+													+ "and (s.annonces is empty or a.dateAnnulation is not null) "
 												+ "ORDER BY s.dlc")
 })
 

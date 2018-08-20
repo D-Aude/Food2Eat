@@ -19,11 +19,20 @@
 	<section id="gestionStock">
 		<button class="btnActionEnd" id="btnEnregistrer" v-on:click="btnEnregistrer()">Enregistrer</button>
 		<button class="btnActionEnd" id="btnAnnuler" v-on:click="btnAnnuler()">Annuler</button>
+		
+		<div id="detailStock">
+		<input type="hidden" id="idSelectedStock" type="number"/>
+			<img id="imageDetail"/>
+			<div id="divDetail">
+			
+			</div>
+			<button id="btnAnnonce" v-on:click="btnAnnonce()" >Publier une Annonce</button>
+		</div>
+		
 		<div>
-	        <button class="btnAction" onclick="document.getElementById('AjouterForm').style.display='block'">Ajouter</button>
+	        <button class="btnAction" v-on:click="btnAjouter()">Ajouter</button>
 	        <button class="btnAction" id="btnManger" v-on:click="btnManger()" >Manger</button>
 	        <button class="btnAction" id="btnJeter" v-on:click="btnJeter()" >Jeter</button>
-	        <button class="btnAction">Donner</button>
 	    </div>
 		<input type="hidden" id="idUser" type="text" v-model="idUser"  /><br/>
 	         <input type="text" placeholder="Rechercher" > <!-- class="form-control"> -->
@@ -34,9 +43,7 @@
 				<option value="Congelateur">Congelateur</option>
 				<option value="Placard">Placard</option>
 			</select>
-		
 		<br/>
-	
 			<div id="table" class="table" border="1" >
 		   		<div class="ligne">
 		   			<div id="qteColumn" class="header" >Qte</div>
@@ -44,7 +51,7 @@
 		   			<div id="dlcColumn" class="header" >DLC</div>
 		   			<div id="etatColumn" class="header">En stock</div>
 		   		</div>
-		   		<div  v-for="stock in stocks" class="ligne infosStock" v-if="consommation == 0">
+		   		<div  v-for="stock in stocks" class="ligne infosStock" v-if="consommation == 0" v-on:click=clickStock(stock)>
 	   				<div class="case1"><strong>{{stock.quantite}}</strong></div>
 	   				<div class="case2">{{stock.produit.nomProduit}}</div>
 	   				<div class="case3">{{moment(stock.dlc).format('DD/MM/YYYY')}}</div>
@@ -55,7 +62,7 @@
 	   					{{stock.fractionRestante}}<strong>/{{stock.produit.nombreUnite}} {{stock.produit.mesure.nomMesure}}</strong>
 	   				</div>
 	   			</div>
-	   			<div class="ligne infosStock" v-else>
+	   			<div class="ligne infosStock" v-else v-on:click=clickStock(stock)>
 	   				<div class="case1"><strong>{{stock.quantite}}</strong></div>
 	   				<div class="case2">{{stock.produit.nomProduit}}</div>
 	   				<div class="case3">{{moment(stock.dlc).format('DD/MM/YYYY')}}</div>
@@ -67,7 +74,6 @@
 	   				</div>
 	   			</div>
 		   	</div>
-		   	<br/>
 		   	<br/>
 		   	<br/>
 	
@@ -190,6 +196,20 @@
 </div>
 
 <script src="./js/InventaireJS.js"></script>
-		
+
+<script>
+// RÃ©cupÃ©ration de la modal
+var modal = document.getElementById('AjouterForm');
+
+// Quand on clique en dehors de la modal, Ã§a ferme
+window.onclick = function(event) 
+{
+    if (event.target == modal) 
+    {
+        modal.style.display = "none";
+    }
+}
+</script>
+
 </body>
 </html>

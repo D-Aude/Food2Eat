@@ -74,7 +74,7 @@ table {
     margin: 0px auto;
     table-layout: fixed;
     width: 800px; 
-    text-align: center;           
+    text-align: center;         
 }​
 
 tr:nth-child(even) {
@@ -104,10 +104,12 @@ th #dlcColumn, tr #dlcColumn {
     margin: 0px auto;
     table-layout: fixed;
     width: 860px; 
-    text-align: center;           
+    text-align: center;
+    background-color: #ccdedb;/*#49b6a8;*/
+    border-radius: 5px;      
 }​
 
-.table:nth-child(even) {
+.infosStock div:nth-child(even) {
 	background-color: #f2f2f2;
 }
 
@@ -172,6 +174,9 @@ th #dlcColumn, tr #dlcColumn {
     border: 2px solid black;
 }
 
+/*---------------------------------------------------------------*/
+/*                         MODAL AJOUTER                         */
+/*---------------------------------------------------------------*/
 .modal {
 	display: none; 
 	position: fixed; 
@@ -183,7 +188,7 @@ th #dlcColumn, tr #dlcColumn {
 	overflow: auto; 
 	background-color: rgb(0, 0, 0); 
 	background-color: rgba(0, 0, 0, 0.4); 
-	padding-top: 60px;
+	padding-top: 15px;
 }
 
 .modalContent {
@@ -202,8 +207,6 @@ th #dlcColumn, tr #dlcColumn {
 	margin-bottom: 10px;
 	width: 900px;
 }
-
-/*-------------------- MODAL AJOUTER ------------------*/
 
 #headerAjouter {
 	border-radius: 15px 15px 0px 0px;
@@ -299,4 +302,167 @@ th #dlcColumn, tr #dlcColumn {
     background: #49b6a8;
     cursor: pointer;
     border: 2px solid black;
+}
+
+/*---------------------------------------------------------------*/
+/*                         MODAL DETAILS                         */
+/*---------------------------------------------------------------*/
+
+#detailStock {
+	position: fixed;
+    top: 180px; 
+    left: 30px;
+    z-index: 1030;
+    
+    border-radius: 15px;
+    background-color: #ffffff;
+    border: 1px solid white;
+    width: 260px;
+    height: 380px;
+    text-align: center;
+}
+
+#imageDetail {
+	border-radius: 15px 15px 0px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 175px;
+    width: 260px;
+    text-align: center;
+    display: block;
+}
+
+#divDetail {
+	border-radius: 0px 0px 15px 15px;
+	background-color: #245B55;
+    border: 1px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 12px;
+    color: white;
+    height: 204px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
+    display: block;
+}
+
+#btnAnnonce{
+    background-color: #49b6a8;
+    border: 1px solid white;
+    margin-top: 10px;
+    margin-left: auto;
+	margin-right: auto;
+    font-size: 15px;
+    color: white;
+    width: 100px;
+    height: 80px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
+}
+
+/*---------------------------------------------------------------*/
+/*                   Page PUBLIER UNE ANNONCE                    */
+/*---------------------------------------------------------------*/
+
+
+#publicationForm{
+    border-radius: 5px;
+	background-color: #49b6a8;
+    padding: 20px;
+    margin-top: 130px;
+    margin-left: auto;
+	margin-right: auto;
+	width: 900px;
+	font-size: 17px;
+	border: 1px solid #ccdedb; /*#245B55;*/
+}
+
+.col-25 {
+    float: left;
+    width: 20%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 80%;
+    margin-top: 6px;
+}
+
+.col-30 {
+    float: left;
+    width: 30%;
+    margin-top: 6px;
+}
+
+.labelPublication {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 35px;
+}
+
+.inputPublication{
+	width: 100%;
+    padding: 12px;
+    resize: vertical;
+}
+
+.datePublication{
+	width: 62%;
+    padding: 12px;
+    resize: vertical;
+}
+
+.heurePublication{
+	width: 36%;
+    padding: 12px;
+    resize: vertical;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#btnPublier{
+    background-color: #49b6a8;
+    border: 1px solid #245B55;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 10px;
+    font-size: 15px;
+    color: black;
+    width: 85px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 18px;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
+}
+
+#btnAnnulerPubli{
+    background-color: #49b6a8;
+    border: 1px solid #245B55;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: auto;
+    font-size: 15px;
+    color: black;
+    width: 85px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 18px;
+    font-family: 'Fjalla One', sans-serif;
+    text-transform: uppercase;
 }

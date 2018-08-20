@@ -27,7 +27,7 @@ public class MyRestApplicationConfig extends Application {
 		classes.add(UtilisateurRest.class);
 		classes.add(ProduitRest.class);
 		classes.add(EvaluationsRest.class);
-		//classes.add(ServiceRest2.class);
+		classes.add(UseradresseRest.class);
 		return classes;
 	}
 }

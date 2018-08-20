@@ -168,5 +168,27 @@ public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
 				.setParameter("idUtilisateur",idUtilisateur)
 				.getResultList();
 	}
+
+	@Override
+	public Annonce creerAnnonce(Annonce annonce) {
+		entityManager.persist(annonce);
+		return annonce;
+	}
+	
+	public Long CountAnnonceParId(int idUtilisateur)
+	{
+		
+		long q=  entityManager.createNamedQuery("Annonce.CompterLesDonsParUtilisateur",Long.class)
+				.setParameter("idUtilisateur",idUtilisateur)
+				.getSingleResult();
+		return q;
+	}
+
+	@Override
+	public Long CountAnnonceTermines() {
+		// TODO Auto-generated method stub
+		return entityManager.createNamedQuery("Annonce.CompterLesDonsTermines",Long.class)
+				.getSingleResult();
+	}
 	
 }

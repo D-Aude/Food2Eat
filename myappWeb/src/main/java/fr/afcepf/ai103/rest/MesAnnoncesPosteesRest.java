@@ -15,6 +15,7 @@ import fr.afcepf.ai103.data.Annonce;
 import fr.afcepf.ai103.data.Annulation;
 import fr.afcepf.ai103.data.Evaluation;
 import fr.afcepf.ai103.data.Repannonce;
+import fr.afcepf.ai103.data.Stock;
 import fr.afcepf.ai103.service.IServiceAnnulation;
 import fr.afcepf.ai103.service.IServiceEvaluations;
 import fr.afcepf.ai103.service.IServiceMesAnnonces;
@@ -184,6 +185,24 @@ public class MesAnnoncesPosteesRest {
 			return serviceReponse.repParIdAnnonce(idAnnonce);
 		}
 		
+		// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountparUser/9
+		@Path("CountparUser/{idUtilisateur}")
+		@GET
+		public Long countidUtilsateur(@PathParam("idUtilisateur") int idutilisateur)
+		{
+			System.out.println("count passe par le rest" + idutilisateur);
+			return serviceAnnonce.CountAnnonceParid(idutilisateur);
+		}
+		
+		// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountAnnoncesTotales
+		@Path("CountAnnoncesTotales")
+		@GET
+		public Long countAnnoncesTotal()
+		{
+			System.out.println("count passe par le rest" );
+			return serviceAnnonce.CountAnnonceTotal();
+		}
+		
 		// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/insererEvaluation
 	@Path("insererEvaluation")
 	@POST
@@ -226,7 +245,14 @@ public class MesAnnoncesPosteesRest {
 	}
 	
 
-	
+	@Path("creerAnnonce") //dernière partie de l'URL
+	@POST 
+	//URL = http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/creerAnnonce
+	@Consumes("application/json")
+	public Annonce postStock(Annonce annonce) {
+		return serviceAnnonce.creerAnnonce(annonce);
+		
+	}
 	
 
 }

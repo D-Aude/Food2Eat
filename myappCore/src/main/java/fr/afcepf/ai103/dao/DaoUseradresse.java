@@ -1,5 +1,7 @@
 package fr.afcepf.ai103.dao;
 
+import java.util.List;
+
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,6 +32,13 @@ public class DaoUseradresse implements IDaoUseradresse {
 				.setParameter("utilisateur", iduser)
 				.getSingleResult();
 	
+	}
+	
+	@Override
+	public List<Useradresse> rechercherAdresseUtilisateur(int idUtilisateur) {
+		return entityManager.createNamedQuery("Useradresse.parUtilisateur", Useradresse.class)
+	            .setParameter("idUtilisateur", idUtilisateur)
+	            .getResultList();
 	}
 	
 	

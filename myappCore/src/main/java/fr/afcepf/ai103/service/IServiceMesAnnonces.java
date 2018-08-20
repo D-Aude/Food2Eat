@@ -9,6 +9,7 @@ public interface IServiceMesAnnonces {
 
 	
 	/********************* MES ANNONCES *************************************/
+	Annonce creerAnnonce(Annonce annonce);
 	List<Annonce> rechercherToutesLesAnnonces();
 	List<Annonce> rechercherAnnoncesEnCoursUtilisateur(int idUtilisateur);
 	List<Annonce> rechercherAnnoncesTermineesUtilisateur(int idUtilisateur);
@@ -29,7 +30,8 @@ public interface IServiceMesAnnonces {
 	List<Annonce> rechercherMesEnviesTerminesAEvaluer(int utilisateur );
 	List<Annonce> rechercherMesEnviesCloturees(int utilisateur);
 	
-	
+	Long CountAnnonceParid (int idutilisateur);
+	Long CountAnnonceTotal ();
 	
 	List<Repannonce> essaiReponse (int utilisateur);
 	

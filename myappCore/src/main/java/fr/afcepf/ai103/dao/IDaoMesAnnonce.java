@@ -9,7 +9,7 @@ import fr.afcepf.ai103.data.Utilisateur;
 public interface IDaoMesAnnonce {
 
 	/**********************MES ANNONCES *************************************/
-	// public InserermaNouvelleAnnonce ( Annonce annonce)
+	public Annonce creerAnnonce(Annonce annonce);
 	public List <Annonce> rechercherToutesLesAnnonces();
 	public List <Annonce> rechercherMesAnnoncesEnCours(int idUtilisateur);
 	public List <Annonce> rechercherAnnoncesAValides(int idUtilisateur);
@@ -29,8 +29,8 @@ public interface IDaoMesAnnonce {
 	public List <Annonce> rechercherMesEnviesTerminesAEvaluer (int utilisateur);
 	public List <Annonce> rechercherMesEnviesCloturees(int utilisateur);
 	
-	
-
+	public Long CountAnnonceParId(int idUtilisateur);
+	public Long CountAnnonceTermines();
 	public List <Repannonce> voirReponse (int utilisateur);
 	
 	// Recupérer la liste des annonces avec au moins une annonce

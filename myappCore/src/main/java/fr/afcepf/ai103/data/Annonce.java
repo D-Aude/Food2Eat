@@ -63,7 +63,11 @@ import java.util.List;
 		
 		@NamedQuery(name="Annonce.listeMesEnviesCloturees", query ="SELECT a FROM Annonce a join a.repannonces r   WHERE r.utilisateur.idUtilisateur =:idUtilisateur"
 																									+ " and r.dateAcceptationReponse is not null and (r.dateRefus is null "
-																									+ "and a.dateFinAnnonce is not null and a.dateAnnulation is null)")		
+																									+ "and a.dateFinAnnonce is not null and a.dateAnnulation is null)"),
+		
+		@NamedQuery(name="Annonce.CompterLesDonsParUtilisateur", query=" SELECT COUNT (a.dateFinAnnonce) from Annonce a where a.dateFinAnnonce is not null and a.stock.utilisateur.idUtilisateur =:idUtilisateur"),
+		
+		@NamedQuery(name="Annonce.CompterLesDonsTermines", query=" SELECT COUNT (a.dateFinAnnonce) from Annonce a where a.dateFinAnnonce is not null")
 })
 
 public class Annonce implements Serializable {
@@ -71,7 +75,7 @@ public class Annonce implements Serializable {
 
 	@Id
 	@SequenceGenerator(name="ANNONCE_IDANNONCE_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ANNONCE_IDANNONCE_GENERATOR")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_ANNONCE")
 	private int idAnnonce;
 
