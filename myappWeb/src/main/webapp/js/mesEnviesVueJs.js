@@ -54,8 +54,8 @@ methods: {
 		var vm= this
 	if (typeEnvies == "rdvAvenir")
 		{
-		vm.repannonces=[]
-		vm.evaluations=[]
+		vm.repannonces=[],
+		vm.evaluations=[],
 		axios.get('http://localhost:8080/myappWeb/services/rest/reponses/rdvAVenir/'+ vm.idUtilisateur)
 		.then(function(response){
 			vm.repannonces = response.data

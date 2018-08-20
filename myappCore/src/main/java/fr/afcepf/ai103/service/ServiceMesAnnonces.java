@@ -152,6 +152,22 @@ public class ServiceMesAnnonces implements IServiceMesAnnonces {
 
 
 
+	@Override
+	public Long CountAnnonceParid(int idutilisateur) {
+
+		return daoAnnonces.CountAnnonceParId(idutilisateur);
+	}
+
+
+
+	@Override
+	public Long CountAnnonceTotal() {
+		
+		return daoAnnonces.CountAnnonceTermines();
+	}
+
+
+
 	
 
 

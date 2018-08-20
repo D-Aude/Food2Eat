@@ -169,4 +169,20 @@ public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
 				.getResultList();
 	}
 	
+	public Long CountAnnonceParId(int idUtilisateur)
+	{
+		
+		long q=  entityManager.createNamedQuery("Annonce.CompterLesDonsParUtilisateur",Long.class)
+				.setParameter("idUtilisateur",idUtilisateur)
+				.getSingleResult();
+		return q;
+	}
+
+	@Override
+	public Long CountAnnonceTermines() {
+		// TODO Auto-generated method stub
+		return entityManager.createNamedQuery("Annonce.CompterLesDonsTermines",Long.class)
+				.getSingleResult();
+	}
+	
 }

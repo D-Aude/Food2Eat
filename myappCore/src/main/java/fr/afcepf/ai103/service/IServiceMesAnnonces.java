@@ -29,7 +29,8 @@ public interface IServiceMesAnnonces {
 	List<Annonce> rechercherMesEnviesTerminesAEvaluer(int utilisateur );
 	List<Annonce> rechercherMesEnviesCloturees(int utilisateur);
 	
-	
+	Long CountAnnonceParid (int idutilisateur);
+	Long CountAnnonceTotal ();
 	
 	List<Repannonce> essaiReponse (int utilisateur);
 	
