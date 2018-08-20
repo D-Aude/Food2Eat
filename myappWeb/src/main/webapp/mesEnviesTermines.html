@@ -2,15 +2,17 @@
 
 <div class="container">
 	<div class="lblTitreAnnonces">
-		<b>Mes envies cloturées</b>
+		<b>Mes souhaits cloturés</b>
 	</div>
 	<div id="page-annonces">
 		<div id="listeMesEnviesTermines">
-			<select id="selectTypeEnvieTerminees" v-model="typeEnvies">
-				<option value="plop">Toutes mes envies terminées</option>
-				<option value="mesEnviesAEval">Mes envies à évaluer</option>
+		<span class="lblFiltre">Filtre d'affichage :</span>
+			<select class="styled-select green rounded" id="selectTypeEnvieTerminees" v-model="typeEnvies">
+						<option value="plop">Toutes mes envies terminées</option>
+						<option value="mesEnviesAEval">Mes envies à évaluer</option>
 				<!--  <option value="mesEnviesEval">Mes envies déjà évaluer</option>-->
-			</select> <br />
+			</select>
+			<br />
 
 
 			<div id="Annonces-elementsTermines" v-for="evaluation in evaluations">

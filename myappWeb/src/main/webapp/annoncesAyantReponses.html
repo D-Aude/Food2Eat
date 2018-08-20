@@ -14,6 +14,7 @@
 			<h1>Mes annonces publiees avec reponses</h1>
    			<div id="annoncesReponses" v-for="annonce in annonce">     					
 			
+					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>						
 					<span>ANNONCES	</span><br/><br/>
 					<span>				
 	   				Titre : {{annonce[0].titre}} <br/>
