@@ -21,18 +21,20 @@
 /*     background-color: black; */
 /* } */
 #Annonces-elementsTermines{
-	display: inline-block;
-    border: 3px solid black;
+/*     border: 3px solid black; */
     margin: 5px;
     padding: 10px;
-    background-color:white;
+/*     background-color: white; */
+    position: absolute;
 }
 #Envies-elementsTermines{
-	display: inline-block;
+    /* display: inline-block; */
+    position: absolute;
     border: 3px solid black;
     margin: 5px;
     padding: 10px;
-    background-color:white;
+    background-color: white;
+    left: -190px;
 }
 
 #Annonces-elementsEnCours{
@@ -47,12 +49,9 @@
 }
 #Annonces-elementEnvieAttenteEssai{
 font-family: Abel, sans-serif;	
-font-size: 30px;
- text-align : center;
-    border: 5px solid black;
-    margin: 5px;
-    padding: 10px;
-    background-color:white
+font-size: 30px; 
+text-align : center;
+color: white;
 }
 
 
@@ -67,16 +66,8 @@ font-size: 30px;
     width: ...; /* largeur obligatoire pour être centré */
 }
 #btnAnnulerAnnonce{
-/*padding-top: 1px;
-  padding-left: 10px;
-   max-width: 970px;
-   height: 30px;
-    float:right;
-    height: 40px;
-   width : 100px;*/
-  color: black !important;
 position: absolute !important;
-top: 202px;
+top: 209px;
 left: 440px;
 font-family: Abel, sans-serif;
 font-size: 30px;
@@ -144,10 +135,10 @@ display: inline-block;
   position: absolute;*/
 }
 .imgAnnonceEnCours{
-width: 1008px;
-height: 216px;
-background-position:100% 100%;
-position: absolute;
+/* width: 1008px; */
+/* height: 216px; */
+/* background-position:100% 100%; */
+position: relative;
 	
 }
 .imgEnvieEnAttente{
@@ -160,25 +151,22 @@ position: absolute;
 
 
 .imgEnviesEnAttenteEssai{
-width: 1008px;
-height: 216px;
-background-position:100% 100%;
 position: absolute;
-	
+left: 270px;
+top: 265px;
+z-index: 0;
 }
 .imgEnviesTermines{
 	height: 212px;
  width:552px;	
  margin-left: auto;
  margin-right: auto;
-    width: ...; /* largeur obligatoire pour �tre centr� */
-  /*background-position:100% 100%;
-  position: absolute;*/
-}	
 }
 #dateMesAnnonces {
- padding-left :120px;
-font-style : italic;
+     padding-left: 120px;
+    font-style: normal!important;
+    word-spacing: 90px;
+    margin-bottom: 2px;
 }
 
 
@@ -193,3 +181,6 @@ font-style : italic;
     margin : 2px;	
 }
 
+#lblEnvieEnAttente{
+	z-index:100;
+}
