@@ -24,7 +24,12 @@
 		<input type="hidden" id="idSelectedStock" type="number"/>
 			<img id="imageDetail"/>
 			<div id="divDetail">
-			
+				<label id="nomDetail"></label><br>
+				<p>
+					<label class="detail">Date d'achat : </label><label id="dateAchatDetail" class="detail"></label> <br>
+					<label class="detail">Date Conso. Pref. : </label><label id="dateConsoPrefDetail" class="detail"></label> <br>
+				</p>
+				<label id="info"></label>
 			</div>
 			<button id="btnAnnonce" v-on:click="btnAnnonce()" >Publier une Annonce</button>
 		</div>
@@ -35,14 +40,15 @@
 	        <button class="btnAction" id="btnJeter" v-on:click="btnJeter()" >Jeter</button>
 	    </div>
 		<input type="hidden" id="idUser" type="text" v-model="idUser"  /><br/>
-	         <input type="text" placeholder="Rechercher" > <!-- class="form-control"> -->
-	         <label>Mode de Conservation :</label>
-			<select id="selectModeConservation" v-model="modeConservation">
-				<option value="">Tous</option> 
-				<option value="Frigo">Frigo</option> 
-				<option value="Congelateur">Congelateur</option>
-				<option value="Placard">Placard</option>
-			</select>
+		
+<!-- 	    <input type="text" placeholder="Rechercher..." class="inputSearchBar" name="search" v-model="search" > -->
+	    <label>Mode de Conservation :</label>
+		<select id="selectModeConservation" v-model="modeConservation">
+			<option value="">Tous</option> 
+			<option value="Frigo">Frigo</option> 
+			<option value="Congelateur">Congelateur</option>
+			<option value="Placard">Placard</option>
+		</select>
 		<br/>
 			<div id="table" class="table" border="1" >
 		   		<div class="ligne">

@@ -482,7 +482,7 @@ INSERT INTO Mesure (nom_mesure, denombrable) VALUES ('piece(s)', 1);
 
 /*------------------ Produit ------------------*/
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (4, 1, 1, 'Brocolis en fleurettes surgelés 1kg Carrefour', '100', '2018-07-01', '2018-07-02', NULL);
-INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 3, 1, 'Tomate cœur de boeuf 1kg', '100', '2018-07-01', '2018-07-02', NULL);
+INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 3, 1, 'Tomate coeur de boeuf 1kg', '100', '2018-07-01', '2018-07-02', NULL);
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 3, 1, 'Raisin en grappe 1kg', '100', '2018-07-01', '2018-07-02', NULL);
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 4, 1, 'Pastèque', '100', '2018-07-01', '2018-07-02', NULL);
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (2, 8, 1, 'Chocolat au lait praliné noisettes 100g Lindt ', '100', '2018-07-01', '2018-07-02', NULL);
