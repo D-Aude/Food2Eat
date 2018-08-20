@@ -1,3 +1,4 @@
+
 package fr.afcepf.ai103.dao;
 
 import java.util.List;
@@ -8,6 +9,10 @@ public interface IDaoUseradresse {
 
 	List<Useradresse> rechercherAdresseUtilisateur(int idUtilisateur);
 
+	Useradresse rechercherAdressePrincipaleUser(int iduser);
+
 
 
 }
+
+

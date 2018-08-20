@@ -1,27 +1,63 @@
-<link rel="stylesheet" type="text/css" href="./resources/css/stylesFoodFriends.css" media="all" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" ></script>
 <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+<link rel="stylesheet" href="./resources/leaflet/leaflet.css" />
+<script src="./resources/leaflet/leaflet.js"></script>
 
-<div class="container"  id="annoncesCommunaute">
+<!-- =========================Affichage de la carte ================== -->
+
+<div id="annoncesCommunaute">
+
+<div   id="mapContainer">
+	
+	<div id="map" 
+		class="map" 
+		style="
+			width: 1000px;
+		    height: 400px;
+		    position: absolute;
+		    top: 300px;
+		    left: 140px;
+		    visibility: hidden;
+		    vertical-align: middle;
+		    border: 1px solid black;
+		    display: block;
+		    		
+			">
+	</div>
+
+</div>
+<div class="container">
+
 	<div class="lblTitreAnnonces">
 		<b>Toutes les annonces</b>
 	</div>
-<!--===============================TEST==============================-->
+<!--===============================barre de recherche==============================-->
 <form id="searchBar">
-  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher...">
+  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher..." v-model="search">
 </form>
+<!--===============================bouton map==============================-->
+<button id="btnMap" type="button" v-on:click="afficherCarte()">Afficher sur la carte</button>
 
-<button id="btnMap" type="button">Afficher la carte</button>
+<!--===============================filtre de trie==============================-->
+<select id="filtreRech" v-model="filtreRech">
+	<option disabled value="">Trier par ...</option>
+	<option>Distance</option>
+	<option>Date de publication</option>
+	<option>Foodfriend</option>
+</select>
 
-	<div id="img-toutes-annonces-container" v-for="annonce in annonce">     					
+<!--===============================liste des annonces==============================-->
+<div id="annoncesSurListe" v-if="seen">	
+	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
 		<div class="imgAnnonce">
 			<a href="#" >
 				<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/>
+				
 			</a>
 		<!-- Modal -->
 			<div id="lblDetailsAnnonceTomate">
-				<button v-on:click="test(annonce.idAnnonce)" id="btnDetailsAnnonce" type="button" class="btnAnnonce" data-toggle="modal" data-target="#modal">
+				<button v-on:click="voirAnnonceDetail(annonce)" id="btnDetailsAnnonce" type="button" class="btnAnnonce" data-toggle="modal" data-target="#modal">
 					<span><b>Détails de l'annonce</b></span>
 				</button>
 			</div>
@@ -35,27 +71,47 @@
      				    	<span aria-hidden="true">&times;</span>
       					</button>
     				</div>
-    				   <div class="modal-body">
-							<span>Produit que {{idAnnonceEnCours}} --- {{annonce.stock.utilisateur.pseudo}} donne :</span><br/>
-							<span><b>{{annonce.stock.produit.nomProduit}}</b></span>
+    				   <div class="modal-body" v-if="afficherModal == true"> 
+							<span><b>{{annonceDetail.stock.utilisateur.pseudo}} donne : {{annonceDetail.stock.produit.nomProduit}}</b></span><br/>
+							<span><i>à consommer avant le {{moment(annonceDetail.dateRdv2).format('L')}}</i></span><br/>
+							<span><b>Choisir une date de RDV : </b></span><br/>
+							<span>
+								<input type="radio" v-bind:value="date1" id="dateRdv1" v-model="dateChoisie">
+								<label id="date1" for="dateRdv1">{{moment(annonceDetail.dateRdv1).format('DD/MM/YYYY')}}</label>
+								<input type="radio" v-bind:value="date2"  id="dateRdv2" v-model="dateChoisie"> 
+								<label id="date2" for="dateRdv2">{{moment(annonceDetail.dateRdv2).format('DD/MM/YYYY')}}</label>
+								<input type="radio" v-bind:value="date3" id="dateRdv3" v-model="dateChoisie"> 
+								<label id="date3" for="dateRdv3">{{moment(annonceDetail.dateRdv3).format('DD/MM/YYYY')}}</label><br/>					
+							</span>
+							<span v-if="dateChoisie != null ">Date choisie : {{moment(dateChoisie).format('DD/MM/YYYY')}}</span><br/>
+							<span>Adresse de récupération : {{annonceDetail.adresse.numeroVoie}} {{annonceDetail.adresse.typeVoie}} {{annonceDetail.adresse.nomVoie}} {{annonceDetail.adresse.ville.ville}} {{annonceDetail.adresse.ville.codePostal}}<br/></span>
     				  </div>
     				  <div class="modal-footer">
-    				   		<button type="button" class="btn btn-secondary" data-dismiss="modal">Valider</button>
-     					    <button type="button" class="btn btn-primary">Annuler</button>
+    				   		<button type="button" class="btn btn-secondary" data-dismiss="modal" v-on:click="envoyerDemandeProduit(annonceDetail.idAnnonce)">Valider</button>
+     					    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
     				  </div>
    					</div>
+   					
  			   </div>
 			</div>
 
 		<div class="lblAnnonce">
 			<span id="languetteAnnonce">
 				{{annonce.titre}}<br/>
-				{{annonce.stock.produit.nomProduit}} proposé par {{annonce.stock.utilisateur.pseudo}}<br/>
-   				Lieu de l'échange : {{annonce.adresse.ville.ville}}, le {{moment(annonce.datePublication).format('L')}} 				
+				{{annonce.stock.produit.nomProduit}}<br/>
+				<img v-if="annonce.foodfriend == 1" src="./resources/img/starff.png"/> 
+				proposé par {{annonce.stock.utilisateur.pseudo}}, le {{moment(annonce.datePublication).format('DD/MM/YYYY')}} à {{annonce.adresse.ville.ville}} <b>({{annonce.distance}} km)</b><br/>
+   				<!--  Lieu de l'échange : {{annonce.adresse.ville.ville}},  -->			
 			</span>
 		</div>															
-	</div>  		
+	</div>
+</div>  		
 </div>
-<script src="./js/AnnoncesCommunaute.js"></script>
+</div>
+<script src="./app2.js"></script>
 <script src="./js/modalAnnonceJS.js"></script>
-
+<script>
+			
+			
+			
+</script>

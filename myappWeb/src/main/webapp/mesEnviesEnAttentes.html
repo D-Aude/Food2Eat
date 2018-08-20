@@ -12,28 +12,25 @@
 	href="./resources/css/styleMesAnnonces.css">
 </head>
 <body>
-	<div id="listeMesEnviesEnAttente">
-
-		<h1 id="Annonces-Titre">Mes envies en attentes</h1>
+	<div id="mesEnvieEnAttentes">
+			<div class="lblTitreAnnonces">
+			<b>Mes souhaits en attente</b>
+			</div>
 		<br />
 		<div>
 
-			<div id="Annonces-elements" v-for="annonce in annonces">
-				<!-- <div v-if="annonce.annulation == empty"> -->
-					<!-- <div v-if=" annonce.repannonces.dateAcceptationReponse = null"> -->
+			<div id="Annonces-elements" v-for="repannonce in repannonces">
+				<img class="imgEnvieEnAttente" v-bind:src="getSrc(repannonce.annonce.stock.produit.idProduit)"/><br/>
 						<h3>Envie en attente</h3>
-						<span> Vous êtes interessé par l'annonce de {{annonce.stock.utilisateur.pseudo}}  <br />
-							  qui vous propose : {{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}} </br> 
-							 Vous avez choisi le {{date(annonce.repannonces.dateReponse)}} pour le don.
-							</span> <br />
+						<span> Vous êtes interessé par l'annonce de {{repannonce.annonce.stock.utilisateur.pseudo}}  <br />
+							  qui vous propose : {{repannonce.annonce.stock.quantite}} {{repannonces.annonce.stock.produit.nomProduit}} </br> 
+							 Vous avez choisi le {{moment(annonce.repannonces.dateReponse).format('L')}} pour le don. </br>
 						
+							</span> <br />
 					</div>
 				</div>
-		
 			</div>
-		</div>
-	</div>
-	</div>
-	<script src="./js/AnnonceVueJs.js"></script>
+	<script src="./js/mesEnvieVueJs.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,76 @@
+#annoncesAvecReponses {
+	font-style : italic;
+	_border-style: solid;
+	border-width: 2px;
+	_border-color: black;
+	display:flex;
+	flex-direction: column;
+	padding: 10px 10px 10px 10px;
+	position:absolute;
+    left: 50%;
+    top: 30%;
+    width: 1000px;
+    _height: 200px;
+    margin-left: -500px; /* Cette valeur doit être la moitié négative de la valeur du width */
+    margin-top: -100px;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+#titre {
+	text-align: center;
+	font-family: 'Abel', sans-serif;
+	text-transform: uppercase;
+}
+
+#filtrerReponses {
+	text-align: left;
+	margin : 10px 10px 10px 10px;
+}
+
+.ligne {
+	height: 50px;
+	text-align: center;
+	display: flex;
+
+}
+
+.header {
+	display: inline-block;
+    color: white;
+    opacity: 0.7;
+    background-color: black;
+    margin-right: 10px;
+    
+}
+
+.case1, #colDate {
+	width: 200px;
+	text-align: center;
+	border: 1px solid black;;
+}
+
+.case2, #colAnnonce {
+	width: 750px;
+	padding-left: 10px;
+	border: 1px solid black;
+}
+
+
+.case3, #colNbRep {
+	width: 150px;
+	text-align: center;
+	border: 1px solid black;
+}
+
+.case4, #colBtn {
+	background-color: transparent;
+	width: 150px;
+	text-align: center;
+}
+
+#annoncesReponses {
+	display:flex;
+	flex-direction: row;
+	padding-top: 10px;
+	margin-right: 10px;
+}

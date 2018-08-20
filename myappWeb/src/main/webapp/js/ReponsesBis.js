@@ -35,7 +35,9 @@ var annoncesAvecReponses = new Vue({
 		var vm = this
 	    axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/annoncesAvecRep/' + vm.iduser)
 	      .then(function (response) {
-	        vm.annonce = response.data;
+	        console.log("test");
+	    	  vm.annonce = response.data;
+
 	      })
 	  }
 	
@@ -43,7 +45,7 @@ var annoncesAvecReponses = new Vue({
 
 // LISTE DES REPONSES
 var LesReponsesRecues = new Vue({
-	  el: '#LesReponsesRecues',
+	  el: '#annoncesAvecReponses',
 	  data: {
 	    reponse: [],
 	    iduser: id, // Récupération de l'idUtilisateur de la session

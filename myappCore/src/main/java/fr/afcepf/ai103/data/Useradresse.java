@@ -13,7 +13,12 @@ import javax.persistence.*;
 	@NamedQuery(name="Useradresse.findAll", query="SELECT u FROM Useradresse u"),
 	
 	@NamedQuery(name="Useradresse.parUtilisateur", query="SELECT u FROM Useradresse u "
-													+ "WHERE u.utilisateur.idUtilisateur = :idUtilisateur ")
+													+ "WHERE u.utilisateur.idUtilisateur = :idUtilisateur "),
+
+	@NamedQuery(name="Utilisateur.adressePrincipale", 
+				query="SELECT u FROM Useradresse u "
+						+ "WHERE u.utilisateur.idUtilisateur =:utilisateur "
+						+ "and u.principale = 1")
 })
 
 public class Useradresse implements Serializable {

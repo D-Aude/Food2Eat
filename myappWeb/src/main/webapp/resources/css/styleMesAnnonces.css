@@ -9,16 +9,17 @@
 	padding: 5px 5px 5px 5px;
 }
 
-#Annonces-elements {
-	display: inline-block;
-    margin: 2px;
-    padding: 2px;
-    color: white;
-    font-size: 20px;
-    top: 2px;
-    left: 5px;
-    
-}
+/* #Annonces-elements { */
+/*     display: inline-block; */
+/*     margin: 2px; */
+/*     padding: 2px; */
+/*     color: white; */
+/*     font-size: 20px; */
+/*     top: 204px; */
+/*     left: 9px; */
+/*     position: relative; */
+/*     background-color: black; */
+/* } */
 #Annonces-elementsTermines{
 	display: inline-block;
     border: 3px solid black;
@@ -44,6 +45,16 @@
     left: 5px;
 	
 }
+#Annonces-elementEnvieAttenteEssai{
+font-family: Abel, sans-serif;	
+font-size: 30px;
+ text-align : center;
+    border: 5px solid black;
+    margin: 5px;
+    padding: 10px;
+    background-color:white
+}
+
 
 #Annonces-titre {
 	display: inline-block;
@@ -139,13 +150,28 @@ background-position:100% 100%;
 position: absolute;
 	
 }
+.imgEnvieEnAttente{
+width: 1008px;
+height: 216px;
+background-position:100% 100%;
+position: absolute;
+		
+}
 
+
+.imgEnviesEnAttenteEssai{
+width: 1008px;
+height: 216px;
+background-position:100% 100%;
+position: absolute;
+	
+}
 .imgEnviesTermines{
 	height: 212px;
  width:552px;	
  margin-left: auto;
  margin-right: auto;
-    width: ...; /* largeur obligatoire pour être centré */
+    width: ...; /* largeur obligatoire pour ï¿½tre centrï¿½ */
   /*background-position:100% 100%;
   position: absolute;*/
 }	

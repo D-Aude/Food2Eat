@@ -14,9 +14,7 @@
 <link href="https://fonts.googleapis.com/css?family=Fjalla+One"
 	rel="stylesheet">
 <!--===========================================CSS====================================================-->
-<link rel="stylesheet" type="text/css"
-	href="./resources/css/stylesAccueil.css" media="all" />
-
+<link rel="stylesheet" type="text/css" href="./resources/css/stylesAccueil.css" media="all" />
 <!--=========================================SCRIPT===================================================-->
 <script src="./resources/js/jquery-3.3.1.min.js"></script>
 <script src="./resources/js/bootstrap.js"></script>
@@ -54,17 +52,16 @@
 					  <ul class="dropdown-menu" style="left:0 !important;display:none !important" id="menuAnnonces">
 					    <li><a id="policeMenu2" href="#"></a></li>
 					     <li class="dropdown">
-					      <a id="policeMenu" class="menu-mes-annonces" href="#">Toutes les annonces</a>
+					      <a id="toutes-annonces" class="menu-mes-annonces" href="#" style="color:white!important;">Toutes les annonces</a>
 					            <ul class="dropdown-menu" id="menuAnnonces3">
 							        <li><a id="mesSouhaits" href="#" style="color:white!important;">Mes souhaits</a></li>
-							        <li><a id="mesEnviesTerminees" href="#" style="color:white;">Mes souhaits cloturés</a></li>
+							        <li><a id="mesSouhaitsClotures" href="#" style="color:white;">Mes souhaits cloturés</a></li>
 								</ul>
 					    <li class="dropdown">
-					      <a id="policeMenu" class="menu-mes-annonces" href="#">Mes annonces</a>
+					      <a id="mesAnnonces" class="menu-mes-annonces" href="#" style="color:white!important;">Mes annonces</a>
 					            <ul class="dropdown-menu" id="menuAnnonces2">
-							        <li><a id="menuReponsesRecues" href="#" style="color:white!important;">Réponses reçues</a></li>
-							        <li><a id="policeMenu3" href="#" style="color:white;">Réponses en attente de validation</a></li>
-							         <li><a id="policeMenu" href="#">Les annonces terminées</a></li>
+							        <li><a id="menuReponsesAValider" href="#" style="color:white!important;">Réponses à valider</a></li>
+							         <li><a id="annoncesTerminees" href="#" style="color:white!important;">Mes annonces terminées</a></li>
 									<li><a id="testOude" href="#">test oude</a></li>
 							         
 								</ul>
@@ -196,7 +193,7 @@ var foot = new Vue({
 	/*<--==============================SWITCH PAGE=====================-->*/
 
 	$(function() {
-		$('#test').on('click', function() {
+		$('#annoncesTerminees').on('click', function() {
 			$("#flexContent").load("./mesAnnoncesTerminesDesign.html");
 		});
 
@@ -205,36 +202,23 @@ var foot = new Vue({
 		});
 		
 		$('#mesSouhaits').on('click', function() {
-			$("#flexContent").load("./mesEnviesAttente.html");
+			$("#flexContent").load("./mesEnviesEnAttentes.html");
 		});
 		
-		$('#mesEnviesTerminees').on('click', function() {
+		$('#mesSouhaitsClotures').on('click', function() {
 			$("#flexContent").load("./mesEnviesTermines.html");
 		});
-		mesEnviesTerminees
 		
-		$('#policeMenu').on('click', function() {
+		$('#mesAnnonces').on('click', function() {
 			$("#flexContent").load("./mesAnnoncesEncoursDesign.html");
 		});
-
-		$('#policeMenu').on('click', function() {
-			$("#flexContent").load("./toutesLesAnnonces.html");
-		});
 		
-		$('#policeMenu3').on('click', function() {
+		$('#menuReponsesAValider').on('click', function() {
 			$("#flexContent").load("./annoncesAyantReponses.html");
 		});
-		
-		$('#menuReponsesRecues').on('click', function() {
-			$("#flexContent").load("./toutesLesAnnonces.html");
-		});
-		
-		$('#btnMesEnvies').on('click', function() {
-			$("#flexContent").load("./mesEnvies.html");
-		});
 
-		$('#btnReponsesRecues').on('click', function() {
-			$("#flexContent").load("./reponsesRecues.html");
+		$('#toutes-annonces').on('click', function() {
+			$("#flexContent").load("./toutesLesAnnonces.html");
 		});
 
 		$('#btnMesFoodFriends').on('click', function() {
@@ -245,11 +229,9 @@ var foot = new Vue({
 			$("#flexContent").load("./invitationsRecues.html");
 		});
 		
-
 		$('#testOude').on('click', function() {
 			$("#flexContent").load("./mesEnviesTermines.html");
 		});
-
 
 		$('#menuAnnonces2').on('hover', function() {
 			$("#menuAnnonces2").show();

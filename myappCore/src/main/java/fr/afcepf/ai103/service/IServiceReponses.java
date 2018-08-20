@@ -29,5 +29,6 @@ public interface IServiceReponses {
 	
 	List <Repannonce> rechercherReponsesParIdUtilisateurAvecEval (int idUtilisateur);
 
-
+	List <Repannonce> rechercherReponseParIdUtilisateurRdvAVenir (int idUtilisateur);
+	List <Repannonce> rechercherReponseParIdUtilisateurEnvieEnAttente (int idUtilisateur);
 }

@@ -79,6 +79,22 @@ public class MesReponsesRecues {
 		System.out.println("je suis dans le reponse rest avec Eval " + idUtilisateur);
 		return serviceReponses.rechercheReponsesParIdUtilisateurSansEval(idUtilisateur);	
 	}
+	// http://localhost:8080/myappWeb/services/rest/reponses/rdvAVenir/5
+	@Path("rdvAVenir/{idUtilisateur}")
+	@GET
+	public List <Repannonce> chercherReponsesRdvAVenir(@PathParam("idUtilisateur")int idUtilisateur){
+		
+		System.out.println("je suis dans le reponse rest rdv à venir " + idUtilisateur);
+		return serviceReponses.rechercherReponseParIdUtilisateurRdvAVenir(idUtilisateur);	
+	}
 	
 	
+	//http://localhost:8080/myappWeb/services/rest/reponses/envieAttente/1
+	@Path("envieAttente/{idUtilisateur}")
+	@GET
+	public List <Repannonce> chercherReponsesEnvieAttente(@PathParam("idUtilisateur")int idUtilisateur){
+		
+		System.out.println( "envie en attente dans le rest " +idUtilisateur);
+		return serviceReponses.rechercherReponseParIdUtilisateurEnvieEnAttente(idUtilisateur);	
+	}
 }

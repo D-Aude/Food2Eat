@@ -15,6 +15,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 
 import fr.afcepf.ai103.data.Foodfriend;
+import fr.afcepf.ai103.data.Useradresse;
 import fr.afcepf.ai103.data.Utilisateur;
 import fr.afcepf.ai103.service.IServiceUtilisateur;
 
@@ -74,6 +75,12 @@ public class UtilisateurRest {
 	@GET //URL = http://localhost:8080/myappWeb/services/rest/utilisateur/search?iduser=5
 	public List<Utilisateur> rechercherDesUtilisateurs(@QueryParam("iduser")int num) {
 		return serviceUtilisateur.rechercherListUtilisateurs(num);
+	}
+	
+	@Path("/adresse")
+	@GET // URL = http://localhost:8080/myappWeb/services/rest/utilisateur/adresse?iduser=5
+	public Useradresse rechercherAdressePrincipale(@QueryParam("iduser") int iduser) {
+		return serviceUtilisateur.rechercherAdressePrincipaleUser(iduser);
 	}
 	
 }

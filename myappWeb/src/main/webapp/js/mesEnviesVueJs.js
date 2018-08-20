@@ -4,12 +4,17 @@ var id = JSON.parse(Session)["idUtilisateur"];
 var vm =new Vue ({
 el : '#listeMesEnviesTermines',
 data : {
-	typeEnvies:'plop',
+	aujourdhui : moment().local('fr'),
+	typeEnvies:'rdvAvenir',
 	evaluations :[],
 	repannonces :[],
 	idUtilisateur :id,
 	selected:'',
-},
+	src: "./resources/img/Annonce/",
+	 imgtype: ".png",
+	
+},  
+ 
 watch : {
 	typeEnvies: function (typeEnvies, ancienTypeEnvieCloture){
 		this.chargerTypeEnviesCloturees(typeEnvies)
@@ -19,33 +24,49 @@ created : function() {
 	var vm = this
 	
 
-axios.get('http://localhost:8080/myappWeb/services/rest/eval/EvalCompleteIdUt/' + vm.idUtilisateur)
+axios.get('http://localhost:8080/myappWeb/services/rest/reponses/rdvAVenir/' + vm.idUtilisateur)
 .then(function(response){
-	vm.evaluations = response.data
+	vm.repannonces = response.data
 })
 console.log(response.data)
 
 },
 
 methods: {
-	
+
+	comparerDateRdv ()
+	{
+		var dateRdv = document.getElementById('dateRdv').value;
+		
+		if (moment().diff(dateRdv) <=  0)
+			{
+			console.log("date à venir")
+			}
+		else 
+			{
+			console.log("date à passe")
+			}
+	},
 	chargerTypeEnviesCloturees(typeEnvies)
 	{
+		
 		console.log(typeEnvies)
 		var vm= this
-	if (typeEnvies == "plop")
+	if (typeEnvies == "rdvAvenir")
 		{
-		vm.repannonces = [];
-		console.log(typeEnvies +'tut')
-		axios.get('http://localhost:8080/myappWeb/services/rest/eval/EvalCompleteIdUt/'+ vm.idUtilisateur)
+		vm.repannonces=[]
+		vm.evaluations=[]
+		axios.get('http://localhost:8080/myappWeb/services/rest/reponses/rdvAVenir/'+ vm.idUtilisateur)
 		.then(function(response){
-			vm.evaluations = response.data
+			vm.repannonces = response.data
+			
 		})
 		}
 	if (typeEnvies == "mesEnviesAEval")
 		{
 		console.log(typeEnvies +'envie a véal')
-		vm.evaluations = [];
+		vm.evaluations=[]
+		vm.repannonces=[]
 		axios.get('http://localhost:8080/myappWeb/services/rest/reponses/reponseSansEval/' + vm.idUtilisateur)
 		.then(function(response){
 			vm.repannonces = response.data
@@ -54,13 +75,16 @@ methods: {
 		}
 	else
 	{
+		vm.repannonces=[]
+		vm.evaluations=[]
 		console.log(typeEnvies +'envie eval')
-		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/mesEnviesTermines/' + vm.idUtilisateur)
+		axios.get('http://localhost:8080/myappWeb/services/rest/eval/EvalCompleteIdUt/' + vm.idUtilisateur)
 		.then(function(response){
-			vm.annonces = response.data
+			vm.evaluations = response.data
 		})
 		}
 	},
+
 	insererEvaluation:function(idAnnonce)
 	{
 		//console.log("debut fonction" + idAnnonce)
@@ -112,11 +136,12 @@ methods: {
 				});
 				//location.reload();
 			})
-			
-		
-	
-		
 	},
+	getSrc: function(idProduit) {
+		console.log("IMAGE" +idProduit)
+		return this.src + idProduit + this.imgtype;
+	},
+	
 	moment: function (date) {
 
 		return moment(date);
@@ -136,3 +161,46 @@ filters: {
 	
 })
 
+
+
+
+
+var Session = sessionStorage.getItem('utilisateurCourant');
+var id = JSON.parse(Session)["idUtilisateur"];
+var vm = new Vue({
+	el: '#mesEnvieEnAttentes',
+	data: {
+		repannonces: [],
+		id : idUtilisateur,
+		src: "./resources/img/Annonce/",
+		 imgtype: ".png",	
+	
+	},
+	created : function () {
+		var vm = this
+		console.log("début")
+		
+		axios.get('http://localhost:8080/myappWeb/services/rest/reponses/envieAttente/'+ vm.idUtilisateur)
+		.then(function (response) {
+			vm.repannonces = response.data
+		
+		})
+	},
+	methods: {
+		moment: function (date) {
+			
+			return moment(date);
+		},
+		date: function (date) {
+			
+			
+			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
+		}
+	},
+	filters: {
+		    moment: function (date) {
+		      return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+		    }
+		  }
+
+})

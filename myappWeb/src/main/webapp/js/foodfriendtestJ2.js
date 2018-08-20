@@ -18,7 +18,8 @@ var mesFoodfriend = new Vue({
 	
 	computed: {
 		filteredList() {
-		      return this.foodfriend.filter(post => {
+
+			return this.foodfriend.filter(post => {
 		        return post.pseudoff.toLowerCase().includes(this.search.toLowerCase())
 		      })
 		}
@@ -58,12 +59,11 @@ var mesFoodfriend = new Vue({
 			// maj attrinute dateFinRelation du foodfriend selectionne
 			foodfriend.dateFinRelation = Date.now();
 			delete foodfriend.pseudoff;
-			console.log(foodfriend);
 			
 		  	  // post			    	  
 		  	axios.post('http://localhost:8080/myappWeb/services/rest/foodfriend',
 		  			foodfriend).then((response) => {
-		  			vm.nbFoodfriend = vm.nbFoodfriend - 1;
+//		  			vm.nbFoodfriend = vm.nbFoodfriend - 1;
 		  				
 	  			  });	  		  	
 		},	
