@@ -22,12 +22,11 @@ var listeannoncesCommnunaute = new Vue({
 	    date3: "",
 	    dateChoisie: null,
 	    search: '',
-//	    voirCarte: false,
 	    map: null,
 	    tileLayer: null,
-//	    layers: [],
 	    seen: true,
-//	    annonceMapChoisie: [],
+	    markers: [],
+	    markerUser: "",
 	    filtreRech : "",
 	    listeIdFF : []
 	    
@@ -35,9 +34,6 @@ var listeannoncesCommnunaute = new Vue({
 	  },
 	  
 	  watch: {
-//		  map: function() {
-//			  this.initLayers();
-//		  },
 		  
 		  filtreRech: function() {
 			  if (this.filtreRech == "Distance") {
@@ -58,13 +54,13 @@ var listeannoncesCommnunaute = new Vue({
 		  }
 	  },
 	  
-//	  mounted() {
-//		  this.initMap();		  
-//	  },
 	  
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
 	  created: function() {
-		var vm = this
+		console.log("fonction created")
+		  
+		document.getElementById('modal').ariahidden = "false";
+		  var vm = this
 		
 		// récupération de l'adresse principale de l'utilisateur
 		axios.get('http://localhost:8080/myappWeb/services/rest/utilisateur/adresse?iduser=' + vm.iduser)
@@ -133,6 +129,9 @@ var listeannoncesCommnunaute = new Vue({
 			  
 			  var vm = this;
 			  
+			  var container = L.DomUtil.get('map');
+			  if(container != null){
+			  
 			  this.map = L.map('map').setView([vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y], 16);
 
 			  this.tileLayer = L.tileLayer(
@@ -146,26 +145,42 @@ var listeannoncesCommnunaute = new Vue({
 			  
 			  this.tileLayer.addTo(this.map);
 			  
-			  var marker = L.marker([48.8162038, 2.327159599999959]).addTo(this.map);
-			  marker.valueOf()._icon.src = "http://localhost:8080/myappWeb/resources/leaflet/images/marker-icon-green.png";
-			  marker.bindPopup("Ma position !");
-			  marker.on('mouseover', function (e) {
+			  this.markerUser = L.marker([vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y]).addTo(this.map);
+			  
+			  this.markerUser.valueOf()._icon.src = "http://localhost:8080/myappWeb/resources/leaflet/images/marker-icon-green.png";
+			  this.markerUser.bindPopup("Ma position !");
+			  this.markerUser.on('mouseover', function (e) {
 		            this.openPopup();
 		        });
 				
-				marker.on('mouseout', function (e) {
+			  this.markerUser.on('mouseout', function (e) {
 		            this.closePopup();
 		        });
-			  
+			  }			  
 			  
 		  },
-		  initLayers() {
+		  initLayers() {			  
 			  
-			  for (i=0; i < this.annonce.length ; i++) {
-					var marker = L.marker([this.annonce[i].adresse.x, this.annonce[i].adresse.y]).addTo(this.map);
-					var nomProduit = this.annonce[i].stock.produit.nomProduit
+			  // retirer tous les anciens marker
+			  for (i=0; i < this.markers.length ; i++) {
+				  if (this.markers[i] != this.markerUser) {
+					  this.map.removeLayer(this.markers[i])
+				  }		  
+			  }
+			  
+			  for (i=0; i < this.filteredList.length ; i++) {
+					var marker = L.marker([this.filteredList[i].adresse.x, this.filteredList[i].adresse.y]).addTo(this.map);
+					
+					//associé à la modal					
+					(marker.valueOf()._icon).setAttribute("data-toggle", "modal");
+					(marker.valueOf()._icon).setAttribute("data-target", "#modal");
+
+					
+					var nomProduit = this.filteredList[i].stock.produit.nomProduit
+					var annonce = this.filteredList[i];
 					marker.bindPopup(nomProduit);
-					marker.annonce = this.annonce[i];
+					marker.filteredList = this.filteredList[i];
+					
 					// Evenement
 					marker.on('mouseover', function (e) {
 			            this.openPopup();
@@ -176,9 +191,12 @@ var listeannoncesCommnunaute = new Vue({
 			        });
 					
 					marker.on('click', function(e, info) {
-						this.annonceDetail = this.annonce;
-						vm.afficherModal = true;
-						});				
+						marker.
+						vm.annonceDetail = annonce;
+						console.log(this.annonceDetail)
+						});
+					
+					this.markers.push(marker);
 										
 			  }
 			  
@@ -222,8 +240,7 @@ var listeannoncesCommnunaute = new Vue({
 			vm.afficherModal = true;
 
 		},
-		
-	  
+			  
 	  
 		envoyerDemandeProduit: function(idAnnonce) {
 
@@ -275,7 +292,8 @@ var listeannoncesCommnunaute = new Vue({
 				document.getElementById('btnMap').textContent = "Afficher la liste";
 				document.getElementById('map').style.visibility = "visible";
 				
-				this.initMap();
+				if (this.map == null) {this.initMap();}
+				
 				this.initLayers();
 			}
 			
@@ -284,6 +302,9 @@ var listeannoncesCommnunaute = new Vue({
 	  }
 	
 })
+
+
+
 
 
 

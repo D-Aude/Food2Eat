@@ -112,7 +112,7 @@ public class Repannonce implements Serializable {
 	@Column(name="DATE_ANNULATION_REPONSE")
 	private Date dateAnnulationReponse;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DATE_RDV")
 	private Date dateRdv;
 
