@@ -6,9 +6,9 @@
 	</div>
 	<div id="page-annonces">
 		<div id="listeMesAnnonceTermines">
-				<span class="lblFiltre">Filtre d'affichage :</span>
+				<span class="lblFiltre" style="position:absolute; left:-190px">Filtre d'affichage :</span>
 			 <!--  <button @click="chargerAnnonces()" id="btnSelectionAnnoncesTerminees">Liste annonces cloturées</button>-->
-			<select class="styled-select green rounded" id="selectTypeAnnoncesTerminees" v-model="typeAnnoncesCloturees">
+			<select class="styled-select green rounded" id="selectTypeAnnoncesTerminees" v-model="typeAnnoncesCloturees" style="position:absolute; left:-193px;">
 				<option value="plop">Toutes mes annonces terminées</option>
 				<option value="mesAnnoncesAnnulees" selected>Mes annonces annulées</option>
 				<option value="mesAnnoncesTerminees">Mes annonces terminées</option>
@@ -19,11 +19,13 @@
 				<div v-if="annonce.annulation == null">
 					<div v-if=" annonce.dateAnnulation == null">
 					<img class="imgAnnonceTermine" v-bind:src="getSrc(annonce.stock.produit.idProduit)"/><br/>
-						<h3>Annonce terminée</h3>
-						<span>{{annonce.titre}} Votre annonce est terminée !<br />
-							Vous avez fait un don de : {{annonce.stock.quantite}}
-							{{annonce.stock.produit.nomProduit}} </br> 
-							Date de l'échange :{{moment(annonce.DateFinAnnonce).format('DD/MM/YYYY')}} 
+						
+						<h3 style="font-size:50px; top:-202px; position:relative; left:20px; font-family: 'Abel', sans-serif; color: white;">Annonce terminée</h3>
+						<span id="lblAnnonceTer" style="position:relative;top:-200px;left:230px;color:white; font-family : 'Abel', sans-serif; font-size:25px">
+<!-- 						Motif : {{annonce.titre}} <br/> -->Votre annonce est cloturée !<br /> 
+							Vous avez fait un don de : <b><u>{{annonce.stock.quantite}}
+							{{annonce.stock.produit.nomProduit}}</u></b> </br> 
+							Date de l'échange : <b><u>{{moment(annonce.dateRDV).format('DD/MM/YYYY')}}</u></b> 
 						 </span> <br />
 					</div>
 					<div v-if="annonce.dateFinAnnonce == null">
@@ -43,13 +45,13 @@
 				</div>
 				<div v-else>
 					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)" class="imgAnnonceTermine" /><br/>
-					<h3>Annonce annulée</h3>
-					<span> Vous avez annulé votre annonce .
-					{{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}} <br/>
+					<h3 style="position: relative;top: -202px; left: 20px; font-family: 'Abel', sans-serif; color: white; font-size: 50px;">Annonce annulée</h3>
+					<span style="position:relative;top:-200px;left:100px;color:white; font-family : 'Abel', sans-serif; font-size:25px"> Vous avez annulé votre annonce pour
+					<b><u>{{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}}</u></b> <br/>
 					
-						Motif de l'annulation : {{annonce.annulation.nomAnnulation}}<br />
+						Motif de l'annulation : <b><u>{{annonce.annulation.nomAnnulation}}</u></b><br />
 						Date de l'annulation :
-						{{moment(annonce.dateAnnulation).format('DD/MM/YYYY')}}
+						<b><u>{{moment(annonce.dateAnnulation).format('DD/MM/YYYY')}}</u></b>
 						
 					</span>
 			</div>
@@ -80,7 +82,6 @@
 
 		</div>
 	</div>
-<script src="./js/AnnonceVuTestDesign.js"></script>
 <script src="./js/AnnonceVueJs.js"></script>
 <script src="./js/modalAnnonceJS.js"></script>
 <link rel="stylesheet" type="text/css"

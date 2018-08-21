@@ -524,12 +524,30 @@ div>.imgContainer {
 	justify-content: center;
 }
 
-.lblTitreAnnonces {
-	position: absolute;
+.lblTitreAnnoncesTt{
+		position: relative;
 	font-family: 'Abel', sans-serif;
 	font-size: 50;
-	/* left: 555px; */
-	top: 120px;
+left: 509px;
+top: 10px;
+	text-transform: uppercase;
+}
+
+.lblTitreAnnoncesEnvie {
+		position: relative;
+	font-family: 'Abel', sans-serif;
+	font-size: 50;
+left: 480px;
+top: 10px;
+	text-transform: uppercase;
+}
+
+.lblTitreAnnonces {
+	position: relative;
+	font-family: 'Abel', sans-serif;
+	font-size: 50;
+left: 0px;
+top: 10px;
 	text-transform: uppercase;
 }
 
@@ -688,7 +706,7 @@ div>.imgContainer {
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
-    height: 400px!important;
+    height: 573px !important;
 	top:-135px!important
 }
 
@@ -1068,7 +1086,7 @@ height: 0px;
 	    background-color: #a5dcc7;
     width: 552px;
     position: relative;
-    top: -10px;
+    top: -43px;
     -webkit-border-bottom-right-radius: 7px;
     -webkit-border-bottom-left-radius: 7px;
     -moz-border-radius-bottomright: 7px;
@@ -1076,14 +1094,14 @@ height: 0px;
     border-bottom-right-radius: 7px;
     border-bottom-left-radius: 7px;
     left: 3;
-        height: 70;
+        height: 80;
     font-size: 20px;
     text-align: -webkit-center;
 }
 
 #languetteAnnonce {
 	    position: absolute;
-       top: -24px;
+       top: -20px;
     left: 88px;
 }
 
@@ -1096,12 +1114,17 @@ height: 0px;
 	text-transform: uppercase;
 	font-size : 30px;
 	cursor: pointer;
+	position: absolute;
 }
 
 #searchBar {
-    position: absolute;
-    top: 218px;
-    left: 560px;
+position: absolute;
+
+top: 190px;
+
+left: 138.7px;
+
+width: 100px;
 }
 
 .inputSearchBar{
@@ -1123,11 +1146,17 @@ height: 0px;
 }
 
 #btnMap {
-	width: 160px;
-    height: 41px;
-    position: absolute;
-    top: 218px;
-    left: 140px
+width: 160px;
+
+height: 41px;
+
+position: absolute;
+
+top: 250px;
+
+left: 139px;
+
+display: flex;
 }
 
 /* -------------------- Select Box Styles: bavotasan.com Method (with special adaptations by ericrasch.com) */
@@ -1180,7 +1209,7 @@ height: 0px;
     height: 40px;
     padding: 5; 
     position: absolute;
-    left: -718px;
+    left: -618px;
     top: -29px;
 }
 
@@ -1251,19 +1280,113 @@ select#soflow-color {
 }
 
 .lblFiltre {
-	position: absolute;
+	position: relative;
 color: white;
 width: 200px;
 font-family: Abel, sans-serif;
 font-size: 20px;
-left: -715;
+left: -616;
 top: -65;
+display: flex;
 }
 
 #filtreRech {
-	width: 160px;
-    height: 41px;
+width: 195px;
+
+height: 41px;
+
+position: absolute;
+
+top: 197px;
+
+left: 1185px;
+}
+
+.annoncesSurListe {
+position: absolute;
+left: 70px;
+height: 43px;
+width: 91%;
+top: 100px;
+}
+
+#bandeau-transparent {
+background-color: black;
+opacity: 0.5;
+height: 30px;
+width: 554px;
+top: -214px;
+position: relative;
+border-radius : 7px 7px 7px 7px;
+left: 3px;
+}
+
+#lblDistance {
+	position: absolute;
+    left: 470px;
+    top: 1px;
+    width: 100px;
+    color: white;
+    font-size: 20px;
+    overflow: visible;
+}
+
+
+#img-etoile {
+position: absolute;
+top: -546;
+left: -40px;
+}
+
+#lblAnnonceEnCoursYo {
+font-size: 25;
+    color: white;
     position: absolute;
-    top: 218px;
-    left: 350px
+    top: 4px;
+    font-family: Abel, sans-serif;
+    left: 50px;
+    line-height: 41px
+}
+
+#lblEnviesTerminees {
+position: absolute;
+
+color: white;
+
+font-family: Abel,sans-serif;
+
+font-size: 25px;
+
+width: 464px;
+
+    left: 310px;
+    top: 13px;
+
+word-spacing: 5;
+
+line-height: 44px;
+}
+
+#lblEnviesTerminees2 {
+    position: absolute;
+    color: white;
+    font-family: Abel,sans-serif;
+    font-size: 25px;
+    width: 517px;
+    left: 250px;
+    top: 135px;
+    word-spacing: 5;
+    line-height: 44px;
+}
+
+#lblEnviesTerminees3 {
+ position: relative;
+    color: white;
+    font-family: Abel,sans-serif;
+    font-size: 25px;
+    width: 509px;
+    left: 150px;
+    top: -225px;
+    word-spacing: 5;
+    line-height: 44px;
 }

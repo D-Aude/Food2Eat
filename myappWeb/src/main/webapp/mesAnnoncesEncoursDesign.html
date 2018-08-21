@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <div class="container">
 	<div class="lblTitreAnnonces">
-		<b>Mes annonces</b>
+		<b>Mes annonces en cours</b>
 	</div>
 	<div id="page-annonces">
 		<div id="listeAnnonceEnCours">
@@ -10,25 +10,24 @@
 			<!-- <span id="lblAnnonceEnCours">   -->
 			<div>
 				<div id="Annonces-elementsEnCours" v-for="annonce in annonces">
-					<img class="imgAnnonceEnCours"
-						v-bind:src="getSrc(annonce.stock.produit.idProduit)" /><br />
-					<button v-on:click="AnnulerMonAnnonce(annonce.idAnnonce)"
-						class="btn btn-primary" id="btnAnnulerAnnonce">
+					<img class="imgAnnonceEnCours" v-bind:src="getSrc(annonce.stock.produit.idProduit)" /><br />
+					<button v-on:click="AnnulerMonAnnonce(annonce.idAnnonce)" class="btn btn-primary" id="btnAnnulerAnnonce">
 						<span id="lblAnnulerAnnonce">Annuler </span>
 					</button>
-					{{annonce.stock.utilisateur.pseudo}}, vous proposez :
-					{{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}} </br>
+					<span id="lblAnnonceEnCoursYo">
+						{{annonce.stock.utilisateur.pseudo}}, vous proposez :
+						<b><u>{{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}}</u></b> <br/>
 					Vos choix de date : </br>
 					<div id="dateMesAnnonces">
-						- {{moment(annonce.dateRdv1).format('L')}}</br> -
-						{{moment(annonce.dateRdv2).format('L')}}</br> -
-						{{moment(annonce.dateRdv3).format('L')}}</br>
+						<b><u>{{moment(annonce.dateRdv1).format('L')}}</u></b>
+					<b><u>{{moment(annonce.dateRdv2).format('L')}}</u></b>
+			 <b><u>{{moment(annonce.dateRdv3).format('L')}}</u></b>
 					</div>
-					Votre lieu de rendez-vous :<span>{{annonce.adresse.numeroVoie}}
+					Votre lieu de rendez-vous :<br/><span><b><u>{{annonce.adresse.numeroVoie}}
 						{{annonce.adresse.typeVoie}} {{annonce.adresse.nomVoie}}
 						{{annonce.adresse.ville.ville}}
-						{{annonce.adresse.ville.codePostal}}</span><br />
-
+						{{annonce.adresse.ville.codePostal}}</u></b></span><br />
+					</span>
 				</div>
 			</div>
 			<!--</span> -->

@@ -71,8 +71,8 @@
 		        <label class="labelPublication" for="selectAdresse">Adresse</label>
 		      </div>
 		      <div class="col-75">
-		        <select id="selectAdresse" class="inputPublication">
-		          <option value="0">-- Veuillez choisir une adresse pour le RDV --</option>
+		        <select id="selectAdresse" class="inputPublication" required>
+		          <option value="">-- Veuillez choisir une adresse pour le RDV --</option>
 		          <option v-for="userAdresse in userAdresses" :value="userAdresse.adresse.idAdresse">
 		          	{{userAdresse.adresse.numeroVoie}}, {{userAdresse.adresse.typeVoie}} {{userAdresse.adresse.nomVoie}} - {{userAdresse.adresse.ville.codePostal}} {{userAdresse.adresse.ville.ville}}
 		          </option>
@@ -84,7 +84,7 @@
 		        <label class="labelPublication" for="inputDate1">Date n°1</label>
 		      </div>
 		      <div class="col-30">
-		      	<input id="inputDate1" class="datePublication" type="date">
+		      	<input id="inputDate1" class="datePublication" type="date" >
 		      	<input id="inputHeure1" class="heurePublication" type="time">
 		      </div>
 		      <div class="col-25">
@@ -139,9 +139,7 @@ var vmPublication = new Vue({
 		  	Publier: function ()
 		  	{
 				console.log('Btn Publier');
-			  	var titre = document.getElementById('inputTitre').value;
-			  	console.log('titre:'+titre);
-			  	
+				
 			  	//recuperaion infos annonce
 			  	var titre = document.getElementById('inputTitre').value;
 			  	var datePublication = Date.now();
@@ -190,17 +188,14 @@ var vmPublication = new Vue({
 			      httpRequest.onreadystatechange = function() {
 			  		if (this.readyState == 4 && this.status == 200) {
 			  		//si status HTTP en retour == 200 : OK 
-			  			this.backToInvantaire();
+			  			sessionStorage.removeItem('publicationAnnonce');
+				  		$("#flexContent").load("./gestionInventaire.html");
 			  		}
 			      };
 			      
 			  	
 		  	},
-// 		  	Annuler: function ()
-// 		  	{
-// 		  		this.backToInvantaire();
-// 		  	},
-		  	backToInvantaire: function()
+		  	backToInventaire: function()
 		  	{
 		  		sessionStorage.removeItem('publicationAnnonce');
 		  		$("#flexContent").load("./gestionInventaire.html");
