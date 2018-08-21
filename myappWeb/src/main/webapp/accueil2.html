@@ -1,4 +1,4 @@
-  n,;:<!DOCTYPE>
+<!DOCTYPE>
 <html>
 <head>
 <title>Food 2 Eat</title>
@@ -26,10 +26,9 @@
 <!--=========================================BOOTSTRAP================================================-->
 <link rel="stylesheet" href="./resources/js/bootstrap.min.css" />
 </head>
-<!--=========================================NAVBAR================================================-->
 <body>
-	<nav class="navbar navbar-expand-lg fixed-top grey-bg navbar-light bg-nav-color">
-		<a class="navbar-fontColor" href="accueil.html"><b>Food 2 Eat</b></a>
+<nav class="navbar navbar-expand-lg fixed-top grey-bg navbar-light bg-nav-color">
+		<a class="navbar-fontColor" href="accueil2.html"><b>Food 2 Eat</b></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -58,13 +57,13 @@
 					     <li class="dropdown">
 					      <a id="toutes-annonces" class="menu-mes-annonces" href="#" style="color:white!important;">Toutes les annonces</a>
 					            <ul class="dropdown-menu" id="menuAnnonces3">
-							        <li><a id="mesSouhaits" href="#" style="color:white!important;">Mes souhaits {{notifMesSouhait}}</a></li>
+							        <li><a id="mesSouhaits" href="#" style="color:white!important;">Mes souhaits</a></li>
 							        <li><a id="mesSouhaitsClotures" href="#" style="color:white;">Mes souhaits cloturés</a></li>
 								</ul>
 					    <li class="dropdown">
 					      <a id="mesAnnonces" class="menu-mes-annonces" href="#" style="color:white!important;">Mes annonces</a>
 					            <ul class="dropdown-menu" id="menuAnnonces2">
-							        <li><a id="menuReponsesAValider" href="#" style="color:white!important;">Réponses à valider {{notifMesAnnonces}}</a></li>
+							        <li><a id="menuReponsesAValider" href="#" style="color:white!important;">Réponses à valider</a></li>
 							         <li><a id="annoncesTerminees" href="#" style="color:white!important;">Mes annonces terminées</a></li>
 								</ul>
 					    </li>
@@ -77,7 +76,7 @@
 					aria-expanded="false"> <img src="./resources/css/friends.png"> Foodfriends </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" id="btnMesFoodFriends" href="#">Mes foodfriends</a> 
-						<a class="dropdown-item" id="btnInvitationsRecues" href="#">Invitations reçues {{notifInvitFF}}</a>
+						<a class="dropdown-item" id="btnInvitationsRecues" href="#">Invitations reçues</a>
 					</div>
 				</li>
 
@@ -86,67 +85,142 @@
 	</nav>
 
 	<div id="flexContent" class="flex-container">
-		<div class="container">
+	<div class="container">
 			<div class="lblTitre">
-
-				<div id="fondNav"></div>
+			<div id="fondNav" style="width: 1519;background-color: white !important;height: 160;position: relative;top: -180px;left: 0;"></div>
 				<div class="container-dashboard">
 					<div class="lblUser">
-						<b>Bonjour {{pseudo}} !</b> 	<button id="btnConnexion" @click="seConnecter()" >Se Connecter</button>
+						<b>Bonjour {{pseudo}} !!</b> 	<button id="btnConnexion" @click="seConnecter()" >Se Connecter</button>
 					</div>
-					<b style="position:absolute; top:-100px; left:590px;">Tableau de bord</b>
-					<div id="dashboard1">
-					<span id="titreDashboard1" style="color: white; font-size: 30px; position: absolute; left: 400px; text-decoration:  underline;">
-							Mes annonces
-						</span>
-						<span id="lblDashboard1" style="color:white; position:absolute; font-size:25px; top:57; left:300px; line-height:45px;">
-							Nombre d'annonces en cours : <br/>
-							Nombre d'annonces total postées : 
-						</span>
-									
-						<button id="btnAccesAnnonce" type="button" style="" href="#">
-							Accéder à mes annonces</button>
-					</div>
-					
-					<div id="dashboard2">
-					<span id="titreDashboard2" style="color: white; font-size: 30px; position: absolute; left: 400; text-decoration:  underline;">
-							Mes réponses
-						</span>
-						<span id="lblDashboard2" style="color:white; position:absolute; font-size:25px; top:57; left:300; line-height:45px;">
-							Nombre de réponses à valider : <br/>
-							Nombre de réponses en attente de validation : 
-						</span>
-									
-						<button id="btnAccesReponse" type="button" style="" href="#">
-							Accéder à mes réponses</button>
-						</div>
-						
-							<div id="dashboard3">
-					<span id="titreDashboard3" style="color: white; font-size: 30px; position: absolute; left: 400; text-decoration:  underline;">
-							Inventaire
-						</span>
-						<span id="lblDashboard3" style="color:white; position:absolute; font-size:25px; top:57; left:300; line-height:45px;">
-							Nombre de produit dans mon inventaire : {{nbrDonsTotaux}}  <br/>
-							<b >Produit arrivant à péremption : {{nbrDonsEffectues}}</b>
-						</span>
-									
-						<button id="btnAccesInventaire" type="button" style="" href="#">
-							Accéder à mon inventaire</button>
-						</div>
+					<div class="lblStatsUser">
+					<p class="donTotal">Nombre total de don effectué : </p> 
+					<p class="dernierDon"> Dernier don effectué :  </p>
+					<b class="produitPeremption"> Produit(s) arrivant à péremption : </b>
 					</div>
 				</div>
+				<!--===============================barre de recherche==============================-->
+<div id="sb">
+<form id="searchBar" style="position: absolute;top: 100px;left: 138.7px;width: 100px;">
+  <input class="inputSearchBar" name="search" placeholder="Rechercher..." v-model="search" type="text">
+</form>
+</div>
+<!--===============================bouton map==============================-->
+<!-- <button id="btnMap" type="button" v-on:click="afficherCarte()">Afficher sur la carte</button> -->
 
+<!--===============================filtre de trie==============================-->
+<select class="styled-select green rounded" id="filtreRech" v-model="filtreRech" style="width: 195px;height: 41px;position: absolute;top: 164px;left: 138px;font-size: 20px;">
+	<option disabled="" value="">Trier par ...</option>
+	<option>Distance</option>
+	<option>Date de publication</option>
+	<option>Foodfriend</option>
+</select>
+</div>
 			</div>
+
+	<div id="annoncesCommunaute">
+
+<div id="mapContainer">
+	
+	<div id="map" 
+		class="map" 
+		style="
+			width: 1000px;
+		    height: 400px;
+		    position: absolute;
+		    top: 300px;
+		    left: 140px;
+		    visibility: hidden;
+		    vertical-align: middle;
+		    border: 1px solid black;
+		    display: block;  		
+			">
+	</div>
+</div>
+<div class="container">
+	<div class="lblTitreAnnoncesTt" style="position: relative;font-family: 'Abel', sans-serif;font-size: 50;left: 480;top: 164px;text-transform: uppercase;">
+		<b>Les annonces récentes</b>
+	</div>
+
+<!--===============================liste des annonces==============================-->
+<div class="annoncesSurListe" id="annoncesSurListe" v-if="seen" style="position:absolute; left: 70px; height: 43px; width: 91%; top: 234px;">	
+	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
+		<div class="imgAnnonce">
+			<a href="#" >
+				<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/>
+			</a>
+		<!-- Modal -->
+			<div id="lblDetailsAnnonceTomate">
+				<button v-on:click="voirAnnonceDetail(annonce)" id="btnDetailsAnnonce" type="button" class="btnAnnonce" data-toggle="modal" data-target="#modal">
+					<span><b>Détails de l'annonce</b></span>
+				</button>
+			</div>
+		</div>
+		
+		<div id="bandeau-transparent">
+			<div id="lblDistance">
+				<span><b>{{annonce.distance}} km</b></span>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  			<div class="modal-dialog" role="document">
+   				<div class="modal-content">
+      				<div class="modal-header">
+      					<h5 class="modal-title" id="exampleModalLabel">Informations concernant le don</h5>
+       					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     				    	<span aria-hidden="true">&times;</span>
+      					</button>
+    				</div>
+    				   <div class="modal-body" v-if="afficherModal == true"> 
+							<span><b>{{annonceDetail.stock.utilisateur.pseudo}} donne : {{annonceDetail.stock.produit.nomProduit}}</b></span><br/>
+							<span><i>à consommer avant le {{moment(annonceDetail.dateRdv2).format('L')}}</i></span><br/><br/>
+							<span><b>Choisir une date de RDV : </b></span><br/>
+							<span>
+								<input type="radio" v-bind:value="date1" id="dateRdv1" v-model="dateChoisie">
+								<label id="date1" for="dateRdv1">{{moment(annonceDetail.dateRdv1).format('DD/MM/YYYY')}}</label><br/>
+								<input type="radio" v-bind:value="date2"  id="dateRdv2" v-model="dateChoisie"> 
+								<label id="date2" for="dateRdv2">{{moment(annonceDetail.dateRdv2).format('DD/MM/YYYY')}}</label><br/>
+								<input type="radio" v-bind:value="date3" id="dateRdv3" v-model="dateChoisie"> 
+								<label id="date3" for="dateRdv3">{{moment(annonceDetail.dateRdv3).format('DD/MM/YYYY')}}</label><br/>					
+							</span>
+							<span v-if="dateChoisie != null ">Date choisie : {{moment(dateChoisie).format('DD/MM/YYYY')}}</span><br/><br/>
+							<span><b>Adresse de récupération :</b> {{annonceDetail.adresse.numeroVoie}} {{annonceDetail.adresse.typeVoie}} {{annonceDetail.adresse.nomVoie}} {{annonceDetail.adresse.ville.ville}} {{annonceDetail.adresse.ville.codePostal}}<br/></span>
+    				  </div>
+    				  <div class="modal-footer">
+    				   		<button type="button" class="btn btn-secondary" data-dismiss="modal" v-on:click="envoyerDemandeProduit(annonceDetail.idAnnonce)">Valider</button>
+     					    <button type="button" class="btn btn-primary" data-dismiss="modal">Annuler</button>
+    				  </div>
+   					</div>
+   					
+ 			   </div>
+			</div>
+
+		<div class="lblAnnonce">
+			<span id="languetteAnnonce">
+				{{annonce.titre}}<br/>
+				{{annonce.stock.produit.nomProduit}}<br/>
+				<img v-if="annonce.foodfriend == 1" src="./resources/img/starff.png" style="position: absolute; top: -178px; left: -41px;"/> 
+				proposé par {{annonce.stock.utilisateur.pseudo}}, le {{moment(annonce.datePublication).format('DD/MM/YYYY')}} à {{annonce.adresse.ville.ville}}<br/>
+   				<!--  Lieu de l'échange : {{annonce.adresse.ville.ville}},  -->			
+			</span>
+		</div>															
+	</div>
+</div>  		
+</div>
+</div>
 		</div>
 	<footer>
 		<div class="btnDeconnexion" id="btnDeco">
 			<span class="deconnexion"><a href="#" @click="seDeconnecter()"><img src="./resources/css/deconnexion.png" ></a></span>
 		</div>
 	</footer>
-</body>
-<!--==============================SCRIPT HOVER=====================-->
-<script src="./js/archeJS.js"></script>
+
+<script src="./app2.js"></script>
+<script src="./js/modalAnnonceJS.js"></script>
+<!-- <script src="./js/archeJS2.js"></script> -->
+
 <script>
+
 var foot = new Vue({
 	  el: '#btnDeco',
 	  methods: 
@@ -188,10 +262,6 @@ var foot = new Vue({
 			$("#flexContent").load("./gestionInventaire.html");
 		});
 		
-		$('#btnAccesInventaire').on('click', function() {
-			$("#flexContent").load("./gestionInventaire.html");
-		});
-		
 		$('#mesSouhaits').on('click', function() {
 			$("#flexContent").load("./EnviesEnAttenteDesign.html");
 		});
@@ -204,15 +274,7 @@ var foot = new Vue({
 			$("#flexContent").load("./mesAnnoncesEncoursDesign.html");
 		});
 		
-		$('#btnAccesAnnonce').on('click', function() {
-			$("#flexContent").load("./mesAnnoncesEncoursDesign.html");
-		});
-		
 		$('#menuReponsesAValider').on('click', function() {
-			$("#flexContent").load("./annoncesAyantReponses.html");
-		});
-		
-		$('#btnAccesReponse').on('click', function() {
 			$("#flexContent").load("./annoncesAyantReponses.html");
 		});
 
@@ -227,10 +289,6 @@ var foot = new Vue({
 		$('#btnInvitationsRecues').on('click', function() {
 			$("#flexContent").load("./invitationsRecues.html");
 		});
-		
-		$('#testOude').on('click', function() {
-			$("#flexContent").load("./mesEnviesTermines.html");
-		});
 
 		$('#menuAnnonces2').on('hover', function() {
 			$("#menuAnnonces2").show();
@@ -239,5 +297,9 @@ var foot = new Vue({
 
 
 	});
+	
+
+
 </script>
+</body>
 </html>

@@ -9,12 +9,84 @@ body {
 }
 
 #fondNav {
-	width: 1811;
-	background-color: white !important;
-	height: 160;
+    width: 1519px;
+    background-color: white !important;
+    height: 51px;
+    position: relative;
+    top: -180px;
+    left: 0;
+}
+
+#dashboard1 {
+position: absolute;
+    width: 980;
+    height: 210;
+    border-radius: 7px;
+    background-color: #245B55;
+    top: 580;
+    left: 280;
+    border: 3px solid black;
+}
+
+#dashboard3 {
+position: absolute;
+    width: 980;
+    height: 210;
+    border-radius: 7px;
+    background-color: #245B55;
+    top: 40;
+    left: 280;
+    border: 3px solid black;
+}
+
+#dashboard2{
 	position: absolute;
-	top: -191px;
-	left: -796;
+    width: 980;
+    height: 210;
+    border-radius: 7px;
+    background-color: #245B55;
+    top: 310;
+    left: 280;
+    border: 3px solid black;
+}
+
+#btnAccesAnnonce{
+    color: black;
+    border: none;
+    background: white;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 397;
+    border-radius: 12px;
+    top: 155px;
+}
+
+#btnAccesReponse {
+	color: black;
+    border: none;
+    background: white;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 397;
+    border-radius: 12px;
+    top: 155px;
+}
+
+#btnAccesInventaire {
+		    color: black;
+    border: none;
+    background: white;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 397;
+    border-radius: 12px;
+    top: 155px;
+}
+#btnAccesAnnonce:hover{
+	text-decoration:underline;
 }
 
 .menu-annonce{
@@ -128,8 +200,8 @@ a {
 	position: absolute;
 	font-family: 'Abel', sans-serif;
 	font-size: 20;
-	/* left: 555px; */
-	top: -170;
+	left: 685px;
+	top: -167;
 	text-transform: uppercase;
 }
 
@@ -140,28 +212,31 @@ a {
 }
 
 .donTotal {
-	top: -129px;
+	top: -121;
 	position: absolute;
 	font-family: 'Abel', sans-serif;
 	text-transform: initial;
 	font-size: 15;
+	left:612;
 }
 
 .dernierDon {
-	top: -98px;
+	top: -86;
 	position: absolute;
 	font-family: 'Abel', sans-serif;
 	font-size: 15;
 	text-transform: initial;
+	left: 638;
 }
 
 .produitPeremption {
-	top: -60;
+	top: -50;
 	position: absolute;
 	font-family: 'Abel', sans-serif;
 	color: red;
 	font-size: 15;
 	text-transform: initial;
+	left: 601;
 }
 
 .lblStatsDon {
@@ -525,12 +600,12 @@ div>.imgContainer {
 }
 
 .lblTitreAnnoncesTt{
-		position: relative;
-	font-family: 'Abel', sans-serif;
-	font-size: 50;
-left: 509px;
-top: 10px;
-	text-transform: uppercase;
+position: relative;
+font-family: 'Abel', sans-serif;
+font-size: 50;
+left: 480;
+top: 10;
+text-transform: uppercase;
 }
 
 .lblTitreAnnoncesEnvie {
@@ -1120,9 +1195,9 @@ height: 0px;
 #searchBar {
 position: absolute;
 
-top: 190px;
+top: 250;
 
-left: 138.7px;
+left: 137.7px;
 
 width: 100px;
 }
@@ -1148,11 +1223,11 @@ width: 100px;
 #btnMap {
 width: 160px;
 
-height: 41px;
+height: 44;
 
 position: absolute;
 
-top: 250px;
+top: 321;
 
 left: 139px;
 
@@ -1297,9 +1372,9 @@ height: 41px;
 
 position: absolute;
 
-top: 197px;
+top: 257;
 
-left: 1185px;
+left: 1189;
 }
 
 .annoncesSurListe {
@@ -1307,7 +1382,7 @@ position: absolute;
 left: 70px;
 height: 43px;
 width: 91%;
-top: 100px;
+top: 140;
 }
 
 #bandeau-transparent {
