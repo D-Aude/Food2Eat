@@ -147,7 +147,7 @@ var listeannoncesCommnunaute = new Vue({
 			  
 			  this.markerUser = L.marker([vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y]).addTo(this.map);
 			  
-			  this.markerUser.valueOf()._icon.src = "http://localhost:8080/myappWeb/resources/leaflet/images/marker-icon-green.png";
+			  this.markerUser.valueOf()._icon.src = "http://localhost:8080/myappWeb/resources/leaflet/images/marker-icon-red.png";
 			  this.markerUser.bindPopup("Ma position !");
 			  this.markerUser.on('mouseover', function (e) {
 		            this.openPopup();
@@ -161,6 +161,7 @@ var listeannoncesCommnunaute = new Vue({
 		  },
 		  initLayers() {			  
 			  
+			  var vm = this;
 			  // retirer tous les anciens marker
 			  for (i=0; i < this.markers.length ; i++) {
 				  if (this.markers[i] != this.markerUser) {
@@ -178,7 +179,10 @@ var listeannoncesCommnunaute = new Vue({
 					
 					var nomProduit = this.filteredList[i].stock.produit.nomProduit
 					var annonce = this.filteredList[i];
+					
 					marker.bindPopup(nomProduit);
+					marker.annonce = annonce;
+					
 					marker.filteredList = this.filteredList[i];
 					
 					// Evenement
@@ -191,9 +195,8 @@ var listeannoncesCommnunaute = new Vue({
 			        });
 					
 					marker.on('click', function(e, info) {
-						marker.
-						vm.annonceDetail = annonce;
-						console.log(this.annonceDetail)
+//						vm.annonceDetail = this.annonce;
+						vm.voirAnnonceDetail(this.annonce)
 						});
 					
 					this.markers.push(marker);

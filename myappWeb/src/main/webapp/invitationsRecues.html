@@ -16,11 +16,11 @@
 
 
 		<div class="lblTitreAnnonces">
-			<b>Invitations Foodfriend reçue(s)</b>
+			<b style="position: relative;left: 420px;">Invitations Foodfriend reçue(s)</b>
 		</div>	
 <br/><br/><br/><br/><br/><br/><br/><br/>			
 		<div id="listeDemandesFoodfriend">
-			<div v-if="foodfriend.length == 0">
+			<div id="infoinvit" v-if="foodfriend.length == 0">
 				pas d'invitation...
 			</div>
    			<div id="friend-element" v-for="foodfriend in foodfriend">  

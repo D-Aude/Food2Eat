@@ -1,5 +1,4 @@
 #annoncesAvecReponses {
-	font-style : italic;
 	_border-style: solid;
 	border-width: 2px;
 	_border-color: black;
@@ -13,7 +12,7 @@
     _height: 200px;
     margin-left: -500px; /* Cette valeur doit être la moitié négative de la valeur du width */
     margin-top: -100px;
-    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
 }
 
 #titre {
@@ -43,13 +42,66 @@ table tr:hover{cursor:pointer;}
 	 font-size:0.9em;
 	 overflow:auto;
  },
- 
- img {
- 	height: 60px;
- }
+
+img {
+	height : 60px;
+	float: inline-start;
+	margin-right : 15px;
+}
  
  #userRep {
  	height: 60px;
+ 	float: inline-start;
+ 	margin-right : 15px;
  }
+ 
+ 
+.btnRdv {
+	float: right;
+	margin-bottom : 10px;
+	background-color : #49b6a8;
+	border : 1px solid white;
+	color : white;
+	padding : 10px 10px 10px 10px;
+	text-transform : uppercase;
+	border-radius: 4px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.btnRdv:hover {
+    background-color: #BDBDBD; /* Green */
+    color: white;
+}  	
+
+#colNbRep {
+	text-align:center;
+}
+
+#btnAccepterRep {
+	background-color : #49b6a8;
+	color : white;
+	height : 27px;
+	border-radius : 5px;
+	font-family : 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+	
+}
+
+#btnRefuserRep {
+	background-color : #848484;
+	color : white;
+	height : 27px;
+	border-radius : 5px;
+	font-family : 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+}
+
+td {
+	background-color : aliceblue;
+}
+
+ 
+
  
  
