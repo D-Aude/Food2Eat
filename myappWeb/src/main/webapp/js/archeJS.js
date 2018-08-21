@@ -17,21 +17,18 @@ created : function (){
 	console.log("init")
 	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/'+ vmNotif.idUtilisateur)
 		.then(function (response) {
-			vmNotif.notifMesSouhait = response.data
-			console.log("messouhait :"+this.notifMesSouhait)
-			console.log("mesosuhait:"+response.data)
+			if (response.data >0 ) { vmNotif.notifMesSouhait = response.data }
+
 		}),
 	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/NotifReponseAnnonce/'+vmNotif.idUtilisateur)
 		.then(function (response) {
-			vmNotif.notifMesAnnonces = response.data
-			console.log("annonce:"+this.notifMesAnnonces)
-			console.log("annonce:"+response.data)
+			if (response.data >0 ) {vmNotif.notifMesAnnonces = response.data }
+
 		})	
 		axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/notif/'+vmNotif.idUtilisateur)
 		.then(function (response) {
-			vmNotif.notifInvitFF = response.data
-			console.log("ff:"+ this.notifInvitFF)
-			console.log("ff:"+response.data)
+			if (response.data >0 ) { vmNotif.notifInvitFF = response.data }
+
 		})	
 	
 }

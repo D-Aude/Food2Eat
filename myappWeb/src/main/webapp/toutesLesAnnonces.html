@@ -3,13 +3,15 @@
 <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
 <link rel="stylesheet" href="./resources/leaflet/leaflet.css" />
 <script src="./resources/leaflet/leaflet.js"></script>
+<script src="./resources/js/jquery-3.3.1.min.js"></script>
+
 
 <!-- =========================Affichage de la carte ================== -->
 <div id="annoncesCommunaute">
 
 <div id="mapContainer">
 	
-	<div id="map" 
+	<div id="map"	 
 		class="map" 
 		style="
 			width: 1000px;
@@ -46,27 +48,8 @@
 </select>
 </div>
 
-<!--===============================liste des annonces==============================-->
-<div class="annoncesSurListe" id="annoncesSurListe" v-if="seen">	
-	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
-		<div class="imgAnnonce">
-			<a href="#" >
-				<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/>
-			</a>
-		<!-- Modal -->
-			<div id="lblDetailsAnnonceTomate">
-				<button v-on:click="voirAnnonceDetail(annonce)" id="btnDetailsAnnonce" type="button" class="btnAnnonce" data-toggle="modal" data-target="#modal">
-					<span><b>Détails de l'annonce</b></span>
-				</button>
-			</div>
-		</div>
-		
-		<div id="bandeau-transparent">
-			<div id="lblDistance">
-				<span><b>{{annonce.distance}} km</b></span>
-			</div>
-		</div>
-		
+
+<!-- Modal -->
 		<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   			<div class="modal-dialog" role="document">
    				<div class="modal-content">
@@ -100,6 +83,30 @@
  			   </div>
 			</div>
 
+<!--===============================liste des annonces==============================-->
+<div class="annoncesSurListe" id="annoncesSurListe" v-if="seen">	
+	<div id="img-toutes-annonces-container" v-for="annonce in filteredList">     					
+		<div class="imgAnnonce">
+			<a href="#" >
+				<img v-bind:src="getSrc(annonce.stock.produit.idProduit)"/>
+			</a>
+		
+			<div id="lblDetailsAnnonceTomate">
+				<button v-on:click="voirAnnonceDetail(annonce)" id="btnDetailsAnnonce" type="button" class="btnAnnonce" data-toggle="modal" data-target="#modal">
+					<span><b>Détails de l'annonce</b></span>
+				</button>
+			</div>
+		</div>
+		
+		<div id="bandeau-transparent">
+			<div id="lblDistance">
+				<span><b>{{annonce.distance}} km</b></span>
+			</div>
+		</div>
+		
+		
+		
+
 		<div class="lblAnnonce">
 			<span id="languetteAnnonce">
 				{{annonce.titre}}<br/>
@@ -112,6 +119,6 @@
 	</div>
 </div>  		
 </div>
-<script src="./app2.js"></script>
+<script src="./js/toutesLesAnnonces.js"></script>
 <script src="./js/modalAnnonceJS.js"></script>
 
