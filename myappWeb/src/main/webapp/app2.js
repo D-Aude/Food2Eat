@@ -27,6 +27,8 @@ var listeannoncesCommnunaute = new Vue({
 	    tileLayer: null,
 //	    layers: [],
 	    seen: true,
+	    markers: [],
+	    markerUser: "",
 //	    annonceMapChoisie: [],
 	    filtreRech : "",
 	    listeIdFF : []
@@ -133,6 +135,9 @@ var listeannoncesCommnunaute = new Vue({
 			  
 			  var vm = this;
 			  
+			  var container = L.DomUtil.get('map');
+			  if(container != null){
+			  
 			  this.map = L.map('map').setView([vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y], 16);
 
 			  this.tileLayer = L.tileLayer(
@@ -146,26 +151,34 @@ var listeannoncesCommnunaute = new Vue({
 			  
 			  this.tileLayer.addTo(this.map);
 			  
-			  var marker = L.marker([48.8162038, 2.327159599999959]).addTo(this.map);
-			  marker.valueOf()._icon.src = "http://localhost:8080/myappWeb/resources/leaflet/images/marker-icon-green.png";
-			  marker.bindPopup("Ma position !");
-			  marker.on('mouseover', function (e) {
+			  this.markerUser = L.marker([vm.useradresseprinc.adresse.x, vm.useradresseprinc.adresse.y]).addTo(this.map);
+			  this.markerUser.valueOf()._icon.src = "http://localhost:8080/myappWeb/resources/leaflet/images/marker-icon-green.png";
+			  this.markerUser.bindPopup("Ma position !");
+			  this.markerUser.on('mouseover', function (e) {
 		            this.openPopup();
 		        });
 				
-				marker.on('mouseout', function (e) {
+			  this.markerUser.on('mouseout', function (e) {
 		            this.closePopup();
 		        });
-			  
+			  }
 			  
 		  },
 		  initLayers() {
 			  
-			  for (i=0; i < this.annonce.length ; i++) {
-					var marker = L.marker([this.annonce[i].adresse.x, this.annonce[i].adresse.y]).addTo(this.map);
-					var nomProduit = this.annonce[i].stock.produit.nomProduit
+			  
+			  // retirer tous les anciens marker
+			  for (i=0; i < this.markers.length ; i++) {
+				  if (this.markers[i] != this.markerUser) {
+					  this.map.removeLayer(this.markers[i])
+				  }		  
+			  }
+			  
+			  for (i=0; i < this.filteredList.length ; i++) {
+					var marker = L.marker([this.filteredList[i].adresse.x, this.filteredList[i].adresse.y]).addTo(this.map);
+					var nomProduit = this.filteredList[i].stock.produit.nomProduit
 					marker.bindPopup(nomProduit);
-					marker.annonce = this.annonce[i];
+					marker.filteredList = this.filteredList[i];
 					// Evenement
 					marker.on('mouseover', function (e) {
 			            this.openPopup();
@@ -178,7 +191,10 @@ var listeannoncesCommnunaute = new Vue({
 					marker.on('click', function(e, info) {
 						this.annonceDetail = this.annonce;
 						vm.afficherModal = true;
-						});				
+						document.getElementById('modal').show();
+						});
+					
+					this.markers.push(marker);
 										
 			  }
 			  
@@ -275,7 +291,8 @@ var listeannoncesCommnunaute = new Vue({
 				document.getElementById('btnMap').textContent = "Afficher la liste";
 				document.getElementById('map').style.visibility = "visible";
 				
-				this.initMap();
+				if (this.map == null) {this.initMap();}
+				
 				this.initLayers();
 			}
 			
