@@ -7,19 +7,31 @@ var vmNotif = new Vue({
 el:'#navbarSupportedContent',
 data:{
 	idUtilisateur : id,
-	 notifMesSouhait :0,
-	 notifMesAnnonces:0
+	 notifMesSouhait : 0,
+	 notifMesAnnonces: 0,
+	 notifInvitFF: 0
 },
 created : function (){
+	var vmNotif = this
+	console.log("init")
 	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/'+ vmNotif.idUtilisateur)
 		.then(function (response) {
-			vmArche.notifMesSouhait = response.data
+			this.notifMesSouhait = response.data
+			console.log("messouhait :"+this.notifMesSouhait)
+			console.log("mesosuhait:"+response.data)
 		}),
 	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/NotifReponseAnnonce/'+vmNotif.idUtilisateur)
 		.then(function (response) {
-			vmArche.notifMesSouhait = response.data
+			this.notifMesAnnonces = response.data
+			console.log("annonce:"+this.notifMesAnnonces)
+			console.log("annonce:"+response.data)
 		})	
-		
+		axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/notif/'+vmNotif.idUtilisateur)
+		.then(function (response) {
+			this.notifInvitFF = response.data
+			console.log("ff:"+ this.notifInvitFF)
+			console.log("ff:"+response.data)
+		})	
 	
 }
 	

@@ -101,7 +101,7 @@ public class FoodfriendRest {
 	}
 	
 	
-	//http://localhost:8080/myappWeb/services/rest/foodfriend/test
+	//http://localhost:8080/myappWeb/services/rest/foodfriend/notif/7
 //	@Path("/test")
 //	@GET
 //	public Long test(@QueryParam("iduser")int num) {
