@@ -12,5 +12,6 @@ public interface IServiceStock {
 
 	Stock saveOrUpdateStock(Stock stock);
 
-
+	int rechercherStockPerimeUtilisateur(int idUtilisateur);
+	
 }

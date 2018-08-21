@@ -9,7 +9,7 @@ public interface IDaoStock {
 	public List<Stock> rechercherStockUtilisateur(int idUtilisateur);
 	public List<Stock> rechercherStockModeConservation(int idUtilisateur, String nomModeConservation);
 	public void mettreAJourStock(Stock stock);
-	
+	public int rechercherStockPerimeUtilisateur(int idUtilisateur);
 
 
 }
