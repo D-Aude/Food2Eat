@@ -1,3 +1,32 @@
+// Récupération de la Session
+var Session = sessionStorage.getItem('utilisateurCourant');
+var id = JSON.parse(Session)["idUtilisateur"];
+
+var vmNotif = new Vue({
+
+el:'#navbarSupportedContent',
+data:{
+	idUtilisateur : id,
+	 notifMesSouhait :0,
+	 notifMesAnnonces:0
+},
+created : function (){
+	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/'+ vmNotif.idUtilisateur)
+		.then(function (response) {
+			vmArche.notifMesSouhait = response.data
+		}),
+	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/NotifReponseAnnonce/'+vmNotif.idUtilisateur)
+		.then(function (response) {
+			vmArche.notifMesSouhait = response.data
+		})	
+		
+	
+}
+	
+	
+	
+})
+
 var vmArche = new Vue({
   el: '#flexContent',
   data: {
@@ -5,8 +34,7 @@ var vmArche = new Vue({
     utilisateur: [],
     nbrDonsEffectues : 0,
     nbrDonsTotaux: 0,
-    notifMesSouhait :0,
-    notifMesAnnonces:0
+   
   },
   created: function () {
 	  var session = sessionStorage.getItem('utilisateurCourant');
@@ -30,14 +58,6 @@ var vmArche = new Vue({
 				.then(function (response) {
 					vmArche.nbrDonsTotaux = response.data
 				})
-				 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/'+this.utilisateur.idUtilisateur)
-					.then(function (response) {
-						vmArche.notifMesSouhait = response.data
-					}),
-				 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/NotifReponseAnnonce/'+this.utilisateur.idUtilisateur)
-					.then(function (response) {
-						vmArche.notifMesSouhait = response.data
-					})	
 	  }
 		
 	
