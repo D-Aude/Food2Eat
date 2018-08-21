@@ -19,7 +19,7 @@
 			<div id="Annonces-elementsTermines" v-for="evaluation in evaluations">
 		 <img class="imgEnviesTermines" v-bind:src="getSrc(evaluation.repannonce.annonce.stock.produit.idProduit)" style="position:relative; left:0px;"/> </br>
 		 	<span id="lblEnviesTerminees">
-					Le {{moment(evaluation.repannonce.dateRdv).format('DD/MM/YYYY HH:mm')}} vous avez
+					Le {{moment(evaluation.repannonce.dateRdv).format('DD/MM/YYYY hh:mm')}} vous avez
 						reçu de {{evaluation.repannonce.annonce.stock.utilisateur.pseudo}}, </br>le don de :
 						{{evaluation.repannonce.annonce.stock.quantite}} {{evaluation.repannonce.annonce.stock.produit.nomProduit}} </br>
 						<b><u>Note associée à ce don </u></b>  : {{evaluation.note}}/5 <br/>
@@ -33,7 +33,7 @@
 		
 
 				 <span id="lblEnviesTerminees2">
-					Vous avez rendez-vous le <b><u>{{repannonce.idReponse}}{{moment(repannonce.dateRdv).format("YYYY-MM-DD hh:mm:ss")}} avec {{repannonce.annonce.stock.utilisateur.pseudo}}</u></b> </br>
+					Vous avez rendez-vous le <b><u>{{repannonce.idReponse}}{{moment(repannonce.dateRdv).format("DD/MM/YYYY hh:mm")}} avec {{repannonce.annonce.stock.utilisateur.pseudo}}</u></b> </br>
 					concernant le don de <b><u>{{repannonce.annonce.stock.quantite}} {{repannonce.annonce.stock.produit.nomProduit}} !</u></b></span>
 
 				
@@ -43,7 +43,7 @@
 				<!-- <div v-if=" aujourdhui > repannonce.dateRdv "> -->
 				</br>
 				<span id="lblEnviesTerminees3">
-					Le <b><u>{{moment(repannonce.dateRdv).format('YYYY-MM-DD hh:mm:ss')}}</u></b> vous avez reçu de {{repannonce.annonce.stock.utilisateur.pseudo}}, le don de :</br>  
+					Le <b><u>{{moment(repannonce.dateRdv).format('DD/MM/YYYY hh:mm')}}</u></b> vous avez reçu de {{repannonce.annonce.stock.utilisateur.pseudo}}, le don de :</br>  
 					<b><u>{{repannonce.annonce.stock.quantite}} {{repannonce.annonce.stock.produit.nomProduit}}</u></b>
 					</br>
 					Merci de noter votre échange : <select id="selectNoteEvaluation" v-model="selected">
