@@ -35,7 +35,7 @@ var annoncesAvecReponses = new Vue({
 			return moment(date);
 		},
 		date: function (date) {
-			return moment(date).locale('fr').format('MMMM Do YYYY, h:mm:ss a');
+			return moment(date).locale('fr').format('MMMM Do YYYY hh:mm');
 		},
 		// Afficher les réponses d'une annonce
 		afficherReponse: function(annonce) {
@@ -52,15 +52,22 @@ var annoncesAvecReponses = new Vue({
 		},
 		
 		// pour bouton accepter une réponse
-		accepterRep: function(annonceTerminee, idReponse) {
-			
+		accepterRep: function(annonceTerminee, reponse) {
+			console.log("accepter réponse");
+			console.log(annonceTerminee);
+			console.log(reponse);
 			var vm = this;			
 			// maj réponse et annonce dans la base
 			for (var i = 0 ; i < vm.reponse.length ; i++) {				
 				
-				if (vm.reponse[i].idReponse == idReponse) { // Accepter la reponse
+				if (vm.reponse[i].idReponse == reponse.idReponse) { // Accepter la reponse
+					
+					
 					// maj reponse
-					vm.reponse[i].dateAcceptationReponse = Date.now();					
+					vm.reponse[i].dateAcceptationReponse = Date.now();
+					
+					//ajout de la réponse dans repRdv
+					vm.reponseRdv.push(vm.reponse[i]);
 					
 			    	// POST Reponse acceptee
 			    	axios.post('http://localhost:8080/myappWeb/services/rest/reponses/maj',
@@ -93,9 +100,9 @@ var annoncesAvecReponses = new Vue({
 		
 		// pour bouton refuser une réponse
 		refuserRep: function(reponseRefusee) {
+			console.log("refuser rep")
 			var vm = this;
-			
-			console.log("boucle for");
+						
 			
 			// décrémente le nombre de réponse de vm.annonce :
 			for (var i=0 ; i < vm.annonce.length ; i++) {				

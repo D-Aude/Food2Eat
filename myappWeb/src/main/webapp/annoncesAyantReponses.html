@@ -13,18 +13,19 @@
 		<div id="annoncesAvecReponses">
 		
 		
-				<div id="titre"><h1 >MES ANNONCES POURVUES</h1><br/>
+				<div id="titre"><h1 >MES ANNONCES REPONDUES</h1><br/>
 				
 				<!--===============================Bouton de recherche==============================-->
 					<div id="boutons">			
-						<button v-on:click="voirRdvAconfirmer()" type="button">Mes RDV à confirmer</button>
-						<button v-on:click="voirRdvAVenir()" type="button">Mes RDV à venir</button>			
+						<button v-on:click="voirRdvAconfirmer()" type="button">Voir les réponses à valider</button>
+						<button v-on:click="voirRdvAVenir()" type="button">Voir mes RDV à venir</button>			
 					</div><br/>
 	
 				</div>		
 			
 			<!--===============================tableau RDV à confirmer==============================-->
  			<div v-if="btnRDVaConfirmer == true" class="table-responsive-sm">
+ 			<h5>MES REPONSES A VALIDER</h5>
 				<table class="table table-hover">
 				  <thead class="thead-dark">
 				    <tr>
@@ -50,6 +51,7 @@
 			
 			<!--===============================tableau RDV à venir==============================-->
  			<div v-if="btnRDVaConfirmer == false" class="table-responsive-sm">
+ 				<h5>MES RDV A VENIR</h5>
 				<table class="table table-hover">
 				  <thead class="thead-dark">
 				    <tr>
@@ -66,7 +68,13 @@
 						      <td>{{moment(repRdv.annonce.datePublication).format('DD/MM/YYYY')}}</td>
 						      <td>Titre : {{repRdv.annonce.titre}} <br/>Produit proposé : {{repRdv.annonce.stock.produit.nomProduit}}						      						      						      
 						      </td>
-						      <td>date: {{repRdv.dateRdv}}<br/> lieu : </td>
+						      <td>
+						      	{{repRdv.utilisateur.pseudo}}<br/>
+						      	<img id="userRep" v-bind:src="getSrcUser(repRdv.utilisateur.pseudo)"/><br/>
+							    date: {{moment(repRdv.dateRdv).format('DD/MM/YYYY h:mm')}}<br/>
+							    lieu : {{repRdv.annonce.adresse.numeroVoie}} {{repRdv.annonce.adresse.typeVoie}} {{repRdv.annonce.adresse.nomVoie}}<br/> 
+							    {{repRdv.annonce.adresse.ville.ville}} {{repRdv.annonce.adresse.ville.codePostal}}
+							  </td>
 					  	</tr>			  			  
 				  </tbody>
 				</table>
@@ -89,8 +97,8 @@
     				   <div id="modal-body-rep">					
 							<span v-for="reponse in reponse">
 								<img id="userRep" v-bind:src="getSrcUser(reponse.utilisateur.pseudo)"/>
-								{{reponse.utilisateur.pseudo}} souhaite {{moment(reponse.dateRdv).format('DD/MM/YYYY')}}
-								<button v-on:click="accepterRep(annonceSelectionnee, reponse.idReponse)">ACCEPTER</button>
+								<b>{{reponse.utilisateur.pseudo}}</b> - Date de RDV choisie : {{moment(reponse.dateRdv).format('DD/MM/YYYY h:mm')}}
+								<button v-on:click="accepterRep(annonceSelectionnee, reponse)">ACCEPTER</button>
 								<button v-on:click="refuserRep(reponse)">REFUSER</button><br/>
 																						
 							</span>
