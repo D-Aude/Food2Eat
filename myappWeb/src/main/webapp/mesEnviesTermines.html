@@ -19,6 +19,7 @@
 			<div id="Annonces-elementsTermines" v-for="evaluation in evaluations">
 		 <img class="imgEnviesTermines" v-bind:src="getSrc(evaluation.repannonce.annonce.stock.produit.idProduit)" style="position:relative; left:0px;"/> </br>
 		 	<span id="lblEnviesTerminees">
+
 					Le {{moment(evaluation.repannonce.dateRdv).format('DD/MM/YYYY HH:mm')}} vous avez
 						reçu de {{evaluation.repannonce.annonce.stock.utilisateur.pseudo}}, </br>le don de :
 						{{evaluation.repannonce.annonce.stock.quantite}} {{evaluation.repannonce.annonce.stock.produit.nomProduit}} </br>
