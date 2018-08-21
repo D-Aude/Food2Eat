@@ -93,4 +93,18 @@ public class ServiceReponses implements IServiceReponses {
 		return daoReponses.RepannonceParIdEnvieEnAttente(idUtilisateur);
 	}
 
+
+	@Override
+	public Long CountNotifAcceptationReponse(int idUtilisateur) {
+		
+		return daoReponses.countNotifEnvieValidé(idUtilisateur);
+	}
+
+
+	@Override
+	public Long CountReponseAnnonce(int idUtilisateur) {
+		
+		return daoReponses.countNotifReponseAnnonce(idUtilisateur);
+	}
+
 }

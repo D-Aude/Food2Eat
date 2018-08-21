@@ -2,7 +2,11 @@ var vmArche = new Vue({
   el: '#flexContent',
   data: {
     pseudo : '',
-    utilisateur: []
+    utilisateur: [],
+    nbrDonsEffectues : 0,
+    nbrDonsTotaux: 0,
+    notifMesSouhait :0,
+    notifMesAnnonces:0
   },
   created: function () {
 	  var session = sessionStorage.getItem('utilisateurCourant');
@@ -17,7 +21,26 @@ var vmArche = new Vue({
 		  this.pseudo = (JSON.parse(session)).pseudo;
 		  var btnConnexion = document.getElementById('btnConnexion');
 		  btnConnexion.style.display = "none";
+		  
+		  axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountparUser/' + this.utilisateur.idUtilisateur)
+			.then(function (response) {
+				vmArche.nbrDonsEffectues = response.data
+			}),
+			 axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountAnnoncesTotales')
+				.then(function (response) {
+					vmArche.nbrDonsTotaux = response.data
+				})
+				 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/'+this.utilisateur.idUtilisateur)
+					.then(function (response) {
+						vmArche.notifMesSouhait = response.data
+					}),
+				 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/NotifReponseAnnonce/'+this.utilisateur.idUtilisateur)
+					.then(function (response) {
+						vmArche.notifMesSouhait = response.data
+					})	
 	  }
+		
+	
   },
   methods: 
   {

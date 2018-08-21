@@ -23,14 +23,14 @@
 						<span>{{annonce.titre}} Votre annonce est terminée !<br />
 							Vous avez fait un don de : {{annonce.stock.quantite}}
 							{{annonce.stock.produit.nomProduit}} </br> 
-							Date de l'échange :{{moment(annonce.repannonces.dateRDV).format('L')}} 
+							Date de l'échange :{{moment(annonce.DateFinAnnonce).format('DD/MM/YYYY')}} 
 						 </span> <br />
 					</div>
 					<div v-if="annonce.dateFinAnnonce == null">
 					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)" class="imgAnnonceTermine" /><br/>
 							Vous avez annulez votre don de :  {{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}} </br>
 							Date de l'annulation :
-							{{moment(annonce.dateAnnulation).format('L')}}
+							{{moment(annonce.dateAnnulation).format('DD/MM/YYYY')}}
 							Merci de renseigner un motif d'annulation :  </br>
 						
 						<select id="selectMotifAnnulation" v-model="nomAnnulation">
@@ -49,7 +49,7 @@
 					
 						Motif de l'annulation : {{annonce.annulation.nomAnnulation}}<br />
 						Date de l'annulation :
-						{{moment(annonce.dateAnnulation).format('L')}}
+						{{moment(annonce.dateAnnulation).format('DD/MM/YYYY')}}
 						
 					</span>
 			</div>

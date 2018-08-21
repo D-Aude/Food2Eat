@@ -29,7 +29,7 @@
 				<div id="Envies-elementsTermines" v-for="repannonce in repannonces">
 				   <img class ="imgEnviesTermines" v-bind:src="getSrc(repannonce.annonce.stock.produit.idProduit)"/> </br>
 				 <div v-if=" aujourdhui < repannonce.dateRdv ">
-					Vous avez rendez-vous le {{moment(repannonce.dateRdv).format('DD/MM/YYYY,hh:mm:ss')}} avec {{repannonce.annonce.stock.utilisateur.pseudo}} </br>
+					Vous avez rendez-vous le {{moment(repannonce.dateRdv).format('DD/MM/YYYY')}} avec {{repannonce.annonce.stock.utilisateur.pseudo}} </br>
 					concernant le don de {{repannonce.annonce.stock.quantite}} {{repannonce.annonce.stock.produit.nomProduit}} !
 				
 				</hr></br>

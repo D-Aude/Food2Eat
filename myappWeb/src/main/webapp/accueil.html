@@ -1,4 +1,4 @@
-<!DOCTYPE>
+  n,;:<!DOCTYPE>
 <html>
 <head>
 <title>Food 2 Eat</title>
@@ -54,13 +54,13 @@
 					     <li class="dropdown">
 					      <a id="toutes-annonces" class="menu-mes-annonces" href="#" style="color:white!important;">Toutes les annonces</a>
 					            <ul class="dropdown-menu" id="menuAnnonces3">
-							        <li><a id="mesSouhaits" href="#" style="color:white!important;">Mes souhaits</a></li>
+							        <li><a id="mesSouhaits" href="#" style="color:white!important;">Mes souhaits{{notifMesSouhait}}</a></li>
 							        <li><a id="mesSouhaitsClotures" href="#" style="color:white;">Mes souhaits cloturés</a></li>
 								</ul>
 					    <li class="dropdown">
 					      <a id="mesAnnonces" class="menu-mes-annonces" href="#" style="color:white!important;">Mes annonces</a>
 					            <ul class="dropdown-menu" id="menuAnnonces2">
-							        <li><a id="menuReponsesAValider" href="#" style="color:white!important;">Réponses à valider</a></li>
+							        <li><a id="menuReponsesAValider" href="#" style="color:white!important;">Réponses à valider{{notifMesAnnonces}}</a></li>
 							         <li><a id="annoncesTerminees" href="#" style="color:white!important;">Mes annonces terminées</a></li>
 									<li><a id="testOude" href="#">test oude</a></li>
 							         
@@ -102,8 +102,8 @@
 				<b>Bonjour {{pseudo}} !!</b> 	<button id="btnConnexion" @click="seConnecter()" >Se Connecter</button>
 			</div>
 			<div class="lblStatsUser">
-				<p class="donTotal">Nombre total de don effectué : </p> 
-				<p class="dernierDon"> Dernier don effectué :  </p>
+				<p class="donTotal">Nombre total de don effectué sur le site: {{nbrDonsTotaux}} </p> 
+				<p class="dernierDon"> Nombre de dons réalisé depuis votre inscription  : {{nbrDonsEffectues}} </p>
 				<b class="produitPeremption"> Produit(s) arrivant à péremption : </b>
 			</div>
 		</div>

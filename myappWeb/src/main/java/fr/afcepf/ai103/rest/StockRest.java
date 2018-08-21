@@ -45,13 +45,6 @@ public class StockRest {
 			return serviceStock.rechercherStockUtilisateur(id);
 	}
 	
-	@Path("postStock") //dernière partie de l'URL
-	@POST 
-	//URL = http://localhost:8080/myappWeb/services/rest/stock/postStock
-	@Consumes("application/json")
-	public Stock postStock(Stock stock) {
-		return serviceStock.saveOrUpdateStock(stock);
-		
-	}
-	
+
+
 }

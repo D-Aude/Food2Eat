@@ -68,7 +68,8 @@ import java.util.List;
 													+ "and s.dateJeter is null "
 													+ "and s.dateManger is null "
 													+ "and (s.annonces is empty or a.dateFinAnnonce is null) "
-												+ "ORDER BY s.dlc")
+												+ "ORDER BY s.dlc"),
+		
 })
 
 public class Stock implements Serializable {

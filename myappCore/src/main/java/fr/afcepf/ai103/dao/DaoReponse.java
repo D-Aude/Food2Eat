@@ -106,6 +106,22 @@ public class DaoReponse implements IDaoReponses {
 				.setParameter("idUtilisateur", idUtilisateur)
 				.getResultList();
 	}
+
+	@Override
+	public Long countNotifEnvieValidé(int idUtilisateur) {
+		
+		return entityManager.createNamedQuery("Repannonce.CountRdvAVenir",Long.class)
+				.setParameter("idUtilisateur", idUtilisateur)
+				.getSingleResult();
+	}
+
+	@Override
+	public Long countNotifReponseAnnonce(int idUtilisateur) {
+	
+		return entityManager.createNamedQuery("Repannonce.CountRepAnnonceParIdUser",Long.class)
+				.setParameter("idUtilisateur", idUtilisateur)
+				.getSingleResult();
+	}
 	
 
 

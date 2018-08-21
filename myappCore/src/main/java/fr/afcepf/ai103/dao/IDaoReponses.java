@@ -32,5 +32,8 @@ public interface IDaoReponses {
 	// Maj une réponse dans la base
 	public Repannonce mettreAjourReponse(Repannonce rep);
 
-
+	public Long countNotifEnvieValidé(int idUtilisateur);
+	
+	public Long countNotifReponseAnnonce(int idUtilisateur);
+	
 }
