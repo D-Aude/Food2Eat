@@ -94,6 +94,7 @@ public class ServiceReponses implements IServiceReponses {
 	}
 
 
+
 	@Override
 	public Long CountNotifAcceptationReponse(int idUtilisateur) {
 		
@@ -105,6 +106,14 @@ public class ServiceReponses implements IServiceReponses {
 	public Long CountReponseAnnonce(int idUtilisateur) {
 		
 		return daoReponses.countNotifReponseAnnonce(idUtilisateur);
+
+	}
+	
+	@Override
+	public List<Repannonce> chercherMesAnnoncesRdvAVenir(int idUtilisateur) {
+
+		return daoReponses.repannonceMesAnnoncesRdvAVenir(idUtilisateur);
+	// reponses à valider + req rdv à venir
 	}
 
 }

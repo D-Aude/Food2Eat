@@ -15,7 +15,8 @@ import java.util.Date;
 	//@NamedQuery(name="Foodfriend.utilisateur1", query="SELECT f FROM Foodfriend f WHERE (f.utilisateur1.idUtilisateur =:utilisateur1) and (f.dateFinRelation is null) and (f.dateReponse is not null)"),
 	@NamedQuery(name="Foodfriend.utilisateur1", query="SELECT f FROM Foodfriend f WHERE (f.utilisateur1.idUtilisateur =:utilisateur1 or f.utilisateur2.idUtilisateur =:utilisateur1) and (f.dateFinRelation is null) and (f.dateReponse is not null)"),
 	@NamedQuery(name="Foodfriend.demandesrecues", query="SELECT f FROM Foodfriend f WHERE (f.utilisateur2.idUtilisateur =:utilisateur2) and (f.dateReponse is null)"),
-	@NamedQuery(name="Foodfriend.demandesenvoyees", query="SELECT f FROM Foodfriend f WHERE (f.utilisateur1.idUtilisateur =:utilisateur1) and (f.dateReponse is null)")
+	@NamedQuery(name="Foodfriend.demandesenvoyees", query="SELECT f FROM Foodfriend f WHERE (f.utilisateur1.idUtilisateur =:utilisateur1) and (f.dateReponse is null)"),
+	@NamedQuery(name="Foodfriend.notifDemandesrecues", query="SELECT COUNT (f.dateDemande) FROM Foodfriend f WHERE (f.utilisateur2.idUtilisateur =:utilisateur2) and (f.dateReponse is null)")
 })
 public class Foodfriend {
 	//private static final long serialVersionUID = 1L;

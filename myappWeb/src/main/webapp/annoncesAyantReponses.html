@@ -11,46 +11,110 @@
 <body>	
 
 		<div id="annoncesAvecReponses">
-			<div id="titre"><h1 >MES ANNONCES POURVUES</h1><br/>
-			
-			<div id="filtrerReponses">
-			<!--===============================filtre de trie==============================-->
-				<select id="filtrerLesAnnoncesRep" v-model="filtreRech">
-					<option disabled value="">Afficher ...</option>
-					<option>Les réponses à valider</option>
-					<option>Les réponses validée</option>
-				</select>			
-			</div>
-			
-			</div>
-			
-
-			
-			<!--===============================affichage tableau ==============================-->
-			
-			<div class="ligne">
-				<div id="colDate" class="header">Date de publication</div>
-				<div id="colAnnonce" class="header">Annonce</div>
-				<div id="colNbRep" class="header">Nombre de réponses</div>
-				<div id="colBtn" class="header"></div>
-			</div>
-			
-			
-	   			<div id="annoncesReponses" v-for="annonce in annonce">     															
-
-					<div class="case1">{{moment(annonce[0].datePublication).format('DD/MM/YYYY')}}</div>
-					
-					<div class="case2"><b>Titre : {{annonce[0].titre}} <br/>
-		   				Produit proposé : {{annonce[0].stock.produit.nomProduit}}</b>
-		   			</div>
-		   				
-					<div class="case3">{{annonce[1]}}</div>
-					
-					<div class="case4"><button>afficher</button></div>					
-		   				  				
+		
+		
+				<div id="titre"><h1 >MES ANNONCES REPONDUES</h1><br/>
+				
+				<!--===============================Bouton de recherche==============================-->
+					<div id="boutons">			
+						<button v-on:click="voirRdvAconfirmer()" type="button">Voir les réponses à valider</button>
+						<button v-on:click="voirRdvAVenir()" type="button">Voir mes RDV à venir</button>			
+					</div><br/>
 	
-	   			</div>
-   			</div>
+				</div>		
+			
+			<!--===============================tableau RDV à confirmer==============================-->
+ 			<div v-if="btnRDVaConfirmer == true" class="table-responsive-sm">
+ 			<h5>MES REPONSES A VALIDER</h5>
+				<table class="table table-hover">
+				  <thead class="thead-dark">
+				    <tr>
+				      <!-- <th scope="col">#</th> -->
+				      <th scope="col">Date de publication</th>
+				      <th scope="col">Annonces avec RDV à confirmer</th>
+				      <th scope="col">Nombre de réponses</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  				  
+					  	<tr v-if="btnRDVaConfirmer == true" v-for="annonce in annonce" v-on:click="afficherReponse(annonce[0])" data-toggle="modal" data-target="#modal">
+						  	<!-- <th scope="row">{{incrementer()}}</th> -->
+						      <td>{{moment(annonce[0].datePublication).format('DD/MM/YYYY')}}</td>
+						      <td>Titre : {{annonce[0].titre}} <br/>Produit proposé : {{annonce[0].stock.produit.nomProduit}}						      						      
+						      
+						      </td>
+						      <td>{{annonce[1]}}</td>
+					  	</tr>			  			  
+				  </tbody>
+				</table>
+			</div>
+			
+			<!--===============================tableau RDV à venir==============================-->
+ 			<div v-if="btnRDVaConfirmer == false" class="table-responsive-sm">
+ 				<h5>MES RDV A VENIR</h5>
+				<table class="table table-hover">
+				  <thead class="thead-dark">
+				    <tr>
+				      <!-- <th scope="col">#</th> -->
+				      <th scope="col">Date de publication</th>
+				      <th scope="col">Annonces avec RDV à venir</th>
+				      <th scope="col">RDV</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  				  
+					  	<tr v-for="repRdv in reponseRdv"  v-if="btnRDVaConfirmer == false">
+						  	<!-- <th scope="row">{{incrementer()}}</th> -->
+						      <td>{{moment(repRdv.annonce.datePublication).format('DD/MM/YYYY')}}</td>
+						      <td>Titre : {{repRdv.annonce.titre}} <br/>Produit proposé : {{repRdv.annonce.stock.produit.nomProduit}}						      						      						      
+						      </td>
+						      <td>
+						      	{{repRdv.utilisateur.pseudo}}<br/>
+						      	<img id="userRep" v-bind:src="getSrcUser(repRdv.utilisateur.pseudo)"/><br/>
+							    date: {{moment(repRdv.dateRdv).format('DD/MM/YYYY h:mm')}}<br/>
+							    lieu : {{repRdv.annonce.adresse.numeroVoie}} {{repRdv.annonce.adresse.typeVoie}} {{repRdv.annonce.adresse.nomVoie}}<br/> 
+							    {{repRdv.annonce.adresse.ville.ville}} {{repRdv.annonce.adresse.ville.codePostal}}
+							  </td>
+					  	</tr>			  			  
+				  </tbody>
+				</table>
+			</div>
+			
+			
+
+			
+			<!--===============================Modal ==============================-->
+			
+			<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  			<div class="modal-dialog" role="document">
+   				<div class="modal-content">
+      				<div class="modal-header">
+      					<h5 class="modal-title" id="exampleModalLabel">REPONSES RECUES<br/>Annonce : "{{annonceSelectionnee.titre}}"</h5>
+       					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     				    	<span aria-hidden="true">&times;</span>
+      					</button>
+    				</div>
+    				   <div id="modal-body-rep">					
+							<span v-for="reponse in reponse">
+								<img id="userRep" v-bind:src="getSrcUser(reponse.utilisateur.pseudo)"/>
+								<b>{{reponse.utilisateur.pseudo}}</b> - Date de RDV choisie : {{moment(reponse.dateRdv).format('DD/MM/YYYY h:mm')}}
+								<button v-on:click="accepterRep(annonceSelectionnee, reponse)">ACCEPTER</button>
+								<button v-on:click="refuserRep(reponse)">REFUSER</button><br/>
+																						
+							</span>
+							
+													
+    				  </div>
+    				  <div class="modal-footer">   				   		
+     					    <button type="button" class="btn btn-primary" data-dismiss="modal">Retour</button>
+    				  </div>
+   					</div>
+   					
+ 			   </div>
+			</div>
+
+	   			
+   		</div>
   		
 
 	<script src="./js/ReponsesBis.js"></script>

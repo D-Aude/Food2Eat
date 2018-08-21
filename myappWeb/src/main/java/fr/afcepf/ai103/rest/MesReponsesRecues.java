@@ -97,6 +97,7 @@ public class MesReponsesRecues {
 		System.out.println( "envie en attente dans le rest " +idUtilisateur);
 		return serviceReponses.rechercherReponseParIdUtilisateurEnvieEnAttente(idUtilisateur);	
 	}
+
 	//http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/2
 	@Path("notificationAcceptationReponse/{idUtilisateur}")
 	@GET
@@ -110,4 +111,17 @@ public class MesReponsesRecues {
 	public Long notificationReponseAnnonce(@PathParam("idUtilisateur") int idUtilisateur) {
 		return serviceReponses.CountReponseAnnonce(idUtilisateur);
 	}
+
+	
+	//http://localhost:8080/myappWeb/services/rest/reponses/mesAnnoncesRdvAVenir/7
+	@Path("/mesAnnoncesRdvAVenir/{idUtilisateur}")
+	@GET
+	public List <Repannonce> chercherMesAnnoncesRdvAVenir(@PathParam("idUtilisateur")int idUtilisateur){
+		
+		return serviceReponses.chercherMesAnnoncesRdvAVenir(idUtilisateur);	
+	}
+	
+	// reponses à valider + req rdv à venir
+	
+	
 }

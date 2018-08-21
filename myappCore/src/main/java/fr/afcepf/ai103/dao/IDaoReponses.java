@@ -32,8 +32,15 @@ public interface IDaoReponses {
 	// Maj une réponse dans la base
 	public Repannonce mettreAjourReponse(Repannonce rep);
 
+
 	public Long countNotifEnvieValidé(int idUtilisateur);
 	
 	public Long countNotifReponseAnnonce(int idUtilisateur);
 	
+
+	// Chercher les RDV à venir de mes annonces
+	public List<Repannonce> repannonceMesAnnoncesRdvAVenir(int idUtilisateur);
+
+
+	// reponses à valider + req rdv à venir
 }
