@@ -11,5 +11,7 @@ public interface IServiceStock {
 	List<Stock> rechercherStockModeConservation(int idUtilisateur, String nomModeConservation);
 
 	Stock saveOrUpdateStock(Stock stock);
+
+	int rechercherStockPerimeUtilisateur(int idUtilisateur);
 	
 }
