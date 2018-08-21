@@ -96,13 +96,26 @@ var vm = new Vue({
 			  document.getElementById("dateConsoPrefDetail").innerHTML = moment(stock.dateConsoPref).format('DD/MM/YYYY') ;
 			  
 			  //Modification info
+			  var semaine = moment(now).add(7, 'd');
+			  console.log(now+' => '+semaine)
+//			  
+//			  var semaine = new Date();
+//			  semaine.setDate(now.getDate() + 7);
 			  if(stock.dlc<now)
 			  {
-				  document.getElementById("info").innerHTML = "Attention la DLC de ce produit est dépassé (don impossible)"
+				  document.getElementById("info").innerHTML = "Attention la DLC de ce produit est dépassé ! (Don impossible)";
+				  document.getElementById("info").style.color = "black";
+				  document.getElementById("info").style.display = "block";
+			  }
+			  else if(stock.dlc<semaine)
+			  {
+				  document.getElementById("info").innerHTML = "La DLC de ce produit se rapproche.";
+				  document.getElementById("info").style.color = "orange";
+				  document.getElementById("info").style.display = "block";
 			  }
 			  else
 			  {
-				  document.getElementById("info").innerHTML = '';
+				  document.getElementById("info").style.display = "none";
 			  }
 			  
 		  }
@@ -324,7 +337,8 @@ var vmAjouter = new Vue({
 	    inputQuantite: '1',
 	    nombreUnite: '',
 	    idMesure: 0,
-	    restant: ''
+	    restant: '',
+	    selectedProduit: []
 	  },
 	  created: function () {
 		  console.log('Init Ajouter');
@@ -334,7 +348,6 @@ var vmAjouter = new Vue({
 	          .then(function (response) {
 	        	  vmAjouter.produits = response.data
 	      })
-		  
 	  },
 	  computed: {
 		  orderedProduits: function () {
@@ -346,6 +359,14 @@ var vmAjouter = new Vue({
 	  },
 	  watch: {
 		  selectProduit: function (val, oldVal) {
+			  //garder produit selectionne en memoire
+			  for(var i=0;i<this.produits.length;i++)
+		      {
+		    	 if(this.produits[i].idProduit == val)
+		    		 this.selectedProduit = this.produits[i];
+		      }
+			  
+			  //modif partie etat
 			  if(val==0)
 			  {
 				  var nbUnite = 0;
@@ -353,36 +374,43 @@ var vmAjouter = new Vue({
 			  }
 			  else
 			  {
-				  var nbUnite = this.produits[val-1].nombreUnite;
-				  var idMesure = this.produits[val-1].mesure.idMesure;
+				  var nbUnite = this.selectedProduit.nombreUnite;
+				  var idMesure = this.selectedProduit.mesure.idMesure;
 			  }
+			  
 			  this.idMesure=idMesure;
 			  this.nombreUnite=nbUnite;
 			  this.restant = nbUnite;
-			  console.log("Selection produit n°"+val+", idMesure="+idMesure+", nombre d'unite="+nbUnite);
+			  console.log("Selection produit n°"+val+", libelle:"+this.produits[val-1]+", idMesure="+idMesure+", nombre d'unite="+nbUnite);
 		  }
 	  },
 	  methods: {
 			Ajouter: function () {
-				var produit = document.getElementById('produit').value;
-				var quantite = document.getElementById('quantite').value;
-				var dlc = document.getElementById('dlc');
+				var idProduit = document.getElementById('produit').value;
 				
-				console.log('Ajouter Stock: produit='+produit+'; quantite='+quantite+'; dlc='+JSON.stringify(dlc.value)+';');
-				
-				if(produit == 0)
+				if(idProduit == 0)
 				{
 					alert('Veuillez rentrer un produit à ajouter !')
 				}
 				else
 				{
+					var quantite = document.getElementById('quantite').value;
+					
+					for(var i=0;i<this.produits.length;i++)
+				      {
+				    	 if(this.produits[i].idProduit == idProduit)
+				    		 var produit = this.produits[i];
+				      }
+					
+					console.log('Ajouter Stock: produit='+idProduit+'; quantite='+quantite+'; dlc='+JSON.stringify(dlc.value)+';');
+					
 					var stock = {
 							idStock : 0,
 							dateConsoPref : new Date(),
 							dateJeter : null,
 							dateManger : null,
 							dlc : dlc.valueAsNumber,
-							fractionRestante : this.restant,
+							fractionRestante : null,
 							quantite : quantite,
 					};
 					
@@ -393,16 +421,17 @@ var vmAjouter = new Vue({
 						
 						var now = Date.now();
 						stock.dlc = moment(now).add(7, 'd');
-						var dateConsoPref = moment(stock.dlc).add(this.produits[produit-1].modeConservation.joursExtensionConservation, 'd');
+						var dateConsoPref = moment(stock.dlc).add(produit.modeConservation.joursExtensionConservation, 'd');
 					    stock.dateConsoPref = dateConsoPref
 					}
 					else
 					{
-						var dateConsoPref = moment(dlc.valueAsNumber).add(this.produits[produit-1].modeConservation.joursExtensionConservation, 'd');
+						var dateConsoPref = moment(dlc.valueAsNumber).add(produit.modeConservation.joursExtensionConservation, 'd');
 					      stock.dateConsoPref = dateConsoPref;
 					}
-				      
-				      if(this.restant == this.nombreUnite)
+					
+					stock.fractionRestante = document.getElementById('etat').value;
+				      if(stock.fractionRestante == produit.nombreUnite)
 				      {
 				    	  stock.entame = 0;
 				      }
@@ -410,16 +439,13 @@ var vmAjouter = new Vue({
 				      {
 				    	  stock.entame = 1;
 				      }
-	
 				      stock.dateAchat = Date.now();
-	
-				      stock.produit = this.produits[produit-1];
+				      stock.produit = produit;
 	
 				      var session = sessionStorage.getItem('utilisateurCourant');
 				      stock.utilisateur = JSON.parse(session);
 	
 				      var stockAsJsonString = JSON.stringify(stock);
-				      
 				      console.log(stockAsJsonString);
 				      
 				    //declenchement de la requête:

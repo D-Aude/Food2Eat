@@ -186,7 +186,7 @@ public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
 
 	@Override
 	public Long CountAnnonceTermines() {
-		// TODO Auto-generated method stub
+	
 		return entityManager.createNamedQuery("Annonce.CompterLesDonsTermines",Long.class)
 				.getSingleResult();
 	}

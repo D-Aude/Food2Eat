@@ -1,5 +1,7 @@
 package fr.afcepf.ai103.dao;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -7,6 +9,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TemporalType;
 
 import fr.afcepf.ai103.data.Stock;
 
@@ -74,10 +77,22 @@ public class DaoStock implements IDaoStock {
 		            .setParameter("conserve", "conserve")
 		            .setParameter("epicerie_frais", "épicerie frais")
 		            .getResultList();
-			
-			
 		}
 		
 	}
+
+	@Override
+	public int rechercherStockPerimeUtilisateur(int idUtilisateur) {
+		Date dt = new Date();
+		Calendar c = Calendar.getInstance(); 
+		c.setTime(dt); 
+		c.add(Calendar.DATE, 1);
+		Date dt2 = c.getTime();
+		
+		return entityManager.createNamedQuery("Stock.nombreStock", Integer.class)
+	            .setParameter("idUtilisateur", idUtilisateur)
+	            .getSingleResult();
+	}
+
 
 }

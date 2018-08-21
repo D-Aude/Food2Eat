@@ -42,6 +42,9 @@ public interface IDaoFoodfriend {
 	// ______________________ FONCTION TEST _____________________________// 
 		// obtenir la liste des foodfriend
 	public List<Foodfriend> obtenirlisteFoodfriend(int userid);
+	
+	// Test
+	Long rechercherNotifDemandesrecues(int userid);
 
 
 

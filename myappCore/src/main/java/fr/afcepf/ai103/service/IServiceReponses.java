@@ -31,4 +31,12 @@ public interface IServiceReponses {
 
 	List <Repannonce> rechercherReponseParIdUtilisateurRdvAVenir (int idUtilisateur);
 	List <Repannonce> rechercherReponseParIdUtilisateurEnvieEnAttente (int idUtilisateur);
+
+	Long CountNotifAcceptationReponse(int idUtilisateur);
+	Long CountReponseAnnonce(int idUtilisateur);
+
+
+	// Rechercher les RDV à venir de mes annonces
+	List<Repannonce> chercherMesAnnoncesRdvAVenir(int idUtilisateur);
+	// reponses à valider + req rdv à venir
 }

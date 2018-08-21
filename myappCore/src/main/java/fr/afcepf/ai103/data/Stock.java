@@ -68,7 +68,15 @@ import java.util.List;
 													+ "and s.dateJeter is null "
 													+ "and s.dateManger is null "
 													+ "and (s.annonces is empty or a.dateAnnulation is not null) "
-												+ "ORDER BY s.dlc")
+												+ "ORDER BY s.dlc"),
+		
+		@NamedQuery(name="Stock.nombreStock", query="SELECT COUNT(s.idStock) FROM Stock s "
+																+ "left join s.annonces a "
+															+ "WHERE s.utilisateur.idUtilisateur = :idUtilisateur "
+																+ "and s.dateJeter is null "
+																+ "and s.dateManger is null "
+																+ "and (s.annonces is empty or a.dateAnnulation is not null) "
+																+ "ORDER BY s.dlc")
 })
 
 public class Stock implements Serializable {

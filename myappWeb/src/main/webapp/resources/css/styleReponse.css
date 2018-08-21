@@ -27,50 +27,29 @@
 	margin : 10px 10px 10px 10px;
 }
 
-.ligne {
-	height: 50px;
-	text-align: center;
-	display: flex;
 
+table tr:hover{cursor:pointer;}
+
+#reponsesRecues {
+	visibility:hidden;
 }
 
-.header {
-	display: inline-block;
-    color: white;
-    opacity: 0.7;
-    background-color: black;
-    margin-right: 10px;
-    
-}
-
-.case1, #colDate {
-	width: 200px;
-	text-align: center;
-	border: 1px solid black;;
-}
-
-.case2, #colAnnonce {
-	width: 750px;
-	padding-left: 10px;
-	border: 1px solid black;
-}
-
-
-.case3, #colNbRep {
-	width: 150px;
-	text-align: center;
-	border: 1px solid black;
-}
-
-.case4, #colBtn {
-	background-color: transparent;
-	width: 150px;
-	text-align: center;
-}
-
-#annoncesReponses {
-	display:flex;
-	flex-direction: row;
-	padding-top: 10px;
-	margin-right: 10px;
-}
+#modal-body-rep {
+	 float:left; 
+	 height:325px;                /* taille du bloc moins la marge interne => IE */
+	 width:509px;                 /* taille du bloc moins l'épaisseur de la bordure => IE*/
+	 border-left:5px solid #14265E;
+	 padding:5px 10px 10px 10px;  /* padding haut, droit, bas, gauche*/ 
+	 font-size:0.9em;
+	 overflow:auto;
+ },
+ 
+ img {
+ 	height: 60px;
+ }
+ 
+ #userRep {
+ 	height: 60px;
+ }
+ 
+ 

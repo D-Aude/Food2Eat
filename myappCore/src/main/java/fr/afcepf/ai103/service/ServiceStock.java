@@ -41,4 +41,10 @@ public class ServiceStock implements IServiceStock {
 		return stock;
 	}
 
+	@Override
+	public int rechercherStockPerimeUtilisateur(int idUtilisateur) {
+		return daoStock.rechercherStockPerimeUtilisateur(idUtilisateur);
+	}
+
+
 }

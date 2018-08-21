@@ -44,6 +44,13 @@ public class StockRest {
 		else
 			return serviceStock.rechercherStockUtilisateur(id);
 	}
+
+	@Path("produitPostDLC/{idUtilisateur}") //dernière partie de l'URL
+	@GET // GET pour lecture , recherche unique par id/clef primaire
+	//URL = http://localhost:8080/myappWeb/services/rest/stock/produitPostDLC/1
+	public int rechercherStockPerimeUtilisateur(@PathParam("idUtilisateur")int id) {
+		return serviceStock.rechercherStockPerimeUtilisateur(id);
+	}
 	
 	@Path("postStock") //dernière partie de l'URL
 	@POST 
@@ -53,5 +60,5 @@ public class StockRest {
 		return serviceStock.saveOrUpdateStock(stock);
 		
 	}
-	
+
 }
