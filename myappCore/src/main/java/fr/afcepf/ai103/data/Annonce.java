@@ -91,15 +91,15 @@ public class Annonce implements Serializable {
 	@Column(name="DATE_PUBLICATION")
 	private Date datePublication;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DATE_RDV_1")
 	private Date dateRdv1;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DATE_RDV_2")
 	private Date dateRdv2;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DATE_RDV_3")
 	private Date dateRdv3;
 
