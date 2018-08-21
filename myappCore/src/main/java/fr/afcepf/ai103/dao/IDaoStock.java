@@ -11,4 +11,5 @@ public interface IDaoStock {
 	public void mettreAJourStock(Stock stock);
 	public int rechercherStockPerimeUtilisateur(int idUtilisateur);
 
+
 }

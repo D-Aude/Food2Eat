@@ -16,7 +16,9 @@ import javax.ws.rs.QueryParam;
 import fr.afcepf.ai103.data.Annonce;
 import fr.afcepf.ai103.data.Foodfriend;
 import fr.afcepf.ai103.data.Utilisateur;
+import fr.afcepf.ai103.service.IServiceFoodfriend;
 import fr.afcepf.ai103.service.IServiceMesAnnonces;
+import fr.afcepf.ai103.service.IServiceUtilisateur;
 import fr.afcepf.ai103.service.ServiceFoodfriend;
 import fr.afcepf.ai103.service.ServiceMesAnnonces;
 import fr.afcepf.ai103.service.ServiceUtilisateur;
@@ -27,8 +29,8 @@ import fr.afcepf.ai103.service.ServiceUtilisateur;
 public class FoodfriendRest {
 	
 	@Inject
-	private ServiceFoodfriend serviceff;
-	private ServiceUtilisateur serviceUti;
+	private IServiceFoodfriend serviceff;
+	private IServiceUtilisateur serviceUti;
 	
 	// requête test : afficher foodfriend selon idfoodfriend
 	//http://localhost:8080/myappWeb/services/rest/foodfriend/1
@@ -86,7 +88,6 @@ public class FoodfriendRest {
 	@POST
 	@Consumes("application/json")
 	public Foodfriend postFoodfriend(Foodfriend ff) {
-		System.out.println("envoie d'une demande de foodfriend " + ff.toString());
 		ff = serviceff.saveOrUpdate(ff);
 		return ff;
 	}
@@ -94,13 +95,24 @@ public class FoodfriendRest {
 	@Path("/envoieInvitation")
 	@POST
 	@Consumes("application/json")
-	public Foodfriend postNewFoodfriend(Foodfriend ff) {
-		System.out.println("_______________________________________________________Méthode postNewFoodfriend ______________________________________________________________");
-		
+	public Foodfriend postNewFoodfriend(Foodfriend ff) {		
 		ff = serviceff.save(ff);
 		return ff;
 	}
 	
+	
+	//http://localhost:8080/myappWeb/services/rest/foodfriend/notif/7
+//	@Path("/test")
+//	@GET
+//	public Long test(@QueryParam("iduser")int num) {
+//		return serviceff.test(num);
+//	}
+	
+	@Path("notif/{idFoodfriend}")
+	@GET
+	public Long rechercherNotifDemandesrecues(@PathParam("idFoodfriend")int num) {
+		return serviceff.rechercherNotifDemandesrecues(num);
+	}
 
 		
 

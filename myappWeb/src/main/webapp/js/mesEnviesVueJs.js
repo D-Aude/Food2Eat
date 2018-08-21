@@ -105,7 +105,6 @@ methods: {
 		if (idAnnonce == vm.repannonces[i].annonce.idAnnonce) {
 			vm.repannonces.splice(i,1);
 		}
-		console.log(vm.repannonces)
 	}
 
 		axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneReponse/'+idAnnonce)

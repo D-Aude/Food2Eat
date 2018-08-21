@@ -25,16 +25,16 @@
     margin: 5px;
     padding: 10px;
 /*     background-color: white; */
-    position: absolute;
+    position: relative;
 }
 #Envies-elementsTermines{
     /* display: inline-block; */
-    position: absolute;
-    border: 3px solid black;
-    margin: 5px;
-    padding: 10px;
-    background-color: white;
-    left: -190px;
+/*     position: absolute; */
+/*     border: 3px solid black; */
+/*     margin: 5px; */
+/*     padding: 10px; */
+/*     background-color: white; */
+/*     left: -190px; */
 }
 
 #Annonces-elementsEnCours{
@@ -127,12 +127,7 @@ text-decoration: none;
 display: inline-block;
 }
 .imgAnnonceTermine {
- height: 212px;
- width:552px;	
- margin-left: auto;
- margin-right: auto;
-  /*background-position:100% 100%;
-  position: absolute;*/
+     position: relative;
 }
 .imgAnnonceEnCours{
 /* width: 1008px; */
@@ -157,10 +152,11 @@ top: 265px;
 z-index: 0;
 }
 .imgEnviesTermines{
-	height: 212px;
- width:552px;	
- margin-left: auto;
- margin-right: auto;
+height: 205px;
+width: 1005px;
+/* position: relative; */
+top: -4px;
+/* left: 0px; */
 }
 #dateMesAnnonces {
      padding-left: 120px;

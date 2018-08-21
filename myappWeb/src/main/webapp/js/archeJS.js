@@ -1,8 +1,52 @@
+// Récupération de la Session
+var Session = sessionStorage.getItem('utilisateurCourant');
+var id = JSON.parse(Session)["idUtilisateur"];
+
+var vmNotif = new Vue({
+
+el:'#navbarSupportedContent',
+data:{
+	idUtilisateur : id,
+	 notifMesSouhait : 0,
+	 notifMesAnnonces: 0,
+	 notifInvitFF: 0
+},
+created : function (){
+	var vmNotif = this
+	console.log("init")
+	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/'+ vmNotif.idUtilisateur)
+		.then(function (response) {
+			this.notifMesSouhait = response.data
+			console.log("messouhait :"+this.notifMesSouhait)
+			console.log("mesosuhait:"+response.data)
+		}),
+	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/NotifReponseAnnonce/'+vmNotif.idUtilisateur)
+		.then(function (response) {
+			this.notifMesAnnonces = response.data
+			console.log("annonce:"+this.notifMesAnnonces)
+			console.log("annonce:"+response.data)
+		})	
+		axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/notif/'+vmNotif.idUtilisateur)
+		.then(function (response) {
+			this.notifInvitFF = response.data
+			console.log("ff:"+ this.notifInvitFF)
+			console.log("ff:"+response.data)
+		})	
+	
+}
+	
+	
+	
+})
+
 var vmArche = new Vue({
   el: '#flexContent',
   data: {
     pseudo : '',
-    utilisateur: []
+    utilisateur: [],
+    nbrDonsEffectues : 0,
+    nbrDonsTotaux: 0,
+   
   },
   created: function () {
 	  var session = sessionStorage.getItem('utilisateurCourant');
@@ -17,7 +61,18 @@ var vmArche = new Vue({
 		  this.pseudo = (JSON.parse(session)).pseudo;
 		  var btnConnexion = document.getElementById('btnConnexion');
 		  btnConnexion.style.display = "none";
+		  
+		  axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountparUser/' + this.utilisateur.idUtilisateur)
+			.then(function (response) {
+				vmArche.nbrDonsEffectues = response.data
+			}),
+			 axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountAnnoncesTotales')
+				.then(function (response) {
+					vmArche.nbrDonsTotaux = response.data
+				})
 	  }
+		
+	
   },
   methods: 
   {

@@ -66,6 +66,10 @@ public class DaoFoodfriend implements IDaoFoodfriend {
 				.getResultList();
 	}
 	
+
+	
+	
+	
 	// __________________ Méthode d'insertion _______________________________
 	
 	@Override
@@ -96,6 +100,8 @@ public class DaoFoodfriend implements IDaoFoodfriend {
 		entityManager.remove(f);
 		
 	}
+	
+
 
 
 
@@ -113,9 +119,16 @@ public class DaoFoodfriend implements IDaoFoodfriend {
 		
 	}
 
-	
-	
 
+
+	
+	//Test
+	@Override
+	public Long rechercherNotifDemandesrecues(int userid) {
+		return entityManager.createNamedQuery("Foodfriend.notifDemandesrecues",Long.class)
+				.setParameter("utilisateur2", userid)
+				.getSingleResult();
+	}
 
 
 

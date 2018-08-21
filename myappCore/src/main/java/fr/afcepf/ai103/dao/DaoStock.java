@@ -91,11 +91,8 @@ public class DaoStock implements IDaoStock {
 		
 		return entityManager.createNamedQuery("Stock.nombreStock", Integer.class)
 	            .setParameter("idUtilisateur", idUtilisateur)
-//	            .setParameter("date1", dt)
-//	            .setParameter("date2", dt2)
-//	            .setParameter(1, dt, TemporalType.DATE)
-//	            .setParameter(2, dt2, TemporalType.DATE)
 	            .getSingleResult();
 	}
+
 
 }

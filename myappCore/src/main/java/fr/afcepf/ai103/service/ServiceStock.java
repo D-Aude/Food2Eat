@@ -46,4 +46,5 @@ public class ServiceStock implements IServiceStock {
 		return daoStock.rechercherStockPerimeUtilisateur(idUtilisateur);
 	}
 
+
 }
