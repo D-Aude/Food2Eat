@@ -71,6 +71,13 @@ public class ServiceFoodfriend implements IServiceFoodfriend {
 		return ff;
 	}
 
+	// test
+	@Override
+	public Long rechercherNotifDemandesrecues(int u) {
+		// TODO Auto-generated method stub
+		return daoff.rechercherNotifDemandesrecues(u);
+	}
+
 	
 	
 	

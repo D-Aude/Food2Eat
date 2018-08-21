@@ -100,6 +100,19 @@ public class FoodfriendRest {
 		return ff;
 	}
 	
+	
+	//http://localhost:8080/myappWeb/services/rest/foodfriend/test
+//	@Path("/test")
+//	@GET
+//	public Long test(@QueryParam("iduser")int num) {
+//		return serviceff.test(num);
+//	}
+	
+	@Path("notif/{idFoodfriend}")
+	@GET
+	public Long rechercherNotifDemandesrecues(@PathParam("idFoodfriend")int num) {
+		return serviceff.rechercherNotifDemandesrecues(num);
+	}
 
 		
 

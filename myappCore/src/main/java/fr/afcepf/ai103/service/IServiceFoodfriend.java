@@ -39,7 +39,8 @@ public interface IServiceFoodfriend {
 	// Envoyer une demande de foodfriend
 	public Foodfriend save(Foodfriend ff);
 	
-
+	// Test
+	public Long rechercherNotifDemandesrecues(int u);
 
 
 	
