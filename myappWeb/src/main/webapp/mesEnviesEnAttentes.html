@@ -23,8 +23,8 @@
 				<img class="imgEnvieEnAttente" v-bind:src="getSrc(repannonce.annonce.stock.produit.idProduit)"/><br/>
 						<h3>Envie en attente</h3>
 						<span> Vous êtes interessé par l'annonce de {{repannonce.annonce.stock.utilisateur.pseudo}}  <br />
-							  qui vous propose : {{repannonce.annonce.stock.quantite}} {{repannonces.annonce.stock.produit.nomProduit}} </br> 
-							 Vous avez choisi le {{moment(annonce.repannonces.dateReponse).format(YYYY-MM-DD hh:mm:ss)}} pour le don. </br>
+							  qui vous propose : {{repannonce.annonce.stock.quantite}} {{repannonce.annonce.stock.produit.nomProduit}} </br> 
+							 Vous avez choisi le {{moment(repannonces.dateReponse).format(YYYY-MM-DD hh:mm:ss)}} pour le don. </br>
 						
 							</span> <br />
 					</div>
