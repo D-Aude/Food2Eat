@@ -157,9 +157,11 @@ var vmPublication = new Vue({
 			  	var heureRdv2 = document.getElementById('inputHeure2').value;
 			  	var heureRdv3 = document.getElementById('inputHeure3').value;
 			  	
-			  	var dateRdv1 = this.moment(jourRdv1+' '+heureRdv1);
-			  	var dateRdv2 = this.moment(jourRdv2+' '+heureRdv2);
-			  	var dateRdv3 = this.moment(jourRdv3+' '+heureRdv3);
+			  	var dateRdv1 = moment(jourRdv1+' '+heureRdv1).add(2, 'h');
+			  	var dateRdv2 = moment(jourRdv2+' '+heureRdv2).add(2, 'h');;
+			  	var dateRdv3 = moment(jourRdv3+' '+heureRdv3).add(2, 'h');;
+			  	
+			  	console.log('date1:'+dateRdv1)
 			  	//requete nouvelle annonce
 			  	var Annonce = {
 			  				idAnnonce : 0,
@@ -206,13 +208,13 @@ var vmPublication = new Vue({
 		  	},    
 			date: function (date) 
 			{
-			    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+			    return moment.format('MMMM Do YYYY, h:mm:ss a');
 			}
 		},
 		filters: {
 			moment: function (date) 
 			{
-			  return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+			  return moment.format('MMMM Do YYYY, h:mm:ss a');
 			}
 		}
 		  

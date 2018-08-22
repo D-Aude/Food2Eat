@@ -67,7 +67,7 @@ import java.util.List;
 														+"and r.annonce.dateAnnulation is null "
 														+ "and r.dateAnnulationReponse is null "
 														+ "and r.dateRefus is null "
-														+ "and r.dateRdv is null"),
+														+ "and r.dateRdv is not null"),
 		
 		@NamedQuery(name="Repannonce.CountRdvAVenir", query = "SELECT COUNT(r.dateAcceptationReponse) FROM Repannonce r "
 																+ "WHERE r.utilisateur.idUtilisateur = :idUtilisateur "

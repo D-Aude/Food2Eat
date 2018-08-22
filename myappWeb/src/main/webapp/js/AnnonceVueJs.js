@@ -29,16 +29,17 @@ var vm = new Vue({
 		AnnulerMonAnnonce: function(idannonce){
 
 			var vm = this;
+			console.log("debut fonction annuler" + idannonce)
 			alert(" Votre annonce est annulée")
 			//récupération de l'annonce qu'on souhaite modifier
 			axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/uneAnnonce/'+ idannonce)
 			.then(function (response) {
 				var annonceAmodif = response.data;
-
+console.log(annonceAmodif)
 
 				annonceAmodif['dateAnnulation'] = Date.now();
 
-				for (i=0 ; i < vm.pannonces.length ; i++) {
+				for (i=0 ; i < vm.annonces.length ; i++) {
 					if (idannonce == vm.annonces[i].idAnnonce) {
 						vm.annonces.splice(i,1);
 					}
@@ -47,7 +48,7 @@ var vm = new Vue({
 				//post pour la modification
 				axios.post('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees',
 						annonceAmodif).then((response)=> {
-							consol.log(response);
+							console.log(response);
 						});
 				// Afficher la nouvelle liste
 				location.reload();
