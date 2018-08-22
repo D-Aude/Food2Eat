@@ -1400,6 +1400,17 @@ top: -65;
 display: flex;
 }
 
+.lblFiltreSouhaitsClotures{
+		position: relative;
+color: white;
+width: 200px;
+font-family: Abel, sans-serif;
+font-size: 20px;
+left: -616;
+top: -65;
+display: flex;
+}
+
 #filtreRech {
 width: 195px;
 
@@ -1449,13 +1460,19 @@ left: -40px;
 }
 
 #lblAnnonceEnCoursYo {
-    font-size: 25;
-    color: white;
-    position: relative;
-    top: -28px;
-    font-family: Abel, sans-serif;
-    left: 330px;
-    line-height: 39px;
+font-size: 25;
+
+color: white;
+
+position: relative;
+
+top: -148px;
+
+font-family: Abel, sans-serif;
+
+left: 303px;
+
+line-height: 38px;
 }
 
 #lblEnviesTerminees {

@@ -1,15 +1,15 @@
 <meta charset="utf-8">
 <div id="annoncesCommunaute">
 	<div class="container">
-		<div class="lblTitreAnnoncesEnvie">
+		<div class="lblTitreAnnoncesEnvie" style="position:relative; top:10px; left:0px;">
 			<b>Mes souhaits en attente</b>
 		</div>
 				<div id="EssaiEnvieEnAttenteEssai">
 					<div id="Annonces-elementEnvieAttenteEssai" v-for="repannonce in repannonces">
 						<div id="image-container">
-							<img class="imgEnviesEnAttenteEssai" v-bind:src=getSrc(repannonce.annonce.stock.produit.idProduit) />
+							<img class="imgEnviesEnAttenteEssai" v-bind:src=getSrc(repannonce.annonce.stock.produit.idProduit) style="position:relative; left:0px; margin-bottom:-100px; top:130px;"/>
 						</div>
-							<span style="position: absolute; top: 275px; line-height: 63px; left:515px">
+							<span style="position: relative; top: 22px; line-height: 63px; left:5px">
 							 Vous êtes interessé par l'annonce de <u><b>{{repannonce.annonce.stock.utilisateur.pseudo}}</b></u> <br /> 
 							 qui vous propose : <b><u>{{repannonce.annonce.stock.quantite}} {{repannonce.annonce.stock.produit.nomProduit}}</u></b> <br /> 
 							 Vous avez choisi le <u><b>{{moment(repannonce.dateRdv).format('DD-MM-YYYY hh:mm:ss')}}</b></u> pour le don.</span>

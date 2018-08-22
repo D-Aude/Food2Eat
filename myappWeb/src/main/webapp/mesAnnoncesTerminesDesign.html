@@ -30,17 +30,18 @@
 					</div>
 					<div v-if="annonce.dateFinAnnonce == null">
 					<img v-bind:src="getSrc(annonce.stock.produit.idProduit)" class="imgAnnonceTermine" /><br/>
-							Vous avez annulez votre don de :  {{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}} </br>
+						<span id="wesh" style="position:relative; top:-208; left:260; font-family:'Abel', sans-serif; font-size:26; color:white;">
+						Vous avez annulé votre don de : <b><u> <br/> {{annonce.stock.quantite}}{{annonce.stock.produit.nomProduit}}</u></b>  </br>
 							Date de l'annulation :
-							{{moment(annonce.dateAnnulation).format('DD/MM/YYYY')}}
-							Merci de renseigner un motif d'annulation :  </br>
+							<b><u>{{moment(annonce.dateAnnulation).format('DD/MM/YYYY')}}</u></b> <br/>
+							Merci de renseigner un motif d'annulation :  </br></span>
 						
-						<select id="selectMotifAnnulation" v-model="nomAnnulation">
+						<select id="selectMotifAnnulation" v-model="nomAnnulation" style="position:relative; top:-206; left:261;">
 					
 							<option v-for="annulation in annulations":value="annulation.idAnnulation">
 							{{annulation.nomAnnulation}}</option>
 						</select>
-						<button v-on:click="insererMotifAnnulation(annonce.idAnnonce)" id="btnValiderMotifAnnulation">Valider</button>
+						<button v-on:click="insererMotifAnnulation(annonce.idAnnonce)" id="btnValiderMotifAnnulation" style="position:relative; top:-207; left:290;">Valider</button>
 					</div>
 				</div>
 				<div v-else>
