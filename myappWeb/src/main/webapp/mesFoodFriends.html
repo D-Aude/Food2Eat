@@ -15,10 +15,13 @@
 			<b style="position:relative; left:580px;">Mes Foodfriends</b>
 		</div>
 		
-		<div id="listeFoodfriend">
+		<div id="listeFoodfriend" >
 		
 		<form id="searchBar">
-		  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher ..." v-model="search">
+		  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher ..." v-model="search" 
+		  		 style="width: 192px;box-sizing: border-box; border: 2px solid #ccc; border-radius: 4px; font-size: 16px; background-color: white;
+				background-position: 10px 10px; background-repeat: no-repeat; padding: 12px 20px 12px 40px; -webkit-transition: width 0.4s ease-in-out;
+				transition: width 0.4s ease-in-out; position: relative; top: -130px; left: -119px;">
 		</form>
 <br/><br/><br/><br/><br/><br/><br/><br/>
    			<div id="friend-element" v-for="foodfriend in filteredList">   
@@ -27,14 +30,14 @@
 	   				<b>{{foodfriend.utilisateur2.pseudo}}</b> <br/>
 	   				{{foodfriend.utilisateur2.nom}} {{foodfriend.utilisateur2.prenom}} <br/><br/>
 	   				{{foodfriend.utilisateur2.email}} <br/>
-	   				<button v-on:click="RetirerFF(foodfriend)">RETIRER DE MES FOODFRIEND</button>
+	   				<button v-on:click="RetirerFF(foodfriend)"style="background:#245B55; color:white; border-radius:7px;cursor:pointer;">RETIRER DE MES FOODFRIEND</button>
    				</div>
    				<div v-else>
 					<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>	
    					<b>{{foodfriend.utilisateur1.pseudo}}</b> <br/>
 	   				{{foodfriend.utilisateur1.nom}} {{foodfriend.utilisateur1.prenom}} <br/><br/>
 	   				{{foodfriend.utilisateur1.email}} <br/>
-	   				<button id="btnFF" v-on:click="RetirerFF(foodfriend)">RETIRER DE MES FOODFRIEND</button>
+	   				<button v-on:click="RetirerFF(foodfriend)" style="background:#245B55; color:white; border-radius:7px; cursor:pointer;">RETIRER DE MES FOODFRIEND</button>
    				</div>
    			</div>
   		</div>

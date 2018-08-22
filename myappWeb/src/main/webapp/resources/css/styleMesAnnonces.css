@@ -1,10 +1,10 @@
 #listeMesAnnonces {
-	font-style : italic;
+	font-style: italic;
 	border-style: solid;
 	border-color: red;
 	border-width: 2px;
 	border-color: black;
-	_display:flex;
+	_display: flex;
 	flex-direction: row;
 	padding: 5px 5px 5px 5px;
 }
@@ -20,176 +20,179 @@
 /*     position: relative; */
 /*     background-color: black; */
 /* } */
-#Annonces-elementsTermines{
-/*     border: 3px solid black; */
-    margin: 5px;
-    padding: 10px;
-/*     background-color: white; */
-    position: relative;
-}
-#Envies-elementsTermines{
-    /* display: inline-block; */
-/*     position: absolute; */
-/*     border: 3px solid black; */
-/*     margin: 5px; */
-/*     padding: 10px; */
-/*     background-color: white; */
-/*     left: -190px; */
+#Annonces-elementsTermines {
+	/*     border: 3px solid black; */
+	margin: 5px;
+	padding: 10px;
+	/*     background-color: white; */
+	position: relative;
 }
 
-#Annonces-elementsEnCours{
-	display: inline-block;
-    margin: 2px;
-    padding: 2px;
-    color: white;
-    font-size: 20px;
-    top: 2px;
-    left: 5px;
+#Envies-elementsTermines {
+	/* display: inline-block; */
+	/*     position: absolute; */
+	/*     border: 3px solid black; */
+	/*     margin: 5px; */
+	/*     padding: 10px; */
+	/*     background-color: white; */
+	/*     left: -190px; */
 	
 }
-#Annonces-elementEnvieAttenteEssai{
-font-family: Abel, sans-serif;	
-font-size: 30px; 
-text-align : center;
-color: white;
+
+#Annonces-elementsEnCours {
+	display: inline-block;
+	margin: 2px;
+	padding: 2px;
+	color: white;
+	font-size: 20px;
+	top: 2px;
+	left: 5px;
 }
 
+#Annonces-elementEnvieAttenteEssai {
+	font-family: Abel, sans-serif;
+	font-size: 30px;
+	text-align: center;
+	color: white;
+}
 
 #Annonces-titre {
 	display: inline-block;
-    text-align : center;
-    margin: 5px;
-    padding: 20px;
-    background-color:white;
-    margin-left: auto;
-    margin-right: auto;
-    width: ...; /* largeur obligatoire pour être centré */
-}
-#btnAnnulerAnnonce{
- position: relative !important;
-
-top: 104px;
-
-left: 685px;
-
-font-family: Abel, sans-serif;
-
-font-size: 30px;
-
-text-transform: uppercase;
-
-background-color: #A5DCC7;
-
-border: none;
-
-width: 205;
-
-cursor: pointer;
-
-display: inline-block;
-
-font-weight: 400;
-
-text-align: center;
-
-border: 1px solid transparent;
+	text-align: center;
+	margin: 5px;
+	padding: 20px;
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	width: . . .; /* largeur obligatoire pour être centré */
 }
 
+#btnAnnulerAnnonce {
+	position: relative !important;
+	top: 104px;
+	left: 685px;
+	font-family: Abel, sans-serif;
+	font-size: 30px;
+	text-transform: uppercase;
+	background-color: #A5DCC7;
+	border: none;
+	width: 205;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	border: 1px solid transparent;
+}
 
 #lblAnnulerAnnonce:hover {
-	color : white;
+	color: white;
 }
 
-
-
-#btnValiderEnvie{
-padding-top: 1px;
-  padding-left: 10px;
-   max-width: 970px;
-   height: 40px;
-   width : 100px;
-    float:right;
-    
-}
-#btnValiderMotifAnnulation
-{
+#btnValiderEnvie {
 	padding-top: 1px;
-  padding-left: 10px;
-   max-width: 970px;
-   height: 40px;
-   width : 100px;
-	
+	padding-left: 10px;
+	max-width: 970px;
+	height: 40px;
+	width: 100px;
+	float: right;
 }
-#btnValiderEvaluation{
-		padding-top: 1px;
-  padding-left: 10px;
-   max-width: 970px;
-   height: 40px;
-   width : 100px;
-	
+
+#btnValiderMotifAnnulation {
+	padding-top: 1px;
+	padding-left: 10px;
+	max-width: 970px;
+	height: 40px;
+	width: 100px;
+	position: relative;
+	top: -207;
+	left: 290;
+	border: 1px solid white!important;
+	font-size: 20;
+	text-transform: uppercase;
+	border-radius: 7px!important;
+	background: transparent;
+	color: white!important;
+	font-family: 'Abel', sans-serif
+}
+
+#btnValiderMotifAnnulation:hover {
+	background-color: #245B55!important;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	cursor : pointer;
+}
+
+#btnValiderEvaluation {
+	padding-top: 1px;
+	padding-left: 10px;
+	max-width: 970px;
+	height: 40px;
+	width: 100px;
 }
 
 #btnSelectionAnnoncesTerminees {
-background-color: #49b6a8;
-color: white;
-width: 100%;
-padding: 10px 18px;
-border: none;
-text-align: center;
-text-decoration: none;
-display: inline-block;
+	background-color: #49b6a8;
+	color: white;
+	width: 100%;
+	padding: 10px 18px;
+	border: none;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
 }
+
 .imgAnnonceTermine {
-     position: relative;
-}
-.imgAnnonceEnCours{
-/* width: 1008px; */
-/* height: 216px; */
-/* background-position:100% 100%; */
-position: relative;
-    left: 270PX;
-	
-}
-.imgEnvieEnAttente{
-width: 1008px;
-height: 216px;
-background-position:100% 100%;
-position: absolute;
+	position: relative;
 }
 
-
-.imgEnviesEnAttenteEssai{
-position: relative;
-left: 270px;
-top: 265px;
-z-index: 0;
-}
-.imgEnviesTermines{
-height: 205px;
-width: 1005px;
-/* position: relative; */
-top: -4px;
-/* left: 0px; */
-}
-#dateMesAnnonces {
-     padding-left: 120px;
-    font-style: normal!important;
-    word-spacing: 90px;
-    margin-bottom: 2px;
+.imgAnnonceEnCours {
+	/* width: 1008px; */
+	/* height: 216px; */
+	/* background-position:100% 100%; */
+	position: relative;
+	left: 270PX;
 }
 
-
-#lblAnnonceEnCours{
+.imgEnvieEnAttente {
+	width: 1008px;
+	height: 216px;
+	background-position: 100% 100%;
 	position: absolute;
-    top: 5px;
-    left: 5px;
-    color: white;
-    font-family: Abel, sans-serif;
-    font-size: 15px;
-    padding : 2px;
-    margin : 2px;	
 }
 
-#lblEnvieEnAttente{
-	z-index:100;
+.imgEnviesEnAttenteEssai {
+	position: relative;
+	left: 270px;
+	top: 265px;
+	z-index: 0;
+}
+
+.imgEnviesTermines {
+	height: 205px;
+	width: 1005px;
+	/* position: relative; */
+	top: -4px;
+	/* left: 0px; */
+}
+
+#dateMesAnnonces {
+	padding-left: 120px;
+	font-style: normal !important;
+	word-spacing: 90px;
+	margin-bottom: 2px;
+}
+
+#lblAnnonceEnCours {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	color: white;
+	font-family: Abel, sans-serif;
+	font-size: 15px;
+	padding: 2px;
+	margin: 2px;
+}
+
+#lblEnvieEnAttente {
+	z-index: 100;
 }

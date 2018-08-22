@@ -68,10 +68,9 @@ import java.util.List;
 		
 		@NamedQuery(name="Annonce.CompterLesDonsTermines", query=" SELECT COUNT (a.dateFinAnnonce) from Annonce a where a.dateFinAnnonce is not null"),
 
-@NamedQuery(name="Annonce.CountMesAnnoncesEnCours", query="SELECT COUNT (a.datePublication) FROM Annonce a join a.repannonces r   WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
+@NamedQuery(name="Annonce.CountMesAnnoncesEnCours", query="SELECT COUNT (a.datePublication) FROM Annonce a  WHERE a.stock.utilisateur.idUtilisateur = :idUtilisateur "
 																									+ "and a.dateAnnulation is null "
-																									+ "and a.dateFinAnnonce is null "
-																									+"and  r.dateAcceptationReponse is null")
+																									+ "and a.dateFinAnnonce is null ")
 })
 
 public class Annonce implements Serializable {

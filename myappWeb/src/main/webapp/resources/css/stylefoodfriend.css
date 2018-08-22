@@ -1,11 +1,23 @@
 #listeFoodfriend {
-	_border-style: solid;
-	border-width: 2px;
-	_border-color: black;
-	_display:flex;
-	flex-direction: row;
-	padding: 5px 5px 5px 5px;
-	font-family : 'Fjalla One', sans-serif;
+_border-style: solid;
+
+border-width: 2px;
+
+_border-color: black;
+
+_display: flex;
+
+flex-direction: row;
+
+padding: 5px 5px 5px 5px;
+
+font-family: 'Abel',sans-serif;
+
+position: relative;
+
+left: -170px;
+
+width: 1122px;
 }
 
 #friend-element {
