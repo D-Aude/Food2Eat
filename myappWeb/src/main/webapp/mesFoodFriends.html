@@ -30,14 +30,14 @@
 	   				<b>{{foodfriend.utilisateur2.pseudo}}</b> <br/>
 	   				{{foodfriend.utilisateur2.nom}} {{foodfriend.utilisateur2.prenom}} <br/><br/>
 	   				{{foodfriend.utilisateur2.email}} <br/>
-	   				<button v-on:click="RetirerFF(foodfriend)">RETIRER DE MES FOODFRIEND</button>
+	   				<button v-on:click="RetirerFF(foodfriend)"style="background:#245B55; color:white; border-radius:7px;cursor:pointer;">RETIRER DE MES FOODFRIEND</button>
    				</div>
    				<div v-else>
 					<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>	
    					<b>{{foodfriend.utilisateur1.pseudo}}</b> <br/>
 	   				{{foodfriend.utilisateur1.nom}} {{foodfriend.utilisateur1.prenom}} <br/><br/>
 	   				{{foodfriend.utilisateur1.email}} <br/>
-	   				<button id="btnFF" v-on:click="RetirerFF(foodfriend)">RETIRER DE MES FOODFRIEND</button>
+	   				<button v-on:click="RetirerFF(foodfriend)" style="background:#245B55; color:white; border-radius:7px; cursor:pointer;">RETIRER DE MES FOODFRIEND</button>
    				</div>
    			</div>
   		</div>
