@@ -41,7 +41,8 @@
 							<option v-for="annulation in annulations":value="annulation.idAnnulation">
 							{{annulation.nomAnnulation}}</option>
 						</select>
-						<button v-on:click="insererMotifAnnulation(annonce.idAnnonce)" id="btnValiderMotifAnnulation" style="position:relative; top:-207; left:290;">Valider</button>
+						<button v-on:click="insererMotifAnnulation(annonce.idAnnonce)" id="btnValiderMotifAnnulation" >
+						Valider</button>
 					</div>
 				</div>
 				<div v-else>
