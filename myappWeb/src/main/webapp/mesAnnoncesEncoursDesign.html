@@ -20,9 +20,9 @@
 						<b><u>{{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}}</u></b> <br/>
 					Vos choix de date : </br>
 					<div id="dateMesAnnonces">
-						<b><u>{{moment(annonce.dateRdv1).format('DD/MM/YYYY HH:mm')}}</u></b>
-					<b><u>{{moment(annonce.dateRdv2).format('DD/MM/YYYY HH:mm')}}</u></b>
-			 <b><u>{{moment(annonce.dateRdv3).format('DD/MM/YYYY HH:mm')}}</u></b>
+						<b><u style="margin-right: 20px;">{{moment(annonce.dateRdv1).format('DD/MM/YYYY HH:mm')}}</u></b>&emsp;
+					<b><u style="margin-right: 20px;">{{moment(annonce.dateRdv2).format('DD/MM/YYYY HH:mm')}}</u></b>&emsp;
+			 		<b><u>{{moment(annonce.dateRdv3).format('DD/MM/YYYY HH:mm')}}</u></b>
 					</div>
 					Votre lieu de rendez-vous :<br/><span><b><u>{{annonce.adresse.numeroVoie}}
 						{{annonce.adresse.typeVoie}} {{annonce.adresse.nomVoie}}
