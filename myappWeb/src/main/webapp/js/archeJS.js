@@ -11,10 +11,13 @@ var vmArche = new Vue({
     utilisateur: [],
     nbrDonsEffectues : 0,
     nbrDonsTotaux: 0, //Pas mis dans l'arche
-   
-	 notifMesSouhait : '',
-	 notifMesAnnonces: '',
-	 notifInvitFF: '',
+    
+    notifSouhaitAttenteValidation :0,
+    notifnbAnnonceEncours : 0,
+	 notifMesSouhait : 0,
+	 notifMesAnnonces: 0,
+	 notifInvitFF: 0,
+	 notifDonTotauxRecus :0,
 	 
 	 nbStockInventaire : 0,
 	 nbStockPresquePerime : 0,
@@ -46,19 +49,34 @@ var vmArche = new Vue({
 				console.log("init")
 				 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/'+ this.utilisateur.idUtilisateur)
 				.then(function (response) {
-					if (response.data >0 ) { vmArche.notifMesSouhait = response.data }
+					 { vmArche.notifMesSouhait = response.data }
 
 					}),
 				axios.get('http://localhost:8080/myappWeb/services/rest/reponses/NotifReponseAnnonce/'+this.utilisateur.idUtilisateur)
 				.then(function (response) {
-					if (response.data >0 ) {vmArche.notifMesAnnonces = response.data }
+					 {vmArche.notifMesAnnonces = response.data }
 
 					}),	
 				axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/notif/'+this.utilisateur.idUtilisateur)
 					.then(function (response) {
-					if (response.data >0 ) { vmArche.notifInvitFF = response.data }
+					{ vmArche.notifInvitFF = response.data }
 
 					}),	
+					axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountAnnoncesEnCours/'+this.utilisateur.idUtilisateur)
+					.then(function (response) {
+					 { vmArche.notifnbAnnonceEncours = response.data }
+
+					}),	
+					axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notifDonTotauxRecus/'+this.utilisateur.idUtilisateur)
+					.then(function (response) {
+					 { vmArche.notifDonTotauxRecus = response.data }
+
+					}),
+					axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notifSouhaitEnAttente/'+this.utilisateur.idUtilisateur)
+					.then(function (response) {
+					 { vmArche.notifSouhaitAttenteValidation = response.data }
+
+					}),
 
 				axios.get('http://localhost:8080/myappWeb/services/rest/stock/'+this.utilisateur.idUtilisateur)
 					.then(function (response) {
