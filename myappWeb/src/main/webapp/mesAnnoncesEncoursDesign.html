@@ -10,12 +10,13 @@
 			<!-- <span id="lblAnnonceEnCours">   -->
 			<div>
 				<div id="Annonces-elementsEnCours" v-for="annonce in annonces">
-					<img class="imgAnnonceEnCours" v-bind:src="getSrc(annonce.stock.produit.idProduit)" /><br />
-					<button v-on:click="AnnulerMonAnnonce(annonce.idAnnonce)" class="btn btn-primary" id="btnAnnulerAnnonce">
+					<img class="imgAnnonceEnCours" v-bind:src="getSrc(annonce.stock.produit.idProduit)" style="position:relative; top:0px; margin-bottom:-110px;" /><br />
+					<button v-on:click="AnnulerMonAnnonce(annonce.idAnnonce)" class="btn btn-primary" id="btnAnnulerAnnonce" style="top:104px; left:690px;">
 						<span id="lblAnnulerAnnonce">Annuler </span>
 					</button>
-					<span id="lblAnnonceEnCoursYo">
-						{{annonce.stock.utilisateur.pseudo}}, vous proposez :
+					<span id="lblAnnonceEnCoursYo">	
+					<div id="pseudo" style="position:relative;"></div>
+					{{annonce.stock.utilisateur.pseudo}}, vous proposez :
 						<b><u>{{annonce.stock.quantite}} {{annonce.stock.produit.nomProduit}}</u></b> <br/>
 					Vos choix de date : </br>
 					<div id="dateMesAnnonces">

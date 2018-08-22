@@ -66,11 +66,11 @@ color: white;
     width: ...; /* largeur obligatoire pour être centré */
 }
 #btnAnnulerAnnonce{
-   position: relative !important;
+ position: relative !important;
 
-top: 61px;
+top: 104px;
 
-left: 1295px;
+left: 685px;
 
 font-family: Abel, sans-serif;
 
@@ -147,7 +147,6 @@ display: inline-block;
 /* height: 216px; */
 /* background-position:100% 100%; */
 position: relative;
-    position: absolute;
     left: 270PX;
 	
 }
@@ -156,12 +155,11 @@ width: 1008px;
 height: 216px;
 background-position:100% 100%;
 position: absolute;
-		
 }
 
 
 .imgEnviesEnAttenteEssai{
-position: absolute;
+position: relative;
 left: 270px;
 top: 265px;
 z-index: 0;
