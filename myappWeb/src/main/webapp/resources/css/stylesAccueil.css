@@ -44,7 +44,7 @@ position: absolute;
     width: 980;
     height: 258;
     border-radius: 7px;
-    background-color: #245B55;
+    background-color: #5B928C;
     top: 310;
     left: 280;
     border: 3px solid black;
@@ -55,7 +55,7 @@ position: absolute;
     width: 980;
     height: 150;
     border-radius: 7px;
-    background-color: #245B55;
+    background-color: #5B928C;
     top: 842;
     left: 280px;
     border: 3px solid black;
@@ -1495,15 +1495,15 @@ line-height: 44px;
 }
 
 #lblEnviesTerminees2 {
-    position: absolute;
-    color: white;
-    font-family: Abel,sans-serif;
-    font-size: 25px;
-    width: 517px;
-    left: 250px;
-    top: 135px;
-    word-spacing: 5;
-    line-height: 44px;
+position: absolute;
+color: white;
+font-family: Abel,sans-serif;
+font-size: 25px;
+width: 640px;
+left: 220px;
+top: 134px;
+word-spacing: 5;
+line-height: 44px;
 }
 
 #lblEnviesTerminees3 {

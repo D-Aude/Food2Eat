@@ -102,6 +102,12 @@ td {
 	background-color : aliceblue;
 }
 
+#btnrepContainer {
+	position : relative;
+	left : 300px;
+	margin-bottom: 20px;
+}
+
  
 
  
