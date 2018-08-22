@@ -100,13 +100,13 @@ var vm = new Vue({
 			  if(stock.dlc<now)
 			  {
 				  document.getElementById("info").innerHTML = "Attention la DLC de ce produit est dépassé ! (Don impossible)";
-				  document.getElementById("info").style.color = "black";
+				  document.getElementById("info").style.color = "orange";
 				  document.getElementById("info").style.display = "block";
 			  }
 			  else if(stock.dlc<semaine)
 			  {
 				  document.getElementById("info").innerHTML = "La DLC de ce produit se rapproche.";
-				  document.getElementById("info").style.color = "orange";
+				  document.getElementById("info").style.color = "yellow";
 				  document.getElementById("info").style.display = "block";
 			  }
 			  else
