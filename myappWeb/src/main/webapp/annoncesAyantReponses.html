@@ -95,10 +95,13 @@
     				   <div id="modal-body-rep" style="border-left:0px;">					
 							<div v-for="reponse in reponse">
 								<div style="">
-								<img id="userRep" v-bind:src="getSrcUser(reponse.utilisateur.pseudo)"/>
-								<b>{{reponse.utilisateur.pseudo}}</b> a choisi le {{moment(reponse.dateRdv).format('DD/MM/YYYY à HH:mm')}}<br/>
-								<button v-on:click="accepterRep(annonceSelectionnee, reponse)" id="btnAccepterRep">ACCEPTER</button>
-								<button v-on:click="refuserRep(reponse)" id="btnRefuserRep">REFUSER</button><br/>
+									<img id="userRep" v-bind:src="getSrcUser(reponse.utilisateur.pseudo)"/>
+									<b>{{reponse.utilisateur.pseudo}}</b> a choisi le {{moment(reponse.dateRdv).format('DD/MM/YYYY à HH:mm')}}<br/>
+									<span id="btnrepContainer">
+										<button v-on:click="accepterRep(annonceSelectionnee, reponse)" id="btnAccepterRep">ACCEPTER</button>
+										<button v-on:click="refuserRep(reponse)" id="btnRefuserRep">REFUSER</button><br/>
+									</span>
+									
 								</div>															
 							</div>
 							

@@ -57,7 +57,6 @@ var listeannoncesCommnunaute = new Vue({
 	  
 	  // METHODE : qui se lance à la création de la page : récupération de la liste des annonces de la communaute
 	  created: function() {
-		console.log("fonction created")
 		  
 		document.getElementById('modal').ariahidden = "false";
 		  var vm = this
@@ -100,6 +99,11 @@ var listeannoncesCommnunaute = new Vue({
 			    		vm.annonce[i].foodfriend = 0;
 			    	}
 			    }
+			    
+			    // trie par distance
+			    vm.annonce.sort(function(a, b) {
+					  return a.distance - b.distance;
+				  });		
 			    
 
 		      });
