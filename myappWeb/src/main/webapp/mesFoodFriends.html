@@ -15,10 +15,13 @@
 			<b style="position:relative; left:580px;">Mes Foodfriends</b>
 		</div>
 		
-		<div id="listeFoodfriend">
+		<div id="listeFoodfriend" >
 		
 		<form id="searchBar">
-		  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher ..." v-model="search">
+		  <input class="inputSearchBar"type="text" name="search" placeholder="Rechercher ..." v-model="search" 
+		  		 style="width: 192px;box-sizing: border-box; border: 2px solid #ccc; border-radius: 4px; font-size: 16px; background-color: white;
+				background-position: 10px 10px; background-repeat: no-repeat; padding: 12px 20px 12px 40px; -webkit-transition: width 0.4s ease-in-out;
+				transition: width 0.4s ease-in-out; position: relative; top: -130px; left: -119px;">
 		</form>
 <br/><br/><br/><br/><br/><br/><br/><br/>
    			<div id="friend-element" v-for="foodfriend in filteredList">   
