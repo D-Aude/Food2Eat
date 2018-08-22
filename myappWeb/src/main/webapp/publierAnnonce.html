@@ -15,6 +15,7 @@
 	</div>
 
 	<form id="publicationForm" @submit.prevent="Publier()" >
+	<button id='btnDemoAjoutAnnonce' v-on:click='DemoAjoutAnnonce' type="button">Demo</button>
 			<div class="row">
 		      <div class="col-25">
 		        <label class="labelPublication" for="">Titre</label>
@@ -106,7 +107,7 @@
 		    </div>
 		    <div class="row">
 		      <button type="submit" id="btnPublier" >Publier</button>
-		      <button id="btnAnnulerPubli" v-on:click="backToInventaire" >Annuler</button>
+		      <button id="btnAnnulerPubli" v-on:click="backToInventaire" type="button">Annuler</button>
 		    </div>
 	</form>
 
@@ -201,6 +202,19 @@ var vmPublication = new Vue({
 		  	{
 		  		sessionStorage.removeItem('publicationAnnonce');
 		  		$("#flexContent").load("./gestionInventaire.html");
+		  	},
+		  	DemoAjoutAnnonce : function()
+		  	{
+		  	    document.getElementById("inputTitre").value = "Quand c'est gratuit, c'est dans vos prix !";
+		  	    
+		  	    document.getElementById("inputDate1").value = "2018-08-25";
+		  	    document.getElementById("inputHeure1").value = "15:00";
+		  	    
+		  	    document.getElementById("inputDate2").value = "2018-08-25";
+		  	    document.getElementById("inputHeure2").value = "20:00";
+		  	    
+		  	    document.getElementById("inputDate3").value = "2018-08-26";
+		  	    document.getElementById("inputHeure3").value = "12:00";
 		  	},
 		  	moment: function (date) 
 		  	{
