@@ -50,8 +50,8 @@ console.log(annonceAmodif)
 						annonceAmodif).then((response)=> {
 							console.log(response);
 						});
-				// Afficher la nouvelle liste
-				location.reload();
+				
+			
 			})
 		},
 
