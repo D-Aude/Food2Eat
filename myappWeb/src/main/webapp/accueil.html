@@ -101,8 +101,8 @@
 						</span>
 						<span id="lblDashboard1" style="color:white; position:absolute; font-size:25px; top:57; left:300px; line-height:45px;">
 							Nombre d'annonces en cours : <br/>
-							Nombre d'annonces total postées : <br/> 
-							Nombre de réponses à valider :
+							Nombre total de don effectué : {{nbrDonsEffectues}}<br/> 
+							Nombre de réponses à valider : {{notifMesAnnonces}}
 						</span>
 									
 						<button id="btnAccesAnnonce" type="button" style="" href="#">
@@ -115,9 +115,9 @@
 						</span>
 						<span id="lblDashboard2" style="color:white; position:absolute; font-size:25px; top:1; left:260; line-height:45px;">
 							 <br/>
-							Mes souhaites en attente de validation : <br/>
-							Mes souhaits validés : <br/> 
-							Mes souhaits refusés :
+							Mes souhaits en attente de validation :  <br/>
+							<span> Mes souhaits validés : {{notifMesSouhait }}  --- Mes souhaits refusés :  <br/> </span>
+							Nombre total de don reçu  : <br/>
 						</span>
 									
 						<button id="btnAccesReponse" type="button" style="" href="#">
@@ -129,8 +129,8 @@
 							Inventaire
 						</span>
 						<span id="lblDashboard3" style="color:white; position:absolute; font-size:25px; top:70; left:256; line-height:45px;">
-							Nombre de produit dans mon inventaire : {{nbrDonsTotaux}}  <br/>
-							<b >Produit arrivant à péremption : {{nbrDonsEffectues}}</b>
+							Nombre de produit dans mon inventaire :   <br/>
+							<b >Produit arrivant à péremption :  </b>
 						</span>
 									
 						<button id="btnAccesInventaire" type="button" style="" href="#">

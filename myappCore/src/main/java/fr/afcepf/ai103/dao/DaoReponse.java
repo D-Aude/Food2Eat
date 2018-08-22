@@ -109,7 +109,7 @@ public class DaoReponse implements IDaoReponses {
 
 
 	@Override
-	public Long countNotifEnvieValidé(int idUtilisateur) {
+	public Long countNotifEnvieValide(int idUtilisateur) {
 		
 		return entityManager.createNamedQuery("Repannonce.CountRdvAVenir",Long.class)
 				.setParameter("idUtilisateur", idUtilisateur)

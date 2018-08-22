@@ -10,26 +10,12 @@ data:{
 	 notifMesSouhait : '',
 	 notifMesAnnonces: '',
 	 notifInvitFF: ''
+	
 },
 created : function (){
 	var vmNotif = this
 	
-	console.log("init")
-	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/'+ vmNotif.idUtilisateur)
-		.then(function (response) {
-			if (response.data >0 ) { vmNotif.notifMesSouhait = response.data }
 
-		}),
-	 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/NotifReponseAnnonce/'+vmNotif.idUtilisateur)
-		.then(function (response) {
-			if (response.data >0 ) {vmNotif.notifMesAnnonces = response.data }
-
-		})	
-		axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/notif/'+vmNotif.idUtilisateur)
-		.then(function (response) {
-			if (response.data >0 ) { vmNotif.notifInvitFF = response.data }
-
-		})	
 	
 }
 	
@@ -41,9 +27,14 @@ var vmArche = new Vue({
   el: '#flexContent',
   data: {
     pseudo : '',
+    idUtilisateur : id,
     utilisateur: [],
     nbrDonsEffectues : 0,
-    nbrDonsTotaux: 0,
+    nbrDonsTotaux: 0, //Pas mis dans l'arche
+   
+	 notifMesSouhait : '',
+	 notifMesAnnonces: '',
+	 notifInvitFF: ''
    
   },
   created: function () {
@@ -64,10 +55,27 @@ var vmArche = new Vue({
 			.then(function (response) {
 				vmArche.nbrDonsEffectues = response.data
 			}),
-			 axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountAnnoncesTotales')
+			axios.get('http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountAnnoncesTotales')
 				.then(function (response) {
 					vmArche.nbrDonsTotaux = response.data
-				})
+				}),
+				console.log("init")
+				 axios.get('http://localhost:8080/myappWeb/services/rest/reponses/notificationAcceptationReponse/'+ this.utilisateur.idUtilisateur)
+				.then(function (response) {
+					if (response.data >0 ) { vmArche.notifMesSouhait = response.data }
+
+					}),
+				axios.get('http://localhost:8080/myappWeb/services/rest/reponses/NotifReponseAnnonce/'+this.utilisateur.idUtilisateur)
+				.then(function (response) {
+					if (response.data >0 ) {vmArche.notifMesAnnonces = response.data }
+
+					})	
+				axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/notif/'+this.utilisateur.idUtilisateur)
+					.then(function (response) {
+					if (response.data >0 ) { vmArche.notifInvitFF = response.data }
+
+					})	
+				
 	  }
 		
 	
