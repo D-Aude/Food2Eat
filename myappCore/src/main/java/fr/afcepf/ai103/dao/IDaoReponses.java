@@ -37,7 +37,9 @@ public interface IDaoReponses {
 	
 	public Long countNotifReponseAnnonce(int idUtilisateur);
 	
-
+	public Long countNotifSouhaitEnAttente (int idUtilisateur);
+	
+	public Long countNotifDonTotauxRecus(int idUtilisateur);
 
 	// Chercher les RDV à venir de mes annonces
 	public List<Repannonce> repannonceMesAnnoncesRdvAVenir(int idUtilisateur);

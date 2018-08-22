@@ -171,7 +171,14 @@ public class ServiceMesAnnonces implements IServiceMesAnnonces {
 
 			annonce = daoAnnonces.creerAnnonce(annonce);
 			return annonce;
+	}
 
+
+
+	@Override
+	public Long CountAnnonceEnCours(int idUtilisateur) {
+		
+		return daoAnnonces.countAnnonceEnCoursParId(idUtilisateur);
 	}
 
 

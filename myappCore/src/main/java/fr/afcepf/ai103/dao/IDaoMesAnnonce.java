@@ -31,6 +31,7 @@ public interface IDaoMesAnnonce {
 	
 	public Long CountAnnonceParId(int idUtilisateur);
 	public Long CountAnnonceTermines();
+	public Long countAnnonceEnCoursParId(int idUtilisateur);
 	public List <Repannonce> voirReponse (int utilisateur);
 	
 	// Recupérer la liste des annonces avec au moins une annonce

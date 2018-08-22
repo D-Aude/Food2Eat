@@ -190,5 +190,15 @@ public List<Annonce> rechercherMesEnviesCloturees(int utilisateur) {
 		return entityManager.createNamedQuery("Annonce.CompterLesDonsTermines",Long.class)
 				.getSingleResult();
 	}
+
+	@Override
+	public Long countAnnonceEnCoursParId(int idUtilisateur) {
+	
+		return entityManager.createNamedQuery("Annonce.CountMesAnnoncesEnCours",Long.class)
+					.setParameter("idUtilisateur",idUtilisateur)
+					.getSingleResult();
+	}
+	
+
 	
 }

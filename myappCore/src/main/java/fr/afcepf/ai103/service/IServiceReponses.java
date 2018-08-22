@@ -34,7 +34,8 @@ public interface IServiceReponses {
 
 	Long CountNotifAcceptationReponse(int idUtilisateur);
 	Long CountReponseAnnonce(int idUtilisateur);
-
+	Long CountNotifSouhaitEnAttente(int idUtilisateur);
+	Long CountNotifDonTotauxrecus(int idUtilisateur);
 
 	// Rechercher les RDV à venir de mes annonces
 	List<Repannonce> chercherMesAnnoncesRdvAVenir(int idUtilisateur);

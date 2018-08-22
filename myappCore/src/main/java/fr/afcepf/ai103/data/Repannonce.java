@@ -78,10 +78,10 @@ import java.util.List;
 																+"and r.evaluations is empty"),
 		
 		@NamedQuery(name="Repannonce.CountRepAnnonceParIdUser", query = "SELECT COUNT(r.dateReponse) FROM Repannonce r "
-									+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :idUtilisateur "
-									+ "and r.dateAcceptationReponse is null "
-									+ "and r.dateAnnulationReponse is null "
-									+ "and r.dateRefus is null"),
+																	+ "WHERE r.annonce.stock.utilisateur.idUtilisateur = :idUtilisateur "
+																	+ "and r.dateAcceptationReponse is null "
+																	+ "and r.dateAnnulationReponse is null "
+																	+ "and r.dateRefus is null"),
 
 														
 		
@@ -90,8 +90,26 @@ import java.util.List;
 														+ "and r.dateRdv > CURRENT_DATE "
 														+ "and r.dateAcceptationReponse is not null "
 														+ "and r.dateAnnulationReponse is null "
-														+ "and r.annonce.dateAnnulation is null ")
+														+ "and r.annonce.dateAnnulation is null "),
+		
+		@NamedQuery(name="Repannonce.CountparIdUtilisateurMesEnviesEnAttenteSansReponse", query = "SELECT COUNT (r.dateReponse) FROM Repannonce r "
+															+ "WHERE r.utilisateur.idUtilisateur = :idUtilisateur "
+															+ "and r.dateAcceptationReponse is  null "
+															+"and r.dateReponse is not null "
+															+"and r.annonce.dateFinAnnonce is null "
+															+"and r.annonce.dateAnnulation is null "
+															+ "and r.dateAnnulationReponse is null "
+															+ "and r.dateRefus is null "
+															+ "and r.dateRdv is not null"),
+		
+		@NamedQuery(name="Repannonce.CountNbrDonRecu", query = "SELECT COUNT(r.annonce.dateFinAnnonce)  FROM Repannonce r "
+															+ "WHERE r.utilisateur.idUtilisateur = :idUtilisateur "
+															+ "and r.dateAcceptationReponse is not null "
+															+ "and r.dateAnnulationReponse is null "
+															+ "and r.dateRefus is null "
+															+"and r.dateRdv < CURRENT_DATE "),
 				
+
 })
 		
 public class Repannonce implements Serializable {

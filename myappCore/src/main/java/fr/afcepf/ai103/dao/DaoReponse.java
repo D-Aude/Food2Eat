@@ -133,6 +133,22 @@ public class DaoReponse implements IDaoReponses {
 				.getResultList();
 		//reponses à valider + req rdv à venir
 	}
+
+	@Override
+	public Long countNotifSouhaitEnAttente(int idUtilisateur) {
+		
+		return entityManager.createNamedQuery("Repannonce.CountparIdUtilisateurMesEnviesEnAttenteSansReponse",Long.class)
+				.setParameter("idUtilisateur", idUtilisateur)
+				.getSingleResult();
+	}
+
+	@Override
+	public Long countNotifDonTotauxRecus(int idUtilisateur) {
+		
+		return entityManager.createNamedQuery("Repannonce.CountNbrDonRecu",Long.class)
+				.setParameter("idUtilisateur", idUtilisateur)
+				.getSingleResult();
+	}
 	
 
 

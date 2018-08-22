@@ -176,11 +176,11 @@ var listeannoncesCommnunaute = new Vue({
 					(marker.valueOf()._icon).setAttribute("data-toggle", "modal");
 					(marker.valueOf()._icon).setAttribute("data-target", "#modal");
 
-					
+					var donneur = this.filteredList[i].stock.utilisateur.pseudo
 					var nomProduit = this.filteredList[i].stock.produit.nomProduit
 					var annonce = this.filteredList[i];
 					
-					marker.bindPopup(nomProduit);
+					marker.bindPopup(donneur + ' donne : ' + nomProduit);
 					marker.annonce = annonce;
 					
 					marker.filteredList = this.filteredList[i];
