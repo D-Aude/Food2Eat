@@ -98,7 +98,7 @@ public class ServiceReponses implements IServiceReponses {
 	@Override
 	public Long CountNotifAcceptationReponse(int idUtilisateur) {
 		
-		return daoReponses.countNotifEnvieValidé(idUtilisateur);
+		return daoReponses.countNotifEnvieValide(idUtilisateur);
 	}
 
 

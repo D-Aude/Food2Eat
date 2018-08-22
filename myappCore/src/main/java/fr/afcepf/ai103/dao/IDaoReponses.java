@@ -33,10 +33,11 @@ public interface IDaoReponses {
 	public Repannonce mettreAjourReponse(Repannonce rep);
 
 
-	public Long countNotifEnvieValidé(int idUtilisateur);
+	public Long countNotifEnvieValide(int idUtilisateur);
 	
 	public Long countNotifReponseAnnonce(int idUtilisateur);
 	
+
 
 	// Chercher les RDV à venir de mes annonces
 	public List<Repannonce> repannonceMesAnnoncesRdvAVenir(int idUtilisateur);
