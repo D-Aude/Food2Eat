@@ -96,51 +96,69 @@
 					</div>
 					<b style="position:absolute; top:-100px; left:590px;">Tableau de bord</b>
 					<div id="dashboard1">
-					<span id="titreDashboard1" style="color: white; font-size: 30px; position: absolute; left: 400px; text-decoration:  underline;">
-							Mes annonces
-						</span>
-						<span id="lblDashboard1" style="color:white; position:absolute; font-size:25px; top:57; left:300px; line-height:45px;">
-							Nombre d'annonces en cours : <br/>
-							Nombre total de don effectué : {{nbrDonsEffectues}}<br/> 
-							Nombre de réponses à valider : {{notifMesAnnonces}}
-						</span>
-									
-						<button id="btnAccesAnnonce" type="button" style="" href="#">
-							Accéder à mes annonces</button>
+						<span id="titreDashboard1" style="color: white; font-size: 30px; position: absolute; left: 400px; text-decoration:  underline;">
+								Mes annonces
+							</span>
+							<span id="lblDashboard1" style="color:white; position:absolute; font-size:25px; top:57; left:300px; line-height:45px;">
+								Nombre d'annonces en cours : <br/>
+								Nombre total de don effectué : {{nbrDonsEffectues}}<br/> 
+								Nombre de réponses à valider : {{notifMesAnnonces}}
+							</span>
+										
+							<button id="btnAccesAnnonce" type="button" style="" href="#">
+								Accéder à mes annonces</button>
 					</div>
 					
 					<div id="dashboard2">
-					<span id="titreDashboard2" style="color: white; font-size: 30px; position: absolute; left: 250; text-decoration:  underline;">
-							Toutes les annonces de la communauté
+						<span id="titreDashboard2" style="color: white; font-size: 30px; position: absolute; left: 250; text-decoration:  underline;">
+								Toutes les annonces de la communauté
 						</span>
 						<span id="lblDashboard2" style="color:white; position:absolute; font-size:25px; top:1; left:260; line-height:45px;">
-							 <br/>
+							<br/>
 							Mes souhaits en attente de validation :  <br/>
-							<span> Mes souhaits validés : {{notifMesSouhait }}  --- Mes souhaits refusés :  <br/> </span>
+							<span> Mes souhaits validés : {{notifMesSouhait }} &emsp;&emsp; Mes souhaits refusés :  <br/> </span>
 							Nombre total de don reçu  : <br/>
 						</span>
-									
-						<button id="btnAccesReponse" type="button" style="" href="#">
-							Accéder à mes réponses</button>
-						</div>
+										
+						<button id="btnAccesReponse" type="button" style="" href="#">Accéder à mes réponses</button>
+					</div>
 						
-							<div id="dashboard3">
-					<span id="titreDashboard3" style="color: white; font-size: 30px; position: absolute; left: 400; text-decoration:  underline;">
+					<div id="dashboard3">
+						<span id="titreDashboard3" style="color: white; font-size: 30px; position: absolute; left: 400; text-decoration:  underline;">
 							Inventaire
 						</span>
-						<span id="lblDashboard3" style="color:white; position:absolute; font-size:25px; top:70; left:256; line-height:45px;">
-							Nombre de produit dans mon inventaire :   <br/>
-							<b >Produit arrivant à péremption :  </b>
+						<span id="lblDashboard3" style="color:white; position:absolute; font-size:25px; top:50; left:256; line-height:45px;">
+							Nombre de produit dans mon inventaire : {{nbStockInventaire}}  <br/>
+							<b >Produits arrivant à péremption : {{nbStockPresquePerime}} <br/> 
+							Produits périmés : {{nbStockPerime}} </b>
 						</span>
 									
-						<button id="btnAccesInventaire" type="button" style="" href="#">
-							Accéder à mon inventaire</button>
-						</div>
+						<button id="btnAccesInventaire" type="button" style="" href="#">Accéder à mon inventaire</button>
+					</div>
+					
+					<div id="dashboard4">
+						<span id="titreDashboard4" style="color: white; font-size: 30px; position: absolute; left: 400; text-decoration:  underline;">
+							FoodFriends
+						</span>
+						<span id="lblDashboard4" style="color:white; position:absolute; font-size:25px; top:50; left:340; line-height:45px;">
+							Invitations en attentes :  
+						</span>
+									
+						<button id="btnAccesInvitationsRecues" type="button" style="" href="#">Accéder aux invitations recues</button>
+					</div>
+					
+					<div id="dashboard5">
+						<span id="titreDashboard5" style="color: white; font-size: 30px; position: absolute; left: 350; text-decoration:  underline;">
+							Statistiques Globales
+						</span>
+						<span id="lblDashboard5" style="color:white; position:absolute; font-size:25px; top:50; left:380; line-height:45px;">
+							Nombre de dons :  
+						</span>
 					</div>
 				</div>
-
 			</div>
 		</div>
+	</div>
 	<footer>
 		<div class="btnDeconnexion" id="btnDeco">
 			<span class="deconnexion"><a href="#" @click="seDeconnecter()"><img src="./resources/css/deconnexion.png" ></a></span>
@@ -217,6 +235,10 @@ var foot = new Vue({
 		
 		$('#btnAccesReponse').on('click', function() {
 			$("#flexContent").load("./annoncesAyantReponses.html");
+		});
+		
+		$('#btnAccesInvitationsRecues').on('click', function() {
+			$("#flexContent").load("./invitationsRecues.html");
 		});
 
 		$('#toutes-annonces').on('click', function() {

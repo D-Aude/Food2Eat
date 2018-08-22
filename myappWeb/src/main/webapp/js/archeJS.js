@@ -2,26 +2,6 @@
 var Session = sessionStorage.getItem('utilisateurCourant');
 var id = JSON.parse(Session)["idUtilisateur"];
 
-var vmNotif = new Vue({
-
-el:'#navbarSupportedContent',
-data:{
-	idUtilisateur : id,
-	 notifMesSouhait : '',
-	 notifMesAnnonces: '',
-	 notifInvitFF: ''
-	
-},
-created : function (){
-	var vmNotif = this
-	
-
-	
-}
-	
-	
-	
-})
 
 var vmArche = new Vue({
   el: '#flexContent',
@@ -34,7 +14,11 @@ var vmArche = new Vue({
    
 	 notifMesSouhait : '',
 	 notifMesAnnonces: '',
-	 notifInvitFF: ''
+	 notifInvitFF: '',
+	 
+	 nbStockInventaire : 0,
+	 nbStockPresquePerime : 0,
+	 nbStockPerime : 0
    
   },
   created: function () {
@@ -69,12 +53,27 @@ var vmArche = new Vue({
 				.then(function (response) {
 					if (response.data >0 ) {vmArche.notifMesAnnonces = response.data }
 
-					})	
+					}),	
 				axios.get('http://localhost:8080/myappWeb/services/rest/foodfriend/notif/'+this.utilisateur.idUtilisateur)
 					.then(function (response) {
 					if (response.data >0 ) { vmArche.notifInvitFF = response.data }
 
-					})	
+					}),	
+
+				axios.get('http://localhost:8080/myappWeb/services/rest/stock/'+this.utilisateur.idUtilisateur)
+					.then(function (response) {
+						var stocks = response.data;
+						var now = new Date();
+						var semaineProchaine = moment(now).add(7, 'd');
+						for(var i=0; i<stocks.length;i++)
+						{
+							if(stocks[i].dlc < now)
+								vmArche.nbStockPerime++;
+							else if(stocks[i].dlc < semaineProchaine)
+								vmArche.nbStockPresquePerime++;
+						}
+						vmArche.nbStockInventaire = stocks.length;
+					})
 				
 	  }
 		
