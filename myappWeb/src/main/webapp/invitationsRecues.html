@@ -16,13 +16,14 @@
 
 
 		<div class="lblTitreAnnonces">
-			<b>Invitations Foodfriend reçue(s)</b>
+			<b style="position:relative; left:430;">Invitations Foodfriend reçue(s)</b>
 		</div>	
 <br/><br/><br/><br/><br/><br/><br/><br/>			
 		<div id="listeDemandesFoodfriend">
-			<div v-if="foodfriend.length == 0">
+			<div v-if="foodfriend.length == 0" style="position: absolute;top: 300px;font-family: 'Abel', sans-serif;font-size: 30px;left: 680px;">
 				pas d'invitation...
 			</div>
+			
    			<div id="friend-element" v-for="foodfriend in foodfriend">  
 	   				<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>
 	   				{{foodfriend.utilisateur1.pseudo}} <br/>

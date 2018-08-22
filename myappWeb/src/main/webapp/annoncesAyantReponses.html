@@ -13,7 +13,7 @@
 		<div id="annoncesAvecReponses">
 		
 		
-				<div id="titre"><h1 >MES ANNONCES REPONDUES</h1><br/>
+				<div id="titre" style="text-decoration:none; font-family:'Abel', sans-serif; font-size: 50; margin-bottom:100px;"><b>MES ANNONCES REPONDUES</b><br/>
 				
 				<!--===============================Bouton de recherche==============================-->
 <!-- 					<div id="boutons">			
@@ -25,7 +25,7 @@
 			
 			<!--===============================tableau RDV à confirmer==============================-->
  			<div v-if="btnRDVaConfirmer == true" class="table-responsive-sm">
- 			<center><h5>MES REPONSES A VALIDER</h5> <button v-on:click="voirRdvAVenir()" type="button">Voir mes RDV à venir</button></center>
+ 			<center><h5 style="font-size:20px;">MES REPONSES A VALIDER</h5> <button v-on:click="voirRdvAVenir()" type="button">Voir mes RDV à venir</button></center>
 				<table class="table table-hover">
 				  <thead class="thead-dark">
 				    <tr>
@@ -51,7 +51,7 @@
 			
 			<!--===============================tableau RDV à venir==============================-->
  			<div v-if="btnRDVaConfirmer == false" class="table-responsive-sm">
- 				<h5>MES RDV A VENIR</h5> <button v-on:click="voirRdvAconfirmer()" type="button">Voir les réponses à valider</button>
+ 				<center><h5>MES RDV A VENIR</h5> <button v-on:click="voirRdvAconfirmer()" type="button">Voir les réponses à valider</button></center>
 				<table class="table table-hover">
 				  <thead class="thead-dark">
 				    <tr>

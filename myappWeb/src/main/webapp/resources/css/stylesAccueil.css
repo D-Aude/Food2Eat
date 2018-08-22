@@ -20,7 +20,7 @@ body {
 #dashboard1 {
 position: absolute;
     width: 980;
-    height: 210;
+    height: 250;
     border-radius: 7px;
     background-color: #245B55;
     top: 580;
@@ -31,7 +31,7 @@ position: absolute;
 #dashboard3 {
 position: absolute;
     width: 980;
-    height: 210;
+    height: 260;
     border-radius: 7px;
     background-color: #245B55;
     top: 40;
@@ -42,7 +42,7 @@ position: absolute;
 #dashboard2{
 	position: absolute;
     width: 980;
-    height: 210;
+    height: 258;
     border-radius: 7px;
     background-color: #245B55;
     top: 310;
@@ -59,7 +59,7 @@ position: absolute;
     position: absolute;
     left: 397;
     border-radius: 12px;
-    top: 155px;
+    top: 195;
 }
 
 #btnAccesReponse {
@@ -71,7 +71,7 @@ position: absolute;
     position: absolute;
     left: 397;
     border-radius: 12px;
-    top: 155px;
+    top: 195;
 }
 
 #btnAccesInventaire {
@@ -83,7 +83,7 @@ position: absolute;
     position: absolute;
     left: 397;
     border-radius: 12px;
-    top: 155px;
+    top: 195;
 }
 #btnAccesAnnonce:hover{
 	text-decoration:underline;
@@ -1414,13 +1414,13 @@ left: -40px;
 }
 
 #lblAnnonceEnCoursYo {
-font-size: 25;
+    font-size: 25;
     color: white;
-    position: absolute;
-    top: 4px;
+    position: relative;
+    top: -28px;
     font-family: Abel, sans-serif;
-    left: 50px;
-    line-height: 41px
+    left: 330px;
+    line-height: 39px;
 }
 
 #lblEnviesTerminees {
