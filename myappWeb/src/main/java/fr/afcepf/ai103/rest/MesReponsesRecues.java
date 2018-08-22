@@ -123,5 +123,19 @@ public class MesReponsesRecues {
 	
 	// reponses à valider + req rdv à venir
 	
+	//http://localhost:8080/myappWeb/services/rest/reponses/notifSouhaitEnAttente/10
+	@Path("notifSouhaitEnAttente/{idUtilisateur}")
+	@GET
+	public Long notifSouhaitEnAttente(@PathParam("idUtilisateur") int idUtilisateur)
+	{
+		return serviceReponses.CountNotifSouhaitEnAttente(idUtilisateur);
+	}
 	
+	//http://localhost:8080/myappWeb/services/rest/reponses/notifDonTotauxRecus/1
+	@Path("notifDonTotauxRecus/{idUtilisateur}")
+	@GET
+	public Long notiDonfTotauxRecus(@PathParam("idUtilisateur") int idUtilisateur)
+	{
+		return serviceReponses.CountNotifDonTotauxrecus(idUtilisateur);
+	}
 }

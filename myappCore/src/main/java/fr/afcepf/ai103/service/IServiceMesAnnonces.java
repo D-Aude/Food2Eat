@@ -32,6 +32,7 @@ public interface IServiceMesAnnonces {
 	
 	Long CountAnnonceParid (int idutilisateur);
 	Long CountAnnonceTotal ();
+	Long CountAnnonceEnCours(int idUtilisateur);
 	
 	List<Repannonce> essaiReponse (int utilisateur);
 	

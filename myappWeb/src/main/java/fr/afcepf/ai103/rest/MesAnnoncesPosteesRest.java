@@ -244,7 +244,7 @@ public class MesAnnoncesPosteesRest {
 		return serviceAnnonce.rechercherAnnoncesAvecReponses(utilisateur);
 	}
 	
-
+	
 	@Path("creerAnnonce") //dernière partie de l'URL
 	@POST 
 	//URL = http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/creerAnnonce
@@ -253,7 +253,15 @@ public class MesAnnoncesPosteesRest {
 		return serviceAnnonce.creerAnnonce(annonce);
 		
 	}
-	
+
+	// http://localhost:8080/myappWeb/services/rest/mesAnnoncesPostees/CountAnnoncesEnCours/1
+	@Path("CountAnnoncesEnCours/{idUtilisateur}")
+	@GET
+	public Long countAnnonceEnCours(@PathParam("idUtilisateur") int idUtilisateur)
+	{
+		System.out.println("count passe par le rest" + idUtilisateur);
+		return serviceAnnonce.CountAnnonceEnCours(idUtilisateur);
+	}
 
 }
 

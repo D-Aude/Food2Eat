@@ -116,4 +116,18 @@ public class ServiceReponses implements IServiceReponses {
 	// reponses à valider + req rdv à venir
 	}
 
+
+	@Override
+	public Long CountNotifSouhaitEnAttente(int idUtilisateur) {
+		
+		return daoReponses.countNotifSouhaitEnAttente(idUtilisateur);
+	}
+
+
+	@Override
+	public Long CountNotifDonTotauxrecus(int idUtilisateur) {
+		
+		return daoReponses.countNotifDonTotauxRecus(idUtilisateur);
+	}
+
 }
