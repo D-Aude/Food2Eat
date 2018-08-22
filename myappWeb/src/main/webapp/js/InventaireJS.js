@@ -97,10 +97,6 @@ var vm = new Vue({
 			  
 			  //Modification info
 			  var semaine = moment(now).add(7, 'd');
-			  console.log(now+' => '+semaine)
-//			  
-//			  var semaine = new Date();
-//			  semaine.setDate(now.getDate() + 7);
 			  if(stock.dlc<now)
 			  {
 				  document.getElementById("info").innerHTML = "Attention la DLC de ce produit est dépassé ! (Don impossible)";

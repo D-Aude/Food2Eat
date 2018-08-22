@@ -16,15 +16,14 @@
 
 
 		<div class="lblTitreAnnonces">
-
-<br/><br/><br/><br/><br/><br/><br/><br/>			
+			<b style="position: relative;left: 420px;">Invitations Foodfriend reçue(s)</b>
+		</div>
+			<br/><br/><br/><br/><br/><br/><br/><br/>			
 		<div id="listeDemandesFoodfriend">
-					<b style="position: relative;left: 420px;">Invitations Foodfriend reçue(s)</b>
 			<div id="infoinvit" v-if="foodfriend.length == 0" style="position: absolute;top: 300px;font-family: 'Abel', sans-serif;font-size: 30px;left: 680px;">
 				pas d'invitation...
 			</div>	
-		</div>
-		</div>
+
 
    			<div id="friend-element" v-for="foodfriend in foodfriend">  
 	   				<img v-bind:src="getSrc(foodfriend.utilisateur1.pseudo)"/><br/>
@@ -34,11 +33,8 @@
 	   				<!--  <input id="idfoodfriend" value="">{{foodfriend.idFoodfriend}}</input>-->
 	   				<button v-on:click="AccepterDemande(foodfriend)">ACCEPTER</button>
 	   				<button v-on:click="RefuserDemande(foodfriend)">REFUSER</button>
-	
    			</div>
-		</div>
-
-	<script src="./js/foodfriendtestJ2.js"></script>
-
+			</div>
+<script src="./js/foodfriendtestJ2.js"></script>
 </body>
 </html>
