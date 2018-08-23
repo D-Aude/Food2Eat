@@ -37,20 +37,34 @@ var vm = new Vue({
 	      axios.get('http://localhost:8080/myappWeb/services/rest/stock/'+utilisateur.idUtilisateur)
 	          .then(function (response) {
 	        	  vm.stocks = response.data
+	     
+
 	      })
+	      
 	  }
 	  
   },
-//  computed: {
-//		filteredList() {
-//			return this.stocks.filter(post => {
-//		        return post.stock.produit.nomProduit.toLowerCase().includes(this.search.toLowerCase())
-//		      })
-//		      
-//		}
-//  },
   methods: 
   {
+//	  couleurListe() {
+//		  console.log("test");
+//		  var liste = document.getElementsByClassName("infosStock");
+//		      console.log("All resources finished loading!");
+//		  	 
+//		  	 var now = new Date();
+//		  	var semaine = moment(now).add(7, 'd');
+//		  	for(var i =0; i<liste.length; i++)
+//		  	 {
+//		  		  if(this.stocks[i].dlc<now)
+//		  		  {
+//		  			  liste[i].style.backgroundColor = 'rgb(255, 192, 139)';
+//		  		  }
+//		  		  else if(this.stocks[i].dlc<semaine)
+//		  		  {
+//		  			  liste[i].style.backgroundColor = 'rgb(254, 255, 191)';
+//		  		  }
+//		    }
+//	  },
 	  clickStock(stock)
 	  {
 		  var liste = document.getElementsByClassName("infosStock");

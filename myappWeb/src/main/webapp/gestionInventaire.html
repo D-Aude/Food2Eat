@@ -58,7 +58,7 @@
 		   			<div id="dlcColumn" class="header" >DLC</div>
 		   			<div id="etatColumn" class="header">En stock</div>
 		   		</div>
-		   		<div  v-for="stock in stocks" class="ligne infosStock" v-if="consommation == 0" v-on:click=clickStock(stock)>
+		   		<div  v-for="stock in stocks" class="ligne infosStock" v-if="consommation == 0" v-on:click=clickStock(stock) v-on:load=couleurListe()>
 	   				<div class="case1"><strong>{{stock.quantite}}</strong></div>
 	   				<div class="case2">{{stock.produit.nomProduit}}</div>
 	   				<div class="case3">{{moment(stock.dlc).format('DD/MM/YYYY')}}</div>
