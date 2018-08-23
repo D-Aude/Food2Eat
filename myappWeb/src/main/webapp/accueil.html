@@ -100,9 +100,9 @@
 								Mes annonces
 							</span>
 							<span id="lblDashboard1" style="color:white; position:absolute; font-size:25px; top:57; left:300px; line-height:45px;">
-								Nombre d'annonces en cours :  {{notifnbAnnonceEncours}}<br/>
-								Nombre total de don effectués : {{nbrDonsEffectues}}<br/> 
-								Nombre de réponses à valider : {{notifMesAnnonces}}
+								Nombre d'annonces en cours :  <label id="lblAnnoncesEnCours">{{notifnbAnnonceEncours}}</label><br/>
+								Nombre de réponses à valider : <label id="lblReponsesAValider">{{notifMesAnnonces}}</label><br/> 
+								Nombre total de don effectués : <label id="lblDonsEffectues">{{nbrDonsEffectues}}</label>
 							</span>
 										
 							<button id="btnAccesAnnonce" type="button" style="" href="#">
@@ -115,9 +115,9 @@
 						</span>
 						<span id="lblDashboard2" style="color:white; position:absolute; font-size:25px; top:1; left:260; line-height:45px;">
 							<br/>
-							Mes souhaits en attente de validation : {{notifSouhaitAttenteValidation}} <br/>
-							<span> Mes souhaits validés : {{notifMesSouhait }} &emsp;&emsp; Mes souhaits refusés : 0 <br/> </span>
-							Nombre total de don reçu  : {{notifDonTotauxRecus}} <br/>
+							Mes souhaits en attente de validation : <label id="lblSouhaitsEnAttente">{{notifSouhaitAttenteValidation}}</label> <br/>
+							<span> Mes souhaits validés : <label id="lblSouhaitsValides">{{notifMesSouhait }}</label> &emsp;&emsp; Mes souhaits refusés : 0 <br/> </span>
+							Nombre total de don reçu  : <label id="lblSouhaitsClotures">{{notifDonTotauxRecus}}</label> <br/>
 						</span>
 										
 						<button id="btnAccesReponse" type="button" style="" href="#">Accéder à mes réponses</button>
@@ -141,7 +141,7 @@
 							FoodFriends
 						</span>
 						<span id="lblDashboard4" style="color:white; position:absolute; font-size:25px; top:50; left:340; line-height:45px;">
-							Invitations en attentes :  {{notifInvitFF}}
+							Invitations en attentes : {{notifInvitFF}}
 						</span>
 									
 						<button id="btnAccesInvitationsRecues" type="button" style="" href="#">Accéder aux invitations recues</button>
@@ -204,6 +204,10 @@ var foot = new Vue({
 		$('#annoncesTerminees').on('click', function() {
 			$("#flexContent").load("./mesAnnoncesTerminesDesign.html");
 		});
+		
+		$('#lblDonsEffectues').on('click', function() {
+			$("#flexContent").load("./mesAnnoncesTerminesDesign.html");
+		});
 
 		$('#btnInventaire').on('click', function() {
 			$("#flexContent").load("./gestionInventaire.html");
@@ -217,7 +221,19 @@ var foot = new Vue({
 			$("#flexContent").load("./EnviesEnAttenteDesign.html");
 		});
 		
+		$('#lblSouhaitsEnAttente').on('click', function() {
+			$("#flexContent").load("./EnviesEnAttenteDesign.html");
+		});
+		
+		$('#lblSouhaitsValides').on('click', function() {
+			$("#flexContent").load("./EnviesEnAttenteDesign.html");
+		});
+		
 		$('#mesSouhaitsClotures').on('click', function() {
+			$("#flexContent").load("./mesEnviesTermines.html");
+		});
+		
+		$('#lblSouhaitsClotures').on('click', function() {
 			$("#flexContent").load("./mesEnviesTermines.html");
 		});
 		
@@ -229,7 +245,15 @@ var foot = new Vue({
 			$("#flexContent").load("./mesAnnoncesEncoursDesign.html");
 		});
 		
+		$('#lblAnnoncesEnCours').on('click', function() {
+			$("#flexContent").load("./mesAnnoncesEncoursDesign.html");
+		});
+		
 		$('#menuReponsesAValider').on('click', function() {
+			$("#flexContent").load("./annoncesAyantReponses.html");
+		});
+		
+		$('#lblReponsesAValider').on('click', function() {
 			$("#flexContent").load("./annoncesAyantReponses.html");
 		});
 		
