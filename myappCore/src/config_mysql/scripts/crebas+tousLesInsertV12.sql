@@ -354,9 +354,9 @@ insert into VILLE (code_postal, ville) values ('75020', 'PARIS 20');
 
 /* ADRESSE*/
 insert into adresse (id_ville, numero_voie, nom_voie, complement_adresse, type_voie, date_debut_validite, date_fin_validite, x, y) values (1, 9, 'du Général de Gaulle', NULL, 'boulevard', '2018/02/05', NULL, 48.8164171, 2.327170600000045);
-insert into adresse (id_ville, numero_voie, nom_voie, complement_adresse, type_voie, date_debut_validite, date_fin_validite, x, y) values (1, 15, 'Barbès', NULL, 'rue', '2018/02/05', NULL, 48.8177548, 2.327521499999989);
+insert into adresse (id_ville, numero_voie, nom_voie, complement_adresse, type_voie, date_debut_validite, date_fin_validite, x, y) values (1, 3, 'du Général de Gaulle', NULL, 'rue', '2018/02/05', NULL, 48.8172899, 2.326749800000016);
 insert into adresse (id_ville, numero_voie, nom_voie, complement_adresse, type_voie, date_debut_validite, date_fin_validite, x, y) values (1, 102, 'Aristide Briand', NULL, 'avenue', '2018/02/05', NULL, 48.81454410000001, 2.325556399999982);
-insert into adresse (id_ville, numero_voie, nom_voie, complement_adresse, type_voie, date_debut_validite, date_fin_validite, x, y) values (1, 7, 'du Général de Gaulle', NULL, 'boulevard', '2018/02/05', NULL, 48.81657939999999, 2.3269626000000017);
+insert into adresse (id_ville, numero_voie, nom_voie, complement_adresse, type_voie, date_debut_validite, date_fin_validite, x, y) values (1, 15, 'Barbès', NULL, 'rue', '2018/02/05', NULL, 48.817953, 2.327532);
 insert into adresse (id_ville, numero_voie, nom_voie, complement_adresse, type_voie, date_debut_validite, date_fin_validite, x, y) values (1, 15, 'du Général de Gaulle', NULL, 'boulevard', '2018/02/05', NULL, 48.8161572, 2.327477300000055);
 insert into adresse (id_ville, numero_voie, nom_voie, complement_adresse, type_voie, date_debut_validite, date_fin_validite, x, y) values (1, 11, 'de la Vanne', NULL, 'rue', '2018/02/05', NULL, 48.8164513, 2.328940800000055);
 insert into adresse (id_ville, numero_voie, nom_voie, complement_adresse, type_voie, date_debut_validite, date_fin_validite, x, y) values (1, 18, 'Barbès', NULL, 'rue', '2018/02/05', NULL, 48.8168517, 2.3277921000000106);
@@ -403,21 +403,16 @@ insert into USERADRESSE (ID_UTILISATEUR, ID_ADRESSE, PRINCIPALE) values (1, 10, 
 /* FOODFRIEND*/
 insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 2, '2018/03/10', '2018/03/15', NULL);
 insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 4, '2018/03/10', '2018/03/11', NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 6, '2018/03/10', '2018/03/20', NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 9, '2018/03/10', '2018/04/01', NULL);
+insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (6, 1, '2018/03/10', NULL, NULL);
+insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (9, 1, '2018/03/10', NULL, NULL);
 insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (2, 4, '2018/03/10', '2018/04/01', NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (3, 6, '2018/03/10', '2018/03/15', NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (3, 8, '2018/03/10', '2018/03/15', NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (3, 10, '2018/03/10', '2018/04/01', NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (4, 6, '2018/03/10', '2018/04/01', NULL);
+insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (3, 2, '2018/03/10', NULL, NULL);
+insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (3, 1, '2018/03/10', '2018/03/15', NULL);
+insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 5, '2018/03/10', '2018/04/01', NULL);
+insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 7, '2018/03/10', '2018/04/01', NULL);
 insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (5, 6, '2018/03/10', '2018/03/11', NULL);
 insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (6, 10, '2018/03/10', '2018/03/11', NULL);
 insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (5, 9, '2018/03/10', '2018/03/11', NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 3, '2018/03/10', '2018/03/15', NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 5, '2018/03/10', '2018/03/15', NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 7, '2018/03/10', NULL, NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 8, '2018/03/10', NULL, NULL);
-insert into foodfriend (ID_UTILISATEUR, UTI_ID_UTILISATEUR, DATE_DEMANDE, DATE_REPONSE, DATE_FIN_RELATION) values (1, 10, '2018/03/10', '2018/03/15', '2018/03/15');
 
 
 
@@ -482,10 +477,10 @@ INSERT INTO Mesure (nom_mesure, denombrable) VALUES ('piece(s)', 1);
 
 /*------------------ Produit ------------------*/
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (4, 1, 1, 'Brocolis en fleurettes surgelés 1kg Carrefour', '100', '2018-07-01', '2018-07-02', NULL);
-INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 3, 1, 'Tomate coeur de boeuf 1kg', '100', '2018-07-01', '2018-07-02', NULL);
+INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 3, 1, 'Tomate à farcir 1kg', '100', '2018-07-01', '2018-07-02', NULL);
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 3, 1, 'Raisin en grappe 1kg', '100', '2018-07-01', '2018-07-02', NULL);
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 4, 1, 'Pastèque', '100', '2018-07-01', '2018-07-02', NULL);
-INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (2, 8, 1, 'Chocolat au lait praliné noisettes 100g Lindt ', '100', '2018-07-01', '2018-07-02', NULL);
+INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (2, 8, 1, 'Chocolat au lait praliné noisettes 100g', '100', '2018-07-01', '2018-07-02', NULL);
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 11, 1, 'Gigot d''agneau', '100', '2018-07-01', '2018-07-02', NULL);
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (1, 10, 1, 'Blanc de dinde 160g Fleury Michon', '100', '2018-07-01', '2018-07-02', NULL);
 INSERT INTO Produit (id_mode_conservation, id_categorie, id_mesure, nom_produit, nombre_unite, date_proposition, date_activation, date_desactivation) VALUES (4, 12, 1, 'Cabillaud surgelé Findus', '100', '2018-07-01', '2018-07-02', NULL);
@@ -524,47 +519,132 @@ INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fractio
 INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (19, 6, 1, 1, 50, '2018-07-02', '2018-09-01', '2018-09-30', NULL, '2018-07-31', 1);
 INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (20, 6, NULL, 1, 5, '2018-07-02', '2018-09-01', '2018-09-30', NULL, NULL,1);
 
+/*Tomate => Manger 21*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (2, 1, NULL, 1, 100, '2018-08-21', '2018-08-29', '2018-09-30', NULL, NULL,0);
+/*Oeufs => Jeter*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (9, 1, NULL, 1, 4, '2018-07-02', '2018-08-10', '2018-08-15', NULL, NULL,1);
+/*Yaourt*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref  , date_Manger, date_Jeter, Entame) VALUES (10, 1, NULL, 1, 11, '2018-07-02', '2018-09-01', '2018-09-30', NULL, NULL,1);
+/*camembert*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (11, 1, NULL, 1, 100, '2018-07-02', '2018-09-01', '2018-09-30', NULL, NULL,0);
+/*blanc de dinde => Donner*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (7, 1, NULL, 1, 70, '2018-08-15', '2018-08-28', '2018-08-28', NULL, NULL,1);
+/*annonce terminee idstock = 26*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (1, 2, NULL, 1, 5, '2018-07-02', '2018-09-01', '2018-09-30', NULL, NULL,0);
+/*stock aude 27*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (11, 9, NULL, 1, 100, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (12, 9, NULL, 1, 100, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (13, 9, NULL, 1, 50, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL, 1);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (14, 9, NULL, 1, 100, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (15, 9, NULL, 1, 50, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL,1);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (16, 9, NULL, 1, 100, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (17, 9, NULL, 1, 50, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL,1);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (18, 9, NULL, 1, 100, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (19, 9, NULL, 1, 50, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL, 1);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (20, 9, NULL, 1, 5, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL,1);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (20, 9, NULL, 1, 5, '2018-07-02', '2018-06-01', '2018-09-30', NULL, NULL,1);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (18, 7, NULL, 1, 100, '2018-07-02', '2018-09-15', '2018-09-15', NULL, NULL,1);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (5, 5, NULL, 1, 100, '2018-01-20', '2018-09-30', '2018-09-30', NULL, NULL,1);
+/*stock dany pour annonce pain de mie 40*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (14, 2, NULL, 1, 100, '2018-08-10', '2018-08-30', '2018-09-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (16, 2, NULL, 1, 100, '2018-08-15', '2018-10-30', '2018-12-30', NULL, NULL,0);
+/*stock pour autre annonce pain de mie 42*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (13, 10, NULL, 1, 100, '2018-08-15', '2018-08-31', '2018-10-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (13, 8, NULL, 1, 100, '2018-08-01', '2018-08-26', '2018-09-26', NULL, NULL,0);
+/*stock jon pour annonce en cours 44*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (12, 1, NULL, 1, 100, '2018-08-01', '2018-08-31', '2018-10-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (5, 1, NULL, 1, 100, '2018-07-01', '2018-08-31', '2018-10-30', NULL, NULL,0);
+/*stock dany pour annonce terminé et annulé 46*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (1, 2, NULL, 1, 50, '2018-08-01', '2018-08-31', '2018-10-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (2, 2, NULL, 1, 75, '2018-08-01', '2018-08-31', '2018-10-30', NULL, NULL,0);
+/*stock ajout*/
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (16, 1, NULL, 1, 100, '2018-08-21', '2018-11-29', '2018-12-30', NULL, NULL,0);
+INSERT INTO Stock (id_Produit, id_Utilisateur, id_Motif_Jeter, quantite, fraction_restante, date_Achat, DLC, date_Conso_Pref, date_Manger, date_Jeter, Entame) VALUES (1, 1, NULL, 1, 70, '2018-07-02', '2018-09-01', '2018-12-30', NULL, NULL,0);
+
+
+
 /*------------------ANNULATION ---------------------*/
 insert into Annulation (nom_annulation) values ( 'Aucune reponse a l annonce publiee et DLC depassee');
 insert into Annulation (nom_annulation) values ( 'Aliment plus disponible( abimee)');
 insert into Annulation (nom_annulation) values ( 'Aliment consommé');
 
 /*------------------ANNONCE ---------------------*/
-insert into Annonce (Id_stock,Id_adresse,Id_annulation,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_annulation) values ('1','1','1','2018/07/20','2018/07/22 10:00','2018/07/24 11:00','2018/07/25 12:00','2018/07/25');
-insert into Annonce (Id_stock,Id_adresse,Titre,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('2','2','Je pars en vacances vite !','2018/03/05','2018/03/09 11:00','2018/03/10 13:00','2018/03/11 14:00','2018/03/09');
-insert into Annonce (Id_stock,Id_adresse,Titre,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('5','3','Les vacances arrivent …','2018/02/21','2018/02/20 13:00','2018/02/22 9:00','2018/02/25 8:00','2018/02/22');
-insert into Annonce (Id_stock,Id_adresse,Id_annulation,Titre,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_annulation) values ('6','3','2','Départ précipté ','2018/04/15','2018/04/16 7:00','2018/04/17 9:00','2018/04/21 8:00','2018/04/18');
-insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('7','5','2018/07/27','2018/07/28 19:00','2018/08/01 21:00','2018/08/07 20:00','2018/08/07');
-insert into Annonce (Id_stock,Id_adresse,Titre,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('9','6','Pas de gaspillage!','2018/04/21','2018/04/22 20:00','2018/04/25 20:00','2018/04/26 20:00','2018/04/26');
-insert into Annonce (Id_stock,Id_adresse,Titre,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('10','7','Vite vite','2018/08/04','2018/08/05 21:00','2018/08/09 20:00','2018/08/10 23:00','2018/08/10');
-insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('11','7','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
-insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3) values ('14','1','2018/07/30','2018/08/02 20:00','2018/08/05 20:00','2018/08/12 20:00');
-insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3) values ('14','1','2018/08/04','2018/08/08 22:00','2018/08/12 21:00','2018/08/17 20:00');
-insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3) values ('8','1','2018/07/22','2018/07/28 20:00','2018/08/03 20:00','2018/08/07 23:00');
-insert into Annonce (Id_stock,Id_adresse,Titre,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('10','7','Vite vite','2018/08/04','2018/08/05 20:00','2018/08/09 20:00','2018/08/10 20:00','2018/08/10');
-insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('12','7','2018/07/23','2018/07/25 20:00','2018/07/29 20:00','2018/07/30 20:00','2018/08/01');
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (1, 7, 'Je pars en vacances', '2018-08-19', '2018-08-24 19:00', '2018-08-25 12:00', '2018-08-26 12:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (2, 7, 'Je propose des tomates de mon jardin', '2018-08-19', '2018-08-24 20:00', '2018-08-25 11:00', '2018-08-26 11:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (5, 8, 'Pour les amoureux du chocolat...', '2018-08-19', '2018-08-25 11:00', '2018-08-25 12:00', '2018-08-25 13:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (7, 9, 'Miam miam miam', '2018-08-19', '2018-08-26 11:00', '2018-08-26 12:00', '2018-08-26 13:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (9, 9, 'Vive food2eat ! ', '2018-08-20', '2018-08-24 19:00', '2018-08-25 12:00', '2018-08-26 12:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (10, 10, 'Je déménage', '2018-08-20', '2018-08-24 20:00', '2018-08-25 11:00', '2018-08-26 11:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (11, 10, 'Ne m\'obligez pas à nourrir ma poubelle...', '2018-08-20', '2018-08-25 11:00', '2018-08-25 12:00', '2018-08-25 13:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (13, 3, 'Qui aime le pain de mie ? ', '2018-08-20', '2018-08-26 11:00', '2018-08-26 12:00', '2018-08-26 13:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_annulation)  values (14, 3, 'Qui aime le pain de mie complet ?', '2018-08-20', '2018-08-24 19:00', '2018-08-25 12:00', '2018-08-26 12:00', '2018-08-20');
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (15, 4, 'Produit indispensable !', '2018-08-21', '2018-08-24 20:00', '2018-08-25 11:00', '2018-08-26 11:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (16, 4, 'Dépêchez-vous...', '2018-08-21', '2018-08-25 11:00', '2018-08-25 12:00', '2018-08-25 13:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (17, 5, 'Parfait pour la cuisine', '2018-08-22', '2018-08-26 11:00', '2018-08-26 12:00', '2018-08-26 13:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (18, 5, 'Je pars en vacances', '2018-08-22', '2018-08-24 19:00', '2018-08-25 12:00', '2018-08-26 12:00', null);
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (19, 6, 'Pour faire le plein de calcium', '2018-08-22', '2018-08-24 20:00', '2018-08-25 11:00', '2018-08-26 11:00', null);
+/*annonce termine a evalue */
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (20, 6, 'Pour faire le plein de calcium', '2018-08-15', '2018-08-16 11:00', '2018-08-17 12:00', '2018-08-18 13:00', '2018-08-17');
+/* annonce terminé 16*/
+insert into annonce (id_stock, id_adresse, titre, date_publication, date_rdv_1, date_rdv_2, date_rdv_3, date_fin_annonce)  values (26, 2, 'Besoin de votre aide pour sauver mon aliment !', '2018-08-20', '2018-08-25 11:00', '2018-08-26 12:00', '2018-08-27 13:00', null);
+/* annonce aude 17*/
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('27','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('28','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('29','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('30','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('31','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('32','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('33','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('34','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('35','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('36','9','2018/08/03','2018/08/05 20:00','1018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('37','9','2018/07/22','2018/07/28 20:00','2018/07/28 21:00','2018/07/28 22:00','2018/07/30');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3, Date_fin_annonce) values ('38','7','2018/08/20','2018/08/30 20:00','2018/09/01 20:00','2018/09/04 23:00', '2018/08/22');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3, Date_fin_annonce) values ('39','5','2018/08/22','2018/08/25 20:00','2018/08/27 20:00','2018/08/30 20:30', '2018/08/22');
+/* annonce dany pain de mie 30*/
+insert into Annonce (Id_stock,Id_adresse, titre, Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3) values ('40','2', 'C''est gratuit !','2018/08/22','2018/08/23 20:00','2018/08/27 20:00','2018/08/30 20:30');
+insert into Annonce (Id_stock,Id_adresse, titre, Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3) values ('41','2', 'Je pars en vacances','2018/08/20','2018/08/23 20:00','2018/08/27 20:00','2018/08/30 20:30');
+/* annonce autre pain de mie 33*/
+insert into Annonce (Id_stock,Id_adresse,titre, Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3) values ('42','10','Je déménage !','2018/08/19','2018/08/23 7:00','2018/08/27 7:00','2018/08/30 8:30');
+insert into Annonce (Id_stock,Id_adresse,titre, Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3) values ('43','8','Mon frigo est plein à craquer...','2018/08/18','2018/08/23 12:00','2018/08/27 15:00','2018/08/30 15:30');
+/* annonce en cours pour Jon*/
+insert into Annonce (Id_stock,Id_adresse,titre, Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3) values ('44','1','Qui veut faire le plein de vitamine !','2018/08/18','2018/08/24 7:00','2018/08/27 7:00','2018/08/30 8:30');
+insert into Annonce (Id_stock,Id_adresse,titre, Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3) values ('45','1','La gourmandise n''est pas un défaut','2018/08/20','2018/08/25 7:00','2018/08/27 7:00','2018/08/30 8:30');
+/* annonce terminé et annonce annulé dany*/
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3,Date_fin_annonce) values ('46','2','2018/08/03','2018/08/05 20:00','2018/08/09 20:00','2018/08/10 20:00','2018/08/10');
+insert into Annonce (Id_stock,Id_adresse,Date_publication,Date_rdv_1,Date_rdv_2,Date_rdv_3, Date_fin_annonce, date_annulation) values ('47','2','2018/08/03','2018/08/05 20:00','2018/08/09 20:00','2018/08/10 20:00',null,'2018/08/10');
+
+
 
 /*------------------REPONSE ---------------------*/
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '6','3','2018/02/20','2018/02/21','2018/02/22 9:00');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_RDV,Date_refus) values ( '5','3','2018/02/21','2018/02/25','2018/02/21 21:00');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_RDV,Date_annulation_reponse) values ( '4','5','2018/07/28','2018/08/01 21:00','2018/08/02 ');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '3','6','2018/08/01','2018/08/05','2018/04/22 20:00');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '2','8','2018/08/02','2018/08/03','2018/08/10 20:00');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '1','2','2018/03/06','2018/03/08','2018/03/10 13:00');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_RDV,Date_refus) values ( '6','3','2018/03/07','2018/02/20 13:00','2018/03/10');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '5','7','2018/08/08','2018/08/08','2018/08/05 21:00');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse) values ( '10','10','2018/08/05');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse) values ( '8','10','2018/08/06');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse) values ( '1','11','2018/08/02');
-insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '5','13','2018/07/24','2018/07/25','2018/07/30 20:00');
 
+/*reponse annonce pain de mie de Dany annonce 30*/
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '6','30','2018/08/21',null,'2018/08/23 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '4','30','2018/07/22',null,'2018/08/27 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '3','30','2018/08/22',null,'2018/08/27 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '9','30','2018/08/22',null,'2018/08/30 20:30');
 
+/*reponse aude*/
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','17','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','18','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','19','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','20','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','21','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','22','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','23','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','24','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','25','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','26','2018/07/24','2018/07/25','2018/08/10 20:00');
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ( '10','27','2018/08/08','2018/08/30','2018/08/30 21:00');
 
-/*------------------EVALUATION ---------------------*/
+/* souhait termine a evaluer */
+insert into RepAnnonce (Id_utilisateur,Id_annonce,Date_reponse,Date_acceptation_reponse,Date_RDV) values ('2','15','2018-08-2','2018-08-27','2018-08-18 13:00');
+
+/*------------------EVALUATION ---------------------
 insert into Evaluation (Id_reponse,Date_evaluation,Note,Commentaire) values ( '1','2018/02/25','5','Transaction parfaite');
 insert into Evaluation (Id_reponse,Date_evaluation,Note,Commentaire) values ( '4','2018/08/10','2','en retard, j \‘ai du attendre 15 minutes');
 insert into Evaluation (Id_reponse,Date_evaluation,Note,Commentaire) values ( '5','2018/08/11','5','super');
 insert into Evaluation (Id_reponse,Date_evaluation,Note) values ( '6','2018/03/09','3');
 insert into Evaluation (Id_reponse,Date_evaluation,Note,Commentaire) values ( '8','2018/08/15','4','RAS');
-insert into Evaluation (Id_reponse,Date_evaluation,Note,Commentaire) values ( '12','2018/08/5','4','Perfect');
+insert into Evaluation (Id_reponse,Date_evaluation,Note,Commentaire) values ( '12','2018/08/5','4','Perfect');*/
 
